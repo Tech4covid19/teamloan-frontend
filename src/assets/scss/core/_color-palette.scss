@@ -1,0 +1,13 @@
+$color-palette: (
+    color-black: #000000,
+    color-white: #ffffff,
+    color-dove-gray: #666666,
+    color-cosmic: #663366,
+    color-bittersweet: #ff6666,
+    color-mine-shaft: #333333,
+);
+:root {
+    @each $color-name, $color-value in $color-palette {
+        --#{$color-name}: #{$color-value};
+    }
+}
