@@ -1,0 +1,24 @@
+.tech4covid {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-mine-shaft);
+}
+
+@media all and (max-width: 899px) {
+    .tech4covid {
+        padding-top: 48px;
+        height: 243px;
+
+        img {
+            width: 220px;
+            height: 81px;
+        }
+    }
+}
+
+@media all and (min-width: 900px) {
+    .tech4covid {
+        align-items: center;
+        height: 250px;
+    }
+}
