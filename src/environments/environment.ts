@@ -3,10 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 const keycloak = { url: 'http://localhost:8080/api/' };
+const googleAnalytics = { userId: '' };
 
 export const environment = {
     production: false,
     keycloak,
+    googleAnalytics,
 };
 
 /*
