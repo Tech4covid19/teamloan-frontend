@@ -1,0 +1,98 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--color-cosmic);
+    }
+
+    .group-container {
+        display: flex;
+
+        .info-container {
+            position: relative;
+
+            .background-lines {
+                position: absolute;
+                z-index: -1;
+            }
+
+            .text {
+                font-family: Work Sans;
+                font-style: normal;
+                font-weight: 200;
+                color: var(--color-black);
+            }
+        }
+    }
+}
+
+@media all and (max-width: 899px) {
+    :host {
+        padding: 25px 25px 48px 25px;
+
+        .title {
+            font-size: 30px;
+            line-height: 35px;
+            margin-bottom: 15px;
+        }
+
+        .group-container {
+            justify-content: center;
+
+            .info-container {
+                width: 255px;
+                height: 287px;
+                margin-left: 50px;
+
+                .background-lines {
+                    width: 309px;
+                    height: 196px;
+                    bottom: 0px;
+                    left: -48px;
+                }
+
+                .text {
+                    font-size: 20px;
+                    line-height: 32px;
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width: 900px) {
+    :host {
+        padding: 54px 60px;
+
+        .title {
+            font-size: 50px;
+            line-height: 70px;
+            margin-bottom: 116px;
+        }
+
+        .group-container {
+            justify-content: center;
+
+            .info-container {
+                width: 779px;
+                height: 402px;
+                margin-left: 33%;
+
+                .background-lines {
+                    bottom: 0px;
+                    left: -94px;
+                }
+
+                .text {
+                    font-size: 36px;
+                    line-height: 60px;
+                }
+            }
+        }
+    }
+}

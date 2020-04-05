@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeViewComponent } from 'src/app/views/home-view/home-view.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomeViewComponent,
+        loadChildren: () =>
+            import('./screens/home-screen/home-screen.module').then(m => m.HomeScreenModule),
+        pathMatch: 'full',
+    },
+    {
+        path: '**',
+        redirectTo: '',
         pathMatch: 'full',
     },
 ];

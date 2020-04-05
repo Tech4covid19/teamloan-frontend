@@ -1,0 +1,248 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/img/home/intro-background.jpg');
+    background-size: cover;
+
+    position: relative;
+}
+
+.background-lines {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+}
+
+.logo-container {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+}
+
+.intro-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.info-container {
+    .title {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--color-white);
+    }
+
+    .subtitle {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--color-white);
+    }
+}
+
+.prospect {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        display: flex;
+        justify-content: center;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        color: var(--color-white);
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+
+        .input-email {
+            border: 1px solid var(--color-cosmic);
+            border-radius: 10px;
+            outline: none;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            color: var(--color-dove-gray);
+
+            &::-webkit-input-placeholder {
+                color: var(--color-dove-gray);
+            }
+            &::-moz-placeholder {
+                color: var(--color-dove-gray);
+            }
+            &:-ms-input-placeholder {
+                color: var(--color-dove-gray);
+            }
+            &:-moz-placeholder {
+                color: var(--color-dove-gray);
+            }
+        }
+    }
+}
+
+@media all and (max-width: 899px) {
+    .background-lines {
+        top: 24px;
+        right: 22px;
+        width: 205px;
+        height: 130px;
+    }
+
+    .logo-container {
+        top: 41px;
+        left: 26px;
+
+        .logo {
+            width: 78px;
+            height: 53px;
+        }
+    }
+
+    .intro-container {
+        margin: 110px 32px 25px 32px;
+    }
+
+    .info-container {
+        margin-bottom: 22px;
+
+        .title {
+            width: 100%;
+            font-size: 30px;
+            line-height: 35px;
+            margin-bottom: 22px;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            line-height: 26px;
+        }
+    }
+
+    .prospect {
+        width: 306px;
+
+        label {
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+        .input-container {
+            flex-direction: column;
+
+            .input-email {
+                width: 100%;
+                height: 55px;
+                padding: 0 13px;
+                font-size: 14px;
+                line-height: 16px;
+                margin: 10px 20px 20px 20px;
+            }
+
+            .button-submit {
+                ::ng-deep {
+                    .button {
+                        width: 217px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width: 900px) {
+    :host {
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    .background-lines {
+        top: 100px;
+        right: 50px;
+    }
+
+    .logo-container {
+        top: 157px;
+        left: 100px;
+    }
+
+    .intro-container {
+        margin: 417px 100px 20px 100px;
+    }
+
+    .info-container {
+        max-width: 1105px;
+        margin-bottom: 75px;
+
+        .title {
+            width: 100%;
+            font-size: 50px;
+            line-height: 70px;
+            margin-bottom: 52px;
+            padding: 0 10px;
+        }
+
+        .subtitle {
+            font-size: 40px;
+            line-height: 55px;
+        }
+    }
+
+    .prospect {
+        label {
+            max-width: 577px;
+            font-size: 24px;
+            line-height: 28px;
+        }
+
+        .input-container {
+            flex-direction: column;
+            margin-bottom: 10px;
+
+            .input-email {
+                width: 577px;
+                height: 64px;
+                padding: 6px 25px;
+                font-size: 24px;
+                line-height: 28px;
+                margin: 10px 20px;
+            }
+
+            .button-submit {
+                ::ng-deep {
+                    .button {
+                        width: 387px;
+                        min-width: 387px;
+                        height: 92px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width: 1064px) {
+    .prospect {
+        .input-container {
+            flex-direction: row;
+
+            .input-email {
+                margin-right: 50px;
+            }
+        }
+    }
+}

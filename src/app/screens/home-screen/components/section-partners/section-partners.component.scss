@@ -1,0 +1,170 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--color-cosmic);
+    }
+
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .icons-container {
+            position: relative;
+            display: flex;
+            flex: 1;
+
+            .background-lines {
+                position: absolute;
+                z-index: -1;
+            }
+
+            .icons-list {
+                .item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    .presentation-link-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 52px;
+    }
+}
+
+@media all and (max-width: 899px) {
+    :host {
+        padding: 25px 0 48px 0;
+
+        > * {
+            padding: 0 25px 0 25px;
+        }
+
+        .title {
+            font-size: 30px;
+            line-height: 35px;
+            padding-bottom: 42px;
+        }
+
+        .info-container {
+            .icons-container {
+                justify-content: center;
+
+                .background-lines {
+                    display: none;
+                }
+
+                .icons-list {
+                    display: grid;
+                    grid-template-columns: 90px 90px 90px;
+                    grid-template-rows: 80px 80px;
+
+                    .item {
+                        img {
+                            width: 70px;
+                            height: 65px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .presentation-link-container {
+            padding: 0;
+        }
+    }
+}
+
+@media all and (min-width: 900px) {
+    :host {
+        padding: 54px 60px 130px 60px;
+
+        .title {
+            font-size: 50px;
+            line-height: 70px;
+            padding-bottom: 105px;
+        }
+
+        .info-container {
+            .icons-container {
+                max-width: 1000px;
+                justify-content: flex-end;
+
+                .background-lines {
+                    display: none;
+                }
+
+                .icons-list {
+                    display: grid;
+                    grid-template-columns: 170px 170px 170px 170px 170px;
+                    grid-template-rows: 160px 160px;
+
+                    .item:nth-child(1) {
+                        grid-column-start: 1;
+                        grid-column-end: 1;
+                    }
+
+                    .item:nth-child(2) {
+                        grid-column-start: 2;
+                        grid-column-end: 2;
+                    }
+
+                    .item:nth-child(3) {
+                        grid-column-start: 3;
+                        grid-column-end: 3;
+                    }
+
+                    .item:nth-child(4) {
+                        grid-column-start: 3;
+                        grid-column-end: 3;
+                        grid-row-start: 2;
+                    }
+
+                    .item:nth-child(5) {
+                        grid-column-start: 4;
+                        grid-column-end: 4;
+                        grid-row-start: 2;
+                    }
+
+                    .item:nth-child(6) {
+                        grid-column-start: 5;
+                        grid-column-end: 5;
+                        grid-row-start: 2;
+                    }
+                }
+            }
+        }
+
+        .presentation-link {
+            width: 100%;
+            max-width: 969px;
+        }
+    }
+}
+
+@media all and (min-width: 1064px) {
+    :host {
+        .info-container {
+            .icons-container {
+                padding-bottom: 50px;
+
+                .background-lines {
+                    display: block;
+                    bottom: 0;
+                    left: 0px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+:host {
+    width: 100%;
+    display: block;
+
+    > * {
+        display: none;
+    }
+
+    app-section-intro {
+        // display: none !important;
+    }
+    app-section-intro,
+    app-section-about,
+    app-section-lender,
+    app-section-seeker,
+    app-section-partners {
+        display: flex;
+    }
+}

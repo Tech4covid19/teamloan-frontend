@@ -1,0 +1,23 @@
+<button class="button" *ngIf="!url" type="{{ type }}" [attr.theme]="theme">
+    <svg-icon
+        *ngIf="iconStatus"
+        [src]="iconStatusUrl[iconStatus]"
+        [attr.class]="iconStatus"
+        [attr.alt]="label"
+    ></svg-icon>
+    <span>
+        {{ label }}
+    </span>
+</button>
+
+<a class="link" *ngIf="url" [href]="url" target="_blank" [attr.theme]="theme">
+    <svg-icon
+        *ngIf="iconStatus"
+        [src]="iconStatusUrl[iconStatus]"
+        [attr.class]="iconStatus"
+        [attr.alt]="label"
+    ></svg-icon>
+    <span>
+        {{ label }}
+    </span>
+</a>
