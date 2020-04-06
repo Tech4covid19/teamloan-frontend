@@ -1,42 +1,42 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProspectService } from 'src/app/services/prospect/prospect-service';
 import { ICON_STATUS } from 'src/app/material/button/button.component';
+import { ProspectService } from 'src/app/services/prospect/prospect-service';
 
 enum STATUS {
     DEFAULT = 'default',
     SUCCESS = 'success',
     REPEATED = 'repeated',
-    ERROR = 'error',
+    ERROR = 'error'
 }
 
 const SUBMISSION_STATUS = {
     [STATUS.DEFAULT]: {
         label: 'Deixe o email para receber mais informações.',
         button: 'Quero saber mais',
-        status: undefined,
+        status: undefined
     },
     [STATUS.SUCCESS]: {
         label: 'O seu email foi adicionado com sucesso',
         button: 'Subscrito',
-        status: ICON_STATUS.CHECK,
+        status: ICON_STATUS.CHECK
     },
     [STATUS.REPEATED]: {
         label: 'O email já foi subscrito',
         button: 'Erro na subscrição',
-        status: ICON_STATUS.ERROR,
+        status: ICON_STATUS.ERROR
     },
     [STATUS.ERROR]: {
         label: 'Por favor confirme o seu endereço de email',
         button: 'Erro na subscrição',
-        status: ICON_STATUS.ERROR,
-    },
+        status: ICON_STATUS.ERROR
+    }
 };
 
 @Component({
     selector: 'app-section-intro',
     templateUrl: './section-intro.component.html',
-    styleUrls: ['./section-intro.component.scss'],
+    styleUrls: ['./section-intro.component.scss']
 })
 export class SectionIntroComponent {
     public form: FormGroup;
@@ -51,7 +51,7 @@ export class SectionIntroComponent {
 
     constructor(private fb: FormBuilder, private prospectService: ProspectService) {
         this.form = fb.group({
-            email: [null, Validators.required],
+            email: [null, Validators.required]
         });
     }
 
@@ -70,7 +70,7 @@ export class SectionIntroComponent {
         this.requesting = true;
         this.prospectService.createProspect(data).subscribe(
             () => this._onSuccess(),
-            error => this._onError(error),
+            error => this._onError(error)
         );
     }
 
@@ -81,6 +81,7 @@ export class SectionIntroComponent {
 
     private _onError(error: any) {
         this.requesting = false;
+
         if (error && error.status === 409) {
             this._updateSubmissionStatus(STATUS.REPEATED);
         } else {
