@@ -1,10 +1,66 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-mine-shaft);
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    color: var(--color-white);
+
+    .contact-block {
+        width: 100%;
+        display: flex;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+        .text {
+            color: var(--color-white);
+            text-decoration: none;
+        }
+    }
+
+    .social-links {
+        display: flex;
+    }
+}
+
 .tech4covid {
     display: flex;
     justify-content: center;
-    background-color: var(--color-mine-shaft);
+    background-color: var(--color-white);
 }
 
 @media all and (max-width: 899px) {
+    .footer {
+        padding: 22px 32px 42px 32px;
+        font-size: 15px;
+        line-height: 24px;
+
+        .logo {
+            width: 74px;
+            height: 50px;
+            margin-bottom: 33px;
+        }
+
+        .contact-block {
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 20px;
+
+            .label {
+                margin-bottom: 20px;
+            }
+        }
+
+        .social-links {
+            margin-top: 33px;
+
+            .item {
+                margin: 10px;
+            }
+        }
+    }
+
     .tech4covid {
         padding-top: 48px;
         height: 243px;
@@ -17,6 +73,40 @@
 }
 
 @media all and (min-width: 900px) {
+    .footer {
+        padding: 34px 125px 47px 125px;
+        font-size: 16px;
+        line-height: 24px;
+
+        .logo {
+            width: 155px;
+            height: 105px;
+            margin-bottom: 45px;
+        }
+
+        .contact-block {
+            justify-content: center;
+            padding-bottom: 38px;
+
+            .label {
+                margin-bottom: 20px;
+                margin-right: 10px;
+            }
+        }
+
+        .social-links {
+            margin-top: 45px;
+
+            .item {
+                margin: 36px;
+
+                img {
+                    width: 60px;
+                }
+            }
+        }
+    }
+
     .tech4covid {
         align-items: center;
         height: 250px;
