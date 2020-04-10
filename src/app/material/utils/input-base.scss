@@ -1,0 +1,46 @@
+@import 'bulma/sass/utilities/_all';
+@import 'bulma/sass/utilities/mixins';
+
+:host {
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 26px;
+    color: var(--color-dove-gray);
+
+    padding: 0 20px;
+    border-radius: 10px;
+    border: 1px solid #663366;
+
+    outline: none;
+
+    &::-webkit-input-placeholder {
+        color: var(--color-novel);
+    }
+
+    &::-moz-placeholder {
+        color: var(--color-novel);
+    }
+
+    &:-ms-input-placeholder {
+        color: var(--color-novel);
+    }
+
+    &:-moz-placeholder {
+        color: var(--color-novel);
+    }
+
+    @include mobile {
+        height: 40px;
+    }
+
+    @include tablet {
+        height: 50px;
+    }
+}

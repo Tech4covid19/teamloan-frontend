@@ -1,0 +1,17 @@
+<div class="columns is-desktop" [formGroup]="form">
+    <app-input-text
+        class="column"
+        formControlName="inputText"
+        type="text"
+        placeholder="Text"
+    ></app-input-text>
+
+    <app-input-text
+        class="column"
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+    ></app-input-text>
+</div>
+
+<div>{{ form.value | json }}</div>

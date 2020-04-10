@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from 'src/app/material/button/button.module';
+import { MaterialModule } from 'src/app/material/material.module';
 import { HomeScreenRoutingModule } from 'src/app/screens/home-screen/home-screen.routing.module';
 import { ProspectService } from 'src/app/services/prospect/prospect-service';
 import { SectionAboutComponent } from './components/section-about/section-about.component';
@@ -19,15 +19,15 @@ import { HomeScreenComponent } from './home-screen.component';
         SectionAboutComponent,
         SectionLenderComponent,
         SectionSeekerComponent,
-        SectionPartnersComponent,
+        SectionPartnersComponent
     ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
         HttpClientModule,
         HomeScreenRoutingModule,
-        ButtonModule,
+        MaterialModule
     ],
-    providers: [ProspectService],
+    providers: [ProspectService]
 })
 export class HomeScreenModule {}
