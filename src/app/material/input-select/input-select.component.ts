@@ -39,7 +39,9 @@ export class InputSelectComponent extends BaseControlValueAccessor {
     }
 
     public toggleFocus() {
-        this.focus = !this.focus;
+        if (this.formControl.disable) {
+            this.focus = !this.focus;
+        }
     }
 
     public onOptionSelect(option: InputSelectOption) {
@@ -49,7 +51,7 @@ export class InputSelectComponent extends BaseControlValueAccessor {
     }
 
     public onSearch(event: any) {
-        const query = event.target.value;
+        const query = event.target.value.trim();
         if (query) {
             this.filteredOptions = this.inputSelectOptions.filter(
                 option => option.label.indexOf(query) !== -1

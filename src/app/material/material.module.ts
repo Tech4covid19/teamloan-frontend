@@ -4,11 +4,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ButtonComponent } from 'src/app/material/button/button.component';
 import { InputTextComponent } from 'src/app/material/input-text/input-text.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
 import { InputSelectComponent } from './input-select/input-select.component';
 
 @NgModule({
-    declarations: [InputTextComponent, ButtonComponent, InputSelectComponent],
+    declarations: [InputTextComponent, ButtonComponent, InputSelectComponent, CheckboxComponent],
     imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule],
-    exports: [InputTextComponent, ButtonComponent, InputSelectComponent]
+    exports: [InputTextComponent, ButtonComponent, InputSelectComponent, CheckboxComponent]
 })
 export class MaterialModule {}
