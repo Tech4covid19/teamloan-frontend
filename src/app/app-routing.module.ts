@@ -23,6 +23,12 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'logout',
+        loadChildren: () =>
+            import('./screens/logout-screen/logout-screen.module').then(m => m.LogoutViewModule),
+        pathMatch: 'full'
+    },
+    {
         path: '**',
         redirectTo: '',
         pathMatch: 'full'

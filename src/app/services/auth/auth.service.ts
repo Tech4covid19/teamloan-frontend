@@ -15,20 +15,17 @@ const TOKEN_KEY = 'auth-token';
     providedIn: 'root'
 })
 export class AuthService {
+    private _url: string;
+
     private _token: TokenInterface;
 
     private _authUser: Company;
 
-    constructor(private httpClient: HttpClient, private companyService: CompanyService) {}
-
-    public unauthenticate() {
-        localStorage.clear();
-        this._token = null;
+    constructor(private httpClient: HttpClient, private companyService: CompanyService) {
+        this._url = `${environment.keycloak.url}realms/${environment.keycloak.realm}/protocol/openid-connect/`;
     }
 
     public authenticate(credentials: { username: string; password: string }): Observable<Company> {
-        const url = `${environment.keycloak.url}realms/${environment.keycloak.realm}/protocol/openid-connect/token`;
-
         const body = new HttpParams()
             .set('username', credentials.username)
             .set('password', credentials.password)
@@ -36,7 +33,7 @@ export class AuthService {
             .set('grant_type', 'password');
 
         return this.httpClient
-            .post<TokenInterface>(url, body)
+            .post<TokenInterface>(`${this._url}token`, body)
             .pipe(
                 tap(token => this.setToken(token)),
                 map(() => this._decodedToken().uuid),
@@ -49,6 +46,17 @@ export class AuthService {
                     return throwError(error);
                 })
             );
+    }
+
+    public unauthenticate(): Observable<any> {
+        localStorage.clear();
+        this._token = null;
+        return this.httpClient.get(`${this._url}logout`).pipe(
+            catchError(error => {
+                this.unauthenticate();
+                return throwError(error);
+            })
+        );
     }
 
     public isAuthenticated(): boolean {
