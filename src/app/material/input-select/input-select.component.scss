@@ -74,7 +74,7 @@ $maxItems: 5;
     }
 
     .search-box {
-        @include font-style();
+        @include main-font-style();
         width: 100%;
         height: $itemHeightTablet;
         border: none;
@@ -82,7 +82,7 @@ $maxItems: 5;
     }
 
     .dropdown-item {
-        @include font-style();
+        @include main-font-style();
         display: flex;
         align-items: center;
         height: $itemHeightTablet;

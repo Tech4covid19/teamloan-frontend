@@ -19,7 +19,8 @@ export class MaterialScreenComponent {
             inputText: null,
             password: null,
             selectBoxSmall: null,
-            selectBoxLarge: null
+            selectBoxLarge: null,
+            checkbox: null
         });
 
         for (let i = 0; i < 15; i++) {

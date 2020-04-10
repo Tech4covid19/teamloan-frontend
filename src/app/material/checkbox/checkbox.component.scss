@@ -1,0 +1,44 @@
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 26px;
+    opacity: 0;
+}
+
+.cover {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-cosmic);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .checked {
+        fill: var(--color-cosmic);
+        width: 25px;
+        height: 26px;
+    }
+}
+
+label {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 25px;
+
+    ::ng-deep a {
+        text-decoration: underline;
+        color: var(--color-cosmic);
+    }
+}

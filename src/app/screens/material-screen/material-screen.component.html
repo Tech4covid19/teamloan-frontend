@@ -32,6 +32,17 @@
             placeholder="Select box"
         ></app-input-select>
     </div>
+
+    <h1>CheckboxComponent</h1>
+    <div class="columns">
+        <app-checkbox
+            class="column"
+            formControlName="checkbox"
+            [label]="
+                'Concordo com os <a>Termos e Condições</a> assim como com a <a>Política de Privacidade</a> do serviço'
+            "
+        ></app-checkbox>
+    </div>
 </ng-container>
 
 <div>{{ form.value | json }}</div>
