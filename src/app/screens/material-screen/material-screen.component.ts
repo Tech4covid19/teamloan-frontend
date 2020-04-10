@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 
 @Component({
     selector: 'app-material-screen',
@@ -9,12 +10,28 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 export class MaterialScreenComponent {
     form: FormGroup;
 
+    inputSelectOptionsSmall: InputSelectOption[] = [];
+
+    inputSelectOptionsLarge: InputSelectOption[] = [];
+
     constructor(private fb: FormBuilder) {
         this.form = fb.group({
             inputText: null,
-            password: null
+            password: null,
+            selectBoxSmall: null,
+            selectBoxLarge: null
         });
 
-        this.form.valueChanges.subscribe(value => console.log(value));
+        for (let i = 0; i < 15; i++) {
+            this.inputSelectOptionsSmall.push({
+                key: `key${i}`,
+                label: `Option ${i}`
+            });
+
+            this.inputSelectOptionsLarge.push({
+                key: `key${i}`,
+                label: `Option random large text Option random large text Option random large text Option random large text ${i}`
+            });
+        }
     }
 }

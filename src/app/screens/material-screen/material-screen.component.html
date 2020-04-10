@@ -1,17 +1,37 @@
-<div class="columns is-desktop" [formGroup]="form">
-    <app-input-text
-        class="column"
-        formControlName="inputText"
-        type="text"
-        placeholder="Text"
-    ></app-input-text>
+<ng-container [formGroup]="form">
+    <h1>InputTextComponent</h1>
+    <div class="columns is-desktop">
+        <app-input-text
+            class="column"
+            formControlName="inputText"
+            type="text"
+            placeholder="Text"
+        ></app-input-text>
 
-    <app-input-text
-        class="column"
-        formControlName="password"
-        type="password"
-        placeholder="Password"
-    ></app-input-text>
-</div>
+        <app-input-text
+            class="column"
+            formControlName="password"
+            type="password"
+            placeholder="Password"
+        ></app-input-text>
+    </div>
+
+    <h1>InputSelectComponent</h1>
+    <div class="columns is-desktop">
+        <app-input-select
+            class="column"
+            formControlName="selectBoxSmall"
+            [inputSelectOptions]="inputSelectOptionsSmall"
+            placeholder="Select box"
+        ></app-input-select>
+
+        <app-input-select
+            class="column is-half-desktop"
+            formControlName="selectBoxLarge"
+            [inputSelectOptions]="inputSelectOptionsLarge"
+            placeholder="Select box"
+        ></app-input-select>
+    </div>
+</ng-container>
 
 <div>{{ form.value | json }}</div>

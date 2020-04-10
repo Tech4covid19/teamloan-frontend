@@ -1,0 +1,19 @@
+@import 'bulma/sass/utilities/_all';
+@import 'bulma/sass/components/_all';
+
+@mixin font-style {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    color: var(--color-dove-gray);
+
+    @include mobile {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    @include tablet {
+        font-size: 22px;
+        line-height: 26px;
+    }
+}
