@@ -17,6 +17,12 @@ const routes: Routes = [
         canActivate: [DevelopGuard]
     },
     {
+        path: 'login',
+        loadChildren: () =>
+            import('./screens/login-screen/login-screen.module').then(m => m.LoginViewModule),
+        pathMatch: 'full'
+    },
+    {
         path: '**',
         redirectTo: '',
         pathMatch: 'full'
