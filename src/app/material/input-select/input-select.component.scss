@@ -1,0 +1,104 @@
+@import '../utils/mixins.scss';
+
+$itemHeightTablet: 50px;
+$itemHeightMobile: 40px;
+$maxItems: 5;
+
+.dropdown {
+    display: flex;
+    flex: 1;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+
+    .input-field {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        @include mobile {
+            padding-right: 47px;
+        }
+
+        @include tablet {
+            padding-right: 50px;
+        }
+
+        span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+    }
+
+    svg-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        fill: var(--color-cosmic);
+        display: flex;
+        width: 17px;
+        height: 17px;
+        cursor: pointer;
+
+        @include mobile {
+            margin: 12px 15px;
+        }
+
+        @include tablet {
+            margin: 17px;
+        }
+    }
+}
+
+.dropdown.is-active {
+    svg-icon {
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+.dropdown-menu {
+    width: 100%;
+    max-height: calc(#{$itemHeightTablet} * #{$maxItems});
+    overflow-y: auto;
+    padding: 0;
+
+    .dropdown-content {
+        padding: 0;
+    }
+
+    .search-box {
+        @include font-style();
+        width: 100%;
+        height: $itemHeightTablet;
+        border: none;
+        border-bottom: 1px solid var(--color-cosmic);
+    }
+
+    .dropdown-item {
+        @include font-style();
+        display: flex;
+        align-items: center;
+        height: $itemHeightTablet;
+        cursor: pointer;
+
+        &:hover:not(.search-box-container),
+        &.selected {
+            background-color: var(--color-cosmic);
+            color: var(--color-white);
+        }
+
+        span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+    }
+}

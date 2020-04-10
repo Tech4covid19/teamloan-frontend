@@ -1,19 +1,12 @@
-@import 'bulma/sass/utilities/_all';
-@import 'bulma/sass/utilities/mixins';
+@import './mixins.scss';
 
 :host {
     width: 100%;
 }
 
-.input {
+.input-field {
+    @include font-style();
     width: 100%;
-    font-family: Work Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 22px;
-    line-height: 26px;
-    color: var(--color-dove-gray);
-
     padding: 0 20px;
     border-radius: 10px;
     border: 1px solid #663366;
