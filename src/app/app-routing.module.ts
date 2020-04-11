@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DevelopGuard } from 'src/app/guards/develop.guard';
 import { MaterialScreenComponent } from 'src/app/screens/material-screen/material-screen.component';
+import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolbar.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,12 @@ const routes: Routes = [
         path: 'logout',
         loadChildren: () =>
             import('./screens/logout-screen/logout-screen.module').then(m => m.LogoutViewModule),
+        pathMatch: 'full'
+    },
+    // TODO: remove this route
+    {
+        path: 'filter',
+        component: FilterToolbarComponent,
         pathMatch: 'full'
     },
     {

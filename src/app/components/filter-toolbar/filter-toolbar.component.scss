@@ -1,0 +1,28 @@
+@import 'bulma/sass/utilities/_all';
+@import 'bulma/sass/components/_all';
+
+.buttons-container {
+    display: flex;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: center;
+
+        app-button {
+            width: 151px;
+            margin-bottom: 30px;
+        }
+    }
+
+    @include tablet {
+        margin-bottom: 87px;
+
+        app-button {
+            width: 245px;
+        }
+
+        .button-submit {
+            margin-right: 87px;
+        }
+    }
+}

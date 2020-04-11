@@ -1,0 +1,58 @@
+<form class="filter-toolbar-container" [formGroup]="form">
+    <div class="columns is-desktop">
+        <div class="column"></div>
+        <div class="column">
+            <app-button
+                label="Equipas disponíveis"
+                [iconStatus]=""
+                (click)="onIntentChange(intent.SEEKER)"
+                class="button-submit"
+                [theme]="seekerTheme"
+            ></app-button>
+        </div>
+        <div class="column"></div>
+    </div>
+    <div class="columns is-desktop">
+        <div class="column"></div>
+        <div class="column">
+            <app-button
+                label="Pedidos de equipas"
+                [iconStatus]=""
+                (click)="onIntentChange(intent.LENDER)"
+                class="button-submit"
+                [theme]="lenderTheme"
+            ></app-button>
+        </div>
+        <div class="column"></div>
+    </div>
+    <hr />
+    <div class="form-fields">
+        <fieldset class="field-container">
+            <label class="label" for="sector">Sector</label>
+            <app-input-select
+                class="column"
+                formControlName="sector"
+                [inputSelectOptions]="sectorOptions"
+                placeholder="Todos"
+            ></app-input-select>
+        </fieldset>
+        <fieldset class="field-container">
+            <label class="label" for="location">Localização</label>
+            <app-input-select
+                class="column"
+                formControlName="location"
+                [inputSelectOptions]="locationOptions"
+                placeholder="Todas"
+            ></app-input-select>
+        </fieldset>
+        <fieldset class="field-container">
+            <label class="label" for="function">Função</label>
+            <app-input-select
+                class="column"
+                formControlName="function"
+                [inputSelectOptions]="functionOptions"
+                placeholder="Todas"
+            ></app-input-select>
+        </fieldset>
+    </div>
+</form>
