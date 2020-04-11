@@ -42,22 +42,6 @@
     }
 }
 
-.error-message {
-    color: var(--color-bittersweet);
-
-    @include mobile {
-        font-size: 13px;
-        line-height: 16px;
-        padding: 7px;
-    }
-
-    @include tablet {
-        font-size: 16px;
-        line-height: 19px;
-        padding: 9px;
-    }
-}
-
 :host {
     display: flex;
     justify-content: center;

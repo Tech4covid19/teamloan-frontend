@@ -1,0 +1,42 @@
+.form-section {
+    padding: 20px;
+
+    .title {
+        font-size: 24px;
+        font-family: 'Work Sans';
+        font-weight: 400;
+        color: var(--color-cosmic);
+    }
+
+    .inputs-container {
+        padding-top: 10px;
+    }
+
+    .sub-title {
+        margin: 10px;
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    .inputs-container input {
+        margin: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+.error-message {
+    color: var(--color-bittersweet);
+
+    @include mobile {
+        font-size: 13px;
+        line-height: 16px;
+        padding: 7px;
+    }
+
+    @include tablet {
+        font-size: 16px;
+        line-height: 19px;
+        padding: 9px;
+    }
+}

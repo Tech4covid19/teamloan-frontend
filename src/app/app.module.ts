@@ -8,9 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CookiesNoticeComponentComponent } from './components/cookies-notice/cookies-notice.component';
 import { FooterComponentComponent } from './components/footer/footer.component';
+import { ConfirmationScreenComponent } from './screens/confirmation-screen/confirmation-screen.component';
 
 @NgModule({
-    declarations: [AppComponent, FooterComponentComponent, CookiesNoticeComponentComponent],
+    declarations: [AppComponent, FooterComponentComponent, CookiesNoticeComponentComponent, ConfirmationScreenComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
