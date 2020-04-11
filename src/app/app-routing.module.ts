@@ -17,6 +17,18 @@ const routes: Routes = [
         canActivate: [DevelopGuard]
     },
     {
+        path: 'login',
+        loadChildren: () =>
+            import('./screens/login-screen/login-screen.module').then(m => m.LoginViewModule),
+        pathMatch: 'full'
+    },
+    {
+        path: 'logout',
+        loadChildren: () =>
+            import('./screens/logout-screen/logout-screen.module').then(m => m.LogoutViewModule),
+        pathMatch: 'full'
+    },
+    {
         path: '**',
         redirectTo: '',
         pathMatch: 'full'

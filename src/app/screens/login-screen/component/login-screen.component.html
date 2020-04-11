@@ -1,0 +1,45 @@
+<form class="login-container" [formGroup]="form" (submit)="onSubmit()">
+    <h1 class="title">Entrar</h1>
+
+    <div class="form-fields">
+        <fieldset class="field-container">
+            <label class="label" for="username">NIF ou email:</label>
+            <app-input-text
+                formControlName="username"
+                type="text"
+                name="username"
+                placeholder="NIF ou email"
+            ></app-input-text>
+            <div *ngIf="submitted && usernameControl?.errors?.required" class="error-message">
+                Campo obrigatório
+            </div>
+        </fieldset>
+
+        <fieldset class="field-container">
+            <label class="label" for="password">Password:</label>
+            <app-input-text
+                formControlName="password"
+                type="password"
+                name="password"
+            ></app-input-text>
+            <div *ngIf="submitted && passwordControl?.errors?.required" class="error-message">
+                Campo obrigatório
+            </div>
+            <div *ngIf="submitted && loginError" class="error-message">
+                Verifique as suas credenciais
+            </div>
+        </fieldset>
+    </div>
+
+    <a class="forgot-password">Esqueceu-se da password?</a>
+
+    <div class="buttons-container">
+        <app-button label="Entrar" type="submit" class="button-submit"></app-button>
+        <app-button
+            label="Registar"
+            type="submit"
+            [theme]="buttonTheme.SECUNDARY"
+            class="button-registration"
+        ></app-button>
+    </div>
+</form>
