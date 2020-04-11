@@ -1,28 +1,88 @@
 @import 'bulma/sass/utilities/_all';
 @import 'bulma/sass/components/_all';
 
+:host {
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+    //background-size: cover;
+
+    @include tablet {
+        min-height: 100vh;
+    }
+}
+
+.filter-toolbar-container {
+    border-color: var(--color-bittersweet);
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: var(--color-white);
+}
+
 .buttons-container {
-    display: flex;
+    //display: flex;
+    margin: 30px;
+
+    // @include mobile {
+    //     flex-direction: column;
+    //     align-items: center;
+
+    //     app-button {
+    //         width: 151px;
+    //         margin-bottom: 30px;
+    //     }
+    // }
+
+    // @include tablet {
+    //     margin-bottom: 87px;
+
+    //     app-button {
+    //         width: 245px;
+    //     }
+
+    //     .button-submit {
+    //         margin-right: 87px;
+    //     }
+    // }
+}
+
+.form-fields {
+    margin: 30px;
+    // @include mobile {
+    //     width: 333px;
+    //     margin-bottom: 33px;
+
+    //     .field-container {
+    //         margin-bottom: 17px;
+    //     }
+    // }
+
+    // @include tablet {
+    //     width: 577px;
+    //     margin-bottom: 24px;
+
+    //     .field-container {
+    //         margin-bottom: 39px;
+    //     }
+    // }
+}
+
+.label {
+    display: block;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
 
     @include mobile {
-        flex-direction: column;
-        align-items: center;
-
-        app-button {
-            width: 151px;
-            margin-bottom: 30px;
-        }
+        font-size: 15px;
+        line-height: 18px;
+        padding: 4px 7px;
     }
 
     @include tablet {
-        margin-bottom: 87px;
-
-        app-button {
-            width: 245px;
-        }
-
-        .button-submit {
-            margin-right: 87px;
-        }
+        font-size: 18px;
+        line-height: 21px;
+        padding: 5px 9px;
     }
 }

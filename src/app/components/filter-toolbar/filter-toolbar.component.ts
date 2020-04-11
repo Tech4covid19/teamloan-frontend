@@ -29,11 +29,6 @@ export class FilterToolbarComponent implements OnInit {
     @Input()
     functionOptions: InputSelectOption[] = [];
 
-    // @Output() onAvailableTeams;
-    // @Output() onTeamRequests;
-    // @Output() onChangeSector;
-    // @Output() onChangeLocalization;
-    // @Output() onChangeFunction;
     @Output() onFilterChange = new EventEmitter<FilterChangeEvent>();
 
     form: FormGroup;
@@ -59,10 +54,10 @@ export class FilterToolbarComponent implements OnInit {
                 key: `sector${i}`,
                 label: `sector Option ${i}`
             });
-            this.locationOptions.push({
-                key: `location${i}`,
-                label: `location Option ${i}`
-            });
+            // this.locationOptions.push({
+            //     key: `location${i}`,
+            //     label: `location Option ${i}`
+            // });
             this.functionOptions.push({
                 key: `function${i}`,
                 label: `function Option ${i}`
@@ -89,20 +84,13 @@ export class FilterToolbarComponent implements OnInit {
     }
 
     public emitFilterChangeEvent() {
-        // TODO: remove this log
-        console.log({
-            intent: this.currentIntent,
-            sector: this.form.value.sector,
-            location: this.form.value.location,
-            function: this.form.value.function
-        });
+        const formValue = this.form.value;
+        formValue.intent = this.currentIntent;
 
-        this.onFilterChange.emit({
-            intent: this.currentIntent,
-            sector: this.form.value.sector,
-            location: this.form.value.location,
-            function: this.form.value.function
-        });
+        // TODO: remove this log
+        console.log(formValue);
+
+        this.onFilterChange.emit(formValue);
     }
 
     private changeIntentTheme(newIntent: INTENT) {
