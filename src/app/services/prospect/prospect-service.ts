@@ -20,7 +20,7 @@ export class ProspectService {
         };
 
         return this.httpClient
-            .post(`${environment.keycloak.url}${this._type}`, data, httpOptions)
+            .post(`${environment.backend.url}${this._type}`, data, httpOptions)
             .pipe(
                 catchError(error => {
                     this._reportError(error.status);
@@ -30,11 +30,11 @@ export class ProspectService {
     }
 
     private _reportError(value: any) {
-        this.googleAnalytics.eventEmitter(
-            'create_prospect_error',
-            'prospect',
-            'create_error',
-            value
-        );
+        this.googleAnalytics.eventEmitter({
+            eventName: 'create_prospect_error',
+            eventCategory: 'prospect',
+            eventAction: 'create_error',
+            eventLabel: value
+        });
     }
 }

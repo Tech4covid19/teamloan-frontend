@@ -1,0 +1,123 @@
+@import 'bulma/sass/utilities/_all';
+@import 'bulma/sass/components/_all';
+
+.title {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color-white);
+    text-align: center;
+
+    @include mobile {
+        font-size: 30px;
+        line-height: 35px;
+        margin: 33px 0 20px 0;
+    }
+
+    @include tablet {
+        font-size: 50px;
+        line-height: 70px;
+        margin: 52px 0 72px 0;
+    }
+}
+
+.label {
+    display: block;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    color: var(--color-white);
+
+    @include mobile {
+        font-size: 15px;
+        line-height: 18px;
+        padding: 4px 7px;
+    }
+
+    @include tablet {
+        font-size: 18px;
+        line-height: 21px;
+        padding: 5px 9px;
+    }
+}
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/img/auth-background.svg');
+    background-size: cover;
+
+    @include tablet {
+        min-height: 100vh;
+    }
+}
+
+.form-fields {
+    @include mobile {
+        width: 333px;
+        margin-bottom: 33px;
+
+        .field-container {
+            margin-bottom: 17px;
+        }
+    }
+
+    @include tablet {
+        width: 577px;
+        margin-bottom: 24px;
+
+        .field-container {
+            margin-bottom: 39px;
+        }
+    }
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: underline;
+    color: var(--color-white);
+
+    @include mobile {
+        font-size: 14px;
+        line-height: 16px;
+        margin-bottom: 35px;
+    }
+
+    @include tablet {
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 42px;
+    }
+}
+
+.buttons-container {
+    display: flex;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: center;
+
+        app-button {
+            width: 151px;
+            margin-bottom: 30px;
+        }
+    }
+
+    @include tablet {
+        margin-bottom: 87px;
+
+        app-button {
+            width: 245px;
+        }
+
+        .button-submit {
+            margin-right: 87px;
+        }
+    }
+}

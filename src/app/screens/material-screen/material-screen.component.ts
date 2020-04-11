@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 
 @Component({
@@ -16,7 +16,7 @@ export class MaterialScreenComponent {
 
     constructor(private fb: FormBuilder) {
         this.form = fb.group({
-            inputText: null,
+            inputText: ['', Validators.required],
             password: null,
             selectBoxSmall: null,
             selectBoxLarge: null,
