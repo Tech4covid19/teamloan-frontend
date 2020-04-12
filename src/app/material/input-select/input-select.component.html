@@ -1,23 +1,31 @@
 <div class="dropdown" [ngClass]="{ 'is-active': focus }">
+    <select (change)="onSelectChange($event)">
+        <option *ngFor="let option of filteredOptions" [value]="option.key">
+            {{ option.label }}
+        </option>
+    </select>
     <div class="input-container" (click)="toggleFocus()">
         <div class="input-field">
             <span>{{ selectedValue ? selectedValue.label : placeholder }}</span>
         </div>
-        <svg-icon src="/assets/img/icons/select-arrow.svg"></svg-icon>
+        <svg-icon class="arrow" src="/assets/img/icons/select-arrow.svg"></svg-icon>
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <ul class="dropdown-content">
-            <li *ngIf="filteredOptions.length > 5" class="dropdown-item search-box-container">
-                <input class="search-box" placeholder="Filtrar" (input)="onSearch($event)" />
-            </li>
-            <li
-                *ngFor="let option of filteredOptions"
-                (click)="onOptionSelect(option)"
-                class="dropdown-item"
-                [ngClass]="{ selected: option.key === selectedValue?.key }"
-            >
-                <span>{{ option.label }}</span>
-            </li>
-        </ul>
+        <div *ngIf="inputSelectOptions.length > 5" class="search-box-container">
+            <svg-icon class="search" src="/assets/img/icons/search.svg"></svg-icon>
+            <input #searchBox class="search-box" placeholder="Filtrar" (input)="onSearch($event)" />
+        </div>
+        <div class="dropdown-content">
+            <ul class="dropdown">
+                <li
+                    *ngFor="let option of filteredOptions"
+                    (click)="onOptionSelect(option)"
+                    class="dropdown-item"
+                    [ngClass]="{ selected: option.key === selectedValue?.key }"
+                >
+                    <span>{{ option.label }}</span>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
