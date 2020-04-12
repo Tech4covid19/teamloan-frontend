@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ButtonComponent } from 'src/app/material/button/button.component';
 import { InputTextComponent } from 'src/app/material/input-text/input-text.component';
@@ -9,7 +10,7 @@ import { InputSelectComponent } from './input-select/input-select.component';
 
 @NgModule({
     declarations: [InputTextComponent, ButtonComponent, InputSelectComponent, CheckboxComponent],
-    imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule],
+    imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule, RouterModule],
     exports: [InputTextComponent, ButtonComponent, InputSelectComponent, CheckboxComponent]
 })
 export class MaterialModule {}
