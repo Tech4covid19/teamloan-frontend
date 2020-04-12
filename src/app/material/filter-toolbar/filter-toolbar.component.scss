@@ -2,11 +2,6 @@
 @import 'bulma/sass/components/_all';
 
 :host {
-    //display: flex;
-    //justify-content: center;
-    //align-items: center;
-    //background-size: cover;
-
     @include tablet {
         min-height: 100vh;
     }
@@ -21,51 +16,11 @@
 }
 
 .buttons-container {
-    //display: flex;
     margin: 30px;
-
-    // @include mobile {
-    //     flex-direction: column;
-    //     align-items: center;
-
-    //     app-button {
-    //         width: 151px;
-    //         margin-bottom: 30px;
-    //     }
-    // }
-
-    // @include tablet {
-    //     margin-bottom: 87px;
-
-    //     app-button {
-    //         width: 245px;
-    //     }
-
-    //     .button-submit {
-    //         margin-right: 87px;
-    //     }
-    // }
 }
 
 .form-fields {
     margin: 30px;
-    // @include mobile {
-    //     width: 333px;
-    //     margin-bottom: 33px;
-
-    //     .field-container {
-    //         margin-bottom: 17px;
-    //     }
-    // }
-
-    // @include tablet {
-    //     width: 577px;
-    //     margin-bottom: 24px;
-
-    //     .field-container {
-    //         margin-bottom: 39px;
-    //     }
-    // }
 }
 
 .label {
