@@ -1,0 +1,13 @@
+<div class="posts-list">
+    <div class="columns is-desktop is-multiline">
+        <div *ngFor="let post of postsList" class="column">
+            <app-post-card
+                [cover]="post.cover"
+                [title]="post.title"
+                [amount]="post.amount"
+                [subTitle]="post.subTitle"
+                [actions]="actions"
+            ></app-post-card>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { LogoutViewComponent } from 'src/app/screens/logout-screen/component/logout-screen.component';
+import { PostsListScreenComponent } from 'src/app/screens/posts-list-screen/components/posts-list-screen.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: LogoutViewComponent,
+        component: PostsListScreenComponent,
         pathMatch: 'full',
         canActivate: [AuthGuard]
     }
@@ -17,4 +18,4 @@ const routes: Routes = [
     exports: [RouterModule],
     providers: [AuthGuard]
 })
-export class LogoutViewRoutingModule {}
+export class PostsListScreenRoutingModule {}

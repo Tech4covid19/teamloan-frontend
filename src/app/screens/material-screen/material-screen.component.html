@@ -43,6 +43,29 @@
             "
         ></app-checkbox>
     </div>
-</ng-container>
 
-<div>{{ form.value | json }}</div>
+    <h1>ButtonComponent</h1>
+    <div class="columns">
+        <app-button label="Theme: main (default)" class="column"></app-button>
+        <app-button label="Theme: secundary" theme="secundary" class="column"></app-button>
+        <app-button label="Theme: small-action" theme="small-action" class="column"></app-button>
+    </div>
+
+    <div>{{ form.value | json }}</div>
+
+    <br /><br /><br /><br /><br />
+    <h1>PostCardComponent</h1>
+    <div>
+        <div style="width: 372px;">
+            <div class="columns is-desktop">
+                <app-post-card
+                    cover="/assets/img/post-card/bg-idanha-a-nova.svg"
+                    title="Idanha-a-nova"
+                    amount="7"
+                    subTitle="Hoterlaria"
+                    [actions]="actions"
+                ></app-post-card>
+            </div>
+        </div>
+    </div>
+</ng-container>
