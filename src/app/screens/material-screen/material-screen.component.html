@@ -46,3 +46,13 @@
 </ng-container>
 
 <div>{{ form.value | json }}</div>
+
+<hr />
+<h1>FilterToolbarComponent</h1>
+<div class="columns">
+    <app-filter-toolbar
+        [sectorOptions]="inputSelectOptionsSmall"
+        [locationOptions]="inputSelectOptionsSmall"
+        (filterChange)="onFilterToolbarChange($event)"
+    ></app-filter-toolbar>
+</div>

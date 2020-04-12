@@ -8,25 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CookiesNoticeComponentComponent } from './components/cookies-notice/cookies-notice.component';
 import { FooterComponentComponent } from './components/footer/footer.component';
-import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolbar.component';
-import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        FooterComponentComponent,
-        CookiesNoticeComponentComponent,
-        FilterToolbarComponent
-    ],
+    declarations: [AppComponent, FooterComponentComponent, CookiesNoticeComponentComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         AngularSvgIconModule.forRoot(),
-        MaterialScreenModule,
-        MaterialModule,
-        ReactiveFormsModule
+        MaterialScreenModule
     ],
     providers: [
         {

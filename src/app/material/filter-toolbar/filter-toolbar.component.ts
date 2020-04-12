@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { THEME } from 'src/app/material/button/button.component';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 export interface FilterChangeEvent {
     intent: INTENT;
@@ -21,7 +22,7 @@ export enum INTENT {
     templateUrl: './filter-toolbar.component.html',
     styleUrls: ['./filter-toolbar.component.scss']
 })
-export class FilterToolbarComponent implements OnInit {
+export class FilterToolbarComponent implements OnInit, OnDestroy {
     @Input()
     sectorOptions: InputSelectOption[] = [];
     @Input()
@@ -29,7 +30,9 @@ export class FilterToolbarComponent implements OnInit {
     @Input()
     functionOptions: InputSelectOption[] = [];
 
-    @Output() onFilterChange = new EventEmitter<FilterChangeEvent>();
+    @Output() filterChange = new EventEmitter<FilterChangeEvent>();
+
+    private _subscriptions = new Subject();
 
     form: FormGroup;
     onChangesSubscription: Subscription;
@@ -48,31 +51,16 @@ export class FilterToolbarComponent implements OnInit {
             function: null
         });
 
-        // TODO: remove this block
-        for (let i = 0; i < 15; i++) {
-            this.sectorOptions.push({
-                key: `sector${i}`,
-                label: `sector Option ${i}`
-            });
-            // this.locationOptions.push({
-            //     key: `location${i}`,
-            //     label: `location Option ${i}`
-            // });
-            this.functionOptions.push({
-                key: `function${i}`,
-                label: `function Option ${i}`
-            });
-        }
-
         this.onChanges();
     }
 
     ngOnDestroy(): void {
-        this.onChangesSubscription.unsubscribe();
+        this._subscriptions.next();
+        this._subscriptions.complete();
     }
 
     onChanges(): void {
-        this.onChangesSubscription = this.form.valueChanges.subscribe(() => {
+        this.form.valueChanges.pipe(takeUntil(this._subscriptions)).subscribe(() => {
             this.emitFilterChangeEvent();
         });
     }
@@ -87,10 +75,7 @@ export class FilterToolbarComponent implements OnInit {
         const formValue = this.form.value;
         formValue.intent = this.currentIntent;
 
-        // TODO: remove this log
-        console.log(formValue);
-
-        this.onFilterChange.emit(formValue);
+        this.filterChange.emit(formValue);
     }
 
     private changeIntentTheme(newIntent: INTENT) {
