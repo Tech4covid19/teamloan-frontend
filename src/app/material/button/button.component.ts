@@ -2,25 +2,25 @@ import { Component, Input } from '@angular/core';
 
 export enum THEME {
     MAIN = 'main',
-    SECUNDARY = 'secundary',
+    SECUNDARY = 'secundary'
 }
 
 export enum ICON_STATUS {
     LOADING = 'loading',
     CHECK = 'success',
-    ERROR = 'error',
+    ERROR = 'error'
 }
 
 const ICON_STATUS_URL = {
     [ICON_STATUS.LOADING]: '/assets/img/icons/spinner.svg',
     [ICON_STATUS.CHECK]: '/assets/img/icons/check.svg',
-    [ICON_STATUS.ERROR]: '/assets/img/icons/error.svg',
+    [ICON_STATUS.ERROR]: '/assets/img/icons/error.svg'
 };
 
 @Component({
     selector: 'app-button',
     templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss'],
+    styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
     @Input()
@@ -37,6 +37,12 @@ export class ButtonComponent {
 
     @Input()
     public theme: string = THEME.MAIN;
+
+    @Input()
+    public newPageUrl = false;
+
+    @Input()
+    public externalUrl = false;
 
     public iconStatusUrl = ICON_STATUS_URL;
 }

@@ -2,7 +2,17 @@
     <ng-container *ngTemplateOutlet="button"></ng-container>
 </button>
 
-<a class="link" *ngIf="url" [href]="url" target="_blank" [attr.theme]="theme">
+<a class="link" *ngIf="url && !externalUrl" [routerLink]="[url]" [attr.theme]="theme">
+    <ng-container *ngTemplateOutlet="button"></ng-container>
+</a>
+
+<a
+    class="link"
+    *ngIf="url && externalUrl"
+    [href]="url"
+    [target]="newPageUrl && '_blank'"
+    [attr.theme]="theme"
+>
     <ng-container *ngTemplateOutlet="button"></ng-container>
 </a>
 
