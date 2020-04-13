@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ButtonComponent } from 'src/app/material/button/button.component';
 import { InputTextComponent } from 'src/app/material/input-text/input-text.component';
+import { PostCardComponent } from 'src/app/material/post-card/post-card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { InputSelectComponent } from './input-select/input-select.component';
-import { PostCardComponent } from 'src/app/material/post-card/post-card.component';
+import { LinkComponent } from './link/link.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { PostCardComponent } from 'src/app/material/post-card/post-card.componen
         ButtonComponent,
         InputSelectComponent,
         CheckboxComponent,
-        PostCardComponent
+        PostCardComponent,
+        LinkComponent
     ],
     imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule, RouterModule],
     exports: [
@@ -23,7 +25,8 @@ import { PostCardComponent } from 'src/app/material/post-card/post-card.componen
         ButtonComponent,
         InputSelectComponent,
         CheckboxComponent,
-        PostCardComponent
+        PostCardComponent,
+        LinkComponent
     ]
 })
 export class MaterialModule {}
