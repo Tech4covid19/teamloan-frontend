@@ -30,6 +30,16 @@ export class SectionPartnersComponent {
             title:
                 'CAP - Confederação dos Agricultores de Portugal | Confederação dos Agricultores de Portugal',
             src: '/assets/img/logos/cap.svg'
+        },
+        {
+            href: 'https://www.fipa.pt/',
+            title: 'FIPA - Federação das Indústrias Portuguesas Agro-Alimentares',
+            src: '/assets/img/logos/fipa.svg'
+        },
+        {
+            href: 'http://setupguimaraes.com/',
+            title: 'Set.Up GuimarãesHome - Set.Up Guimarães',
+            src: '/assets/img/logos/guimaraes.svg'
         }
     ];
 }

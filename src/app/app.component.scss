@@ -5,10 +5,10 @@
     position: relative;
 
     @include mobile {
-        padding-top: $headerMobileHeight;
+        margin-top: $headerMobileHeight;
     }
 
     @include tablet {
-        padding-top: $headerDesktopHeight;
+        margin-top: $headerDesktopHeight;
     }
 }
