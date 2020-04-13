@@ -13,6 +13,9 @@ export interface InputSelectOption {
     styleUrls: ['../utils/input-base.scss', './input-select.component.scss']
 })
 export class InputSelectComponent extends BaseControlValueAccessor {
+    @ViewChild('searchBox')
+    public searchBox: ElementRef;
+
     @Input()
     public placeholder = '';
 
@@ -41,7 +44,19 @@ export class InputSelectComponent extends BaseControlValueAccessor {
     public toggleFocus() {
         if (this.formControl.disable) {
             this.focus = !this.focus;
+            if (this.focus) {
+                setTimeout(() => this.searchBox.nativeElement.focus(), 300);
+            }
         }
+    }
+
+    public onSelectChange(event: any) {
+        const value = event.srcElement.value;
+        let selectedOption = null;
+        if (value) {
+            selectedOption = this.inputSelectOptions.find(option => option.key === value);
+        }
+        this.onOptionSelect(selectedOption);
     }
 
     public onOptionSelect(option: InputSelectOption) {

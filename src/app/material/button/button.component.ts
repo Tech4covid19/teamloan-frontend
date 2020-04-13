@@ -39,5 +39,11 @@ export class ButtonComponent {
     @Input()
     public theme: string = THEME.MAIN;
 
+    @Input()
+    public newPageUrl = false;
+
+    @Input()
+    public externalUrl = false;
+
     public iconStatusUrl = ICON_STATUS_URL;
 }
