@@ -1,0 +1,10 @@
+:host {
+    display: flex;
+    justify-content: center;
+}
+
+.posts-list {
+    display: flex;
+    justify-content: center;
+    max-width: calc(100vw - 30px);
+}

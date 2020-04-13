@@ -1,0 +1,46 @@
+<div class="header">
+    <div class="cover-container">
+        <img class="cover" [src]="cover" />
+    </div>
+    <h1 class="title">{{ title }}</h1>
+    <div class="employees">
+        <svg-icon src="/assets/img/icons/employees.svg" class="icon"></svg-icon>
+        <span class="number">{{ amount }}</span>
+    </div>
+</div>
+<div class="body">
+    <div class="business-area">Hoterlaria</div>
+    <div class="calendar">
+        <svg-icon src="/assets/img/icons/calendar.svg" class="icon"></svg-icon>
+        <div class="schedule">
+            <ul class="days">
+                <li class="monday selected">S</li>
+                <li class="tuesday selected">T</li>
+                <li class="wednesday selected">Q</li>
+                <li class="thursday selected">Q</li>
+                <li class="friday selected">S</li>
+                <li class="saturday">S</li>
+                <li class="sunday">D</li>
+            </ul>
+            <ul class="shifts">
+                <li class="shift-1 selected">1º Turno</li>
+                <li class="shift-2 selected">2º Turno</li>
+                <li class="shift-3">3º Turno</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <app-button
+        *ngIf="!!buttonsAction[actionsMap.CONTACT]"
+        label="Contactar"
+        [theme]="buttonTheme"
+        class="contact"
+    ></app-button>
+    <app-button
+        *ngIf="!!buttonsAction[actionsMap.SHARE]"
+        label="Partilhar"
+        [theme]="buttonTheme"
+        class="share"
+    ></app-button>
+</div>

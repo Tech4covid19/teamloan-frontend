@@ -2,7 +2,7 @@
     display: block;
     padding: 30px;
 
-    .columns {
+    > div {
         padding: 20px;
         border-bottom: 1px solid var(--color-mine-shaft);
     }

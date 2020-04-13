@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 
 export enum THEME {
     MAIN = 'main',
-    SECUNDARY = 'secundary'
+    SECUNDARY = 'secundary',
+    SMALL_ACTION = 'small-action'
 }
 
 export enum ICON_STATUS {

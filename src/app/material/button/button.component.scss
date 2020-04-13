@@ -1,3 +1,5 @@
+@import 'bulma/sass/utilities/_all';
+
 :host {
     display: flex;
 }
@@ -13,10 +15,8 @@
     width: 100%;
     padding: 0 20px;
     border-color: var(--color-bittersweet);
-    border-radius: 10px;
     outline: none;
     cursor: pointer;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     svg-icon {
         display: flex;
@@ -56,6 +56,8 @@
     &[theme='main'] {
         background-color: var(--color-bittersweet);
         color: var(--color-white);
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
         svg-icon {
             fill: var(--color-white);
@@ -75,6 +77,8 @@
         background-color: var(--color-white);
         color: var(--color-bittersweet);
         border: 1px solid var(--color-bittersweet);
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
         svg-icon {
             fill: var(--color-bittersweet);
@@ -105,6 +109,41 @@
         height: 77px;
         font-size: 36px;
         line-height: 42px;
+    }
+
+    &[theme='small-action'] {
+        background-color: var(--color-white);
+        color: var(--color-cosmic);
+        border: 1px solid var(--color-white);
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: 600;
+
+        svg-icon {
+            fill: var(--color-cosmic);
+        }
+
+        &:hover {
+            background-color: var(--color-cosmic);
+            color: var(--color-white);
+            border-color: var(--color-cosmic);
+
+            svg-icon {
+                fill: var(--color-white);
+            }
+        }
+
+        @include mobile {
+            font-size: 16px;
+            line-height: 19px;
+            height: 37px;
+        }
+
+        @include tablet {
+            font-size: 16px;
+            line-height: 19px;
+            height: 37px;
+        }
     }
 }
 

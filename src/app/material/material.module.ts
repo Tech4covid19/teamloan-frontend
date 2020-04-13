@@ -7,10 +7,23 @@ import { ButtonComponent } from 'src/app/material/button/button.component';
 import { InputTextComponent } from 'src/app/material/input-text/input-text.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { InputSelectComponent } from './input-select/input-select.component';
+import { PostCardComponent } from 'src/app/material/post-card/post-card.component';
 
 @NgModule({
-    declarations: [InputTextComponent, ButtonComponent, InputSelectComponent, CheckboxComponent],
+    declarations: [
+        InputTextComponent,
+        ButtonComponent,
+        InputSelectComponent,
+        CheckboxComponent,
+        PostCardComponent
+    ],
     imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule, RouterModule],
-    exports: [InputTextComponent, ButtonComponent, InputSelectComponent, CheckboxComponent]
+    exports: [
+        InputTextComponent,
+        ButtonComponent,
+        InputSelectComponent,
+        CheckboxComponent,
+        PostCardComponent
+    ]
 })
 export class MaterialModule {}
