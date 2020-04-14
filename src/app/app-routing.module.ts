@@ -21,11 +21,14 @@ const routes: Routes = [
         path: 'register',
         loadChildren: () =>
             import('./screens/register/register-screen.module').then(m => m.RegisterScreenModule),
-        pathMatch: 'full',
+        pathMatch: 'full'
     },
     {
         path: 'confirmation',
-        component: ConfirmationScreenComponent,
+        loadChildren: () =>
+            import('./screens/confirmation-screen/confirmation-screen.module').then(
+                m => m.ConfirmationScreenModule
+            ),
         pathMatch: 'full'
     },
     {
@@ -43,7 +46,7 @@ const routes: Routes = [
     {
         path: '**',
         redirectTo: '',
-        pathMatch: 'full',
+        pathMatch: 'full'
     }
 ];
 
