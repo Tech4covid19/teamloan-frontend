@@ -12,8 +12,7 @@ export class ConfirmationScreenComponent {
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {
         this.activatedRoute.paramMap.pipe(map(() => window.history.state)).subscribe(data => {
-            // data.email ? this.email = data.email : this.router.navigate(['login']);
-            this.email = data.email;
+            data.email ? this.email = data.email : this.router.navigate(['login']);
         });
     }
 }
