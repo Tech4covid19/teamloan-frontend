@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/internal/operators';
-import { Company } from 'src/app/models/company';
+import { Company } from 'src/app/models/company/company';
 import { AccessTokenInterface } from 'src/app/services/auth/interfaces/access-token.interface';
 import { TokenInterface } from 'src/app/services/auth/interfaces/token.interface';
 import { CompanyService } from 'src/app/services/company/company.service';

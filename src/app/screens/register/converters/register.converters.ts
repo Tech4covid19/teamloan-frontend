@@ -1,9 +1,8 @@
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { BusinessArea, RegisterViewModel } from '../register-user.viewmodel';
-import { Company } from 'src/app/models/company';
+import { Company } from 'src/app/models/company/company';
 
 export class RegisterConverters {
-
     public static registerFormToPayload(registerViewModel: RegisterViewModel): Company {
         return new Company({
             uuid_business_area: registerViewModel.company.businessArea,
@@ -22,5 +21,4 @@ export class RegisterConverters {
             label: businessArea.name
         };
     }
-
 }

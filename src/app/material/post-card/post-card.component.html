@@ -1,15 +1,15 @@
 <div class="header">
     <div class="cover-container">
-        <img class="cover" [src]="cover" />
+        <img class="cover" [src]="postCard.cover" />
     </div>
-    <h1 class="title">{{ title }}</h1>
+    <h1 class="post-title">{{ postCard.title }}</h1>
     <div class="employees">
         <svg-icon src="/assets/img/icons/employees.svg" class="icon"></svg-icon>
-        <span class="number">{{ amount }}</span>
+        <span class="number">{{ postCard.amount }}</span>
     </div>
 </div>
 <div class="body">
-    <div class="business-area">Hoterlaria</div>
+    <div class="business-area">{{ postCard.subTitle }}</div>
     <div class="calendar">
         <svg-icon src="/assets/img/icons/calendar.svg" class="icon"></svg-icon>
         <div class="schedule">

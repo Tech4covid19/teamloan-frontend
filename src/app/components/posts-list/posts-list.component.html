@@ -1,0 +1,10 @@
+<div class="filter-container">
+    <app-button label="Submit" (click)="filter()"></app-button>
+</div>
+<div class="posts-list">
+    <div class="columns is-desktop is-multiline">
+        <div *ngFor="let post of postsList" class="column is-narrow">
+            <app-post-card [postCard]="post" [actions]="actions"></app-post-card>
+        </div>
+    </div>
+</div>

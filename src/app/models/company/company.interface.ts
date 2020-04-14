@@ -1,5 +1,6 @@
-// TODO remove companyPayload interface, and replace it by the other file
-export interface CompanyPayload {
+import { BusinessArea } from 'src/app/models/business-area/business-area';
+
+export interface CompanyInteface {
     uuid_business_area: string;
     name: string;
     email: string;
@@ -7,4 +8,5 @@ export interface CompanyPayload {
     phone: string;
     'zip-code': string;
     password: string;
+    'business-area'?: BusinessArea;
 }

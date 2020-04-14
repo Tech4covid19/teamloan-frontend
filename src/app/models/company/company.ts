@@ -1,17 +1,12 @@
-export interface CompanyInteface {
-    uuid_business_area: string;
-    name: string;
-    email: string;
-    vat: string;
-    phone: string;
-    'zip-code': string;
-    password: string;
-}
+import { CompanyInteface } from 'src/app/models/company/company.interface';
+import { BusinessArea } from 'src/app/models/business-area/business-area';
 
 export class Company {
     public static TYPE = 'company';
 
     public 'uuid_business_area': string;
+
+    public 'business-area': BusinessArea;
 
     public name: string;
 

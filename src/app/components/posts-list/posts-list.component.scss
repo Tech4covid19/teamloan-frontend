@@ -1,0 +1,33 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    display: flex;
+    justify-content: center;
+    margin: 15px 50px;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @include tablet {
+    }
+}
+
+.filter-container {
+    width: 211px;
+    height: 497px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    @include tablet {
+        margin-right: 10px;
+    }
+}
+
+.posts-list {
+    display: flex;
+    justify-content: center;
+    max-width: 929px;
+    max-width: 768px;
+    max-width: 1164px;
+}

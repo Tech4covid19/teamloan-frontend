@@ -40,7 +40,7 @@
         }
     }
 
-    .title {
+    .post-title {
         font-family: Work Sans;
         font-style: normal;
         font-weight: bold;
@@ -73,13 +73,13 @@
 
         @include mobile {
             width: 81px;
-            height: 113px;
+            height: 103px;
             padding: 13px 0;
         }
 
         @include tablet {
             width: 81px;
-            height: 113px;
+            height: 103px;
             padding: 13px 0;
         }
 
