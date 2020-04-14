@@ -29,14 +29,17 @@
             height: $headerDesktopSmallHeight;
         }
     }
-
-    > div {
-        flex: 1;
-    }
 }
 
 .left-menu-container {
     display: flex;
+    flex: 1;
+
+    @include mobile {
+        &.align-left {
+            flex: none;
+        }
+    }
 
     .prev-navigation {
         display: flex;
@@ -126,23 +129,23 @@
 
 .right-menu-container {
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
 
     @include mobile {
-        justify-content: flex-end;
+        margin-left: 20px;
     }
 
-    @include tablet {
-        justify-content: center;
-    }
-
-    .menu-item {
-        &:not(:first-child) {
+    .menu-item,
+    .auth-item {
+        &:not(:last-child) {
             @include mobile {
-                margin-left: 20px;
+                margin-right: 20px;
             }
 
             @include tablet {
-                margin-left: 40px;
+                margin-right: 40px;
             }
         }
     }

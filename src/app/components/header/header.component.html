@@ -1,5 +1,5 @@
 <div class="header-container" [ngClass]="{ 'small-menu': smallMenu }">
-    <div class="left-menu-container">
+    <div class="left-menu-container" [ngClass]="{ 'align-left': menus?.length !== 0 }">
         <a *ngIf="!isHomePage" (click)="navigateBack()" class="prev-navigation">
             <svg-icon class="back" src="/assets/img/icons/navigate-back.svg"></svg-icon>
             <span class="label">Voltar</span>
@@ -21,5 +21,14 @@
                 [external]="menu.external"
             ></app-link>
         </ng-container>
+        <div class="auth-container">
+            <app-link
+                class="auth-item"
+                *ngIf="isUserAuthenticated"
+                label="Sair"
+                [icon]="logoutIcon"
+                url="/logout"
+            ></app-link>
+        </div>
     </div>
 </div>
