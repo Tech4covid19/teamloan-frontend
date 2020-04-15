@@ -5,36 +5,14 @@
 <div class="intro-container">
     <div class="content-container">
         <div class="info-container">
-            <h1 class="title">
+            <h1 class="intro-title">
                 JUNTE-SE A ESTE MOVIMENTO DE PARTILHA DE EQUIPAS ENTRE EMPRESAS PARA, JUNTOS,
                 ULTRAPASSARMOS OS DESAFIOS DO COVID-19.
             </h1>
-            <!-- <h2 class="subtitle">
-                JUNTE-SE A ESTE MOVIMENTO DE COOPERAÇÃO ENTRE EMPRESAS PARA, JUNTOS, ULTRAPASSARMOS
-                OS DESAFIOS DO COVID-19.
-            </h2> -->
         </div>
-
-        <form class="prospect" [formGroup]="form" (submit)="onFormSubmit()">
-            <label form="email">
-                {{ submissionStatus.label }}
-            </label>
-
-            <div class="input-container">
-                <input
-                    formControlName="email"
-                    class="input-email"
-                    name="email"
-                    placeholder="Email"
-                    email
-                />
-                <app-button
-                    [label]="submissionStatus.button"
-                    [iconStatus]="requesting ? buttonStatus.LOADING : submissionStatus.status"
-                    type="submit"
-                    class="button-submit"
-                ></app-button>
-            </div>
-        </form>
+        <div class="auth-actions">
+            <app-button url="/login" label="Iniciar sessão"></app-button>
+            <app-button url="/register" label="Criar nova conta" theme="secundary"></app-button>
+        </div>
     </div>
 </div>

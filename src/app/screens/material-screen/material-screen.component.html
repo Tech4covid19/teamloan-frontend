@@ -79,4 +79,30 @@
             </div>
         </div>
     </div>
+
+    <h1>LinkComponent</h1>
+    <div class="columns">
+        <app-link
+            class="column"
+            [label]="linkRegular.label"
+            [icon]="linkRegular.icon"
+            [url]="linkRegular.url"
+            [external]="linkRegular.external"
+        ></app-link>
+
+        <app-link
+            class="column"
+            [label]="linkSmall.label"
+            [icon]="linkSmall.icon"
+            [url]="linkSmall.url"
+            [external]="linkSmall.external"
+        ></app-link>
+
+        <app-link
+            class="column"
+            [label]="linkLabel.label"
+            [url]="linkLabel.url"
+            [external]="linkLabel.external"
+        ></app-link>
+    </div>
 </ng-container>

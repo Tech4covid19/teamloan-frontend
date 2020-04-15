@@ -1,0 +1,54 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    cursor: pointer;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+svg-icon {
+    fill: var(--color-cosmic);
+    display: flex;
+}
+
+[theme='regular'] {
+    @include mobile {
+        width: 40px;
+    }
+
+    @include tablet {
+        width: 62px;
+    }
+}
+
+[theme='small'] {
+    width: 25px;
+}
+
+.label {
+    margin-top: 7px;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-cosmic);
+
+    @include mobile {
+        font-size: 13px;
+        line-height: 15px;
+    }
+
+    @include tablet {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}

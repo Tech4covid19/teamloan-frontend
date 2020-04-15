@@ -94,8 +94,8 @@
         }
     }
 
-    @media all and (max-width: 899px) {
-        min-height: 50px;
+    @include mobile {
+        height: 50px;
         font-size: 17px;
         line-height: 28px;
 
@@ -105,8 +105,14 @@
         }
     }
 
-    @media all and (min-width: 900px) {
-        min-height: 77px;
+    @include tablet {
+        height: 77px;
+        font-size: 34px;
+        line-height: 48px;
+    }
+
+    @include desktop {
+        height: 77px;
         font-size: 36px;
         line-height: 42px;
     }

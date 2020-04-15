@@ -1,0 +1,12 @@
+<a class="link-container" *ngIf="!external" [routerLink]="[url]">
+    <ng-container *ngTemplateOutlet="link"></ng-container>
+</a>
+
+<a class="link-container" *ngIf="external" [href]="[url]" target="_blank">
+    <ng-container *ngTemplateOutlet="link"></ng-container>
+</a>
+
+<ng-template #link>
+    <svg-icon *ngIf="icon?.url" [src]="icon.url" [attr.theme]="icon.theme"></svg-icon>
+    <span class="label" *ngIf="label">{{ label }}</span>
+</ng-template>

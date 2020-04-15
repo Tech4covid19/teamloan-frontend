@@ -1,0 +1,25 @@
+<div class="header-container" [ngClass]="{ 'small-menu': smallMenu }">
+    <div class="left-menu-container">
+        <a *ngIf="!isHomePage" (click)="navigateBack()" class="prev-navigation">
+            <svg-icon class="back" src="/assets/img/icons/navigate-back.svg"></svg-icon>
+            <span class="label">Voltar</span>
+        </a>
+    </div>
+    <div class="logo-container">
+        <a [routerLink]="['/']">
+            <svg-icon class="logo" src="/assets/img/main-logo.svg"></svg-icon>
+        </a>
+    </div>
+    <div class="right-menu-container">
+        <ng-container *ngFor="let menu of menus">
+            <app-link
+                class="menu-item"
+                [ngClass]="{ 'is-hidden-mobile': menu.isMobile !== undefined && !menu.isMobile }"
+                [label]="menu.label"
+                [icon]="menu.icon"
+                [url]="menu.url"
+                [external]="menu.external"
+            ></app-link>
+        </ng-container>
+    </div>
+</div>
