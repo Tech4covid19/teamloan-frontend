@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { PostsListScreenComponent } from 'src/app/screens/posts-list-screen/components/posts-list-screen.component';
 
