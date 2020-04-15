@@ -1,6 +1,6 @@
-import { Component, Input, HostListener, ElementRef, ViewChild } from '@angular/core';
-import { BaseControlValueAccessor } from 'src/app/material/utils/base.cva';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
+import { BaseControlValueAccessor } from 'src/app/form-tools/value-accessors/base.cva';
 
 export interface InputSelectOption {
     key: any;

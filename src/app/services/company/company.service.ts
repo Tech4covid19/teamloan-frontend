@@ -14,22 +14,24 @@ export class CompanyService extends BaseService {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.TYPE}/${companyId}`;
 
-        return this.httpClient.get<CompanyInteface>(url, httpOptions).pipe(
-            map(companyInteface => new Company(companyInteface)),
-            catchError(error => {
-                return throwError(error);
-            })
-        );
+        return this.httpClient
+            .get<CompanyInteface>(url, httpOptions)
+            .pipe(map(companyInteface => new Company(companyInteface)));
     }
 
     public save(company: Company): Observable<UUID> {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.TYPE}`;
-        return this.httpClient.post(url, company, httpOptions)
-        .pipe(
+        return this.httpClient.post(url, company, httpOptions).pipe(
             map((resp: any) => ({
                 uuid: resp.uuid
             }))
         );
+    }
+
+    public activate(activationToken: string): Observable<any> {
+        const httpOptions = { headers: this.headers };
+        const url = `${environment.backend.url}${Company.TYPE}/activation/${activationToken}`;
+        return this.httpClient.post(url, {}, httpOptions);
     }
 }

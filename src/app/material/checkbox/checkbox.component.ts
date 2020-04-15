@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BaseControlValueAccessor } from 'src/app/material/utils/base.cva';
+import { BaseControlValueAccessor } from 'src/app/form-tools/value-accessors/base.cva';
 import { generateUUID } from 'src/app/utils/uuid.utils';
 
 @Component({
