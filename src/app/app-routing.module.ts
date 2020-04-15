@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DevelopGuard } from 'src/app/guards/develop.guard';
 import { MaterialScreenComponent } from 'src/app/screens/material-screen/material-screen.component';
+import { ConfirmationScreenComponent } from './screens/confirmation-screen/confirmation-screen.component';
 
 const routes: Routes = [
     {
@@ -15,6 +16,28 @@ const routes: Routes = [
         component: MaterialScreenComponent,
         pathMatch: 'full',
         canActivate: [DevelopGuard]
+    },
+    {
+        path: 'register',
+        loadChildren: () =>
+            import('./screens/register/register-screen.module').then(m => m.RegisterScreenModule),
+        pathMatch: 'full'
+    },
+    {
+        path: 'confirmation',
+        loadChildren: () =>
+            import('./screens/confirmation-screen/confirmation-screen.module').then(
+                m => m.ConfirmationScreenModule
+            ),
+        pathMatch: 'full'
+    },
+    {
+        path: 'posts',
+        loadChildren: () =>
+            import('./screens/posts-list-screen/posts-list-screen.module').then(
+                m => m.PostsListScreenModule
+            ),
+        pathMatch: 'full'
     },
     {
         path: 'login',

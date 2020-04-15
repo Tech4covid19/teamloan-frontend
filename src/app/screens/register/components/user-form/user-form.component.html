@@ -1,0 +1,44 @@
+<div class="form-section">
+    <p class="form-title">Dados do representante</p>
+
+    <div class="inputs-container" [formGroup]="form">
+
+        <app-input-text
+            formControlName="phone"
+            type="text"
+            placeholder="Telefone | Telemóvel"
+        ></app-input-text>
+        <div *ngIf="errors.phone.required" class="error-message">
+            Campo obrigatório
+        </div>
+        <div *ngIf="errors.phone.format" class="error-message">
+            Formato inválido
+        </div>
+
+        <app-input-text
+            formControlName="email"
+            type="text"
+            placeholder="E-mail"
+        ></app-input-text>
+        <div *ngIf="errors.email.required" class="error-message">
+            Campo obrigatório
+        </div>
+        <div *ngIf="errors.email.format" class="error-message">
+            Email inválido
+        </div>
+
+        <app-input-text
+            formControlName="password"
+            type="password"
+            placeholder="Password"
+        ></app-input-text>
+        <div *ngIf="errors.password.required" class="error-message">
+            Campo obrigatório
+        </div>
+        <div *ngIf="errors.password.format" class="error-message">
+            A senha deve ter pelo menos 9 caracteres, incluindo uma letra maiúscula, uma minúscula, um número e um caractere especial
+        </div>
+
+    </div>
+
+</div>

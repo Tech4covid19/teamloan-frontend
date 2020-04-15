@@ -1,2 +1,24 @@
 @import './reset';
 @import './core';
+@import './forms/form';
+
+.title {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color-white);
+    text-align: center;
+
+    @include mobile {
+        font-size: 30px;
+        line-height: 35px;
+        margin: 33px 0 20px 0;
+    }
+
+    @include tablet {
+        font-size: 50px;
+        line-height: 70px;
+        margin: 52px 0 72px 0;
+    }
+}

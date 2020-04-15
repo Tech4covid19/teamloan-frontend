@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
+import { ACTIONS } from 'src/app/material/post-card/post-card.component';
 
 @Component({
     selector: 'app-material-screen',
@@ -14,9 +15,11 @@ export class MaterialScreenComponent {
 
     inputSelectOptionsLarge: InputSelectOption[] = [];
 
+    actions = [ACTIONS.CONTACT, ACTIONS.SHARE];
+
     constructor(private fb: FormBuilder) {
         this.form = fb.group({
-            inputText: null,
+            inputText: ['', Validators.required],
             password: null,
             selectBoxSmall: null,
             selectBoxLarge: null,

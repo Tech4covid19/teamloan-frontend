@@ -1,30 +1,27 @@
 export interface CompanyInteface {
-    uuid_business_area: number;
+    uuid_business_area: string;
     name: string;
     email: string;
-    vat: number;
-    phone: number;
+    vat: string;
+    phone: string;
     'zip-code': string;
-    responsible: string;
     password: string;
 }
 
 export class Company {
     public static TYPE = 'company';
 
-    public 'uuid_business_area': number;
+    public 'uuid_business_area': string;
 
     public name: string;
 
     public email: string;
 
-    public vat: number;
+    public vat: string;
 
-    public phone: number;
+    public phone: string;
 
     public 'zip-code': string;
-
-    public responsible: string;
 
     public password: string;
 

@@ -1,26 +1,6 @@
 @import 'bulma/sass/utilities/_all';
 @import 'bulma/sass/components/_all';
 
-.title {
-    font-family: Work Sans;
-    font-style: normal;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: var(--color-white);
-    text-align: center;
-
-    @include mobile {
-        font-size: 30px;
-        line-height: 35px;
-        margin: 33px 0 20px 0;
-    }
-
-    @include tablet {
-        font-size: 50px;
-        line-height: 70px;
-        margin: 52px 0 72px 0;
-    }
-}
 
 .label {
     display: block;
@@ -39,22 +19,6 @@
         font-size: 18px;
         line-height: 21px;
         padding: 5px 9px;
-    }
-}
-
-.error-message {
-    color: var(--color-bittersweet);
-
-    @include mobile {
-        font-size: 13px;
-        line-height: 16px;
-        padding: 7px;
-    }
-
-    @include tablet {
-        font-size: 16px;
-        line-height: 19px;
-        padding: 9px;
     }
 }
 
