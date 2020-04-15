@@ -8,9 +8,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 25px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     opacity: 0;
+    cursor: pointer;
 }
 
 .cover {
@@ -20,7 +21,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 
     .checked {
         fill: var(--color-cosmic);
