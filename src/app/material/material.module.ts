@@ -9,6 +9,8 @@ import { PostCardComponent } from 'src/app/material/post-card/post-card.componen
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { InputSelectComponent } from './input-select/input-select.component';
 import { LinkComponent } from './link/link.component';
+import { FilterToolbarComponent } from './filter-toolbar/filter-toolbar.component';
+import { PostCardComponent } from 'src/app/material/post-card/post-card.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +19,8 @@ import { LinkComponent } from './link/link.component';
         InputSelectComponent,
         CheckboxComponent,
         PostCardComponent,
-        LinkComponent
+        LinkComponent,
+        FilterToolbarComponent
     ],
     imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule, RouterModule],
     exports: [
@@ -26,7 +29,8 @@ import { LinkComponent } from './link/link.component';
         InputSelectComponent,
         CheckboxComponent,
         PostCardComponent,
-        LinkComponent
+        LinkComponent,
+        FilterToolbarComponent
     ]
 })
 export class MaterialModule {}

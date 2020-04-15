@@ -53,6 +53,17 @@
 
     <div>{{ form.value | json }}</div>
 
+    <hr />
+    <h1>FilterToolbarComponent</h1>
+    <app-filter-toolbar
+        [intentToggle]="true"
+        [districtOptions]="inputSelectOptionsSmall"
+        [municipalityOptions]="inputSelectOptionsSmall"
+        [sectorOptions]="inputSelectOptionsSmall"
+        [functionOptions]="inputSelectOptionsSmall"
+        (filterChange)="onFilterToolbarChange($event)"
+    ></app-filter-toolbar>
+    <hr />
     <br /><br /><br /><br /><br />
     <h1>PostCardComponent</h1>
     <div>

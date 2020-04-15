@@ -25,7 +25,10 @@ const routes: Routes = [
     },
     {
         path: 'confirmation',
-        component: ConfirmationScreenComponent,
+        loadChildren: () =>
+            import('./screens/confirmation-screen/confirmation-screen.module').then(
+                m => m.ConfirmationScreenModule
+            ),
         pathMatch: 'full'
     },
     {

@@ -1,0 +1,63 @@
+<form class="filter-toolbar-container" [formGroup]="form">
+    <div class="filter-container" *ngIf="intentToggle">
+        <app-button
+            class="filter-component"
+            label="Equipas disponíveis"
+            [iconStatus]=""
+            (click)="onIntentChange(postsIntent.LEND)"
+            [theme]="lendTheme"
+        ></app-button>
+        <app-button
+            class="filter-component"
+            label="Pedidos de equipas"
+            [iconStatus]=""
+            (click)="onIntentChange(postsIntent.SEEK)"
+            [theme]="seekTheme"
+        ></app-button>
+    </div>
+    <hr *ngIf="intentToggle" />
+    <div class="filter-container">
+        <div *ngIf="districtOptions.length !== 0" class="filter-component">
+            <fieldset>
+                <label class="label" for="district">Distrito</label>
+                <app-input-select
+                    formControlName="district"
+                    [inputSelectOptions]="districtOptions"
+                    placeholder="Todos"
+                ></app-input-select>
+            </fieldset>
+        </div>
+        <div *ngIf="municipalityOptions.length !== 0" class="filter-component">
+            <fieldset>
+                <label class="label" for="municipality">Município</label>
+                <app-input-select
+                    formControlName="municipality"
+                    [inputSelectOptions]="municipalityOptions"
+                    placeholder="Todos"
+                ></app-input-select>
+            </fieldset>
+        </div>
+    </div>
+    <div class="filter-container">
+        <div *ngIf="sectorOptions.length !== 0" class="filter-component">
+            <fieldset>
+                <label class="label" for="sector">Sector</label>
+                <app-input-select
+                    formControlName="sector"
+                    [inputSelectOptions]="sectorOptions"
+                    placeholder="Todos"
+                ></app-input-select>
+            </fieldset>
+        </div>
+        <div *ngIf="functionOptions.length !== 0" class="filter-component">
+            <fieldset>
+                <label class="label" for="function">Função</label>
+                <app-input-select
+                    formControlName="function"
+                    [inputSelectOptions]="functionOptions"
+                    placeholder="Todas"
+                ></app-input-select>
+            </fieldset>
+        </div>
+    </div>
+</form>

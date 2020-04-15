@@ -65,4 +65,8 @@ export class MaterialScreenComponent {
             });
         }
     }
+
+    onFilterToolbarChange(event) {
+        console.log(event);
+    }
 }
