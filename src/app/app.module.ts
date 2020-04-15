@@ -9,10 +9,9 @@ import { MaterialScreenModule } from 'src/app/screens/material-screen/material-s
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CookiesNoticeComponentComponent } from './components/cookies-notice/cookies-notice.component';
-import { ConfirmationScreenComponent } from './screens/confirmation-screen/confirmation-screen.component';
 
 @NgModule({
-    declarations: [AppComponent, CookiesNoticeComponentComponent, ConfirmationScreenComponent],
+    declarations: [AppComponent, CookiesNoticeComponentComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
