@@ -7,6 +7,7 @@ import { ButtonComponent } from 'src/app/material/button/button.component';
 import { InputTextComponent } from 'src/app/material/input-text/input-text.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { InputSelectComponent } from './input-select/input-select.component';
+import { FilterToolbarComponent } from './filter-toolbar/filter-toolbar.component';
 import { PostCardComponent } from 'src/app/material/post-card/post-card.component';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PostCardComponent } from 'src/app/material/post-card/post-card.componen
         ButtonComponent,
         InputSelectComponent,
         CheckboxComponent,
-        PostCardComponent
+        PostCardComponent,
+        FilterToolbarComponent
     ],
     imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule, RouterModule],
     exports: [
@@ -23,7 +25,8 @@ import { PostCardComponent } from 'src/app/material/post-card/post-card.componen
         ButtonComponent,
         InputSelectComponent,
         CheckboxComponent,
-        PostCardComponent
+        PostCardComponent,
+        FilterToolbarComponent
     ]
 })
 export class MaterialModule {}

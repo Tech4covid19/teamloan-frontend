@@ -95,7 +95,7 @@
     }
 
     @media all and (max-width: 899px) {
-        height: 50px;
+        min-height: 50px;
         font-size: 17px;
         line-height: 28px;
 
@@ -106,7 +106,7 @@
     }
 
     @media all and (min-width: 900px) {
-        height: 77px;
+        min-height: 77px;
         font-size: 36px;
         line-height: 42px;
     }
