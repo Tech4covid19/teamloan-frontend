@@ -49,10 +49,11 @@
 
 <hr />
 <h1>FilterToolbarComponent</h1>
-<div class="columns">
-    <app-filter-toolbar
-        [sectorOptions]="inputSelectOptionsSmall"
-        [locationOptions]="inputSelectOptionsSmall"
-        (filterChange)="onFilterToolbarChange($event)"
-    ></app-filter-toolbar>
-</div>
+<app-filter-toolbar
+    [intentToggle]="true"
+    [districtOptions]="inputSelectOptionsSmall"
+    [municipalityOptions]="inputSelectOptionsSmall"
+    [sectorOptions]="inputSelectOptionsSmall"
+    [functionOptions]="inputSelectOptionsSmall"
+    (filterChange)="onFilterToolbarChange($event)"
+></app-filter-toolbar>

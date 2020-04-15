@@ -7,14 +7,15 @@ import { takeUntil } from 'rxjs/operators';
 
 export interface FilterChangeEvent {
     intent: INTENT;
+    district: string;
+    municipality: string;
     sector: string;
-    location: string;
     function: string;
 }
 
 export enum INTENT {
-    SEEKER = 'seeker',
-    LENDER = 'lender'
+    SEEK = 'seek',
+    LEND = 'lend'
 }
 
 @Component({
@@ -24,9 +25,13 @@ export enum INTENT {
 })
 export class FilterToolbarComponent implements OnInit, OnDestroy {
     @Input()
+    intentToggle: boolean;
+    @Input()
     sectorOptions: InputSelectOption[] = [];
     @Input()
-    locationOptions: InputSelectOption[] = [];
+    districtOptions: InputSelectOption[] = [];
+    @Input()
+    municipalityOptions: InputSelectOption[] = [];
     @Input()
     functionOptions: InputSelectOption[] = [];
 
@@ -37,17 +42,18 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
     form: FormGroup;
     onChangesSubscription: Subscription;
 
-    intent = INTENT;
-    currentIntent = INTENT.SEEKER;
-    seekerTheme = THEME.MAIN;
-    lenderTheme = THEME.SECUNDARY;
+    postsIntent = INTENT;
+    currentPostsIntent = INTENT.LEND;
+    lendTheme = THEME.MAIN;
+    seekTheme = THEME.SECUNDARY;
 
     constructor(private fb: FormBuilder) {}
 
     ngOnInit(): void {
         this.form = this.fb.group({
+            district: null,
+            municipality: null,
             sector: null,
-            location: null,
             function: null
         });
 
@@ -66,27 +72,27 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
     }
 
     onIntentChange(newIntent: INTENT) {
-        this.currentIntent = newIntent;
+        this.currentPostsIntent = newIntent;
         this.changeIntentTheme(newIntent);
         this.emitFilterChangeEvent();
     }
 
     public emitFilterChangeEvent() {
         const formValue = this.form.value;
-        formValue.intent = this.currentIntent;
+        formValue.intent = this.currentPostsIntent;
 
         this.filterChange.emit(formValue);
     }
 
     private changeIntentTheme(newIntent: INTENT) {
         switch (newIntent) {
-            case INTENT.SEEKER:
-                this.seekerTheme = THEME.MAIN;
-                this.lenderTheme = THEME.SECUNDARY;
+            case INTENT.SEEK:
+                this.seekTheme = THEME.MAIN;
+                this.lendTheme = THEME.SECUNDARY;
                 break;
-            case INTENT.LENDER:
-                this.seekerTheme = THEME.SECUNDARY;
-                this.lenderTheme = THEME.MAIN;
+            case INTENT.LEND:
+                this.seekTheme = THEME.SECUNDARY;
+                this.lendTheme = THEME.MAIN;
                 break;
         }
     }
