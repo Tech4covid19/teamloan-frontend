@@ -4,6 +4,7 @@ import * as jwt_decode from 'jwt-decode';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/internal/operators';
 import { Company } from 'src/app/models/company/company';
+import { AuthStore } from 'src/app/services/auth/auth.store';
 import { AccessTokenInterface } from 'src/app/services/auth/interfaces/access-token.interface';
 import { TokenInterface } from 'src/app/services/auth/interfaces/token.interface';
 import { CompanyService } from 'src/app/services/company/company.service';
@@ -15,15 +16,13 @@ const TOKEN_KEY = 'auth-token';
     providedIn: 'root'
 })
 export class AuthService {
-    private _url: string;
+    private _url = `${environment.keycloak.url}realms/${environment.keycloak.realm}/protocol/openid-connect/`;
 
-    private _token: TokenInterface;
-
-    private _authUser: Company;
-
-    constructor(private httpClient: HttpClient, private companyService: CompanyService) {
-        this._url = `${environment.keycloak.url}realms/${environment.keycloak.realm}/protocol/openid-connect/`;
-    }
+    constructor(
+        private httpClient: HttpClient,
+        private companyService: CompanyService,
+        private authStore: AuthStore
+    ) {}
 
     public authenticate(credentials: { username: string; password: string }): Observable<Company> {
         const body = new HttpParams()
@@ -32,25 +31,15 @@ export class AuthService {
             .set('client_id', environment.keycloak.clientId)
             .set('grant_type', 'password');
 
-        return this.httpClient
-            .post<TokenInterface>(`${this._url}token`, body)
-            .pipe(
-                tap(token => this.setToken(token)),
-                map(() => this._decodedToken().uuid),
-                switchMap(uuid => this.companyService.getCompany(uuid)),
-                tap(authUser => (this._authUser = authUser))
-            )
-            .pipe(
-                catchError(error => {
-                    this.unauthenticate();
-                    return throwError(error);
-                })
-            );
+        return this.httpClient.post<TokenInterface>(`${this._url}token`, body).pipe(
+            tap(token => this._setToken(token)),
+            switchMap(() => this._requestAuthUser())
+        );
     }
 
     public unauthenticate(): Observable<any> {
         localStorage.clear();
-        this._token = null;
+        this.authStore.token = null;
         return this.httpClient.get(`${this._url}logout`).pipe(
             catchError(error => {
                 this.unauthenticate();
@@ -66,22 +55,36 @@ export class AuthService {
         return true;
     }
 
-    public setToken(token: TokenInterface) {
-        this._token = token;
-        localStorage.setItem(TOKEN_KEY, token.access_token);
-    }
-
     public getToken(): string {
-        return this._token && this._token.access_token
-            ? this._token.access_token
+        return this.authStore.token && this.authStore.token.access_token
+            ? this.authStore.token.access_token
             : localStorage.getItem(TOKEN_KEY);
     }
 
-    public getAuthUser(): Company {
-        return this._authUser;
+    public getAuthUser(): Observable<Company> {
+        if (!this.authStore.authUser) {
+            return this._requestAuthUser().pipe(switchMap(() => this.authStore.getAuthUser()));
+        }
+        return this.authStore.getAuthUser();
+    }
+
+    private _setToken(token: TokenInterface) {
+        this.authStore.token = token;
+        localStorage.setItem(TOKEN_KEY, token.access_token);
+    }
+
+    private _requestAuthUser(): Observable<Company> {
+        const uuid = this._decodedToken().uuid;
+        return this.companyService.getCompany(uuid).pipe(
+            tap(authUser => (this.authStore.authUser = authUser)),
+            catchError(error => {
+                this.unauthenticate();
+                return throwError(error);
+            })
+        );
     }
 
     private _decodedToken(): AccessTokenInterface {
-        return jwt_decode(this._token.access_token);
+        return jwt_decode<AccessTokenInterface>(this.getToken());
     }
 }

@@ -73,6 +73,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
             route = route.firstChild;
         }
         this.menus = route.snapshot.data.routes;
-        console.log(this.menus);
     }
 }

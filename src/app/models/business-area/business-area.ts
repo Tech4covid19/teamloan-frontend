@@ -1,5 +1,5 @@
 export class BusinessArea {
-    public static TYPE = 'business-area';
+    public static URL = 'business-area';
 
     name: string;
 

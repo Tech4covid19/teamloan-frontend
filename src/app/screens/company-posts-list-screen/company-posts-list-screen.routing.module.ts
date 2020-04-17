@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { PostsListScreenComponent } from 'src/app/screens/posts-list-screen/components/posts-list-screen.component';
+import { CompanyPostsListScreenComponent } from 'src/app/screens/company-posts-list-screen/components/company-posts-list-screen.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: PostsListScreenComponent,
+        component: CompanyPostsListScreenComponent,
         pathMatch: 'full',
         canActivate: [AuthGuard]
     }
@@ -17,4 +17,4 @@ const routes: Routes = [
     exports: [RouterModule],
     providers: [AuthGuard]
 })
-export class PostsListScreenRoutingModule {}
+export class CompanyPostsListScreenRoutingModule {}

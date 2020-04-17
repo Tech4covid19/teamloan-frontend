@@ -1,5 +1,7 @@
-export class District {
-    public static TYPE = 'district';
+import { ResourceInterface } from 'src/app/models/resource.interface';
+
+export class District implements ResourceInterface {
+    public static URL = 'addresses/districts';
 
     code: string;
 

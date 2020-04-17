@@ -1,53 +1,70 @@
 import { HttpParams } from '@angular/common/http';
+import { INTENT } from 'src/app/models/posting/posting';
 
 const PAGE_NUMBER = 1;
 
 const PAGE_SIZE = 10;
 
-export const QUERY_FILTER_PARAMETERS = {
-    PAGE_NUMBER: 'page-number',
-    PAGE_SIZE: 'page-size',
-    INTENT: 'intent',
-    DISTRICT: 'district',
-    BUSINESS_AREA: 'business-area',
-    MUNICIPALITY: 'municipality'
-};
+export enum QUERY_FILTER_PARAMETERS {
+    PAGE_NUMBER = 'page-number',
+    PAGE_SIZE = 'page-size',
+    INTENT = 'intent',
+    DISTRICT = 'district',
+    BUSINESS_AREA = 'business-area',
+    JOB = 'job',
+    MUNICIPALITY = 'municipality'
+}
 
 export interface QueryFilterInterface {
     'page-number'?: number;
     'page-size'?: number;
-    intent?: string;
+    intent?: INTENT;
     district?: string;
     'business-area'?: string;
+    job?: string;
     municipality?: string;
 }
 
 export class QueryFilter {
-    public pageNumber = PAGE_NUMBER;
-
-    public pageSize = PAGE_SIZE;
-
-    public intent = '';
-
-    public district = '';
-
-    public businessArea = '';
-
-    public municipality = '';
-
-    constructor(parameters?: QueryFilterInterface) {
-        if (parameters) {
-            Object.assign(this, parameters);
-        }
-    }
-
-    public getHttParams(): HttpParams {
+    public static getHttParams(parameters: QueryFilterInterface): HttpParams {
         return new HttpParams()
-            .append(QUERY_FILTER_PARAMETERS.PAGE_NUMBER, this.pageNumber.toString())
-            .append(QUERY_FILTER_PARAMETERS.PAGE_SIZE, this.pageSize.toString())
-            .append(QUERY_FILTER_PARAMETERS.INTENT, this.intent)
-            .append(QUERY_FILTER_PARAMETERS.DISTRICT, this.district)
-            .append(QUERY_FILTER_PARAMETERS.BUSINESS_AREA, this.businessArea)
-            .append(QUERY_FILTER_PARAMETERS.MUNICIPALITY, this.municipality);
+            .append(
+                QUERY_FILTER_PARAMETERS.PAGE_NUMBER,
+                (parameters[QUERY_FILTER_PARAMETERS.PAGE_NUMBER]
+                    ? parameters[QUERY_FILTER_PARAMETERS.PAGE_NUMBER]
+                    : PAGE_NUMBER
+                ).toString()
+            )
+            .append(
+                QUERY_FILTER_PARAMETERS.PAGE_SIZE,
+                (parameters[QUERY_FILTER_PARAMETERS.PAGE_SIZE]
+                    ? parameters[QUERY_FILTER_PARAMETERS.PAGE_SIZE]
+                    : PAGE_SIZE
+                ).toString()
+            )
+            .append(
+                QUERY_FILTER_PARAMETERS.INTENT,
+                parameters[QUERY_FILTER_PARAMETERS.INTENT]
+                    ? parameters[QUERY_FILTER_PARAMETERS.INTENT]
+                    : ''
+            )
+            .append(
+                QUERY_FILTER_PARAMETERS.DISTRICT,
+                parameters[QUERY_FILTER_PARAMETERS.DISTRICT]
+                    ? parameters[QUERY_FILTER_PARAMETERS.DISTRICT]
+                    : ''
+            )
+            .append(
+                QUERY_FILTER_PARAMETERS.BUSINESS_AREA,
+                parameters[QUERY_FILTER_PARAMETERS.BUSINESS_AREA]
+                    ? parameters[QUERY_FILTER_PARAMETERS.BUSINESS_AREA]
+                    : ''
+            )
+            .append(
+                QUERY_FILTER_PARAMETERS.MUNICIPALITY,
+                parameters[QUERY_FILTER_PARAMETERS.MUNICIPALITY]
+                    ? parameters[QUERY_FILTER_PARAMETERS.MUNICIPALITY]
+                    : ''
+            );
     }
 }

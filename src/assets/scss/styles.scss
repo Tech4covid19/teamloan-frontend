@@ -2,6 +2,10 @@
 @import './core';
 @import './forms/form';
 
+body {
+    background-color: var(--color-bon-jour);
+}
+
 .title {
     font-family: Work Sans;
     font-style: normal;

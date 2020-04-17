@@ -1,5 +1,5 @@
 export class Job {
-    public static TYPE = 'job';
+    public static URL = 'job';
 
     name: string;
 

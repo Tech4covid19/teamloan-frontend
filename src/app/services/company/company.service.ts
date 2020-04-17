@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class CompanyService extends BaseService {
     public getCompany(companyId: string): Observable<Company> {
         const httpOptions = { headers: this.headers };
-        const url = `${environment.backend.url}${Company.TYPE}/${companyId}`;
+        const url = `${environment.backend.url}${Company.URL}/${companyId}`;
 
         return this.httpClient.get<CompanyInteface>(url, httpOptions).pipe(
             map(companyInteface => new Company(companyInteface)),
@@ -25,7 +25,7 @@ export class CompanyService extends BaseService {
 
     public save(company: Company): Observable<UUID> {
         const httpOptions = { headers: this.headers };
-        const url = `${environment.backend.url}${Company.TYPE}`;
+        const url = `${environment.backend.url}${Company.URL}`;
         return this.httpClient.post(url, company, httpOptions).pipe(
             map((resp: any) => ({
                 uuid: resp.uuid

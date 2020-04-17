@@ -1,5 +1,7 @@
-export class Municipality {
-    public static TYPE = 'municipality';
+import { ResourceInterface } from 'src/app/models/resource.interface';
+
+export class Municipality implements ResourceInterface {
+    public static URL = 'municipalities';
 
     code: string;
 

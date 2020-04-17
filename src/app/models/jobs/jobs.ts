@@ -1,7 +1,8 @@
 import { Job } from 'src/app/models/jobs/job';
+import { ResourceInterface } from 'src/app/models/resource.interface';
 
-export class Jobs {
-    public static TYPE = 'jobs';
+export class Jobs implements ResourceInterface {
+    public static URL = 'jobs';
 
     createdAt: string;
 
@@ -16,6 +17,8 @@ export class Jobs {
     updatedStatusAt: string;
 
     uuid: string;
+
+    name: string;
 
     constructor(values?: any) {
         if (values) {

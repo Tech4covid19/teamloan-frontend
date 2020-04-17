@@ -4,21 +4,21 @@ import { AbsctractPostsListService } from 'src/app/components/posts-list/abstrac
 import { PostsListFilterService } from 'src/app/components/posts-list/posts-list-filter.service';
 import { PostsListModule } from 'src/app/components/posts-list/posts-list.module';
 import { MaterialModule } from 'src/app/material/material.module';
-import { PostsListScreenComponent } from 'src/app/screens/posts-list-screen/components/posts-list-screen.component';
-import { PostsListScreenRoutingModule } from 'src/app/screens/posts-list-screen/posts-list-screen.routing.module';
-import { PostsListScreenService } from 'src/app/screens/posts-list-screen/posts-list-screen.service';
+import { CompanyPostsListScreenRoutingModule } from 'src/app/screens/company-posts-list-screen/company-posts-list-screen.routing.module';
+import { CompanyPostsListScreenService } from 'src/app/screens/company-posts-list-screen/company-posts-list-screen.service';
+import { CompanyPostsListScreenComponent } from 'src/app/screens/company-posts-list-screen/components/company-posts-list-screen.component';
 import { BusinessAreasService } from 'src/app/services/business-areas/business-areas.service';
 
 @NgModule({
-    declarations: [PostsListScreenComponent],
-    imports: [CommonModule, PostsListScreenRoutingModule, MaterialModule, PostsListModule],
+    declarations: [CompanyPostsListScreenComponent],
+    imports: [CommonModule, CompanyPostsListScreenRoutingModule, MaterialModule, PostsListModule],
     providers: [
         PostsListFilterService,
         BusinessAreasService,
         {
             provide: AbsctractPostsListService,
-            useClass: PostsListScreenService
+            useClass: CompanyPostsListScreenService
         }
     ]
 })
-export class PostsListScreenModule {}
+export class CompanyPostsListScreenModule {}

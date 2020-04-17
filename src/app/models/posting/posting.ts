@@ -3,12 +3,13 @@ import { District } from 'src/app/models/district/district';
 import { Jobs } from 'src/app/models/jobs/jobs';
 import { Municipality } from 'src/app/models/municipality/municipality';
 
-export const INTENT = {
-    LEND: 'LEND'
-};
+export enum INTENT {
+    SEEK = 'SEEK',
+    LEND = 'LEND'
+}
 
 export class Posting {
-    public static TYPE = 'postings';
+    public static URL = 'postings';
 
     company: Company;
 
