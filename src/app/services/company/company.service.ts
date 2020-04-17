@@ -15,12 +15,9 @@ export class CompanyService extends BaseService {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.TYPE}/${companyId}`;
 
-        return this.httpClient.get<CompanyInteface>(url, httpOptions).pipe(
-            map(companyInteface => new Company(companyInteface)),
-            catchError(error => {
-                return throwError(error);
-            })
-        );
+        return this.httpClient
+            .get<CompanyInteface>(url, httpOptions)
+            .pipe(map(companyInteface => new Company(companyInteface)));
     }
 
     public save(company: Company): Observable<UUID> {
@@ -31,6 +28,12 @@ export class CompanyService extends BaseService {
                 uuid: resp.uuid
             }))
         );
+    }
+
+    public activate(activationToken: string): Observable<any> {
+        const httpOptions = { headers: this.headers };
+        const url = `${environment.backend.url}${Company.TYPE}/activation/${activationToken}`;
+        return this.httpClient.post(url, {}, httpOptions);
     }
 
     // TODO: refactor

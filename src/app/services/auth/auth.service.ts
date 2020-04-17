@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/internal/operators';
 import { Company } from 'src/app/models/company';
 import { AccessTokenInterface } from 'src/app/services/auth/interfaces/access-token.interface';
@@ -49,14 +49,18 @@ export class AuthService {
     }
 
     public unauthenticate(): Observable<any> {
-        localStorage.clear();
-        this._token = null;
-        return this.httpClient.get(`${this._url}logout`).pipe(
-            catchError(error => {
-                this.unauthenticate();
-                return throwError(error);
-            })
-        );
+        if (this.isAuthenticated()) {
+            localStorage.clear();
+            this._token = null;
+            return this.httpClient.get(`${this._url}logout`).pipe(
+                catchError(error => {
+                    this.unauthenticate();
+                    return throwError(error);
+                })
+            );
+        } else {
+            return of();
+        }
     }
 
     public isAuthenticated(): boolean {

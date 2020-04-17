@@ -1,0 +1,127 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    width: 100%;
+
+    .feedback-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 70px 0px 46px 0px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @include mobile {
+            margin: 0 2px 60px 2px;
+        }
+
+        @include tablet {
+            max-width: 1171px;
+            margin: 0 130px 130px 130px;
+        }
+    }
+
+    .header-section {
+        display: flex;
+
+        @include mobile {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        @include tablet {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-text {
+            font-family: Work Sans;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 23px;
+            text-transform: uppercase;
+            color: var(--color-cosmic);
+        }
+
+        .status-container {
+            @include mobile {
+                margin: 0px 0px 35px 0px;
+            }
+
+            @include tablet {
+                margin-right: 20px;
+            }
+        }
+
+        .loading {
+            display: flex;
+            width: 30px;
+            height: 30px;
+            fill: var(--color-cosmic);
+
+            @-moz-keyframes spin {
+                100% {
+                    -moz-transform: rotate(360deg);
+                }
+            }
+            @-webkit-keyframes spin {
+                100% {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+            @keyframes spin {
+                100% {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+            -webkit-animation: spin 0.5s linear infinite;
+            -moz-animation: spin 0.5s linear infinite;
+            animation: spin 0.5s linear infinite;
+        }
+
+        img {
+            &:not(.success) {
+                transform: scaleY(-1);
+            }
+        }
+    }
+
+    .body-section {
+        height: 125px;
+        font-family: Work Sans;
+        font-style: normal;
+        text-align: center;
+
+        @include mobile {
+            font-size: 20px;
+            line-height: 32px;
+            margin: 30px;
+        }
+
+        @include tablet {
+            font-size: 36px;
+            line-height: 50px;
+            margin: 82px 0px 33px 0px;
+        }
+
+        p {
+            font-weight: 200;
+            color: var(--color-black);
+        }
+
+        span {
+            font-weight: 600;
+            color: var(--color-cosmic);
+        }
+    }
+
+    .footer-section {
+        display: flex;
+        justify-content: center;
+    }
+}
