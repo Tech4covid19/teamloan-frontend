@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
 import { EmailValidator } from 'src/app/form-tools/validators/email.validator';
+import { CompanyService } from 'src/app/services/company/company.service';
+import { OnSubmitEvent } from '../../register/components/register-form/register-form.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-reset-password-screen',
     templateUrl: './reset-password-screen.component.html',
     styleUrls: ['./reset-password-screen.component.scss']
 })
-export class ResetPasswordViewComponent implements OnInit {
+export class ResetPasswordViewComponent {
     public form: FormGroup;
 
     public emailNotFound = false;
@@ -21,19 +25,21 @@ export class ResetPasswordViewComponent implements OnInit {
 
     public buttonStatus: string = ICON_STATUS.LOADING;
 
-    constructor(private fb: FormBuilder) {
+    constructor(
+        private fb: FormBuilder,
+        private companiesService: CompanyService,
+        private router: Router
+    ) {
         this.form = this.fb.group({
             email: [null, Validators.compose([Validators.required, EmailValidator])]
         });
     }
 
-    ngOnInit(): void {}
-
     public get emailControl(): FormControl {
         return this.form.get('email') as FormControl;
     }
 
-    public onSubmit() {
+    public onSubmit(submitEvent: OnSubmitEvent) {
         this.submitted = true;
         console.log(this.emailControl.errors);
         if (!this.submitting && this.form.valid) {
@@ -46,6 +52,16 @@ export class ResetPasswordViewComponent implements OnInit {
             //     data => this._onLoginSuccess(),
             //     error => this._onLoginError()
             // );
+
+            const email = this.form.value.email;
+
+            this.companiesService
+                .requestResetPassword(email)
+                .pipe(tap(() => submitEvent.callback()))
+                .subscribe(
+                    resp => this.redirectToConfirmPage(email),
+                    err => submitEvent.callback(err)
+                );
         }
     }
 
@@ -58,5 +74,9 @@ export class ResetPasswordViewComponent implements OnInit {
     private _onPasswordResetError() {
         this.submitting = false;
         this.emailNotFound = true;
+    }
+
+    private redirectToConfirmPage(email: string) {
+        this.router.navigateByUrl('/confirmation', { state: { email: email } });
     }
 }
