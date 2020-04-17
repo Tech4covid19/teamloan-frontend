@@ -8,11 +8,11 @@ import { OnSubmitEvent } from '../../register/components/register-form/register-
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-reset-password-screen',
-    templateUrl: './reset-password-screen.component.html',
-    styleUrls: ['./reset-password-screen.component.scss']
+    selector: 'app-request-password-screen',
+    templateUrl: './request-password-screen.component.html',
+    styleUrls: ['./request-password-screen.component.scss']
 })
-export class ResetPasswordViewComponent {
+export class RequestPasswordViewComponent {
     public form: FormGroup;
 
     public emailNotFound = false;
@@ -56,7 +56,7 @@ export class ResetPasswordViewComponent {
             const email = this.form.value.email;
 
             this.companiesService
-                .requestResetPassword(email)
+                .requestPassword(email)
                 .pipe(tap(() => submitEvent.callback()))
                 .subscribe(
                     resp => this.redirectToConfirmPage(email),
@@ -65,13 +65,13 @@ export class ResetPasswordViewComponent {
         }
     }
 
-    private _onPasswordResetSuccess() {
+    private _onPasswordRequestSuccess() {
         // const returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
         this.emailNotFound = false;
         // this.router.navigate([returnUrl]);
     }
 
-    private _onPasswordResetError() {
+    private _onPasswordRequestError() {
         this.submitting = false;
         this.emailNotFound = true;
     }

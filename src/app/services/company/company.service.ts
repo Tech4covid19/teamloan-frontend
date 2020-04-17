@@ -37,7 +37,7 @@ export class CompanyService extends BaseService {
     }
 
     // TODO: refactor
-    public requestResetPassword(email: string): Observable<BusinessArea[]> {
+    public requestPassword(email: string): Observable<BusinessArea[]> {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.TYPE}`;
         return this.httpClient.get(`${environment.backend.url}business-areas`).pipe(

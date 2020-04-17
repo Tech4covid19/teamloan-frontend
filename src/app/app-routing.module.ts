@@ -58,10 +58,10 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'reset-password',
+        path: 'request-password',
         loadChildren: () =>
-            import('./screens/reset-password-screen/reset-password-screen.module').then(
-                m => m.ResetPasswordViewModule
+            import('./screens/request-password-screen/request-password-screen.module').then(
+                m => m.RequestPasswordViewModule
             ),
         pathMatch: 'full'
     },

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ResetPasswordViewComponent } from 'src/app/screens/reset-password-screen/component/reset-password-screen.component';
+import { RequestPasswordViewComponent } from 'src/app/screens/request-password-screen/component/request-password-screen.component';
 import { GuestGuardService } from 'src/app/guards/guest.guard';
 
 const routes: Routes = [
     {
         path: '',
-        component: ResetPasswordViewComponent,
+        component: RequestPasswordViewComponent,
         pathMatch: 'full',
         canActivate: [GuestGuardService]
     }
@@ -17,4 +17,4 @@ const routes: Routes = [
     exports: [RouterModule],
     providers: [GuestGuardService]
 })
-export class ResetPasswordViewRoutingModule {}
+export class RequestPasswordViewRoutingModule {}

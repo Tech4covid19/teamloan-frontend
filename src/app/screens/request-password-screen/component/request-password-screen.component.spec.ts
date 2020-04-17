@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResetPasswordViewComponent } from './reset-password-screen.component';
+import { RequestPasswordViewComponent } from './request-password-screen.component';
 
-describe('ResetPasswordScreenComponent', () => {
-    let component: ResetPasswordViewComponent;
-    let fixture: ComponentFixture<ResetPasswordViewComponent>;
+describe('RequestPasswordScreenComponent', () => {
+    let component: RequestPasswordViewComponent;
+    let fixture: ComponentFixture<RequestPasswordViewComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ResetPasswordViewComponent]
+            declarations: [RequestPasswordViewComponent]
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ResetPasswordViewComponent);
+        fixture = TestBed.createComponent(RequestPasswordViewComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
