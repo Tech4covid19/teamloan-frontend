@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Company } from 'src/app/models/company/company';
 import { CompanyInteface } from 'src/app/models/company/company.interface';
 import { UUID } from 'src/app/models/uuid-object';
@@ -32,7 +32,7 @@ export class CompanyService extends BaseService {
 
     public activate(activationToken: string): Observable<any> {
         const httpOptions = { headers: this.headers };
-        const url = `${environment.backend.url}${Company.TYPE}/activation/${activationToken}`;
+        const url = `${environment.backend.url}${Company.URL}/activation/${activationToken}`;
         return this.httpClient.post(url, {}, httpOptions);
     }
 }
