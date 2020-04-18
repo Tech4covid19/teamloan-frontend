@@ -7,6 +7,11 @@ import { CompanyService } from 'src/app/services/company/company.service';
 import { OnSubmitEvent } from '../../register/components/register-form/register-form.component';
 import { Router } from '@angular/router';
 
+export interface RequestPasswordOutcome {
+    emailFound: boolean;
+    emailToResetPasswordSent: boolean;
+}
+
 @Component({
     selector: 'app-request-password-screen',
     templateUrl: './request-password-screen.component.html',
