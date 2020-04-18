@@ -1,5 +1,4 @@
 :host {
-
     form {
         padding: 20px;
     }
@@ -15,20 +14,23 @@
 
     .terms-container::ng-deep {
         display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         justify-content: flex-end;
-        align-items: center;
 
-        app-checkbox {
-            padding-right: 60px;
-    
-            label {
-                max-width: 350px;
+        .terms-content {
+            padding: 0 40px;
+
+            app-checkbox {
+                padding-right: 60px;
+                label {
+                    max-width: 350px;
+                }
             }
-        }      
+        }
     }
 
-    @media all and (max-width: 720px)  {
-
+    @media all and (max-width: 720px) {
         .terms-container::ng-deep {
             justify-content: center;
 
@@ -38,12 +40,10 @@
                     max-width: 250px;
                 }
             }
-
         }
 
         form {
             padding: 10px;
         }
     }
-
 }
