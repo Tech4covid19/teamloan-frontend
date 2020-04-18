@@ -4,6 +4,7 @@ import { InputSelectOption } from 'src/app/material/input-select/input-select.co
 import { THEME } from 'src/app/material/button/button.component';
 import { Subscription, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { INTENT } from 'src/app/models/intent.enum';
 
 export interface FilterChangeEvent {
     intent: INTENT;
@@ -11,11 +12,6 @@ export interface FilterChangeEvent {
     municipality: string;
     sector: string;
     function: string;
-}
-
-export enum INTENT {
-    SEEK = 'seek',
-    LEND = 'lend'
 }
 
 @Component({
@@ -43,7 +39,7 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
     onChangesSubscription: Subscription;
 
     postsIntent = INTENT;
-    currentPostsIntent = INTENT.LEND;
+    currentPostsIntent = this.postsIntent.Lend;
     lendTheme = THEME.MAIN;
     seekTheme = THEME.SECUNDARY;
 
@@ -86,11 +82,11 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
 
     private changeIntentTheme(newIntent: INTENT) {
         switch (newIntent) {
-            case INTENT.SEEK:
+            case INTENT.Seek:
                 this.seekTheme = THEME.MAIN;
                 this.lendTheme = THEME.SECUNDARY;
                 break;
-            case INTENT.LEND:
+            case INTENT.Lend:
                 this.seekTheme = THEME.SECUNDARY;
                 this.lendTheme = THEME.MAIN;
                 break;

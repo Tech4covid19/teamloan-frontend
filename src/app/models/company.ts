@@ -1,4 +1,4 @@
-export interface CompanyInteface {
+export interface CompanyInterface {
     uuid_business_area: string;
     name: string;
     email: string;
@@ -6,6 +6,7 @@ export interface CompanyInteface {
     phone: string;
     'zip-code': string;
     password: string;
+    intent: string;
 }
 
 export class Company {
@@ -25,7 +26,9 @@ export class Company {
 
     public password: string;
 
-    constructor(values?: CompanyInteface) {
+    public intent: string;
+
+    constructor(values?: CompanyInterface) {
         if (values) {
             Object.assign(this, values);
         }

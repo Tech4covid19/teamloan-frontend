@@ -12,7 +12,8 @@ export class RegisterConverters {
             vat: registerViewModel.company.nif,
             phone: registerViewModel.user.phone,
             'zip-code': registerViewModel.company.postalCode,
-            password: registerViewModel.user.password
+            password: registerViewModel.user.password,
+            intent: registerViewModel.company.intent
         });
     }
 
