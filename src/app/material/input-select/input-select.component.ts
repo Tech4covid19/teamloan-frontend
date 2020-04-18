@@ -45,7 +45,7 @@ export class InputSelectComponent extends BaseControlValueAccessor {
         if (this.formControl.disable) {
             this.focus = !this.focus;
             if (this.focus) {
-                setTimeout(() => this.searchBox.nativeElement.focus(), 300);
+                setTimeout(() => this.searchBox?.nativeElement.focus(), 300);
             }
         }
     }
