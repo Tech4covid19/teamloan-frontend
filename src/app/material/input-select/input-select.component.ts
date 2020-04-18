@@ -59,17 +59,19 @@ export class InputSelectComponent extends BaseControlValueAccessor {
         this.onOptionSelect(selectedOption);
     }
 
-    public onOptionSelect(option: InputSelectOption) {
+    public onOptionSelect(option?: InputSelectOption) {
+        const value = option ? option.key : '';
         this.selectedValue = option;
-        this.onChangeValue(option.key);
+        this.onChangeValue(value);
         this.toggleFocus();
     }
 
     public onSearch(event: any) {
-        const query = event.target.value.trim();
+        const query = event.target.value.trim().toLocaleLowerCase();
+
         if (query) {
             this.filteredOptions = this.inputSelectOptions.filter(
-                option => option.label.indexOf(query) !== -1
+                option => option.label.trim().toLocaleLowerCase().indexOf(query) !== -1
             );
         } else {
             this.filteredOptions = this.inputSelectOptions;

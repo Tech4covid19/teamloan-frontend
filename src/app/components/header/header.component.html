@@ -1,6 +1,6 @@
 <div class="header-container" [ngClass]="{ 'small-menu': smallMenu }">
     <div class="left-menu-container" [ngClass]="{ 'align-left': menus?.length !== 0 }">
-        <a *ngIf="!isHomePage" (click)="navigateBack()" class="prev-navigation">
+        <a *ngIf="!isHomePage" (click)="navigateBack()" class="prev-navigation" title="Voltar">
             <svg-icon class="back" src="/assets/img/icons/navigate-back.svg"></svg-icon>
             <span class="label">Voltar</span>
         </a>
@@ -28,6 +28,7 @@
                 label="Sair"
                 [icon]="logoutIcon"
                 url="/logout"
+                title="Sair"
             ></app-link>
         </div>
     </div>

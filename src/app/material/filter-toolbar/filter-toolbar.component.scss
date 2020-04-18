@@ -1,30 +1,38 @@
 @import 'bulma/sass/utilities/_all';
 :host {
+    width: 100%;
+
     @include tablet {
-        min-height: 100vh;
+        max-width: 211px;
+        min-width: 211px;
     }
 
     .filter-toolbar-container {
         border-color: var(--color-bittersweet);
-        border-radius: 10px;
         outline: none;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         background-color: var(--color-white);
+
+        @include tablet {
+            border-radius: 10px;
+        }
 
         .filter-container {
             display: flex;
             justify-content: center;
 
-            @include tablet {
-                flex-direction: column;
-            }
-
             .filter-component {
                 padding: 0.75rem;
                 width: 100%;
+
+                fieldset {
+                    min-inline-size: auto;
+                }
             }
 
             @include tablet {
+                flex-direction: column;
+
                 app-button.filter-component {
                     padding: 0.75rem 15%;
                 }
