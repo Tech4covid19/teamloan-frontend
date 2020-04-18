@@ -1,8 +1,8 @@
-<a class="link-container" *ngIf="!external" [routerLink]="[url]">
+<a class="link-container" *ngIf="!external" [routerLink]="[url]" [attr.title]="label">
     <ng-container *ngTemplateOutlet="link"></ng-container>
 </a>
 
-<a class="link-container" *ngIf="external" [href]="[url]" target="_blank">
+<a class="link-container" *ngIf="external" [href]="[url]" target="_blank" [attr.title]="label">
     <ng-container *ngTemplateOutlet="link"></ng-container>
 </a>
 

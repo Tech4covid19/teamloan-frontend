@@ -17,7 +17,7 @@ const MENU_HEIGTH_BRACKPOINT = 50;
 export class HeaderComponent implements OnInit, OnDestroy {
     public isHomePage: boolean;
 
-    public isUserAuthenticated: boolean;
+    public isUserAuthenticated = false;
 
     public currentUrl: string;
 
@@ -38,7 +38,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private location: Location,
         private authService: AuthService
     ) {
-        this.isUserAuthenticated = this.authService.isAuthenticated();
+        this.authService.isAuthenticated().subscribe(isUserAuthenticated => {
+            this.isUserAuthenticated = isUserAuthenticated;
+        });
     }
 
     ngOnInit() {

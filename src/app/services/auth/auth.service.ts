@@ -1,13 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/internal/operators';
-import { Company } from 'src/app/models/company/company';
+import { catchError, tap } from 'rxjs/internal/operators';
 import { AuthStore } from 'src/app/services/auth/auth.store';
 import { AccessTokenInterface } from 'src/app/services/auth/interfaces/access-token.interface';
 import { TokenInterface } from 'src/app/services/auth/interfaces/token.interface';
-import { CompanyService } from 'src/app/services/company/company.service';
 import { environment } from 'src/environments/environment';
 
 const TOKEN_KEY = 'auth-token';
@@ -20,11 +19,19 @@ export class AuthService {
 
     constructor(
         private httpClient: HttpClient,
-        private companyService: CompanyService,
-        private authStore: AuthStore
+        private authStore: AuthStore,
+        private router: Router
     ) {}
 
-    public authenticate(credentials: { username: string; password: string }): Observable<Company> {
+    public clear() {
+        localStorage.clear();
+        this.authStore.clear();
+    }
+
+    public authenticate(credentials: {
+        username: string;
+        password: string;
+    }): Observable<TokenInterface> {
         const body = new HttpParams()
             .set('username', credentials.username)
             .set('password', credentials.password)
@@ -33,26 +40,33 @@ export class AuthService {
 
         return this.httpClient.post<TokenInterface>(`${this._url}token`, body).pipe(
             tap(token => this._setToken(token)),
-            switchMap(() => this._requestAuthUser())
+            tap(() => (this.authStore.isAuthenticated = true))
         );
     }
 
     public unauthenticate(): Observable<any> {
-        localStorage.clear();
-        this.authStore.token = null;
         return this.httpClient.get(`${this._url}logout`).pipe(
+            tap(() => {
+                this.clear();
+                this.router.navigate(['/']);
+            }),
             catchError(error => {
-                this.unauthenticate();
+                this.clear();
+                this.router.navigate(['/']);
                 return throwError(error);
             })
         );
     }
 
-    public isAuthenticated(): boolean {
-        if (!this.getToken()) {
-            return false;
+    public isAuthenticated(): Observable<boolean> {
+        if (this.authStore.isAuthenticated === null) {
+            this.authStore.isAuthenticated = !!this.getToken();
         }
-        return true;
+        return this.authStore.getIsAuthenticated();
+    }
+
+    public getDecodedToken(): AccessTokenInterface {
+        return jwt_decode<AccessTokenInterface>(this.getToken());
     }
 
     public getToken(): string {
@@ -61,30 +75,8 @@ export class AuthService {
             : localStorage.getItem(TOKEN_KEY);
     }
 
-    public getAuthUser(): Observable<Company> {
-        if (!this.authStore.authUser) {
-            return this._requestAuthUser().pipe(switchMap(() => this.authStore.getAuthUser()));
-        }
-        return this.authStore.getAuthUser();
-    }
-
     private _setToken(token: TokenInterface) {
         this.authStore.token = token;
         localStorage.setItem(TOKEN_KEY, token.access_token);
-    }
-
-    private _requestAuthUser(): Observable<Company> {
-        const uuid = this._decodedToken().uuid;
-        return this.companyService.getCompany(uuid).pipe(
-            tap(authUser => (this.authStore.authUser = authUser)),
-            catchError(error => {
-                this.unauthenticate();
-                return throwError(error);
-            })
-        );
-    }
-
-    private _decodedToken(): AccessTokenInterface {
-        return jwt_decode<AccessTokenInterface>(this.getToken());
     }
 }

@@ -6,17 +6,17 @@ import { District } from 'src/app/models/district/district';
     providedIn: 'root'
 })
 export class DistrictStore {
-    private _districts: BehaviorSubject<District[]> = new BehaviorSubject([]);
+    private _districts$: BehaviorSubject<District[]> = new BehaviorSubject([]);
 
     public set districts(districts: District[]) {
-        this._districts.next(districts);
+        this._districts$.next(districts);
     }
 
     public get districts(): District[] {
-        return this._districts.value;
+        return this._districts$.value;
     }
 
     public getDistricts(): Observable<District[]> {
-        return this._districts.asObservable();
+        return this._districts$.asObservable();
     }
 }

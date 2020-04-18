@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DevelopGuard } from 'src/app/guards/develop.guard';
 import { MaterialScreenComponent } from 'src/app/screens/material-screen/material-screen.component';
-import { ConfirmationScreenComponent } from './screens/confirmation-screen/confirmation-screen.component';
 
 const routes: Routes = [
     {
@@ -69,7 +68,8 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            useHash: true
+            useHash: true,
+            scrollPositionRestoration: 'enabled'
         })
     ],
     exports: [RouterModule],
