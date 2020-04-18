@@ -15,11 +15,7 @@
             Formato inválido
         </div>
 
-        <app-input-text
-            formControlName="email"
-            type="text"
-            placeholder="E-mail"
-        ></app-input-text>
+        <app-input-text formControlName="email" type="text" placeholder="Email"></app-input-text>
         <div *ngIf="errors.email.required" class="error-message">
             Campo obrigatório
         </div>
