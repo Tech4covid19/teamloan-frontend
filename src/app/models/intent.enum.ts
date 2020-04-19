@@ -1,5 +1,5 @@
 export enum INTENT {
-    Lend = 'LEND',
-    Seek = 'SEEK',
-    Both = 'BOTH'
+    LEND = 'LEND',
+    SEEK = 'SEEK',
+    BOTH = 'BOTH'
 }

@@ -1,6 +1,5 @@
-import { Component, Input, forwardRef } from '@angular/core';
-import { BaseControlValueAccessor } from 'src/app/material/utils/base.cva';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { BaseControlValueAccessor } from 'src/app/form-tools/value-accessors/base.cva';
 
 @Component({
     selector: 'app-input-text',

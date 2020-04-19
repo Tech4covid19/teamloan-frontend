@@ -1,0 +1,37 @@
+<div class="feedback-container">
+    <div class="header-section">
+        <span class="status-container">
+            <svg-icon
+                class="loading"
+                *ngIf="feedback?.status === feedbackStatus.LOADING"
+                src="/assets/img/icons/spinner.svg"
+            ></svg-icon>
+
+            <img
+                *ngIf="feedback?.status !== feedbackStatus.LOADING"
+                [ngClass]="{ status: feedback?.status }"
+                src="/assets/img/icons/like-confirmation.svg"
+                alt="like-confirmation"
+            />
+        </span>
+        <p class="header-text">
+            {{ feedback?.title }}
+        </p>
+    </div>
+    <div class="body-section">
+        <p class="text">
+            {{ feedback?.subTitle }}
+            <br />
+            <span>{{ feedback?.text }}</span>
+        </p>
+    </div>
+    <div class="footer-section">
+        <div class="btn-wrapper">
+            <app-button
+                *ngIf="feedback?.url"
+                [label]="feedback?.actionLabel"
+                [url]="feedback?.url ? feedback?.url : ''"
+            ></app-button>
+        </div>
+    </div>
+</div>

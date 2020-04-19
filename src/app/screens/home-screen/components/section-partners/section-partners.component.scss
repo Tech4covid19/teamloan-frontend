@@ -1,4 +1,8 @@
 :host {
+    --columns-width-desktop: 170px;
+    --rows-width-desktop: 160px;
+    --columns-width-mobile: 90px;
+    --rows-width-mobile: 80px;
     display: flex;
     flex-direction: column;
 
@@ -67,13 +71,14 @@
 
                 .icons-list {
                     display: grid;
-                    grid-template-columns: 90px 90px 90px;
-                    grid-template-rows: 80px 80px;
+                    grid-template-columns: var(--columns-width-mobile) var(--columns-width-mobile) var(
+                            --columns-width-mobile
+                        );
+                    grid-template-rows: var(--rows-width-mobile) var(--rows-width-mobile);
 
                     .item {
                         img {
-                            width: 70px;
-                            height: 65px;
+                            max-width: 70px;
                         }
                     }
                 }
@@ -109,40 +114,17 @@
 
                 .icons-list {
                     display: grid;
-                    grid-template-columns: 170px 170px 170px 170px 170px;
-                    grid-template-rows: 160px 160px;
+                    grid-template-columns:
+                        var(--columns-width-desktop) var(--columns-width-desktop) var(
+                            --columns-width-desktop
+                        )
+                        var(--columns-width-desktop) var(--columns-width-desktop);
+                    grid-template-rows: var(--rows-width-desktop) var(--rows-width-desktop);
 
-                    .item:nth-child(1) {
-                        grid-column-start: 1;
-                        grid-column-end: 1;
-                    }
-
-                    .item:nth-child(2) {
-                        grid-column-start: 2;
-                        grid-column-end: 2;
-                    }
-
-                    .item:nth-child(3) {
-                        grid-column-start: 3;
-                        grid-column-end: 3;
-                    }
-
-                    .item:nth-child(4) {
-                        grid-column-start: 3;
-                        grid-column-end: 3;
-                        grid-row-start: 2;
-                    }
-
-                    .item:nth-child(5) {
-                        grid-column-start: 4;
-                        grid-column-end: 4;
-                        grid-row-start: 2;
-                    }
-
-                    .item:nth-child(6) {
-                        grid-column-start: 5;
-                        grid-column-end: 5;
-                        grid-row-start: 2;
+                    .item {
+                        img {
+                            max-width: 145px;
+                        }
                     }
                 }
             }

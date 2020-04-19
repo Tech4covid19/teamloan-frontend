@@ -38,15 +38,15 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
 
     public intents: InputSelectOption[] = [
         {
-            key: INTENT.Lend,
+            key: INTENT.LEND,
             label: 'Disponibilizar equipa'
         },
         {
-            key: INTENT.Seek,
+            key: INTENT.SEEK,
             label: 'Procurar equipa'
         },
         {
-            key: INTENT.Both,
+            key: INTENT.BOTH,
             label: 'Ambos'
         }
     ];

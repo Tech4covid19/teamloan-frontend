@@ -21,6 +21,7 @@
                 formControlName="password"
                 type="password"
                 name="password"
+                placeholder="Password"
             ></app-input-text>
             <div *ngIf="submitted && passwordControl?.errors?.required" class="error-message">
                 Campo obrigatório
@@ -31,7 +32,7 @@
         </fieldset>
     </div>
 
-    <a class="forgot-password">Esqueceu-se da password?</a>
+    <!-- <a class="forgot-password">Esqueceu-se da password?</a> -->
 
     <div class="buttons-container">
         <app-button

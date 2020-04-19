@@ -44,6 +44,13 @@ export class MaterialScreenComponent {
         external: true
     };
 
+    postCard = {
+        cover: '/assets/img/post-card/bg-idanha-a-nova.svg',
+        title: 'Idanha-a-nova',
+        amount: '7',
+        subTitle: 'Hoterlaria'
+    };
+
     constructor(private fb: FormBuilder) {
         this.form = fb.group({
             inputText: ['', Validators.required],
