@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DevelopGuard } from 'src/app/guards/develop.guard';
 import { MaterialScreenComponent } from 'src/app/screens/material-screen/material-screen.component';
-import { ConfirmationScreenComponent } from './screens/confirmation-screen/confirmation-screen.component';
 
 const routes: Routes = [
     {
@@ -21,6 +20,12 @@ const routes: Routes = [
         path: 'register',
         loadChildren: () =>
             import('./screens/register/register-screen.module').then(m => m.RegisterScreenModule),
+        pathMatch: 'full'
+    },
+    {
+        path: 'equipas',
+        loadChildren: () =>
+            import('./screens/equipas/add-equipa/add-equipa.module').then(m => m.AddEquipaModule),
         pathMatch: 'full'
     },
     {

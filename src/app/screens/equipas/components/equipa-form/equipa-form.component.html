@@ -1,0 +1,36 @@
+<form
+    [formGroup]="form">
+
+    <app-input-text
+        formControlName="distrito"
+        type="text"
+        placeholder="Distrito"
+    ></app-input-text>
+    <div *ngIf="errors.distrito.required" class="error-message">
+        Campo obrigatório
+    </div>
+    <br>
+
+    <app-input-text
+        formControlName="concelho"
+        type="text"
+        placeholder="Concelho"
+    ></app-input-text>
+    <div *ngIf="errors.concelho.required" class="error-message">
+        Campo obrigatório
+    </div>
+
+    <app-input-text
+        formControlName="nome"
+        type="text"
+        placeholder="Nome da equipa"
+    ></app-input-text>
+    <div *ngIf="errors.nome.required" class="error-message">
+        Campo obrigatório
+    </div>
+
+    <br>
+    <app-jobs-form formControlName="jobsData" [notifier]="notifier">
+    </app-jobs-form>
+
+</form>

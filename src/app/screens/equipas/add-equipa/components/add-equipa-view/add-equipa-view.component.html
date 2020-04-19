@@ -1,0 +1,10 @@
+<form
+    [formGroup]="form" 
+    (ngSubmit)="submit()">
+
+    <app-equipa-form formControlName="equipa" [notifier]="notifier">
+    </app-equipa-form>
+
+    <br><br><br>
+    <button type="submit">Submit</button>
+</form>

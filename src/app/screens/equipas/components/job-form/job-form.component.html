@@ -1,0 +1,21 @@
+<div [formGroup]="form" class="job-form">
+    
+    <app-input-text
+        formControlName="name"
+        type="text"
+        placeholder="Função"
+    ></app-input-text>
+    <div *ngIf="errors.name.required" class="error-message">
+        Campo obrigatório
+    </div>
+
+    <app-input-text
+        formControlName="quantity"
+        type="number"
+        placeholder="N Pessoas"
+    ></app-input-text>
+    <div *ngIf="errors.quantity.required" class="error-message">
+        Campo obrigatório
+    </div>
+
+</div>

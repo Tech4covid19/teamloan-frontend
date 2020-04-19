@@ -7,7 +7,7 @@ import { FormNotifier } from '../validators/form-notifier.factory';
 
 export abstract class SimpleFormValueAccessor<T> implements ControlValueAccessor, OnDestroy, OnInit {
     public form: FormGroup;
-    private subscriptions: Subscription[] = [];
+    protected subscriptions: Subscription[] = [];
 
     @Input()
     public notifier: FormNotifier;
@@ -30,6 +30,7 @@ export abstract class SimpleFormValueAccessor<T> implements ControlValueAccessor
               this.onTouched();
             })
         );
+
         this.subscriptions.push(
             this.form.valueChanges.subscribe(() =>
                 FormValidatorHandler.updateValidationState(this.form, this.getErrors())
@@ -44,6 +45,9 @@ export abstract class SimpleFormValueAccessor<T> implements ControlValueAccessor
     }
 
     ngOnInit() {
+        if ( !this.notifier ) {
+            return;
+        }
         const subscription = this.notifier.getObservable().subscribe(() => {
             FormValidatorHandler.markAllAsTouched(this.form);
             FormValidatorHandler.updateValidationState(this.form, this.getErrors());
