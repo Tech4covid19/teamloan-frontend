@@ -8,5 +8,5 @@ import { ACTIONS } from 'src/app/material/post-card/post-card.component';
     styleUrls: ['./company-posts-list-screen.component.scss']
 })
 export class CompanyPostsListScreenComponent extends AbstractPostsList {
-    public actions = [ACTIONS.SHARE];
+    public actions = [];
 }

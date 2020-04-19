@@ -19,16 +19,6 @@ export class InputSelectComponent extends BaseControlValueAccessor {
     @Input()
     public placeholder = '';
 
-    @Input()
-    public set inputSelectOptions(inputSelectOptions: InputSelectOption[]) {
-        this._inputSelectOptions = inputSelectOptions;
-        this.filteredOptions = this._inputSelectOptions;
-    }
-
-    public get inputSelectOptions(): InputSelectOption[] {
-        return this._inputSelectOptions;
-    }
-
     public filteredOptions: InputSelectOption[] = [];
 
     public focus = false;
@@ -41,11 +31,30 @@ export class InputSelectComponent extends BaseControlValueAccessor {
         super(controlDir);
     }
 
+    @Input()
+    public set inputSelectOptions(inputSelectOptions: InputSelectOption[]) {
+        this._inputSelectOptions = inputSelectOptions;
+        this.filteredOptions = this._inputSelectOptions;
+    }
+
+    public get inputSelectOptions(): InputSelectOption[] {
+        return this._inputSelectOptions;
+    }
+
+    writeValue(obj: any): void {
+        this.value = obj;
+        let selectedOption = null;
+        if (obj) {
+            selectedOption = this.inputSelectOptions.find(option => option.key === obj);
+        }
+        this.selectedValue = selectedOption;
+    }
+
     public toggleFocus() {
         if (this.formControl.disable) {
             this.focus = !this.focus;
-            if (this.focus) {
-                setTimeout(() => this.searchBox?.nativeElement.focus(), 300);
+            if (this.searchBox && this.focus) {
+                setTimeout(() => this.searchBox.nativeElement.focus(), 300);
             }
         }
     }
