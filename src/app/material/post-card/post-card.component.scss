@@ -8,6 +8,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     overflow: hidden;
+    background-color: var(--color-white);
 }
 
 .header {
@@ -30,7 +31,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: -1;
+        z-index: 0;
         width: 100%;
         height: 78px;
         overflow: hidden;
@@ -40,13 +41,14 @@
         }
     }
 
-    .title {
+    .post-title {
         font-family: Work Sans;
         font-style: normal;
         font-weight: bold;
         text-align: center;
         text-transform: uppercase;
         color: var(--color-white);
+        z-index: 0;
 
         @include mobile {
             font-size: 30px;
@@ -73,13 +75,13 @@
 
         @include mobile {
             width: 81px;
-            height: 113px;
+            height: 103px;
             padding: 13px 0;
         }
 
         @include tablet {
             width: 81px;
-            height: 113px;
+            height: 103px;
             padding: 13px 0;
         }
 

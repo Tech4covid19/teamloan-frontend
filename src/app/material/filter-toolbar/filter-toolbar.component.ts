@@ -1,22 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
-import { THEME } from 'src/app/material/button/button.component';
-import { Subscription, Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { THEME } from 'src/app/material/button/button.component';
+import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
+import { INTENT } from 'src/app/models/intent.enum';
 
-export interface FilterChangeEvent {
-    intent: INTENT;
-    district: string;
-    municipality: string;
-    sector: string;
-    function: string;
-}
-
-export enum INTENT {
-    SEEK = 'seek',
-    LEND = 'lend'
-}
+import {
+    QueryFilterInterface,
+    QUERY_FILTER_PARAMETERS
+} from 'src/app/services/posting/query-filter';
 
 @Component({
     selector: 'app-filter-toolbar',
@@ -35,7 +28,9 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
     @Input()
     functionOptions: InputSelectOption[] = [];
 
-    @Output() filterChange = new EventEmitter<FilterChangeEvent>();
+    @Output() filterChange = new EventEmitter<QueryFilterInterface>();
+
+    public queryFilterParameters = QUERY_FILTER_PARAMETERS;
 
     private _subscriptions = new Subject();
 
@@ -43,19 +38,21 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
     onChangesSubscription: Subscription;
 
     postsIntent = INTENT;
-    currentPostsIntent = INTENT.LEND;
+    currentPostsIntent = this.postsIntent.LEND;
     lendTheme = THEME.MAIN;
     seekTheme = THEME.SECUNDARY;
 
     constructor(private fb: FormBuilder) {}
 
     ngOnInit(): void {
-        this.form = this.fb.group({
-            district: null,
-            municipality: null,
-            sector: null,
-            function: null
-        });
+        const filterForm: QueryFilterInterface = {
+            [QUERY_FILTER_PARAMETERS.INTENT]: INTENT.LEND,
+            [QUERY_FILTER_PARAMETERS.DISTRICT]: '',
+            [QUERY_FILTER_PARAMETERS.BUSINESS_AREA]: '',
+            [QUERY_FILTER_PARAMETERS.JOB]: '',
+            [QUERY_FILTER_PARAMETERS.MUNICIPALITY]: ''
+        };
+        this.form = this.fb.group(filterForm);
 
         this.onChanges();
     }
@@ -85,6 +82,7 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
     }
 
     private changeIntentTheme(newIntent: INTENT) {
+        this.form.get(QUERY_FILTER_PARAMETERS.INTENT).setValue(newIntent);
         switch (newIntent) {
             case INTENT.SEEK:
                 this.seekTheme = THEME.MAIN;

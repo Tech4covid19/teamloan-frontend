@@ -37,9 +37,19 @@ export class SectionPartnersComponent {
             src: '/assets/img/logos/fipa.svg'
         },
         {
+            href: 'http://www.guimaraesmarca.com/',
+            title: 'Guimarães Marca',
+            src: '/assets/img/logos/guimaraes-marca.svg'
+        },
+        {
             href: 'http://setupguimaraes.com/',
             title: 'Set.Up GuimarãesHome - Set.Up Guimarães',
-            src: '/assets/img/logos/guimaraes.svg'
+            src: '/assets/img/logos/guimaraes-setup.svg'
+        },
+        {
+            href: 'http://www.apotec.pt/',
+            title: 'APOTEC',
+            src: '/assets/img/logos/apotec.png'
         }
     ];
 }

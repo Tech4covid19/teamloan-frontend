@@ -1,9 +1,8 @@
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { BusinessArea, RegisterViewModel } from '../register-user.viewmodel';
-import { Company } from 'src/app/models/company';
+import { Company } from 'src/app/models/company/company';
 
 export class RegisterConverters {
-
     public static registerFormToPayload(registerViewModel: RegisterViewModel): Company {
         return new Company({
             uuid_business_area: registerViewModel.company.businessArea,
@@ -12,7 +11,8 @@ export class RegisterConverters {
             vat: registerViewModel.company.nif,
             phone: registerViewModel.user.phone,
             'zip-code': registerViewModel.company.postalCode,
-            password: registerViewModel.user.password
+            password: registerViewModel.user.password,
+            intent: registerViewModel.company.intent
         });
     }
 
@@ -22,5 +22,4 @@ export class RegisterConverters {
             label: businessArea.name
         };
     }
-
 }

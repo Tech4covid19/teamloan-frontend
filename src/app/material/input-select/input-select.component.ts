@@ -1,6 +1,6 @@
-import { Component, Input, HostListener, ElementRef, ViewChild } from '@angular/core';
-import { BaseControlValueAccessor } from 'src/app/material/utils/base.cva';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
+import { BaseControlValueAccessor } from 'src/app/form-tools/value-accessors/base.cva';
 
 export interface InputSelectOption {
     key: any;
@@ -45,7 +45,7 @@ export class InputSelectComponent extends BaseControlValueAccessor {
         if (this.formControl.disable) {
             this.focus = !this.focus;
             if (this.focus) {
-                setTimeout(() => this.searchBox.nativeElement.focus(), 300);
+                setTimeout(() => this.searchBox?.nativeElement.focus(), 300);
             }
         }
     }
@@ -59,17 +59,19 @@ export class InputSelectComponent extends BaseControlValueAccessor {
         this.onOptionSelect(selectedOption);
     }
 
-    public onOptionSelect(option: InputSelectOption) {
+    public onOptionSelect(option?: InputSelectOption) {
+        const value = option ? option.key : '';
         this.selectedValue = option;
-        this.onChangeValue(option.key);
+        this.onChangeValue(value);
         this.toggleFocus();
     }
 
     public onSearch(event: any) {
-        const query = event.target.value.trim();
+        const query = event.target.value.trim().toLocaleLowerCase();
+
         if (query) {
             this.filteredOptions = this.inputSelectOptions.filter(
-                option => option.label.indexOf(query) !== -1
+                option => option.label.trim().toLocaleLowerCase().indexOf(query) !== -1
             );
         } else {
             this.filteredOptions = this.inputSelectOptions;

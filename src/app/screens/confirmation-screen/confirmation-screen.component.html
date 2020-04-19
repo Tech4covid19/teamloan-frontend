@@ -1,21 +1,2 @@
 <h1 class="title">Registo</h1>
-<div class="confirm-container">
-    <div class="header-section">
-        <img src="/assets/img/icons/like-confirmation.svg" alt="like-confirmation" />
-        <p class="header-text">
-            A sua conta foi criada com sucesso
-        </p>
-    </div>
-    <div class="body-section">
-        <p class="text">
-            Um e-mail de confirmação foi enviado para
-            <br />
-            <span>{{ email }}</span>
-        </p>
-    </div>
-    <div class="footer-section">
-        <div class="btn-wrapper">
-            <app-button label="Entrar" type="submit" class="button-submit" routerLink="/login"></app-button>
-        </div>
-    </div>
-</div>
+<app-feedback [feedback]="feedback"></app-feedback>

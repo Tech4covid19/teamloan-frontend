@@ -1,4 +1,5 @@
 @import '../utils/mixins.scss';
+@import 'bulma/sass/components/dropdown';
 
 $itemHeightTablet: 35px;
 $itemHeightMobile: 40px;
@@ -97,9 +98,7 @@ select {
         display: flex;
         align-items: center;
         height: 39px;
-        border-bottom: 1px solid var(--color-cosmic);
         margin: 0 10px;
-        padding-left: 15px;
 
         .search {
             width: 25px;
@@ -111,7 +110,6 @@ select {
             @include main-font-style();
             width: 100%;
             border: none;
-            border-left: 1px solid var(--color-black);
             padding: 0 10px;
             margin-left: 10px;
             outline: none;
@@ -143,6 +141,10 @@ select {
         height: $itemHeightTablet;
         padding: 10px;
         cursor: pointer;
+
+        &.empty-item {
+            text-align: center;
+        }
 
         &:hover,
         &.selected {

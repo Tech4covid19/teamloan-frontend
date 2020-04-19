@@ -2,20 +2,12 @@
     <p class="form-title">Dados da empresa</p>
 
     <div class="inputs-container" [formGroup]="form">
-        <app-input-text
-            formControlName="name"
-            type="text"
-            placeholder="Nome da empresa"
-        ></app-input-text>
+        <app-input-text formControlName="name" type="text" placeholder="Nome"></app-input-text>
         <div *ngIf="errors.name.required" class="error-message">
             Campo obrigatório
         </div>
-    
-        <app-input-text
-            formControlName="nif"
-            type="text"
-            placeholder="NIF da empresa"
-        ></app-input-text>
+
+        <app-input-text formControlName="nif" type="text" placeholder="NIF"></app-input-text>
         <div *ngIf="errors.nif.required" class="error-message">
             Campo obrigatório
         </div>
@@ -23,34 +15,15 @@
             NIF inválido
         </div>
 
-        <p class="sub-title">Sector Industrial</p>
         <app-input-select
             formControlName="businessArea"
             [inputSelectOptions]="businessAreas"
-            placeholder="Sector Industrial"
+            placeholder="Setor"
         ></app-input-select>
         <div *ngIf="errors.businessArea.required" class="error-message">
             Campo obrigatório
         </div>
-    
-        <app-input-text
-            formControlName="address"
-            type="text"
-            placeholder="Morada"
-        ></app-input-text>
-        <div *ngIf="errors.address.required" class="error-message">
-            Campo obrigatório
-        </div>
-    
-        <app-input-text
-            formControlName="city"
-            type="text"
-            placeholder="Cidade"
-        ></app-input-text>
-        <div *ngIf="errors.city.required" class="error-message">
-            Campo obrigatório
-        </div>
-    
+
         <app-input-text
             formControlName="postalCode"
             type="text"
@@ -63,6 +36,13 @@
             Código postal inválido
         </div>
 
+        <p class="sub-title">Objetivo</p>
+        <app-input-select
+            formControlName="intent"
+            [inputSelectOptions]="intents"
+        ></app-input-select>
+        <div *ngIf="errors.intent.required" class="error-message">
+            Campo obrigatório
+        </div>
     </div>
-
 </div>
