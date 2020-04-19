@@ -60,6 +60,7 @@ export class EquipaFormComponent extends SimpleFormValueAccessor<EquipaViewModel
         this.subscriptions.push(this.form.valueChanges.subscribe((v) => {
             if ( v.distrito !== this.selectedDistrict) {
                 this.districtChange.emit(this.form.get('distrito').value);
+                // this.form.get('concelho').setValue('');
             }
             this.selectedDistrict = v.distrito;
         }));

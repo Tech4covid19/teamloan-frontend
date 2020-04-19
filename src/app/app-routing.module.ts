@@ -25,7 +25,7 @@ const routes: Routes = [
     {
         path: 'equipas',
         loadChildren: () =>
-            import('./screens/equipas/add-equipa/add-equipa.module').then(m => m.AddEquipaModule),
+            import('./screens/equipas/equipas.module').then(m => m.EquipasModule),
         pathMatch: 'full'
     },
     {

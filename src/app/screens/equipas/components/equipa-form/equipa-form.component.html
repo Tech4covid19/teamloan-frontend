@@ -2,6 +2,7 @@
     [formGroup]="form">
 
     <app-input-select
+        *ngIf="distritos.length > 0"
         formControlName="distrito"
         [inputSelectOptions]="distritos"
         placeholder="Distrito"
@@ -12,6 +13,7 @@
     <br>
 
     <app-input-select
+        *ngIf="concelhos && concelhos.length > 0"
         formControlName="concelho"
         [inputSelectOptions]="concelhos"
         placeholder="Concelho"
@@ -29,12 +31,14 @@
         Campo obrigatório
     </div>
 
-    <br>
+    <br><br><br><br>
     <app-jobs-form
+        *ngIf="jobOptions.length > 0"
         [jobOptions]="jobOptions"
         formControlName="jobsData" 
         [notifier]="notifier">
     </app-jobs-form>
+    <br><br><br><br>
 
     <app-input-text
         formControlName="obs"
