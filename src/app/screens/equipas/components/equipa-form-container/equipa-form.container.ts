@@ -29,8 +29,13 @@ export class EquipaFormContainerComponent {
 
     public jobsOptions$: Observable<InputSelectOption[]> = new Observable();
 
+    private _initialValue: EquipaViewModel;
+
     @Input()
-    public initialValue: EquipaViewModel;
+    public set initialValue(initialValue) {
+        this._initialValue = initialValue;
+        this.form = this.getForm();
+    };
 
     public form: FormGroup;
 
@@ -41,7 +46,6 @@ export class EquipaFormContainerComponent {
         private municipalityService: MunicipalityService,
         private jobsService: JobsService
     ) {
-        this.form = this.getForm();
         this.notifier = this.formNotifierFactory.create();
         this._fetchDistrict();
         this._fetchJobs();
@@ -62,7 +66,7 @@ export class EquipaFormContainerComponent {
 
     private getForm(): FormGroup {
         return this.fb.group({
-            equipa: this.initialValue,
+            equipa: this._initialValue,
         });
     }
 

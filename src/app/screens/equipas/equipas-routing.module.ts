@@ -4,9 +4,9 @@ import { EquipasMainComponent } from './equipas-main.component';
 
 export const routes: Routes = [
     {
-        path: 'equipas',
+        path: '',
         component: EquipasMainComponent,
-        pathMatch: 'full',
+        pathMatch: 'prefix',
         children: [
             {
                 path: 'add',

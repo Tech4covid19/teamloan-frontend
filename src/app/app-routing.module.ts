@@ -25,8 +25,7 @@ const routes: Routes = [
     {
         path: 'equipas',
         loadChildren: () =>
-            import('./screens/equipas/equipas.module').then(m => m.EquipasModule),
-        pathMatch: 'full'
+            import('./screens/equipas/equipas.module').then(m => m.EquipasModule)
     },
     {
         path: 'confirmation',
