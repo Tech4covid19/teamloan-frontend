@@ -5,6 +5,7 @@ import { ArrayFormValueAccessor } from 'src/app/form-tools/value-accessors/array
 import { JobsFormService } from './jobs-form.service';
 import { JobsViewModel } from './jobs.viewmodel';
 import { FormNotifier } from 'src/app/form-tools/validators/form-notifier.factory';
+import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 
 @Component({
     selector: 'app-jobs-form',
@@ -36,6 +37,9 @@ export class JobsFormComponent extends ArrayFormValueAccessor<JobsViewModel> imp
     @Input()
     public notifier: FormNotifier;
 
+    @Input()
+    public jobOptions: InputSelectOption[];
+
     constructor(@Inject(FormGeneratorServiceToken) jobsFormService: FormGeneratorService) {
         super(jobsFormService);
         this.jobs = this.form.get('jobs') as FormArray;
@@ -61,7 +65,7 @@ export class JobsFormComponent extends ArrayFormValueAccessor<JobsViewModel> imp
     public onJobInserted(index) {
         const fg: any = this.form.get(this.formArrayName);
         if ( index ===  (fg.controls.length - 1) ) {
-            fg.setControl(fg.controls.length, new FormControl({ name: null, quantity: 1, last: true }));
+            fg.setControl(fg.controls.length, new FormControl({ job: null, quantity: 1, last: true }));
         }
     }
 
@@ -74,7 +78,7 @@ export class JobsFormComponent extends ArrayFormValueAccessor<JobsViewModel> imp
     }
 
     private hasValue(fc: AbstractControl) {
-        if ( fc.value.name && fc.value.quantity ) {
+        if ( fc.value.job && fc.value.quantity ) {
             return true;
         }
         return false;

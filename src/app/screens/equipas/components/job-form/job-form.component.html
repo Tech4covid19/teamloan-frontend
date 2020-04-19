@@ -1,11 +1,11 @@
 <div [formGroup]="form" class="job-form">
-    
-    <app-input-text
-        formControlName="name"
-        type="text"
+
+    <app-input-select
+        formControlName="job"
+        [inputSelectOptions]="jobOptions"
         placeholder="Função"
-    ></app-input-text>
-    <div *ngIf="errors.name.required" class="error-message">
+    ></app-input-select>
+    <div *ngIf="errors.job.required" class="error-message">
         Campo obrigatório
     </div>
 

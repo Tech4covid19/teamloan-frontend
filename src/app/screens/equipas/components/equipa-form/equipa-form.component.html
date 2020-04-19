@@ -1,21 +1,21 @@
 <form
     [formGroup]="form">
 
-    <app-input-text
+    <app-input-select
         formControlName="distrito"
-        type="text"
+        [inputSelectOptions]="distritos"
         placeholder="Distrito"
-    ></app-input-text>
+    ></app-input-select>
     <div *ngIf="errors.distrito.required" class="error-message">
         Campo obrigatório
     </div>
     <br>
 
-    <app-input-text
+    <app-input-select
         formControlName="concelho"
-        type="text"
+        [inputSelectOptions]="concelhos"
         placeholder="Concelho"
-    ></app-input-text>
+    ></app-input-select>
     <div *ngIf="errors.concelho.required" class="error-message">
         Campo obrigatório
     </div>
@@ -30,7 +30,16 @@
     </div>
 
     <br>
-    <app-jobs-form formControlName="jobsData" [notifier]="notifier">
+    <app-jobs-form
+        [jobOptions]="jobOptions"
+        formControlName="jobsData" 
+        [notifier]="notifier">
     </app-jobs-form>
+
+    <app-input-text
+        formControlName="obs"
+        type="text"
+        placeholder="Observações"
+    ></app-input-text>
 
 </form>

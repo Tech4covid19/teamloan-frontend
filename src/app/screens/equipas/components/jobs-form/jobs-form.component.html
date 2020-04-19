@@ -7,6 +7,7 @@
         <ng-container [formArrayName]="formArrayName">
             <div  *ngFor="let _ of jobs.controls; index as i" >
                 <app-job-form
+                    [jobOptions]="jobOptions"
                     [isLast]="i === (jobs.controls.length - 1)"
                     [notifier]="notifier"
                     (jobInsertEvent)="onJobInserted(i)"

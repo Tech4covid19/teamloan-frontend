@@ -1,5 +1,7 @@
+import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
+
 export interface JobViewModel {
-    name: string;
+    job: string; // job key
     quantity: number;
     last: boolean;
 }

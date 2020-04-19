@@ -17,7 +17,7 @@ export class JobsFormService implements FormGeneratorService {
     private initialValue(): FormControl[] {
         return [
             new FormControl({
-                name: '',
+                job: null,
                 quantity: 1
             })
         ];

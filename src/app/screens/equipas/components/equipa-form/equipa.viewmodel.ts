@@ -5,4 +5,5 @@ export interface EquipaViewModel {
     concelho: string;
     nome: string;
     jobsData: JobsViewModel;
+    obs: string;
 }

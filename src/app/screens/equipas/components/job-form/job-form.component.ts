@@ -1,11 +1,11 @@
-import { Component, forwardRef, Inject, Input, EventEmitter, Output, OnChanges, OnDestroy } from '@angular/core';
-import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Inject, Input, OnChanges, OnDestroy, Output } from '@angular/core';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { debounceTime, filter } from 'rxjs/operators';
 import { FormGeneratorService, FormGeneratorServiceToken } from 'src/app/form-tools/interfaces/form-generator.interface';
 import { SimpleFormValueAccessor } from 'src/app/form-tools/value-accessors/simple-form.value.accessor';
+import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { JobFormService } from './job-form.service';
 import { JobViewModel } from './job.viewmodel';
-import { filter, debounce, debounceTime } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-job-form',
@@ -36,8 +36,11 @@ export class JobFormComponent extends SimpleFormValueAccessor<JobViewModel> impl
     @Input()
     public isLast: boolean;
 
+    @Input()
+    public jobOptions: InputSelectOption[] = [];
+
     public errors = {
-        name: {
+        job: {
             required: false
         },
         quantity: {
@@ -60,8 +63,10 @@ export class JobFormComponent extends SimpleFormValueAccessor<JobViewModel> impl
         this.subscriptions.forEach((s) => s.unsubscribe());
     }
 
-    ngOnChanges() {
-        this.form.get('last').patchValue(this.isLast);
+    ngOnChanges(changes) {
+        if ( changes.isLast !== undefined ) {
+            this.form.get('last').patchValue(this.isLast);
+        }
     }
 
     validate(_: FormControl) {
@@ -73,17 +78,9 @@ export class JobFormComponent extends SimpleFormValueAccessor<JobViewModel> impl
     }
 
     private isFormFull(data) {
-        if (
-            this.isTouched('name')
-        ) {
-            if ( data.name && data.quantity ) {
-                return true;
-            }
+        if ( data.job && data.quantity ) {
+            return true;
         }
         return false;
-    }
-
-    private isTouched(name: string) {
-        return this.form.get(name).touched;
     }
 }

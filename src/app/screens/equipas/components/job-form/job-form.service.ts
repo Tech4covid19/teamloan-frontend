@@ -9,7 +9,7 @@ export class JobFormService implements FormGeneratorService {
 
     public getForm(): FormGroup {
         return this.fb.group({
-            name: ['', requiredOnlyIfNotLast('last')],
+            job: [null, requiredOnlyIfNotLast('last')],
             quantity: [1, requiredOnlyIfNotLast('last')],
             last: [false]
         });

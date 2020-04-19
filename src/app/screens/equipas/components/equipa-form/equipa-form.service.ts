@@ -11,7 +11,8 @@ export class EquipaFormService implements FormGeneratorService {
             distrito: ['', Validators.required],
             concelho: ['', Validators.required],
             nome: ['', Validators.required],
-            jobsData: []
+            jobsData: [],
+            obs: ['']
         });
     }
 }
