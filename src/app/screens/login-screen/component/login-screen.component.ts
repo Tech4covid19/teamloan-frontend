@@ -59,7 +59,7 @@ export class LoginViewComponent {
     }
 
     private _onLoginSuccess() {
-        const returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
+        const returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/posts';
         this.loginError = false;
         this.router.navigate([returnUrl]);
     }

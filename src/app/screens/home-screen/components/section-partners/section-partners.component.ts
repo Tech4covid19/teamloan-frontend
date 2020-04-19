@@ -49,7 +49,7 @@ export class SectionPartnersComponent {
         {
             href: 'http://www.apotec.pt/',
             title: 'APOTEC',
-            src: '/assets/img/logos/apotec.png'
+            src: '/assets/img/logos/apotec.svg'
         }
     ];
 }
