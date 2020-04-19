@@ -6,7 +6,7 @@ export class Jobs implements ResourceInterface {
 
     createdAt: string;
 
-    job: Job[];
+    job: Job;
 
     'number-of-people': string;
 
