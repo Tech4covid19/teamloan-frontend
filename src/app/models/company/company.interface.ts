@@ -1,6 +1,6 @@
 import { BusinessArea } from 'src/app/models/business-area/business-area';
 
-export interface CompanyInteface {
+export interface CompanyInterface {
     uuid?: string;
     uuid_business_area: string;
     name: string;
@@ -10,5 +10,6 @@ export interface CompanyInteface {
     'zip-code': string;
     'business-area'?: BusinessArea;
     password: string;
+    intent: string;
     updatedAt?: string;
 }

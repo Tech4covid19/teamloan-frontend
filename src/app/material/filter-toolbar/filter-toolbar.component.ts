@@ -4,7 +4,8 @@ import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { THEME } from 'src/app/material/button/button.component';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
-import { INTENT } from 'src/app/models/posting/posting';
+import { INTENT } from 'src/app/models/intent.enum';
+
 import {
     QueryFilterInterface,
     QUERY_FILTER_PARAMETERS
@@ -37,7 +38,7 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
     onChangesSubscription: Subscription;
 
     postsIntent = INTENT;
-    currentPostsIntent = INTENT.LEND;
+    currentPostsIntent = this.postsIntent.LEND;
     lendTheme = THEME.MAIN;
     seekTheme = THEME.SECUNDARY;
 

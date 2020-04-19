@@ -10,12 +10,11 @@ export class CompanyFormService implements FormGeneratorService {
 
     public getForm(): FormGroup {
         return this.fb.group({
-            name: ['', Validators.required ],
-            nif: ['', Validators.compose( [ Validators.required, NIFValidator ] ) ],
-            businessArea: ['', Validators.required ],
-            address: ['', Validators.required ],
-            city: ['', Validators.required ],
-            postalCode: ['', Validators.compose( [ Validators.required, PostalCodeValidator ] ) ]
+            name: ['', Validators.required],
+            nif: ['', Validators.compose([Validators.required, NIFValidator])],
+            businessArea: ['', Validators.required],
+            intent: ['', Validators.required],
+            postalCode: ['', Validators.compose([Validators.required, PostalCodeValidator])]
         });
     }
 }

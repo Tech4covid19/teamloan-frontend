@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Company } from 'src/app/models/company/company';
-import { CompanyInteface } from 'src/app/models/company/company.interface';
+import { CompanyInterface } from 'src/app/models/company/company.interface';
 import { UUID } from 'src/app/models/uuid-object';
 import { BaseService } from 'src/app/services/base-service/base.service';
 import { environment } from 'src/environments/environment';
@@ -16,8 +16,8 @@ export class CompanyService extends BaseService {
         const url = `${environment.backend.url}${Company.URL}/${companyId}`;
 
         return this.httpClient
-            .get<CompanyInteface>(url, httpOptions)
-            .pipe(map(companyInteface => new Company(companyInteface)));
+            .get<CompanyInterface>(url, httpOptions)
+            .pipe(map(companyInterface => new Company(companyInterface)));
     }
 
     public save(company: Company): Observable<UUID> {

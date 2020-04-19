@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { INTENT } from 'src/app/models/posting/posting';
+import { INTENT } from 'src/app/models/intent.enum';
 
 const PAGE_NUMBER = 1;
 

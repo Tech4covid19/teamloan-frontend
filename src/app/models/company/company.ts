@@ -1,4 +1,4 @@
-import { CompanyInteface } from 'src/app/models/company/company.interface';
+import { CompanyInterface } from 'src/app/models/company/company.interface';
 import { BusinessArea } from 'src/app/models/business-area/business-area';
 
 export class Company {
@@ -22,7 +22,9 @@ export class Company {
 
     public updatedAt: string;
 
-    constructor(values?: CompanyInteface) {
+    public intent: string;
+
+    constructor(values?: CompanyInterface) {
         if (values) {
             Object.assign(this, values);
         }
