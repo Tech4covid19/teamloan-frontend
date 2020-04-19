@@ -47,7 +47,6 @@
         font-family: Work Sans;
         font-style: normal;
         font-weight: bold;
-        text-align: center;
         text-transform: uppercase;
         color: var(--color-white);
         z-index: 0;
@@ -67,18 +66,17 @@
         font-family: Work Sans;
         font-style: normal;
         font-weight: bold;
-        text-align: center;
         text-transform: uppercase;
         color: var(--color-white);
         z-index: 0;
 
         @include mobile {
-            font-size: 20px;
+            font-size: 19px;
             line-height: 25px;
         }
 
         @include tablet {
-            font-size: 20px;
+            font-size: 19px;
             line-height: 25px;
         }
     }

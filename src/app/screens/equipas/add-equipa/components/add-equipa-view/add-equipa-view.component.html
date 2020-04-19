@@ -1,6 +1,10 @@
+<h1 class="title">Adicionar Equipa</h1>
 <app-equipa-form-container [initialValue]="initialValue">
-    <br><br>
-    <button (click)="submit()">Adicionar Equipa</button>
-    <br>
-    <br>
+    <app-button
+        class="button"
+        type="button"
+        size="fit"
+        label="Adicionar Equipa"
+        (click)="submit()"
+    ></app-button>
 </app-equipa-form-container>

@@ -1,8 +1,17 @@
+<h1 class="title">Editar Equipa</h1>
 <app-equipa-form-container [initialValue]="initialValue">
-    <br><br>
-    <button (click)="submit()">Gravar</button>
-    <br>
-
-    <button (click)="deleteTeam()">Apagar Equipa</button>
-    <br>
+    <app-button
+        class="button"
+        type="button"
+        size="fit"
+        label="Gravar"
+        (click)="submit()"
+    ></app-button>
+    <!-- <app-button
+        class="button"
+        type="button"
+        size="fit"
+        label="Apagar Equipa"
+        (click)="deleteTeam()"
+    ></app-button> -->
 </app-equipa-form-container>

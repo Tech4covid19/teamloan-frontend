@@ -1,3 +1,29 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    display: flex;
+    flex: 1;
+}
+
 .job-form {
-    
+    display: flex;
+    flex: 1;
+}
+
+.input-job {
+    display: flex;
+    flex: 3;
+
+    @include mobile {
+        margin-right: 5px;
+    }
+
+    @include tablet {
+        margin-right: 10px;
+    }
+}
+
+.input-quantity {
+    display: flex;
+    flex: 2;
 }

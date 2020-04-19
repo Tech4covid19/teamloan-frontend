@@ -1,8 +1,14 @@
-<button class="button" *ngIf="!url" type="{{ type }}" [attr.theme]="theme">
+<button class="button" *ngIf="!url" type="{{ type }}" [attr.theme]="theme" [attr.size]="size">
     <ng-container *ngTemplateOutlet="button"></ng-container>
 </button>
 
-<a class="link" *ngIf="url && !externalUrl" [routerLink]="[url]" [attr.theme]="theme">
+<a
+    class="link"
+    *ngIf="url && !externalUrl"
+    [routerLink]="[url]"
+    [attr.theme]="theme"
+    [attr.size]="size"
+>
     <ng-container *ngTemplateOutlet="button"></ng-container>
 </a>
 
@@ -12,6 +18,7 @@
     [href]="url"
     [target]="newPageUrl && '_blank'"
     [attr.theme]="theme"
+    [attr.size]="size"
 >
     <ng-container *ngTemplateOutlet="button"></ng-container>
 </a>

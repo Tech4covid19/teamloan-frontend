@@ -17,7 +17,7 @@ const routes: Routes = [
                         theme: LINK_ICON_SIZES.REGULAR
                     },
                     label: 'Adicionar',
-                    url: '/my-posts/',
+                    url: '/equipas/add',
                     isMobile: false
                 },
                 {
@@ -26,7 +26,7 @@ const routes: Routes = [
                         theme: LINK_ICON_SIZES.REGULAR
                     },
                     label: 'Editar',
-                    url: '/my-posts/',
+                    url: '/equipas/edit',
                     isMobile: false
                 }
             ]

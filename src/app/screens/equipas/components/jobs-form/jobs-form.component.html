@@ -1,22 +1,19 @@
-<form
-    class="jobs-form-container"
-    [formGroup]="form">
+<form class="jobs-form-container" [formGroup]="form">
+    <ng-container [formArrayName]="formArrayName">
+        <div *ngFor="let _ of jobs.controls; index as i" class="fieldset">
+            <app-job-form
+                class="input-jobs"
+                [jobOptions]="jobOptions"
+                [isLast]="i === jobs.controls.length - 1"
+                [notifier]="notifier"
+                (jobInsertEvent)="onJobInserted(i)"
+                [formControlName]="i"
+            >
+            </app-job-form>
 
-    <div class="columns is-desktop">
-
-        <ng-container [formArrayName]="formArrayName">
-            <div  *ngFor="let _ of jobs.controls; index as i" >
-                <app-job-form
-                    [jobOptions]="jobOptions"
-                    [isLast]="i === (jobs.controls.length - 1)"
-                    [notifier]="notifier"
-                    (jobInsertEvent)="onJobInserted(i)"
-                    [formControlName]="i">
-                </app-job-form>
-                
-                <div (click)="remove(i)" class="add-button">remove</div>
+            <div (click)="remove(i)" class="remove-button">
+                <svg-icon src="/assets/img/icons/error.svg"></svg-icon>
             </div>
-        </ng-container>
-
-    </div>
+        </div>
+    </ng-container>
 </form>

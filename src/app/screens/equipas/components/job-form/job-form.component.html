@@ -1,6 +1,6 @@
 <div [formGroup]="form" class="job-form">
-
     <app-input-select
+        class="input-job"
         formControlName="job"
         [inputSelectOptions]="jobOptions"
         placeholder="Função"
@@ -10,6 +10,7 @@
     </div>
 
     <app-input-text
+        class="input-quantity"
         formControlName="quantity"
         type="number"
         placeholder="N Pessoas"
@@ -17,5 +18,4 @@
     <div *ngIf="errors.quantity.required" class="error-message">
         Campo obrigatório
     </div>
-
 </div>

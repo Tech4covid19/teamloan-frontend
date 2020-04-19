@@ -1,9 +1,5 @@
 @import 'bulma/sass/utilities/_all';
 
-:host {
-    display: flex;
-}
-
 .button,
 .link {
     display: flex;
@@ -92,6 +88,10 @@
                 fill: var(--color-white);
             }
         }
+    }
+
+    &[size='fit'] {
+        width: auto;
     }
 
     @include mobile {

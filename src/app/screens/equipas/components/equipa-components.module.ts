@@ -1,14 +1,15 @@
-import { JobFormService } from './job-form/job-form.service';
-import { JobFormComponent } from './job-form/job-form.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MaterialModule } from 'src/app/material/material.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { JobsFormService } from './jobs-form/jobs-form.service';
-import { JobsFormComponent } from './jobs-form/jobs-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { MaterialModule } from 'src/app/material/material.module';
+import { EquipaFormContainerComponent } from './equipa-form-container/equipa-form.container';
 import { EquipaFormComponent } from './equipa-form/equipa-form.component';
 import { EquipaFormService } from './equipa-form/equipa-form.service';
-import { EquipaFormContainerComponent } from './equipa-form-container/equipa-form.container';
+import { JobFormComponent } from './job-form/job-form.component';
+import { JobFormService } from './job-form/job-form.service';
+import { JobsFormComponent } from './jobs-form/jobs-form.component';
+import { JobsFormService } from './jobs-form/jobs-form.service';
 
 @NgModule({
     declarations: [
@@ -17,23 +18,13 @@ import { EquipaFormContainerComponent } from './equipa-form-container/equipa-for
         EquipaFormComponent,
         EquipaFormContainerComponent
     ],
-    imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        MaterialModule,
-        CommonModule,
-    ],
+    imports: [ReactiveFormsModule, FormsModule, MaterialModule, CommonModule, AngularSvgIconModule],
     exports: [
         JobFormComponent,
         JobsFormComponent,
         EquipaFormComponent,
         EquipaFormContainerComponent
     ],
-    providers: [
-        JobFormService,
-        JobsFormService,
-        EquipaFormService
-    ]
+    providers: [JobFormService, JobsFormService, EquipaFormService]
 })
-export class EquipaComponentsModule {
-}
+export class EquipaComponentsModule {}

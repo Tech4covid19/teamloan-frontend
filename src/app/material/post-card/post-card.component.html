@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-<div class="footer">
+<div class="footer" *ngIf="actions.length !== 0">
     <app-button
         *ngIf="!!buttonsAction[actionsMap.CONTACT]"
         label="Contactar"

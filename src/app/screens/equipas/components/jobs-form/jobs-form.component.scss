@@ -1,3 +1,52 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    display: flex;
+}
+
 .jobs-form-container {
-    
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.fieldset {
+    display: flex;
+    flex: 1;
+    align-items: center;
+
+    @include tablet {
+        margin-bottom: 10px;
+    }
+}
+
+.input-jobs {
+    flex: 1;
+}
+
+.remove-button {
+    cursor: pointer;
+
+    @include mobile {
+        margin-left: 5px;
+    }
+
+    @include tablet {
+        margin-left: 10px;
+    }
+
+    svg-icon {
+        display: flex;
+        fill: var(--color-cosmic);
+
+        @include mobile {
+            width: 17px;
+            height: 17px;
+        }
+
+        @include tablet {
+            width: 17px;
+            height: 17px;
+        }
+    }
 }
