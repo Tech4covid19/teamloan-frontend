@@ -8,14 +8,12 @@
     (filterChange)="filter($event)"
 ></app-filter-toolbar>
 
-<div class="posts-list" *ngIf="postsList?.length > 0">
-    <ng-container *ngIf="postsList?.length > 0">
-        <div *ngFor="let post of postsList">
-            <app-post-card [postCard]="post" [actions]="actions"></app-post-card>
-        </div>
-    </ng-container>
+<div class="posts-list" *ngIf="posts?.length > 0">
+    <div *ngFor="let post of posts">
+        <app-post-card [postCard]="post" [actions]="actions"></app-post-card>
+    </div>
 </div>
-<div *ngIf="postsList?.length === 0" class="empty-container">
+<div *ngIf="posts?.length === 0" class="empty-container">
     <h1 class="title">
         Sem resultados!
     </h1>
