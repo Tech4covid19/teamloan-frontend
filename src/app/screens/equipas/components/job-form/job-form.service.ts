@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormGeneratorService } from 'src/app/form-tools/interfaces/form-generator.interface';
 import { JobViewModel } from './job.viewmodel';
+import { FormControlConfig } from 'src/app/form-tools/form-control.config';
 
 @Injectable()
 export class JobFormService implements FormGeneratorService {
-    constructor(private fb: FormBuilder) {}
+    constructor(
+        private fb: FormBuilder,
+        private formConfig: FormControlConfig
+    ) {}
 
     public getForm(): FormGroup {
         return this.fb.group({
-            job: [null, requiredOnlyIfNotLast('last')],
-            quantity: [1, requiredOnlyIfNotLast('last')],
+            job: [this.formConfig.get(null), requiredOnlyIfNotLast('last')],
+            quantity: [this.formConfig.get(1), requiredOnlyIfNotLast('last')],
             last: [false]
         });
     }

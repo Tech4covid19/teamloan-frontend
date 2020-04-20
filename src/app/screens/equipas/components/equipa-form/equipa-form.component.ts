@@ -36,7 +36,19 @@ export class EquipaFormComponent extends SimpleFormValueAccessor<EquipaViewModel
     public distritos: InputSelectOption[] = [];
 
     @Input()
-    public concelhos: InputSelectOption[] = [];
+    public set concelhos(value: InputSelectOption[]) {
+        if ( value ) {
+            this._concelhos = value;
+        } else {
+            this._concelhos = [];
+        }
+    }
+
+    public get concelhos() {
+        return this._concelhos;
+    }
+
+    private _concelhos: InputSelectOption[];
 
     @Output()
     public districtChange: EventEmitter<string> = new EventEmitter();

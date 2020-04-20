@@ -17,6 +17,11 @@ export const routes: Routes = [
                 path: 'edit',
                 pathMatch: 'full',
                 loadChildren: () => import('./edit-equipa/edit-equipa.module').then(m => m.EditEquipaModule),
+            },
+            {
+                path: 'details',
+                pathMatch: 'full',
+                loadChildren: () => import('./readonly-equipa/readonly-equipa.module').then(m => m.ReadonlyEquipaModule),
             }
         ]
     }

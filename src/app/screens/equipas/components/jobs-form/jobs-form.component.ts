@@ -6,6 +6,7 @@ import { JobsFormService } from './jobs-form.service';
 import { JobsViewModel } from './jobs.viewmodel';
 import { FormNotifier } from 'src/app/form-tools/validators/form-notifier.factory';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
+import { FormControlConfig } from 'src/app/form-tools/form-control.config';
 
 @Component({
     selector: 'app-jobs-form',
@@ -40,7 +41,10 @@ export class JobsFormComponent extends ArrayFormValueAccessor<JobsViewModel> imp
     @Input()
     public jobOptions: InputSelectOption[];
 
-    constructor(@Inject(FormGeneratorServiceToken) jobsFormService: FormGeneratorService) {
+    constructor(
+        @Inject(FormGeneratorServiceToken) jobsFormService: FormGeneratorService, 
+        private formControlConfig: FormControlConfig
+    ) {
         super(jobsFormService);
         this.jobs = this.form.get('jobs') as FormArray;
     }
@@ -53,7 +57,13 @@ export class JobsFormComponent extends ArrayFormValueAccessor<JobsViewModel> imp
     }
 
     public remove(index) {
+
+        if ( this.formControlConfig.isDisabled() ) {
+            return;
+        }
+
         const fg: FormArray = this.form.get(this.formArrayName) as FormArray;
+
         if ( fg.controls.length > 1 ) {
             fg.removeAt(index);
             if ( this.hasValue( fg.controls[fg.controls.length - 1] ) ) {

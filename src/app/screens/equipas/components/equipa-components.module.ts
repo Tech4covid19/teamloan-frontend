@@ -10,6 +10,7 @@ import { JobFormComponent } from './job-form/job-form.component';
 import { JobFormService } from './job-form/job-form.service';
 import { JobsFormComponent } from './jobs-form/jobs-form.component';
 import { JobsFormService } from './jobs-form/jobs-form.service';
+import { FormControlConfig } from 'src/app/form-tools/form-control.config';
 
 @NgModule({
     declarations: [
@@ -18,13 +19,24 @@ import { JobsFormService } from './jobs-form/jobs-form.service';
         EquipaFormComponent,
         EquipaFormContainerComponent
     ],
-    imports: [ReactiveFormsModule, FormsModule, MaterialModule, CommonModule, AngularSvgIconModule],
+    imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        MaterialModule,
+        CommonModule,
+        AngularSvgIconModule
+    ],
     exports: [
         JobFormComponent,
         JobsFormComponent,
         EquipaFormComponent,
         EquipaFormContainerComponent
     ],
-    providers: [JobFormService, JobsFormService, EquipaFormService]
+    providers: [
+        JobFormService,
+        JobsFormService,
+        EquipaFormService,
+        FormControlConfig
+    ]
 })
 export class EquipaComponentsModule {}

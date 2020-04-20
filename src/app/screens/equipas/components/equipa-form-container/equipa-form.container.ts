@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormNotifier, FormNotifierFactory } from 'src/app/form-tools/validators/form-notifier.factory';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
@@ -77,6 +77,9 @@ export class EquipaFormContainerComponent {
     }
 
     private _fetchMunicipalities(districtId: string) {
+        if ( !districtId ) {
+            this.municipalityOptions$ = of([]);
+        }
         this.municipalityOptions$ = this.municipalityService
             .get(districtId)
             .pipe(map(items => this._getInputSelectOptions(items)));
