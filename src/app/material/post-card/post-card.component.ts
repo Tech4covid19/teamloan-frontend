@@ -45,6 +45,7 @@ export class PostCardComponent {
         this.cover = this._getCoverUrl(this._postCard.district);
         const jobsGroup = this._getJobs(this._postCard.jobs);
         this.totalJobs = jobsGroup.length;
+        this._postCard.totalPeople = this._getTotalPeople(this._postCard.jobs);
         this.jobsGroup = jobsGroup.slice(0, this.maxJobs);
     }
 
@@ -78,11 +79,12 @@ export class PostCardComponent {
         if (jobsList.length) {
             jobsList.map(jobs => {
                 const job = jobs.job;
+                console.log(job);
                 const index = jobsGroup.findIndex(jobElem => jobElem.uuid === job.uuid);
                 if (index === -1) {
-                    jobsGroup.push({ ...job, ...{ count: 1 } });
+                    jobsGroup.push({ ...job, ...{ count: jobs["number-of-people"] } });
                 } else {
-                    jobsGroup[index].count += 1;
+                    jobsGroup[index].count += jobs["number-of-people"];
                 }
             });
         }
@@ -92,5 +94,16 @@ export class PostCardComponent {
         );
 
         return jobsGroup;
+    }
+
+    private _getTotalPeople(jobsList: Jobs[]): number {
+        var totalPeople = 0;
+        if (jobsList.length) {
+            for(var i = 0; i < jobsList.length; i++){
+                totalPeople += jobsList[i]["number-of-people"];
+            }
+        }
+
+        return totalPeople;
     }
 }
