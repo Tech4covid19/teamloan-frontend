@@ -114,6 +114,10 @@
             }
         }
 
+        .label {
+            display: none;
+        }
+
         app-link {
             ::ng-deep {
                 [theme='regular'] {
