@@ -43,11 +43,11 @@ export class PostingService extends BaseService {
         );
     }
 
-    public getById(postingUUID: string, userId: string): Observable<Posting> {
+    public getById(postingUUID: string): Observable<Posting> {
         const httpOptions = {
             headers: this.headers
         };
-        const url = `${environment.backend.url}${Company.URL}/${userId}/${Posting.URL}/${postingUUID}`;
+        const url = `${environment.backend.url}${Posting.URL}/${postingUUID}`;
         return this.request<Posting>(METHOD.GET, url, httpOptions)
         .pipe(map((res) => new Posting(res)));
     }

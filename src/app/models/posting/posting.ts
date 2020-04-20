@@ -34,6 +34,8 @@ export class Posting {
 
     notes: string;
 
+    url: string;
+
     constructor(values?: any) {
         if (values) {
             Object.assign(this, values);

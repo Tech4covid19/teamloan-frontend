@@ -16,14 +16,11 @@ export class PostingResolver implements Resolve<Posting> {
     ) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Posting> {
-        return this.toPromise(this.authUserService.getAuthUser()
-        .pipe(
-            mergeMap((user: AuthUser) => this.getPosting(route.params.id, user.uuid))
-        ));
+        return this.toPromise(this.getPosting(route.params.id));
     }
 
-    private getPosting(postingId: string, userId: string): Observable<Posting> {
-        return this.postingService.getById(postingId, userId);
+    private getPosting(postingId: string): Observable<Posting> {
+        return this.postingService.getById(postingId);
     }
 
     private toPromise(o: Observable<Posting>): Promise<Posting> {

@@ -11,7 +11,7 @@
             >
             </app-job-form>
 
-            <div (click)="remove(i)" class="remove-button">
+            <div *ngIf="(i !== jobs.controls.length - 1)" (click)="remove(i)" class="remove-button">
                 <svg-icon src="/assets/img/icons/error.svg"></svg-icon>
             </div>
         </div>

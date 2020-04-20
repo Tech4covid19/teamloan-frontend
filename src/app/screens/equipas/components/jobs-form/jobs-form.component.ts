@@ -75,7 +75,7 @@ export class JobsFormComponent extends ArrayFormValueAccessor<JobsViewModel> imp
     public onJobInserted(index) {
         const fg: any = this.form.get(this.formArrayName);
         if ( index ===  (fg.controls.length - 1) ) {
-            fg.setControl(fg.controls.length, new FormControl({ job: null, quantity: 1, last: true }));
+            fg.setControl(fg.controls.length, new FormControl({ job: null, quantity: null, last: true }));
         }
     }
 
