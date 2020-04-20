@@ -10,10 +10,12 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FilterToolbarComponent } from './filter-toolbar/filter-toolbar.component';
 import { InputSelectComponent } from './input-select/input-select.component';
 import { LinkComponent } from './link/link.component';
+import { InputTextAreaComponent } from 'src/app/material/input-textarea/input-textarea.component';
 
 @NgModule({
     declarations: [
         InputTextComponent,
+        InputTextAreaComponent,
         ButtonComponent,
         InputSelectComponent,
         CheckboxComponent,
@@ -24,6 +26,7 @@ import { LinkComponent } from './link/link.component';
     imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule, RouterModule],
     exports: [
         InputTextComponent,
+        InputTextAreaComponent,
         ButtonComponent,
         InputSelectComponent,
         CheckboxComponent,

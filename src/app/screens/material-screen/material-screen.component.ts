@@ -112,6 +112,7 @@ export class MaterialScreenComponent {
     constructor(private fb: FormBuilder) {
         this.form = fb.group({
             inputText: ['', Validators.required],
+            inputTextarea: '',
             password: null,
             selectBoxSmall: null,
             selectBoxLarge: null,
