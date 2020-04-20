@@ -6,13 +6,16 @@
         </option>
     </select>
     <div class="input-container" (click)="toggleFocus()">
-        <div class="input-field">
+        <div class="input-field" [ngClass]="{ disabled: formControl.disabled }">
             <span>{{ selectedValue ? selectedValue.label : placeholder }}</span>
         </div>
         <svg-icon class="arrow" src="/assets/img/icons/select-arrow.svg"></svg-icon>
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div *ngIf="inputSelectOptions && inputSelectOptions.length > 5" class="search-box-container">
+        <div
+            *ngIf="inputSelectOptions && inputSelectOptions.length > 5"
+            class="search-box-container"
+        >
             <svg-icon class="search" src="/assets/img/icons/search.svg"></svg-icon>
             <input #searchBox class="search-box" placeholder="Filtrar" (input)="onSearch($event)" />
         </div>

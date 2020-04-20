@@ -10,7 +10,6 @@
     padding: 0 20px;
     border-radius: 10px;
     border: 1px solid #663366;
-
     outline: none;
 
     &::-webkit-input-placeholder {
@@ -35,5 +34,11 @@
 
     @include tablet {
         height: 50px;
+    }
+
+    &.disabled {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
     }
 }

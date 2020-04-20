@@ -42,6 +42,10 @@ $maxItems: 5;
             text-overflow: ellipsis;
             width: 100%;
         }
+
+        &.disabled + .arrow {
+            display: none;
+        }
     }
 
     svg-icon {

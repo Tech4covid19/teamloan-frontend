@@ -6,4 +6,5 @@
     (change)="onUpdate($event)"
     (input)="onUpdate($event)"
     [attr.disabled]="formControl.disabled ? 'disabled' : null"
+    [ngClass]="{ disabled: formControl.disabled }"
 />
