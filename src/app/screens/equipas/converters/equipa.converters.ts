@@ -49,7 +49,7 @@ export class EquipaConverters {
                     }
                 })
             },
-            obs: posting.notes
+            obs: posting.notes || ''
         };
     }
 }
