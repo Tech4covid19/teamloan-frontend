@@ -6,6 +6,7 @@ import { EditEquipaRoutingModule } from './edit-equipa.routing.module';
 import { FormNotifierFactory } from 'src/app/form-tools/validators/form-notifier.factory';
 import { EditEquipaViewComponent } from './components/add-equipa-view/edit-equipa-view.component';
 import { NgModule } from '@angular/core';
+import { PostingResolver } from 'src/app/resolvers/posting.resolver';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NgModule } from '@angular/core';
         CommonModule
     ],
     providers: [
-        FormNotifierFactory
+        FormNotifierFactory,
+        PostingResolver
     ]
 })
 export class EditEquipaModule {}

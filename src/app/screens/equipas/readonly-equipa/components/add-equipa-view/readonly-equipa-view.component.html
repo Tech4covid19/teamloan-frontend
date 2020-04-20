@@ -1,7 +1,8 @@
 <h1 class="title">Detalhes</h1>
 <app-equipa-form-container [initialValue]="initialValue">
     <app-button
-        url="/equipas/edit"
+        *ngIf="hasPermission$ | async"
+        [url]="url"
         class="button"
         type="button"
         size="fit"

@@ -51,4 +51,12 @@ export class PostingService extends BaseService {
         return this.request<Posting>(METHOD.GET, url, httpOptions)
         .pipe(map((res) => new Posting(res)));
     }
+
+    public update(postingUUID: string, userUUID: string, posting: Posting): Observable<any> {
+        const httpOptions = {
+            headers: this.headers
+        };
+        const url = `${environment.backend.url}${Company.URL}/${userUUID}/${Posting.URL}/${postingUUID}`;
+        return this.httpClient.patch(url, posting, httpOptions);
+    }
 }

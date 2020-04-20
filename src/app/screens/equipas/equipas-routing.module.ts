@@ -15,7 +15,7 @@ export const routes: Routes = [
                 loadChildren: () => import('./add-equipa/add-equipa.module').then(m => m.AddEquipaModule),
             },
             {
-                path: 'edit',
+                path: ':id/edit',
                 pathMatch: 'full',
                 loadChildren: () => import('./edit-equipa/edit-equipa.module').then(m => m.EditEquipaModule),
             },
