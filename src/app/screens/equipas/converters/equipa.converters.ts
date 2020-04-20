@@ -19,6 +19,7 @@ export class EquipaConverters {
                 uuid: equipaViewModel.concelho
             }),
             intent: INTENT.LEND,
+            notes: equipaViewModel.obs,
             jobs: equipaViewModel.jobsData.jobs
             .filter(j => j.job && j.quantity)
             .map(j => {
@@ -48,7 +49,7 @@ export class EquipaConverters {
                     }
                 })
             },
-            obs: posting.status
+            obs: posting.notes
         };
     }
 }

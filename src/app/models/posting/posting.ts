@@ -32,6 +32,8 @@ export class Posting {
 
     uuid: string;
 
+    notes: string;
+
     constructor(values?: any) {
         if (values) {
             Object.assign(this, values);
