@@ -33,4 +33,22 @@ export class EquipaConverters {
         });
         return posting;
     }
+
+    public static postingToEquipaViewModel(posting: Posting): EquipaViewModel {
+        return {
+            distrito: posting.district.uuid,
+            concelho: posting.municipality.uuid,
+            nome: posting.title,
+            jobsData: {
+                jobs: posting.jobs.map(j => {
+                    return {
+                        job: j.job.uuid,
+                        quantity: Number(j['number-of-people']),
+                        last: false
+                    }
+                })
+            },
+            obs: posting.status
+        };
+    }
 }

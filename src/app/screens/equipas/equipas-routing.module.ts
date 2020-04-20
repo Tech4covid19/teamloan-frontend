@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EquipasMainComponent } from './equipas-main.component';
+import { PostingResolver } from 'src/app/resolvers/posting.resolver';
 
 export const routes: Routes = [
     {
@@ -19,7 +20,7 @@ export const routes: Routes = [
                 loadChildren: () => import('./edit-equipa/edit-equipa.module').then(m => m.EditEquipaModule),
             },
             {
-                path: 'details',
+                path: ':id/details',
                 pathMatch: 'full',
                 loadChildren: () => import('./readonly-equipa/readonly-equipa.module').then(m => m.ReadonlyEquipaModule),
             }

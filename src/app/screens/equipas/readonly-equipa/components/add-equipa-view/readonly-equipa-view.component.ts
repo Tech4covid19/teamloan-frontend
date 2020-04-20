@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EquipaViewModel } from '../../../components/equipa-form/equipa.viewmodel';
+import { EquipaConverters } from '../../../converters/equipa.converters';
 
 @Component({
     selector: 'app-readonly-equipa-view',
@@ -7,18 +10,11 @@ import { Component } from '@angular/core';
 })
 export class ReadonlyEquipaViewComponent {
 
-    public initialValue = {
-        distrito: '1db42e06-4f0d-b121-a428-f81d8ed40fba', // aveiro
-        concelho: '58afc4d6-32ab-47c0-b659-5647fb3a437b', // anadia
-        nome: 'teste nome',
-        jobsData: { jobs: [
-            { job: 'b200e7be-0c3b-4502-8d7e-e461e7fdb452', quantity: 1, last: false },
-            { job: '9567032c-78b3-407b-b162-8ce9ee09fdf3', quantity: 2, last: true }
-        ] },
-        obs: 'dsdas'
-    };
+    public initialValue: EquipaViewModel = null;
 
-    constructor() {
+    constructor(private activatedRoute: ActivatedRoute) {
+        const posting = this.activatedRoute.snapshot.data.posting;
+        this.initialValue = EquipaConverters.postingToEquipaViewModel(posting);
     }
 
 }
