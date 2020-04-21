@@ -13,9 +13,11 @@
     }
 
     @include tablet {
+        width: 100%;
+        max-width: 1080px;
         padding-bottom: 43px;
+        margin: 0 auto;
         margin-bottom: 64px;
-        margin: 30px;
     }
 
     .form-container {

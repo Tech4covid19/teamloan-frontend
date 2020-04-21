@@ -9,6 +9,7 @@ $maxItems: 5;
     display: flex;
     flex: 1;
     position: relative;
+    width: 100%;
 
     &.is-active {
         .arrow {
@@ -46,6 +47,10 @@ $maxItems: 5;
             &.placeholder {
                 color: var(--color-nobel);
             }
+        }
+
+        &.disabled {
+            cursor: default;
         }
 
         &.disabled + .arrow {

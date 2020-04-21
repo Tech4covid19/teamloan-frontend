@@ -21,19 +21,21 @@
 }
 
 .input-jobs {
-    flex: 1;
+    flex: none;
+
+    @include mobile {
+        width: calc(100% - 17px - 5px);
+        margin-right: 5px;
+    }
+
+    @include tablet {
+        width: calc(100% - 17px - 10px);
+        margin-right: 10px;
+    }
 }
 
 .remove-button {
     cursor: pointer;
-
-    @include mobile {
-        margin-left: 5px;
-    }
-
-    @include tablet {
-        margin-left: 10px;
-    }
 
     svg-icon {
         display: flex;

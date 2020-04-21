@@ -46,6 +46,7 @@
         &.mobile {
             width: 310px;
             height: 7px;
+            margin: 0 auto;
 
             @include tablet {
                 display: none;
