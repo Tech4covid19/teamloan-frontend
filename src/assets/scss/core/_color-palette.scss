@@ -5,7 +5,8 @@ $color-palette: (
     color-cosmic: #663366,
     color-bittersweet: #ff6666,
     color-mine-shaft: #333333,
-    color-nobel: #b3b3b3
+    color-nobel: #b3b3b3,
+    color-bon-jour: #f6f4f6
 );
 :root {
     @each $color-name, $color-value in $color-palette {

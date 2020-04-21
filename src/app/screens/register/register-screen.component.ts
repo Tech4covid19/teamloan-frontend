@@ -50,7 +50,7 @@ export class RegisterScreenComponent {
         const state: FeedbackInterface = {
             status: FEEDBACK_STATUS.SUCCESS,
             title: 'A sua conta foi criada com sucesso',
-            subTitle: 'Um e-mail de confirmação foi enviado para',
+            subTitle: 'Um email de confirmação foi enviado para',
             text: data,
             actionLabel: 'Iniciar sessão',
             url: 'login'

@@ -2,15 +2,25 @@
     <div class="cover-container">
         <img class="cover" [src]="cover" />
     </div>
-    <h1 class="title">{{ title }}</h1>
+    <h1 class="post-title">{{ postCard?.district?.name }}</h1>
+    <h1 class="post-subTitle">{{ postCard?.municipality?.name }}</h1>
     <div class="employees">
         <svg-icon src="/assets/img/icons/employees.svg" class="icon"></svg-icon>
-        <span class="number">{{ amount }}</span>
+        <span class="number">{{ postCard?.jobs.length }}</span>
     </div>
 </div>
 <div class="body">
-    <div class="business-area">Hoterlaria</div>
-    <div class="calendar">
+    <div class="business-area">{{ (postCard?.company)['business-area']?.name }}</div>
+    <ul class="jobs" [ngClass]="{ grid: totalJobs > 3 }">
+        <li *ngFor="let job of jobsGroup">
+            <span class="job-name" title="{{ job.name }}">{{ job.name }}</span>
+            <span class="job-count">({{ job.count }})</span>
+        </li>
+        <li class="job-more" *ngIf="totalJobs > maxJobs">
+            ...
+        </li>
+    </ul>
+    <div class="calendar" *ngIf="false">
         <svg-icon src="/assets/img/icons/calendar.svg" class="icon"></svg-icon>
         <div class="schedule">
             <ul class="days">

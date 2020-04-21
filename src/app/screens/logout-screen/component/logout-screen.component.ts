@@ -7,6 +7,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class LogoutViewComponent {
     constructor(private router: Router, private authService: AuthService) {
-        this.authService.unauthenticate().subscribe(() => this.router.navigate(['/']));
+        this.authService.unauthenticate().subscribe();
     }
 }

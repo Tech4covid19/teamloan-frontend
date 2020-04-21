@@ -10,9 +10,12 @@
                 ULTRAPASSARMOS OS DESAFIOS DO COVID-19.
             </h1>
         </div>
-        <div class="auth-actions">
+        <div class="auth-actions" *ngIf="!isAuthenticated">
             <app-button url="/login" label="Iniciar sessão"></app-button>
             <app-button url="/register" label="Criar nova conta" theme="secundary"></app-button>
+        </div>
+        <div class="main-actions" *ngIf="isAuthenticated">
+            <app-button url="/posts" label="Procurar equipa"></app-button>
         </div>
     </div>
 </div>

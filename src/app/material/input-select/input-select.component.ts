@@ -19,16 +19,6 @@ export class InputSelectComponent extends BaseControlValueAccessor {
     @Input()
     public placeholder = '';
 
-    @Input()
-    public set inputSelectOptions(inputSelectOptions: InputSelectOption[]) {
-        this._inputSelectOptions = inputSelectOptions;
-        this.filteredOptions = this._inputSelectOptions;
-    }
-
-    public get inputSelectOptions(): InputSelectOption[] {
-        return this._inputSelectOptions;
-    }
-
     public filteredOptions: InputSelectOption[] = [];
 
     public focus = false;
@@ -41,10 +31,29 @@ export class InputSelectComponent extends BaseControlValueAccessor {
         super(controlDir);
     }
 
+    @Input()
+    public set inputSelectOptions(inputSelectOptions: InputSelectOption[]) {
+        this._inputSelectOptions = inputSelectOptions;
+        this.filteredOptions = this._inputSelectOptions;
+    }
+
+    public get inputSelectOptions(): InputSelectOption[] {
+        return this._inputSelectOptions;
+    }
+
+    writeValue(obj: any): void {
+        this.value = obj;
+        let selectedOption = null;
+        if (obj) {
+            selectedOption = this.inputSelectOptions.find(option => option.key === obj);
+        }
+        this.selectedValue = selectedOption;
+    }
+
     public toggleFocus() {
         if (this.formControl.disable) {
             this.focus = !this.focus;
-            if (this.focus) {
+            if (this.searchBox && this.focus) {
                 setTimeout(() => this.searchBox.nativeElement.focus(), 300);
             }
         }
@@ -59,17 +68,19 @@ export class InputSelectComponent extends BaseControlValueAccessor {
         this.onOptionSelect(selectedOption);
     }
 
-    public onOptionSelect(option: InputSelectOption) {
+    public onOptionSelect(option?: InputSelectOption) {
+        const value = option ? option.key : '';
         this.selectedValue = option;
-        this.onChangeValue(option.key);
+        this.onChangeValue(value);
         this.toggleFocus();
     }
 
     public onSearch(event: any) {
-        const query = event.target.value.trim();
+        const query = event.target.value.trim().toLocaleLowerCase();
+
         if (query) {
             this.filteredOptions = this.inputSelectOptions.filter(
-                option => option.label.indexOf(query) !== -1
+                option => option.label.trim().toLocaleLowerCase().indexOf(query) !== -1
             );
         } else {
             this.filteredOptions = this.inputSelectOptions;

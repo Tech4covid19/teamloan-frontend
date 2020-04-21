@@ -1,0 +1,90 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    --grid-gap: 15px;
+    --column-width: 372px;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @include tablet {
+        margin: 15px 50px;
+    }
+}
+
+.filter-container {
+    @include tablet {
+    }
+}
+
+.posts-list {
+    @include mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @include tablet {
+        display: grid;
+        column-gap: var(--grid-gap);
+        row-gap: var(--grid-gap);
+        margin-left: var(--grid-gap);
+        grid-template-columns: var(--column-width);
+    }
+
+    @include desktop {
+        grid-template-columns: var(--column-width) var(--column-width);
+    }
+
+    @include widescreen {
+        grid-template-columns: var(--column-width) var(--column-width);
+    }
+
+    @include fullhd {
+        grid-template-columns: var(--column-width) var(--column-width) var(--column-width);
+    }
+}
+
+.empty-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        color: var(--color-cosmic);
+
+        @include mobile {
+            font-size: 20px;
+            line-height: 35px;
+        }
+
+        @include tablet {
+            font-size: 30px;
+            line-height: 70px;
+        }
+    }
+
+    @include mobile {
+        width: var(--column-width);
+    }
+
+    @include tablet {
+        width: var(--column-width);
+    }
+
+    @include desktop {
+        width: calc((var(--column-width) + var(--grid-gap)) * 2);
+    }
+
+    @include widescreen {
+        width: calc((var(--column-width) + var(--grid-gap)) * 2);
+    }
+
+    @include fullhd {
+        width: calc((var(--column-width) + var(--grid-gap)) * 3);
+    }
+}

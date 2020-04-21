@@ -46,6 +46,14 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'my-posts',
+        loadChildren: () =>
+            import('./screens/company-posts-list-screen/company-posts-list-screen.module').then(
+                m => m.CompanyPostsListScreenModule
+            ),
+        pathMatch: 'full'
+    },
+    {
         path: 'login',
         loadChildren: () =>
             import('./screens/login-screen/login-screen.module').then(m => m.LoginViewModule),
@@ -75,7 +83,8 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            useHash: true
+            useHash: true,
+            scrollPositionRestoration: 'enabled'
         })
     ],
     exports: [RouterModule],

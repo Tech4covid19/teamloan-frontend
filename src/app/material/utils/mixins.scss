@@ -16,3 +16,21 @@
         line-height: 26px;
     }
 }
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        color: var(--color-nobel);
+    }
+
+    &::-moz-placeholder {
+        color: var(--color-nobel);
+    }
+
+    &:-ms-input-placeholder {
+        color: var(--color-nobel);
+    }
+
+    &:-moz-placeholder {
+        color: var(--color-nobel);
+    }
+}

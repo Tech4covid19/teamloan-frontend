@@ -1,23 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AbstractPostsList } from 'src/app/components/posts-list/abstract-posts-list';
+import { ACTIONS } from 'src/app/material/post-card/post-card.component';
 
 @Component({
     selector: 'app-posts-list-screen',
     templateUrl: './posts-list-screen.component.html',
     styleUrls: ['./posts-list-screen.component.scss']
 })
-export class PostsListScreenComponent {
-    public actions = ['contact', 'share'];
-
-    public postsList = [];
-
-    constructor() {
-        for (let i = 0; i < 10; i++) {
-            this.postsList.push({
-                cover: '/assets/img/post-card/bg-idanha-a-nova.svg',
-                title: 'Idanha-a-nova',
-                amount: '7',
-                subTitle: 'Hoterlaria'
-            });
-        }
-    }
+export class PostsListScreenComponent extends AbstractPostsList {
+    public actions = [];
 }

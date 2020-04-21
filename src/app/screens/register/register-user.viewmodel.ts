@@ -4,8 +4,7 @@ export interface CompanyViewModel {
     name: string;
     nif: string;
     businessArea: string;
-    address: string;
-    city: string;
+    intent: string;
     postalCode: string;
 }
 

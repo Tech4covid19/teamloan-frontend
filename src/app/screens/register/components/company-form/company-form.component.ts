@@ -1,11 +1,15 @@
 import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormGeneratorService, FormGeneratorServiceToken } from 'src/app/form-tools/interfaces/form-generator.interface';
+import {
+    FormGeneratorService,
+    FormGeneratorServiceToken
+} from 'src/app/form-tools/interfaces/form-generator.interface';
 import { FormValidatorHandler } from 'src/app/form-tools/validators/form-validator.handler';
 import { SimpleFormValueAccessor } from 'src/app/form-tools/value-accessors/simple-form.value.accessor';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { CompanyViewModel } from '../../register-user.viewmodel';
 import { CompanyFormService } from './company-form.service';
+import { INTENT } from 'src/app/models/intent.enum';
 
 @Component({
     selector: 'app-company-form',
@@ -29,9 +33,23 @@ import { CompanyFormService } from './company-form.service';
     ]
 })
 export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewModel> {
-
     @Input()
     public businessAreas: InputSelectOption[];
+
+    public intents: InputSelectOption[] = [
+        {
+            key: INTENT.LEND,
+            label: 'Disponibilizar equipa'
+        },
+        {
+            key: INTENT.SEEK,
+            label: 'Procurar equipa'
+        },
+        {
+            key: INTENT.BOTH,
+            label: 'Ambos'
+        }
+    ];
 
     public errors = {
         name: {
@@ -45,10 +63,7 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
             required: false,
             format: false
         },
-        address: {
-            required: false
-        },
-        city: {
+        intent: {
             required: false
         },
         businessArea: {
@@ -56,7 +71,7 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
         }
     };
 
-    constructor(@Inject(FormGeneratorServiceToken)  companyFormService: FormGeneratorService) {
+    constructor(@Inject(FormGeneratorServiceToken) companyFormService: FormGeneratorService) {
         super(companyFormService);
     }
 

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
+import { AuthenticationStrategy } from 'src/app/services/auth/interfaces/authentication.strategy';
 
 @Component({
     selector: 'app-login-screen',
@@ -26,7 +26,7 @@ export class LoginViewComponent {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private fb: FormBuilder,
-        private authService: AuthService
+        private authService: AuthenticationStrategy
     ) {
         this.form = this.fb.group({
             username: [null, Validators.required],
@@ -59,7 +59,7 @@ export class LoginViewComponent {
     }
 
     private _onLoginSuccess() {
-        const returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
+        const returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/posts';
         this.loginError = false;
         this.router.navigate([returnUrl]);
     }
