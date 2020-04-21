@@ -6,27 +6,13 @@
 
 .input-field {
     @include main-font-style();
+    @include placeholder();
     width: 100%;
     padding: 0 20px;
     border-radius: 10px;
     border: 1px solid #663366;
     outline: none;
-
-    &::-webkit-input-placeholder {
-        color: var(--color-novel);
-    }
-
-    &::-moz-placeholder {
-        color: var(--color-novel);
-    }
-
-    &:-ms-input-placeholder {
-        color: var(--color-novel);
-    }
-
-    &:-moz-placeholder {
-        color: var(--color-novel);
-    }
+    color: var(--color-black);
 
     @include mobile {
         height: 40px;

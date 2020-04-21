@@ -7,7 +7,9 @@
     </select>
     <div class="input-container" (click)="toggleFocus()">
         <div class="input-field" [ngClass]="{ disabled: formControl.disabled }">
-            <span>{{ selectedValue ? selectedValue.label : placeholder }}</span>
+            <span [ngClass]="{ placeholder: !selectedValue }">{{
+                selectedValue ? selectedValue.label : placeholder
+            }}</span>
         </div>
         <svg-icon class="arrow" src="/assets/img/icons/select-arrow.svg"></svg-icon>
     </div>

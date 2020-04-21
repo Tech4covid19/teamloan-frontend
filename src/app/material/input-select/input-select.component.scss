@@ -22,6 +22,7 @@ $maxItems: 5;
 .input-container {
     position: relative;
     width: 100%;
+    background-color: var(--color-white);
 
     .input-field {
         cursor: pointer;
@@ -41,6 +42,10 @@ $maxItems: 5;
             overflow: hidden;
             text-overflow: ellipsis;
             width: 100%;
+
+            &.placeholder {
+                color: var(--color-nobel);
+            }
         }
 
         &.disabled + .arrow {
@@ -112,6 +117,7 @@ select {
 
         .search-box {
             @include main-font-style();
+            @include placeholder();
             width: 100%;
             border: none;
             padding: 0 10px;
