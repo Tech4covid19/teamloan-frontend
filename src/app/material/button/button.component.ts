@@ -6,6 +6,11 @@ export enum THEME {
     SMALL_ACTION = 'small-action'
 }
 
+export enum SIZE {
+    AUTO = 'auto',
+    FIT = 'fit'
+}
+
 export enum ICON_STATUS {
     LOADING = 'loading',
     CHECK = 'success',
@@ -38,6 +43,9 @@ export class ButtonComponent {
 
     @Input()
     public theme: string = THEME.MAIN;
+
+    @Input()
+    public size: string = SIZE.AUTO;
 
     @Input()
     public newPageUrl = false;

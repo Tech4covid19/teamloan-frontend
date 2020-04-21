@@ -1,5 +1,5 @@
-import { FormGroup } from '@angular/forms';
 import { InjectionToken } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 export interface FormGeneratorService {
     getForm(): FormGroup;

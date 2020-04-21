@@ -1,0 +1,66 @@
+<form [formGroup]="form" class="form-container">
+    <div class="fieldset">
+        <h2 class="sub-title">Dados da equipa</h2>
+
+        <app-input-select
+            class="input-element"
+            *ngIf="distritos.length > 0"
+            formControlName="distrito"
+            [inputSelectOptions]="distritos"
+            placeholder="Distrito"
+        ></app-input-select>
+        <div *ngIf="errors.distrito.required" class="error-message">
+            Campo obrigatório
+        </div>
+
+        <app-input-select
+            class="input-element"
+            formControlName="concelho"
+            [inputSelectOptions]="concelhos"
+            placeholder="Concelho"
+        ></app-input-select>
+        <div *ngIf="errors.concelho.required" class="error-message">
+            Campo obrigatório
+        </div>
+
+        <app-input-text
+            class="input-element"
+            formControlName="nome"
+            type="text"
+            placeholder="Nome da equipa"
+        ></app-input-text>
+        <div *ngIf="errors.nome.required" class="error-message">
+            Campo obrigatório
+        </div>
+
+        <h3 class="section-title">Função (Funções)</h3>
+        <app-jobs-form
+            class="input-element"
+            *ngIf="jobOptions.length > 0"
+            [jobOptions]="jobOptions"
+            formControlName="jobsData"
+            [notifier]="notifier"
+        >
+        </app-jobs-form>
+
+        <div class="lines-container">
+            <svg-icon
+                class="lines desktop"
+                src="/assets/img/teams/registration-lines.svg"
+            ></svg-icon>
+            <svg-icon
+                class="lines mobile"
+                src="/assets/img/teams/registration-lines-mobile.svg"
+            ></svg-icon>
+        </div>
+    </div>
+
+    <div class="fieldset">
+        <h2 class="sub-title">Observações</h2>
+        <app-input-textarea
+            class="textarea"
+            formControlName="obs"
+            placeholder="Observações"
+        ></app-input-textarea>
+    </div>
+</form>

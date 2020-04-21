@@ -38,6 +38,10 @@ const routes: Routes = [
             )
     },
     {
+        path: 'equipas',
+        loadChildren: () => import('./screens/equipas/equipas.module').then(m => m.EquipasModule)
+    },
+    {
         path: 'posts',
         loadChildren: () =>
             import('./screens/posts-list-screen/posts-list-screen.module').then(

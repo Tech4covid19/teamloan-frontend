@@ -9,6 +9,7 @@
     border-radius: 10px;
     overflow: hidden;
     background-color: var(--color-white);
+    cursor: pointer;
 }
 
 .header {
@@ -21,12 +22,12 @@
 
     @include mobile {
         min-height: 78px;
-        padding: 0 110px 0 13px;
+        padding: 0 100px 0 13px;
     }
 
     @include tablet {
         min-height: 78px;
-        padding: 0 110px 0 13px;
+        padding: 0 100px 0 13px;
     }
 
     .cover-container {
@@ -47,19 +48,18 @@
         font-family: Work Sans;
         font-style: normal;
         font-weight: bold;
-        text-align: center;
         text-transform: uppercase;
         color: var(--color-white);
         z-index: 0;
 
         @include mobile {
-            font-size: 30px;
-            line-height: 35px;
+            font-size: 26px;
+            line-height: 24px;
         }
 
         @include tablet {
-            font-size: 30px;
-            line-height: 35px;
+            font-size: 26px;
+            line-height: 24px;
         }
     }
 
@@ -67,19 +67,18 @@
         font-family: Work Sans;
         font-style: normal;
         font-weight: bold;
-        text-align: center;
         text-transform: uppercase;
         color: var(--color-white);
         z-index: 0;
 
         @include mobile {
-            font-size: 20px;
-            line-height: 25px;
+            font-size: 18px;
+            line-height: 22px;
         }
 
         @include tablet {
-            font-size: 20px;
-            line-height: 25px;
+            font-size: 18px;
+            line-height: 22px;
         }
     }
 
@@ -154,6 +153,7 @@
         font-weight: 600;
         color: var(--color-cosmic);
         max-width: 290px;
+        height: 45px;
 
         @include mobile {
             font-size: 20px;

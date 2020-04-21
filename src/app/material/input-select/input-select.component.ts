@@ -42,6 +42,7 @@ export class InputSelectComponent extends BaseControlValueAccessor {
     public set inputSelectOptions(inputSelectOptions: InputSelectOption[]) {
         this._inputSelectOptions = inputSelectOptions;
         this.filteredOptions = this._inputSelectOptions;
+        this.writeValue(this.value);
     }
 
     public get inputSelectOptions(): InputSelectOption[] {
@@ -58,7 +59,7 @@ export class InputSelectComponent extends BaseControlValueAccessor {
     }
 
     public toggleFocus() {
-        if (this.formControl.disable) {
+        if (!this.formControl.disabled) {
             this.focus = !this.focus;
             if (this.searchBox && this.focus) {
                 setTimeout(() => this.searchBox.nativeElement.focus(), 300);

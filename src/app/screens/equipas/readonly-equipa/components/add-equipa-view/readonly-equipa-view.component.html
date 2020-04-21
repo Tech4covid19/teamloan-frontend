@@ -1,0 +1,11 @@
+<h1 class="title">Detalhes</h1>
+<app-equipa-form-container [initialValue]="initialValue">
+    <app-button
+        *ngIf="hasPermission$ | async"
+        [url]="url"
+        class="button"
+        type="button"
+        size="fit"
+        label="Editar"
+    ></app-button>
+</app-equipa-form-container>

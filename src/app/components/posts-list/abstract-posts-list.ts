@@ -102,7 +102,15 @@ export abstract class AbstractPostsList implements OnDestroy {
         );
     }
 
+    protected processPost(posts: Posting[]) {
+        return posts.map(p =>
+            Object.assign(p, {
+                url: `/equipas/${p.uuid}/details`
+            })
+        );
+    }
+
     private _onPostingResponse(posts: Posting[], _error?: any) {
-        this.posts = posts ? posts : [];
+        this.posts = posts ? this.processPost(posts) : [];
     }
 }

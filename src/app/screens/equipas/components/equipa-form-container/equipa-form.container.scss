@@ -1,0 +1,37 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    @include mobile {
+        padding-bottom: 25px;
+        margin-bottom: 28px;
+    }
+
+    @include tablet {
+        width: 100%;
+        max-width: 1080px;
+        padding-bottom: 43px;
+        margin: 0 auto;
+        margin-bottom: 64px;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .equipa-form {
+        display: flex;
+        width: 100%;
+
+        @include tablet {
+            margin-bottom: 54px;
+        }
+    }
+}

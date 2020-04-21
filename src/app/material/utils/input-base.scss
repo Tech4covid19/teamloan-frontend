@@ -21,4 +21,9 @@
     @include tablet {
         height: 50px;
     }
+
+    &.disabled {
+        border-color: var(--color-black);
+        cursor: default;
+    }
 }
