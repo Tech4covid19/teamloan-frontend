@@ -19,6 +19,9 @@ export class InputSelectComponent extends BaseControlValueAccessor {
     @Input()
     public placeholder = '';
 
+    @Input()
+    public emptyValueLabel: string;
+
     public filteredOptions: InputSelectOption[] = [];
 
     public focus = false;
@@ -29,6 +32,10 @@ export class InputSelectComponent extends BaseControlValueAccessor {
 
     constructor(public controlDir: NgControl, public elementRef: ElementRef) {
         super(controlDir);
+
+        if (!this.emptyValueLabel) {
+            this.emptyValueLabel = ' - ';
+        }
     }
 
     @Input()

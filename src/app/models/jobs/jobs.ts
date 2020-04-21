@@ -8,7 +8,7 @@ export class Jobs implements ResourceInterface {
 
     job: Job;
 
-    'number-of-people': string;
+    'number-of-people': number;
 
     status: string;
 

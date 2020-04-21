@@ -65,6 +65,12 @@ export class QueryFilter {
                 parameters[QUERY_FILTER_PARAMETERS.MUNICIPALITY]
                     ? parameters[QUERY_FILTER_PARAMETERS.MUNICIPALITY]
                     : ''
+            )
+            .append(
+                QUERY_FILTER_PARAMETERS.JOB,
+                parameters[QUERY_FILTER_PARAMETERS.JOB]
+                    ? parameters[QUERY_FILTER_PARAMETERS.JOB]
+                    : ''
             );
     }
 }
