@@ -6,6 +6,7 @@ import { EmailValidator } from 'src/app/form-tools/validators/email.validator';
 import { CompanyService } from 'src/app/services/company/company.service';
 import { OnSubmitEvent } from '../../register/components/register-form/register-form.component';
 import { Router } from '@angular/router';
+import { FEEDBACK_STATUS, FeedbackInterface } from 'src/app/components/feedback/feedback.interface';
 
 export interface RequestPasswordOutcome {
     emailFound: boolean;
@@ -29,6 +30,15 @@ export class RequestPasswordViewComponent {
     public submitting = false;
 
     public buttonStatus: string = ICON_STATUS.LOADING;
+
+    public successFeedback: FeedbackInterface = {
+        status: FEEDBACK_STATUS.SUCCESS,
+        title: 'Email de recuperação de password enviado com sucesso',
+        subTitle: undefined,
+        text: undefined,
+        actionLabel: undefined,
+        url: ''
+    };
 
     constructor(
         private fb: FormBuilder,
@@ -64,7 +74,7 @@ export class RequestPasswordViewComponent {
                 .requestPassword(email)
                 .pipe(tap(() => submitEvent.callback()))
                 .subscribe(
-                    resp => this.redirectToConfirmPage(email),
+                    resp => this.showSuccessfulRequest(email),
                     err => submitEvent.callback(err)
                 );
         }
@@ -81,7 +91,5 @@ export class RequestPasswordViewComponent {
         this.emailNotFound = true;
     }
 
-    private redirectToConfirmPage(email: string) {
-        this.router.navigateByUrl('/confirmation', { state: { email: email } });
-    }
+    private showSuccessfulRequest(email: string) {}
 }

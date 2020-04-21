@@ -42,6 +42,7 @@ export class CompanyService extends BaseService {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.URL}`;
         const dummyResponse = {
+            // TODO: general error here? privacy issues...
             emailFound: true,
             emailToResetPasswordSent: true
         };
