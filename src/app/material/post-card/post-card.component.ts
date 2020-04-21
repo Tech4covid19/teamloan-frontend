@@ -79,7 +79,6 @@ export class PostCardComponent {
         if (jobsList.length) {
             jobsList.map(jobs => {
                 const job = jobs.job;
-                console.log(job);
                 const index = jobsGroup.findIndex(jobElem => jobElem.uuid === job.uuid);
                 if (index === -1) {
                     jobsGroup.push({ ...job, ...{ count: jobs["number-of-people"] } });
@@ -97,13 +96,7 @@ export class PostCardComponent {
     }
 
     private _getTotalPeople(jobsList: Jobs[]): number {
-        var totalPeople = 0;
-        if (jobsList.length) {
-            for(var i = 0; i < jobsList.length; i++){
-                totalPeople += jobsList[i]["number-of-people"];
-            }
-        }
-
-        return totalPeople;
+        let numPeopleList = jobsList.map(j => j["number-of-people"]);
+        return numPeopleList.reduce((numPeopleSum, numPeople) => numPeopleSum + numPeople);
     }
 }
