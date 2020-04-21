@@ -23,6 +23,7 @@
                 <app-input-select
                     [formControlName]="queryFilterParameters.DISTRICT"
                     [inputSelectOptions]="districtOptions"
+                    emptyValueLabel="Todos"
                     placeholder="Todos"
                 ></app-input-select>
             </fieldset>
@@ -33,6 +34,7 @@
                 <app-input-select
                     [formControlName]="queryFilterParameters.MUNICIPALITY"
                     [inputSelectOptions]="municipalityOptions"
+                    emptyValueLabel="Todos"
                     placeholder="Todos"
                 ></app-input-select>
             </fieldset>
@@ -41,10 +43,11 @@
     <div class="filter-container">
         <div *ngIf="sectorOptions?.length > 0" class="filter-component">
             <fieldset>
-                <label class="label" for="sector">Sector</label>
+                <label class="label" for="sector">Setor</label>
                 <app-input-select
                     [formControlName]="queryFilterParameters.BUSINESS_AREA"
                     [inputSelectOptions]="sectorOptions"
+                    emptyValueLabel="Todos"
                     placeholder="Todos"
                 ></app-input-select>
             </fieldset>
@@ -55,6 +58,7 @@
                 <app-input-select
                     [formControlName]="queryFilterParameters.JOB"
                     [inputSelectOptions]="functionOptions"
+                    emptyValueLabel="Todas"
                     placeholder="Todas"
                 ></app-input-select>
             </fieldset>
