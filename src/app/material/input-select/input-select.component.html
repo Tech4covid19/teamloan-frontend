@@ -21,7 +21,7 @@
         <div class="dropdown-content">
             <ul class="dropdown">
                 <li (click)="onOptionSelect()" class="dropdown-item empty-item">
-                    <span> - </span>
+                    <span>{{ emptyValueLabel }}</span>
                 </li>
                 <li
                     *ngFor="let option of filteredOptions"
