@@ -12,6 +12,7 @@
 
 .input-job {
     display: flex;
+    flex-direction: column;
 
     @include mobile {
         width: calc(60% - 5px);
@@ -26,5 +27,6 @@
 
 .input-quantity {
     display: flex;
+    flex-direction: column;
     width: 40%;
 }

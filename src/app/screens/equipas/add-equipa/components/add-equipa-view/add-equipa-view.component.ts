@@ -1,15 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
-import { District } from 'src/app/models/district/district';
-import { INTENT } from 'src/app/models/intent.enum';
-import { Job } from 'src/app/models/jobs/job';
-import { Jobs } from 'src/app/models/jobs/jobs';
-import { Municipality } from 'src/app/models/municipality/municipality';
-import { Posting } from 'src/app/models/posting/posting';
+import { ICON_STATUS } from 'src/app/material/button/button.component';
+import { UUID } from 'src/app/models/uuid-object';
+import { EquipaViewModel } from 'src/app/screens/equipas/components/equipa-form/equipa.viewmodel';
 import { AuthUserService } from 'src/app/services/auth/auth-user.service';
 import { PostingService } from 'src/app/services/posting/posting.service';
 import { EquipaFormContainerComponent } from '../../../components/equipa-form-container/equipa-form.container';
-import { EquipaViewModel } from '../../../components/equipa-form/equipa.viewmodel';
 import { EquipaConverters } from '../../../converters/equipa.converters';
 
 @Component({
@@ -18,35 +15,55 @@ import { EquipaConverters } from '../../../converters/equipa.converters';
     styleUrls: ['./add-equipa-view.component.scss']
 })
 export class AddEquipaViewComponent {
-
     @ViewChild(EquipaFormContainerComponent) formContainer: EquipaFormContainerComponent;
 
     public initialValue = null;
 
+    public buttonStatus = ICON_STATUS;
+
+    public submitting = false;
+
+    public reponseError = false;
+
     constructor(
+        private router: Router,
         private postingService: PostingService,
         private authUserService: AuthUserService
-    ) {
-    }
+    ) {}
 
     public submit() {
+        this.reponseError = false;
         const value = this.formContainer.submit();
-        debugger;
-        if ( !value ) {
-            return;
+
+        if (value && !this.submitting) {
+            this._createPost(value);
         }
-        this.authUserService.getAuthUser()
-        .pipe(
-            mergeMap(user => this.postingService.save(
-                user.uuid,
-                EquipaConverters.equipaViewModelToPosting(value)
-            ))
-        )
-        .subscribe((resp) => {
-            debugger;
-        }, (err) => {
-            debugger;
-        });
     }
 
+    private _createPost(value: EquipaViewModel) {
+        this.submitting = true;
+        this.authUserService
+            .getAuthUser()
+            .pipe(
+                mergeMap(user =>
+                    this.postingService.save(
+                        user.uuid,
+                        EquipaConverters.equipaViewModelToPosting(value)
+                    )
+                )
+            )
+            .subscribe(
+                uuid => this._onSaveResponse(uuid),
+                _ => this._onSaveResponse(null)
+            );
+    }
+
+    private _onSaveResponse(uuid: UUID) {
+        this.submitting = false;
+        if (uuid) {
+            this.router.navigate([`/equipas/${uuid.uuid}/details`]);
+        } else {
+            this.reponseError = true;
+        }
+    }
 }

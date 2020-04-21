@@ -23,8 +23,7 @@
     }
 
     &.disabled {
-        border: none;
-        background-color: transparent;
+        border-color: var(--color-black);
         cursor: default;
     }
 }

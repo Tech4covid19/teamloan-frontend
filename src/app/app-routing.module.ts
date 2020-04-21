@@ -23,11 +23,6 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'equipas',
-        loadChildren: () =>
-            import('./screens/equipas/equipas.module').then(m => m.EquipasModule)
-    },
-    {
         path: 'confirmation',
         loadChildren: () =>
             import('./screens/confirmation-screen/confirmation-screen.module').then(
@@ -41,6 +36,10 @@ const routes: Routes = [
             import('./screens/user-activation-screen/user-activation-screen.module').then(
                 m => m.UserActivationScreenModule
             )
+    },
+    {
+        path: 'equipas',
+        loadChildren: () => import('./screens/equipas/equipas.module').then(m => m.EquipasModule)
     },
     {
         path: 'posts',

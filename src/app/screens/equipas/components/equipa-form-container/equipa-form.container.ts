@@ -2,7 +2,10 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FormNotifier, FormNotifierFactory } from 'src/app/form-tools/validators/form-notifier.factory';
+import {
+    FormNotifier,
+    FormNotifierFactory
+} from 'src/app/form-tools/validators/form-notifier.factory';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { ResourceInterface } from 'src/app/models/resource.interface';
 import { DistrictService } from 'src/app/services/district/district.service';
@@ -20,7 +23,6 @@ export abstract class FormContainer {
     styleUrls: ['./equipa-form.container.scss']
 })
 export class EquipaFormContainerComponent {
-
     public notifier: FormNotifier;
 
     public districtOptions$: Observable<InputSelectOption[]> = new Observable();
@@ -35,12 +37,12 @@ export class EquipaFormContainerComponent {
     public set initialValue(initialValue) {
         this._initialValue = initialValue;
         this.form = this.getForm();
-    };
+    }
 
     public form: FormGroup;
 
     constructor(
-        private fb: FormBuilder, 
+        private fb: FormBuilder,
         private formNotifierFactory: FormNotifierFactory,
         private districtService: DistrictService,
         private municipalityService: MunicipalityService,
@@ -52,9 +54,8 @@ export class EquipaFormContainerComponent {
     }
 
     public submit(): EquipaViewModel {
-        console.log('form', this.form);
         this.notifier.triggerValidation();
-        if ( this.form.valid ) {
+        if (this.form.valid) {
             return this.form.value.equipa;
         }
         return null;
@@ -66,7 +67,7 @@ export class EquipaFormContainerComponent {
 
     private getForm(): FormGroup {
         return this.fb.group({
-            equipa: this._initialValue,
+            equipa: this._initialValue
         });
     }
 
@@ -77,7 +78,7 @@ export class EquipaFormContainerComponent {
     }
 
     private _fetchMunicipalities(districtId: string) {
-        if ( !districtId ) {
+        if (!districtId) {
             this.municipalityOptions$ = of([]);
         }
         this.municipalityOptions$ = this.municipalityService
@@ -97,5 +98,4 @@ export class EquipaFormContainerComponent {
             label: item.name
         }));
     }
-
 }

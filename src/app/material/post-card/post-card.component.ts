@@ -66,7 +66,11 @@ export class PostCardComponent {
 
     private _getCoverUrl(district: District): string {
         if (district.name) {
-            const districtName = district.name.toLowerCase().replace(/ /g, '_');
+            const districtName = district.name
+                .toLowerCase()
+                .replace(/ /g, '_')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
             return `/assets/img/districts/${districtName}.jpg`;
         } else {
             return '';

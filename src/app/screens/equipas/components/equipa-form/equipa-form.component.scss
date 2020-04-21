@@ -57,7 +57,7 @@
             position: absolute;
             width: 7px;
             height: 310px;
-            bottom: 0;
+            top: 30px;
             right: -2px;
 
             @include mobile {
@@ -108,4 +108,9 @@
         margin-left: 5px;
         margin-bottom: 3px;
     }
+}
+
+.textarea {
+    display: flex;
+    height: 254px;
 }

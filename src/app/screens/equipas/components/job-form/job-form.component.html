@@ -1,21 +1,22 @@
 <div [formGroup]="form" class="job-form">
-    <app-input-select
-        class="input-job"
-        formControlName="job"
-        [inputSelectOptions]="jobOptions"
-        placeholder="Função"
-    ></app-input-select>
-    <div *ngIf="errors.job.required" class="error-message">
-        Campo obrigatório
+    <div class="input-job">
+        <app-input-select
+            formControlName="job"
+            [inputSelectOptions]="jobOptions"
+            placeholder="Função"
+        ></app-input-select>
+        <div *ngIf="errors.job.required" class="error-message">
+            Campo obrigatório
+        </div>
     </div>
-
-    <app-input-text
-        class="input-quantity"
-        formControlName="quantity"
-        type="number"
-        placeholder="N Pessoas"
-    ></app-input-text>
-    <div *ngIf="errors.quantity.required" class="error-message">
-        Campo obrigatório
+    <div class="input-quantity">
+        <app-input-text
+            formControlName="quantity"
+            type="number"
+            placeholder="N Pessoas"
+        ></app-input-text>
+        <div *ngIf="errors.quantity.required" class="error-message">
+            Campo obrigatório
+        </div>
     </div>
 </div>
