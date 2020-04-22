@@ -80,8 +80,8 @@ export abstract class AbstractPostsList implements OnDestroy {
             .pipe(map(items => this._getInputSelectOptions(items)));
     }
 
-    private _getInputSelectOptions(businessAreas: ResourceInterface[]): InputSelectOption[] {
-        return businessAreas.map(item => ({
+    private _getInputSelectOptions(resource: ResourceInterface[]): InputSelectOption[] {
+        return resource.map(item => ({
             key: item.uuid,
             label: item.name
         }));
