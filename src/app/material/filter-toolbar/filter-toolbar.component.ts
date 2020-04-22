@@ -70,7 +70,9 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
             .get(QUERY_FILTER_PARAMETERS.DISTRICT)
             .valueChanges.pipe(takeUntil(this._subscriptions))
             .subscribe(x => {
-                this.form.get(QUERY_FILTER_PARAMETERS.MUNICIPALITY).setValue('');
+                this.form
+                    .get(QUERY_FILTER_PARAMETERS.MUNICIPALITY)
+                    .setValue('', { emitEvent: false });
                 this.municipalityOptions = [];
             });
     }
