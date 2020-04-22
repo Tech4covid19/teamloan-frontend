@@ -105,7 +105,7 @@ export abstract class AbstractPostsList implements OnDestroy {
     protected processPost(posts: Posting[]) {
         return posts.map(p =>
             Object.assign(p, {
-                url: `/equipas/${p.uuid}/details`
+                url: `/posts/${p.uuid}/details`
             })
         );
     }
