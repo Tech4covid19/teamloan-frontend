@@ -68,6 +68,10 @@
         display: flex;
         width: 100%;
 
+        @include mobile {
+            flex-direction: column;
+        }
+
         @include tablet {
             margin-bottom: 54px;
         }
