@@ -10,6 +10,9 @@
     overflow: hidden;
     background-color: var(--color-white);
     cursor: pointer;
+    a {
+        text-decoration: none;
+    }
 }
 
 .header {
