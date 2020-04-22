@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subject, Subscription, Observable } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { THEME } from 'src/app/material/button/button.component';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
