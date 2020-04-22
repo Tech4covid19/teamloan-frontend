@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
+import { Subject, Subscription, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { THEME } from 'src/app/material/button/button.component';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
@@ -66,6 +66,13 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
         this.form.valueChanges.pipe(takeUntil(this._subscriptions)).subscribe(() => {
             this.emitFilterChangeEvent();
         });
+        this.form
+            .get(QUERY_FILTER_PARAMETERS.DISTRICT)
+            .valueChanges.pipe(takeUntil(this._subscriptions))
+            .subscribe(x => {
+                this.form.get(QUERY_FILTER_PARAMETERS.MUNICIPALITY).setValue('');
+                this.municipalityOptions = [];
+            });
     }
 
     onIntentChange(newIntent: INTENT) {
