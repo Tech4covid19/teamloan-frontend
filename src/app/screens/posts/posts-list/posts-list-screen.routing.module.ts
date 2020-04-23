@@ -22,7 +22,7 @@ const routes: Routes = [
                 },
                 {
                     icon: {
-                        url: '/assets/img/icons/teams.svg',
+                        url: '/assets/img/icons/edit-team.svg',
                         theme: LINK_ICON_SIZES.REGULAR
                     },
                     label: 'Minhas Equipas',
