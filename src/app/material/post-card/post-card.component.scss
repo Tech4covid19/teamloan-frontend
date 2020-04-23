@@ -98,13 +98,15 @@
         align-items: center;
 
         @include mobile {
-            width: 81px;
+            min-width: 81px;
+            max-width: 120px;
             height: 103px;
             padding: 13px 0;
         }
 
         @include tablet {
-            width: 81px;
+            min-width: 81px;
+            max-width: 120px;
             height: 103px;
             padding: 13px 0;
         }
