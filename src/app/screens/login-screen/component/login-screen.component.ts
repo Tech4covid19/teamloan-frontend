@@ -9,10 +9,13 @@ import { AuthenticationStrategy } from 'src/app/services/auth/interfaces/authent
     templateUrl: './login-screen.component.html',
     styleUrls: ['./login-screen.component.scss']
 })
+
 export class LoginViewComponent {
     public form: FormGroup;
 
     public loginError = false;
+
+    public loginErrorMessage : string;
 
     public buttonTheme = THEME;
 
@@ -54,7 +57,7 @@ export class LoginViewComponent {
         this.submitting = true;
         this.authService.authenticate(credentials).subscribe(
             data => this._onLoginSuccess(),
-            error => this._onLoginError()
+            error => this._onLoginError(error)
         );
     }
 
@@ -64,8 +67,9 @@ export class LoginViewComponent {
         this.router.navigate([returnUrl]);
     }
 
-    private _onLoginError() {
+    private _onLoginError(error) {
         this.submitting = false;
         this.loginError = true;
+        this.loginErrorMessage = error;
     }
 }
