@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { Company } from 'src/app/models/company/company';
 import { CompanyInterface } from 'src/app/models/company/company.interface';
 import { UUID } from 'src/app/models/uuid-object';
-import { BaseService } from 'src/app/services/base-service/base.service';
+import { BaseService, METHOD } from 'src/app/services/base-service/base.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -33,6 +33,6 @@ export class CompanyService extends BaseService {
     public activate(activationToken: string): Observable<any> {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.URL}/activation/${activationToken}`;
-        return this.httpClient.post(url, {}, httpOptions);
+        return this.request(METHOD.POST, url, httpOptions);
     }
 }

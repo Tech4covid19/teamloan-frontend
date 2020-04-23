@@ -32,10 +32,20 @@ export class UserActivationScreenComponent implements OnInit, OnDestroy {
     }
 
     private _activate(token: string) {
-        this.authService.unauthenticate().subscribe();
-        this.companyService.activate(token).subscribe(
-            () => this._redirectToConfirmPage(true),
-            () => this._redirectToConfirmPage(false)
+        this.authService.unauthenticate(false).subscribe(
+            () => {
+                this.companyService.activate(token).subscribe(
+                    () => {
+                        this._redirectToConfirmPage(true);
+                    },
+                    () => {
+                        this._redirectToConfirmPage(false);
+                    }
+                );
+            },
+            () => {
+                this._redirectToConfirmPage(false);
+            }
         );
     }
 

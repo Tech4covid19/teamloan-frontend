@@ -45,15 +45,19 @@ export class AuthService {
         );
     }
 
-    public unauthenticate(): Observable<any> {
+    public unauthenticate(redirect = true): Observable<any> {
         return this.httpClient.get(`${this._url}logout`).pipe(
             tap(() => {
                 this.clear();
-                this.router.navigate(['/']);
+                if (redirect) {
+                    this.router.navigate(['/']);
+                }
             }),
             catchError(error => {
                 this.clear();
-                this.router.navigate(['/']);
+                if (redirect) {
+                    this.router.navigate(['/']);
+                }
                 return throwError(error);
             })
         );
