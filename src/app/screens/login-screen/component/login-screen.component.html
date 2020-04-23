@@ -27,7 +27,7 @@
                 Campo obrigatório
             </div>
             <div *ngIf="submitted && loginError" class="error-message">
-                Verifique as suas credenciais
+              {{ loginErrorMessage }}
             </div>
         </fieldset>
     </div>

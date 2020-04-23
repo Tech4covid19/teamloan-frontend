@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
@@ -39,6 +39,7 @@ export class AuthService {
             .set('grant_type', 'password');
 
         return this.httpClient.post<TokenInterface>(`${this._url}token`, body).pipe(
+            catchError(this._handleAuthErrorMessage),
             tap(token => this._setToken(token)),
             tap(() => (this.authStore.isAuthenticated = true))
         );
@@ -78,5 +79,21 @@ export class AuthService {
     private _setToken(token: TokenInterface) {
         this.authStore.token = token;
         localStorage.setItem(TOKEN_KEY, token.access_token);
+    }
+
+    private _handleAuthErrorMessage(error: HttpErrorResponse) {
+        let message = 'Ocorreu um erro, por favor tente novamente!';
+        if (error.error instanceof ErrorEvent) {
+            // TODO: A client-side or network error occurred. We should define how to handle it
+        } else {
+            if (error.error.error === 'invalid_grant') {
+                if (error.status === 400) {
+                    message = 'Email não validado! Verifique a sua caixa de email!';
+                } else if (error.status === 401) {
+                    message = 'Verifique as suas credenciais';
+                }
+            }
+        }
+        return throwError(message);
     }
 }
