@@ -39,7 +39,7 @@ export class AuthService {
             .set('grant_type', 'password');
 
         return this.httpClient.post<TokenInterface>(`${this._url}token`, body).pipe(
-            catchError(this.handleAuthErrorMessage),
+            catchError(this._handleAuthErrorMessage),
             tap(token => this._setToken(token)),
             tap(() => (this.authStore.isAuthenticated = true))
         );
@@ -81,7 +81,7 @@ export class AuthService {
         localStorage.setItem(TOKEN_KEY, token.access_token);
     }
 
-    private handleAuthErrorMessage(error: HttpErrorResponse) {
+    private _handleAuthErrorMessage(error: HttpErrorResponse) {
         let message = 'Ocorreu um erro!';
         if (error.error instanceof ErrorEvent) {
             console.error(
