@@ -82,12 +82,9 @@ export class AuthService {
     }
 
     private _handleAuthErrorMessage(error: HttpErrorResponse) {
-        let message = 'Ocorreu um erro!';
+        let message = 'Ocorreu um erro, por favor tente novamente!';
         if (error.error instanceof ErrorEvent) {
-            console.error(
-                'A client-side or network error occurred. We should define how to handle it: ',
-                error.error.message
-            );
+            // TODO: A client-side or network error occurred. We should define how to handle it
         } else {
             if (error.error.error === 'invalid_grant') {
                 if (error.status === 400) {
