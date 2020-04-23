@@ -29,10 +29,4 @@ export class PostsListComponent {
     public posts: Posting[];
 
     public postsList = [];
-
-    constructor(private postsListFilterService: PostsListFilterService) {}
-
-    public filter(query: QueryFilterInterface) {
-        this.postsListFilterService.filter(query);
-    }
 }
