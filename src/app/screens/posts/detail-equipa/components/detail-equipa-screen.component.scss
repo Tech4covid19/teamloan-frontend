@@ -79,6 +79,7 @@
 }
 
 .fieldset {
+    min-width: 0;
     position: relative;
 
     @include mobile {
@@ -164,7 +165,11 @@
         margin-bottom: 3px;
     }
 }
-
+.job-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .input-field {
     display: flex;
     align-items: center;
