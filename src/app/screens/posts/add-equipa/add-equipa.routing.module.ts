@@ -13,7 +13,7 @@ const routes: Routes = [
             routes: [
                 {
                     icon: {
-                        url: '/assets/img/icons/edit-team.svg',
+                        url: '/assets/img/icons/teams.svg',
                         theme: LINK_ICON_SIZES.REGULAR
                     },
                     label: 'Equipas',
@@ -26,7 +26,7 @@ const routes: Routes = [
                         theme: LINK_ICON_SIZES.REGULAR
                     },
                     label: 'Minhas Equipas',
-                    url: '/posts/private/',
+                    url: '/posts/private',
                     isMobile: false
                 }
             ]

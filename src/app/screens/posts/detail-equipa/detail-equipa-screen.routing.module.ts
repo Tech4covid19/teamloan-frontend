@@ -17,7 +17,7 @@ const routes: Routes = [
             routes: [
                 {
                     icon: {
-                        url: '/assets/img/icons/edit-team.svg',
+                        url: '/assets/img/icons/teams.svg',
                         theme: LINK_ICON_SIZES.REGULAR
                     },
                     label: 'Equipas',
