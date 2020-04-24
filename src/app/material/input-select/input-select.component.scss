@@ -183,10 +183,6 @@ select {
             line-height: 19px;
         }
 
-        &.empty-item {
-            text-align: center;
-        }
-
         &:hover,
         &.selected {
             background-color: var(--color-cosmic);

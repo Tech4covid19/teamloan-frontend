@@ -1,10 +1,12 @@
 import { OnInit, Optional, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 
 export class BaseControlValueAccessor implements ControlValueAccessor, OnInit {
     public value: any;
 
     public formControl: FormControl;
+
+    public isRequired = false;
 
     protected onChangeValue: any;
 
@@ -19,6 +21,7 @@ export class BaseControlValueAccessor implements ControlValueAccessor, OnInit {
     ngOnInit() {
         if (this.controlDir) {
             this.formControl = this.controlDir.control as FormControl;
+            this.isRequired = this.isRequiredField(this.formControl);
             this.writeValue(this.formControl.value);
         }
     }
@@ -33,5 +36,25 @@ export class BaseControlValueAccessor implements ControlValueAccessor, OnInit {
 
     registerOnTouched(fn: any): void {
         this.markAsTouched = fn;
+    }
+
+    public isRequiredField(abstractControl: AbstractControl): boolean {
+        if (abstractControl.validator) {
+            const validator = abstractControl.validator({} as AbstractControl);
+            if (validator && validator.required) {
+                return true;
+            }
+        }
+
+        if (abstractControl['controls']) {
+            for (const controlName in abstractControl['controls']) {
+                if (abstractControl['controls'][controlName]) {
+                    if (this.isRequiredField(abstractControl['controls'][controlName])) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

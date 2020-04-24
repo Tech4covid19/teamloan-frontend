@@ -47,6 +47,9 @@ export class AuthService {
 
     public unauthenticate(redirect = true): Observable<any> {
         this.clear();
+        if (redirect) {
+            this.router.navigate(['/']);
+        }
         return of();
         /* return this.httpClient.get(`${this._url}logout`).pipe(
             tap(() => {
