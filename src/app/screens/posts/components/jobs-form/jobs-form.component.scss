@@ -8,16 +8,17 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+
+    @include tablet {
+        min-width: 0;
+    }
 }
 
 .fieldset {
     display: flex;
     flex: 1;
     align-items: center;
-
-    @include tablet {
-        margin-bottom: 10px;
-    }
+    margin-bottom: 10px;
 }
 
 .input-jobs {
