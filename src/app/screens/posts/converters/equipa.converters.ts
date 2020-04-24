@@ -7,12 +7,10 @@ import { Jobs } from 'src/app/models/jobs/jobs';
 import { Job } from 'src/app/models/jobs/job';
 
 export class EquipaConverters {
-
     public static equipaViewModelToPosting(equipaViewModel: EquipaViewModel): Posting {
         const posting = new Posting({
             title: equipaViewModel.nome,
             district: new District({
-                // name: '',
                 uuid: equipaViewModel.distrito
             }),
             municipality: new Municipality({
@@ -21,16 +19,15 @@ export class EquipaConverters {
             intent: INTENT.LEND,
             notes: equipaViewModel.obs,
             jobs: equipaViewModel.jobsData.jobs
-            .filter(j => j.job && j.quantity)
-            .map(j => {
-                return new Jobs({
-                    job: new Job({
-                        // name: '',
-                        uuid: j.job
-                    }),
-                    'number-of-people': j.quantity,
-                });
-            })
+                .filter(j => j.job && j.quantity)
+                .map(j => {
+                    return new Jobs({
+                        job: new Job({
+                            uuid: j.job
+                        }),
+                        'number-of-people': j.quantity
+                    });
+                })
         });
         return posting;
     }
@@ -46,7 +43,7 @@ export class EquipaConverters {
                         job: j.job.uuid,
                         quantity: Number(j['number-of-people']),
                         last: false
-                    }
+                    };
                 })
             },
             obs: posting.notes || ''
