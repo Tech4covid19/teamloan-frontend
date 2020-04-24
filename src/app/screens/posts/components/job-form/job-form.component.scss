@@ -8,6 +8,10 @@
 .job-form {
     display: flex;
     flex: 1;
+
+    @include tablet {
+        min-width: 0;
+    }
 }
 
 .input-job {
