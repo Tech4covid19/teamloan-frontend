@@ -16,7 +16,9 @@
             <h3 class="section-title">Função (Funções)</h3>
             <ng-container *ngFor="let job of posting.jobs">
                 <div class="input-jobs-container">
-                    <div class="input-field input-job">{{ job.job.name }}</div>
+                    <div class="input-field input-job">
+                        <span class="job-name" [title]="job.job.name">{{ job.job.name }}</span>
+                    </div>
                     <div class="input-field input-quantity">{{ job['number-of-people'] }}</div>
                 </div>
             </ng-container>

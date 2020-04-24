@@ -129,13 +129,23 @@
             color: var(--color-cosmic);
 
             @include mobile {
-                font-size: 60px;
+                font-size: 50px;
                 line-height: 70px;
             }
 
             @include tablet {
-                font-size: 60px;
+                font-size: 50px;
                 line-height: 70px;
+            }
+        }
+
+        &.large .number {
+            @include mobile {
+                font-size: 40px;
+            }
+
+            @include tablet {
+                font-size: 40px;
             }
         }
     }

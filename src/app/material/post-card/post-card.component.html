@@ -5,7 +5,7 @@
         </div>
         <h1 class="post-title">{{ postCard?.district?.name }}</h1>
         <h1 class="post-subTitle">{{ postCard?.municipality?.name }}</h1>
-        <div class="employees">
+        <div [ngClass]="{ large: postCard.totalPeople > 99 }" class="employees">
             <svg-icon src="/assets/img/icons/employees.svg" class="icon"></svg-icon>
             <span class="number">{{ postCard.totalPeople }}</span>
         </div>
