@@ -2,7 +2,7 @@ import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/internal/operators';
 import { AuthStore } from 'src/app/services/auth/auth.store';
 import { AccessTokenInterface } from 'src/app/services/auth/interfaces/access-token.interface';
@@ -46,7 +46,9 @@ export class AuthService {
     }
 
     public unauthenticate(redirect = true): Observable<any> {
-        return this.httpClient.get(`${this._url}logout`).pipe(
+        this.clear();
+        return of();
+        /* return this.httpClient.get(`${this._url}logout`).pipe(
             tap(() => {
                 this.clear();
                 if (redirect) {
@@ -60,7 +62,7 @@ export class AuthService {
                 }
                 return throwError(error);
             })
-        );
+        ); */
     }
 
     public isAuthenticated(): Observable<boolean> {
