@@ -13,7 +13,7 @@ export class RegisterConverters {
             email: registerViewModel.user.email,
             vat: registerViewModel.company.nif,
             phone: registerViewModel.user.phone,
-            'zip-code': registerViewModel.company.postalCode,
+            'zip-code': this.uniformZipCodeFormat(registerViewModel.company.postalCode),
             password: registerViewModel.user.password,
             intent: registerViewModel.company.intent
         });
@@ -24,5 +24,15 @@ export class RegisterConverters {
             key: businessArea.uuid,
             label: businessArea.name
         };
+    }
+
+    private static uniformZipCodeFormat(zipCode: string): string {
+        const regexWithDash = /^\d{4}-\d{3}?$/;
+
+        if (regexWithDash.test(zipCode)) {
+            return zipCode;
+        }
+
+        return zipCode.substring(0, 4) + '-' + zipCode.substring(4, 7);
     }
 }
