@@ -4,12 +4,13 @@ import {
     FormGeneratorService,
     FormGeneratorServiceToken
 } from 'src/app/form-tools/interfaces/form-generator.interface';
-import { FormValidatorHandler } from 'src/app/form-tools/validators/form-validator.handler';
 import { SimpleFormValueAccessor } from 'src/app/form-tools/value-accessors/simple-form.value.accessor';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { CompanyViewModel } from '../../register-user.viewmodel';
 import { CompanyFormService } from './company-form.service';
 import { INTENT } from 'src/app/models/intent.enum';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-company-form',
@@ -70,16 +71,24 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
             required: false
         }
     };
+
+    private _subscriptions = new Subject();
+
     constructor(@Inject(FormGeneratorServiceToken) companyFormService: FormGeneratorService) {
         super(companyFormService);
-        const regexZipCodeFirstPart = /^\d{4}$/;
 
-        // this.form.get('postalCode').valueChanges.subscribe(x => {
-        //     console.log('x: ' + x);
-        //     if (regexZipCodeFirstPart.test(x)) {
-        //         this.form.get('postalCode').setValue(x + '-', { emitEvent: false });
-        //     }
-        // });
+        const regex = /^\d{4,7}$/;
+
+        this.form
+            .get('postalCode')
+            .valueChanges.pipe(takeUntil(this._subscriptions))
+            .subscribe(x => {
+                if (regex.test(x)) {
+                    this.form
+                        .get('postalCode')
+                        .setValue(x.substring(0, 4) + '-' + x.substring(4), { emitEvent: false });
+                }
+            });
     }
 
     validate(_: FormControl) {
