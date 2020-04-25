@@ -9,13 +9,12 @@ import { AuthenticationStrategy } from 'src/app/services/auth/interfaces/authent
     templateUrl: './login-screen.component.html',
     styleUrls: ['./login-screen.component.scss']
 })
-
 export class LoginViewComponent {
     public form: FormGroup;
 
     public loginError = false;
 
-    public loginErrorMessage : string;
+    public loginErrorMessage: string;
 
     public buttonTheme = THEME;
 
