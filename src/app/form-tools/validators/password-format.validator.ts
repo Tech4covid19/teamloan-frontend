@@ -1,9 +1,9 @@
 import { FormControl } from '@angular/forms';
 
-const regex = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[^A-Za-z0-9]){1,})(?!.*\s).{9,100}$/;
+const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\[$&,:;=?@#|'<>.\-^*()%!\]])[A-Za-z\d\[$&,:;=?@#|'<>.\-^*()%!\]]{9,100}$/;
 
 export function PasswordFormatValidator(formControl: FormControl) {
-    if ( regex.test(formControl.value) ) {
+    if (regex.test(formControl.value)) {
         return null;
     }
     return {
