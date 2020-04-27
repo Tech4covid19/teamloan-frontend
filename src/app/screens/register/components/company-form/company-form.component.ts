@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input } from '@angular/core';
+import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
     FormGeneratorService,
@@ -33,7 +33,8 @@ import { takeUntil } from 'rxjs/operators';
         }
     ]
 })
-export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewModel> {
+export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewModel>
+    implements OnInit {
     @Input()
     public businessAreas: InputSelectOption[];
 
@@ -76,18 +77,15 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
 
     constructor(@Inject(FormGeneratorServiceToken) companyFormService: FormGeneratorService) {
         super(companyFormService);
+    }
 
-        const regex = /^\d{4,7}$/;
-
+    ngOnInit() {
         this.form
             .get('postalCode')
             .valueChanges.pipe(takeUntil(this._subscriptions))
-            .subscribe(x => {
-                if (regex.test(x)) {
-                    this.form
-                        .get('postalCode')
-                        .setValue(x.substring(0, 4) + '-' + x.substring(4), { emitEvent: false });
-                }
+            .subscribe(value => {
+                console.log(value);
+                this._applyZipCodeMask(value);
             });
     }
 
@@ -97,5 +95,16 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
 
     public getErrors() {
         return this.errors;
+    }
+
+    private _applyZipCodeMask(zipCode: string) {
+        const regex = /^\d{4,7}$/;
+        if (regex.test(zipCode)) {
+            this.form
+                .get('postalCode')
+                .setValue(zipCode.substring(0, 4) + '-' + zipCode.substring(4), {
+                    emitEvent: false
+                });
+        }
     }
 }
