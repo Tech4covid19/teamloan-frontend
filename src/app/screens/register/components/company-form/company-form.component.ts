@@ -70,16 +70,9 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
             required: false
         }
     };
+
     constructor(@Inject(FormGeneratorServiceToken) companyFormService: FormGeneratorService) {
         super(companyFormService);
-        const regexZipCodeFirstPart = /^\d{4}$/;
-
-        // this.form.get('postalCode').valueChanges.subscribe(x => {
-        //     console.log('x: ' + x);
-        //     if (regexZipCodeFirstPart.test(x)) {
-        //         this.form.get('postalCode').setValue(x + '-', { emitEvent: false });
-        //     }
-        // });
     }
 
     validate(_: FormControl) {
