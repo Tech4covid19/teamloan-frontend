@@ -67,12 +67,7 @@ export class PostCardComponent {
 
     private _getCoverUrl(district: District): string {
         if (district.name) {
-            const districtName = district.name
-                .toLowerCase()
-                .replace(/ /g, '_')
-                .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, '');
-            return `/assets/img/districts/${districtName}.jpg`;
+            return `/assets/img/districts/${district.uuid}.jpg`;
         } else {
             return '';
         }
@@ -85,9 +80,9 @@ export class PostCardComponent {
                 const job = jobs.job;
                 const index = jobsGroup.findIndex(jobElem => jobElem.uuid === job.uuid);
                 if (index === -1) {
-                    jobsGroup.push({ ...job, ...{ count: jobs["number-of-people"] } });
+                    jobsGroup.push({ ...job, ...{ count: jobs['number-of-people'] } });
                 } else {
-                    jobsGroup[index].count += jobs["number-of-people"];
+                    jobsGroup[index].count += jobs['number-of-people'];
                 }
             });
         }
@@ -100,7 +95,7 @@ export class PostCardComponent {
     }
 
     private _getTotalPeople(jobsList: Jobs[]): number {
-        let numPeopleList = jobsList.map(j => j["number-of-people"]);
+        let numPeopleList = jobsList.map(j => j['number-of-people']);
         return numPeopleList.reduce((numPeopleSum, numPeople) => numPeopleSum + numPeople);
     }
 }
