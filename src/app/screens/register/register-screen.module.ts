@@ -12,13 +12,15 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserFormService } from './components/user-form/user-form.service';
 import { RegisterScreenComponent } from './register-screen.component';
 import { RegisterScreenRoutingModule } from './register-screen.routing.module';
+import { ZipCodeDirective } from './components/company-form/zip-code.directive';
 
 @NgModule({
     declarations: [
         RegisterScreenComponent,
         CompanyFormComponent,
         RegisterFormComponent,
-        UserFormComponent
+        UserFormComponent,
+        ZipCodeDirective
     ],
     imports: [
         ReactiveFormsModule,
@@ -35,5 +37,4 @@ import { RegisterScreenRoutingModule } from './register-screen.routing.module';
         FormNotifierFactory
     ]
 })
-export class RegisterScreenModule {
-}
+export class RegisterScreenModule {}

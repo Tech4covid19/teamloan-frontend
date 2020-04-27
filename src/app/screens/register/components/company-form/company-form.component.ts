@@ -1,4 +1,4 @@
-import { Component, forwardRef, Inject, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Inject, Input } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
     FormGeneratorService,
@@ -6,11 +6,9 @@ import {
 } from 'src/app/form-tools/interfaces/form-generator.interface';
 import { SimpleFormValueAccessor } from 'src/app/form-tools/value-accessors/simple-form.value.accessor';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
+import { INTENT } from 'src/app/models/intent.enum';
 import { CompanyViewModel } from '../../register-user.viewmodel';
 import { CompanyFormService } from './company-form.service';
-import { INTENT } from 'src/app/models/intent.enum';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-company-form',
@@ -33,8 +31,7 @@ import { takeUntil } from 'rxjs/operators';
         }
     ]
 })
-export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewModel>
-    implements OnInit {
+export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewModel> {
     @Input()
     public businessAreas: InputSelectOption[];
 
@@ -73,20 +70,8 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
         }
     };
 
-    private _subscriptions = new Subject();
-
     constructor(@Inject(FormGeneratorServiceToken) companyFormService: FormGeneratorService) {
         super(companyFormService);
-    }
-
-    ngOnInit() {
-        this.form
-            .get('postalCode')
-            .valueChanges.pipe(takeUntil(this._subscriptions))
-            .subscribe(value => {
-                console.log(value);
-                this._applyZipCodeMask(value);
-            });
     }
 
     validate(_: FormControl) {
@@ -95,16 +80,5 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
 
     public getErrors() {
         return this.errors;
-    }
-
-    private _applyZipCodeMask(zipCode: string) {
-        const regex = /^\d{4,7}$/;
-        if (regex.test(zipCode)) {
-            this.form
-                .get('postalCode')
-                .setValue(zipCode.substring(0, 4) + '-' + zipCode.substring(4), {
-                    emitEvent: false
-                });
-        }
     }
 }
