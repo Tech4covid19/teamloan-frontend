@@ -17,4 +17,4 @@ import { FeedbackModule } from 'src/app/components/feedback/feedback.module';
     ],
     exports: [RequestPasswordViewComponent]
 })
-export class RequestPasswordViewModule {}
+export class RequestPasswordScreenModule {}
