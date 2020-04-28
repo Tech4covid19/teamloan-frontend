@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FeedbackInterface, FEEDBACK_STATUS } from 'src/app/components/feedback/feedback.interface';
 import { EmailValidator } from 'src/app/form-tools/validators/email.validator';
+import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
 import { CompanyService } from 'src/app/services/company/company.service';
 import { OnSubmitEvent } from '../../register/components/register-form/register-form.component';
-import { Router } from '@angular/router';
-import { FEEDBACK_STATUS, FeedbackInterface } from 'src/app/components/feedback/feedback.interface';
 
+// TODO: companyService response using this interface?
 export interface RequestPasswordOutcome {
     emailFound: boolean;
     emailToResetPasswordSent: boolean;
@@ -21,33 +21,34 @@ export interface RequestPasswordOutcome {
 export class RequestPasswordViewComponent {
     public form: FormGroup;
 
-    public emailNotFound = false;
-
-    public buttonTheme = THEME;
-
     public submitted = false;
-
     public submitting = false;
 
+    public requestSucceeded: boolean = false;
+    public requestErrorMessage: string;
+
+    public buttonTheme = THEME;
     public buttonStatus: string = ICON_STATUS.LOADING;
 
     public successFeedback: FeedbackInterface = {
         status: FEEDBACK_STATUS.SUCCESS,
-        title: 'Email de recuperação de password enviado com sucesso',
-        subTitle: undefined,
+        title: undefined,
+        subTitle: 'Email de recuperação de password enviado para:',
         text: undefined,
-        actionLabel: undefined,
+        actionLabel: 'Voltar',
         url: ''
     };
 
     constructor(
         private fb: FormBuilder,
         private companiesService: CompanyService,
-        private router: Router
+        private activatedRoute: ActivatedRoute
     ) {
         this.form = this.fb.group({
             email: [null, Validators.compose([Validators.required, EmailValidator])]
         });
+
+        this.successFeedback.url = this.activatedRoute.snapshot.queryParams.returnUrl || '/login';
     }
 
     public get emailControl(): FormControl {
@@ -59,37 +60,33 @@ export class RequestPasswordViewComponent {
         console.log(this.emailControl.errors);
         if (!this.submitting && this.form.valid) {
             this.submitting = true;
-            // subscribe service here
-            // on success show confirmation window
-            // on error show  confirmation window with the error
-            //example:
-            //   this.authService.authenticate(this.form.value).subscribe(
-            //     data => this._onLoginSuccess(),
-            //     error => this._onLoginError()
-            // );
 
             const email = this.form.value.email;
 
-            this.companiesService
-                .requestPassword(email)
-                .pipe(tap(() => submitEvent.callback()))
-                .subscribe(
-                    resp => this.showSuccessfulRequest(email),
-                    err => submitEvent.callback(err)
-                );
+            this.companiesService.requestPassword(email).subscribe(
+                resp => this._onPasswordRequestSuccess(email),
+                err => this._onPasswordRequestError(err)
+            );
         }
     }
 
-    private _onPasswordRequestSuccess() {
-        // const returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
-        this.emailNotFound = false;
-        // this.router.navigate([returnUrl]);
-    }
+    private _onPasswordRequestSuccess(email: string) {
+        console.log('SUCCESS');
+        console.log(email);
 
-    private _onPasswordRequestError() {
+        this.successFeedback.text = email;
+
         this.submitting = false;
-        this.emailNotFound = true;
+        this.requestSucceeded = true;
     }
 
-    private showSuccessfulRequest(email: string) {}
+    private _onPasswordRequestError(err) {
+        console.log('ERROR!');
+        console.log(err);
+
+        this.submitting = false;
+        this.requestSucceeded = false;
+        // TODO: use err object to write the matching error message (or just write an incoming error message?)
+        this.requestErrorMessage = 'Email NÃO ENCONTRADO!!!!!!';
+    }
 }
