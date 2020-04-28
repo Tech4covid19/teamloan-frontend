@@ -1,0 +1,36 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    display: flex;
+    flex: 1;
+}
+
+.job-form {
+    display: flex;
+    flex: 1;
+
+    @include tablet {
+        min-width: 0;
+    }
+}
+
+.input-job {
+    display: flex;
+    flex-direction: column;
+
+    @include mobile {
+        width: calc(60% - 5px);
+        margin-right: 5px;
+    }
+
+    @include tablet {
+        width: calc(60% - 10px);
+        margin-right: 10px;
+    }
+}
+
+.input-quantity {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}

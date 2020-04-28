@@ -1,8 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/internal/operators';
 import { AuthStore } from 'src/app/services/auth/auth.store';
 import { AccessTokenInterface } from 'src/app/services/auth/interfaces/access-token.interface';
@@ -39,23 +39,33 @@ export class AuthService {
             .set('grant_type', 'password');
 
         return this.httpClient.post<TokenInterface>(`${this._url}token`, body).pipe(
+            catchError(this._handleAuthErrorMessage),
             tap(token => this._setToken(token)),
             tap(() => (this.authStore.isAuthenticated = true))
         );
     }
 
-    public unauthenticate(): Observable<any> {
-        return this.httpClient.get(`${this._url}logout`).pipe(
+    public unauthenticate(redirect = true): Observable<any> {
+        this.clear();
+        if (redirect) {
+            this.router.navigate(['/']);
+        }
+        return of();
+        /* return this.httpClient.get(`${this._url}logout`).pipe(
             tap(() => {
                 this.clear();
-                this.router.navigate(['/']);
+                if (redirect) {
+                    this.router.navigate(['/']);
+                }
             }),
             catchError(error => {
                 this.clear();
-                this.router.navigate(['/']);
+                if (redirect) {
+                    this.router.navigate(['/']);
+                }
                 return throwError(error);
             })
-        );
+        ); */
     }
 
     public isAuthenticated(): Observable<boolean> {
@@ -78,5 +88,21 @@ export class AuthService {
     private _setToken(token: TokenInterface) {
         this.authStore.token = token;
         localStorage.setItem(TOKEN_KEY, token.access_token);
+    }
+
+    private _handleAuthErrorMessage(error: HttpErrorResponse) {
+        let message = 'Ocorreu um erro, por favor tente novamente!';
+        if (error.error instanceof ErrorEvent) {
+            // TODO: A client-side or network error occurred. We should define how to handle it
+        } else {
+            if (error.error.error === 'invalid_grant') {
+                if (error.status === 400) {
+                    message = 'Email não validado! Verifique a sua caixa de email!';
+                } else if (error.status === 401) {
+                    message = 'Verifique as suas credenciais';
+                }
+            }
+        }
+        return throwError(message);
     }
 }

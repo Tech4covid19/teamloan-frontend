@@ -1,0 +1,19 @@
+<form class="jobs-form-container" [formGroup]="form">
+    <ng-container [formArrayName]="formArrayName">
+        <div *ngFor="let _ of jobs.controls; index as i" class="fieldset">
+            <app-job-form
+                class="input-jobs"
+                [jobOptions]="jobOptions"
+                [isLast]="i === jobs.controls.length - 1"
+                [notifier]="notifier"
+                (jobInsertEvent)="onJobInserted(i)"
+                [formControlName]="i"
+            >
+            </app-job-form>
+
+            <div *ngIf="(i !== jobs.controls.length - 1)" (click)="remove(i)" class="remove-button">
+                <svg-icon src="/assets/img/icons/error.svg"></svg-icon>
+            </div>
+        </div>
+    </ng-container>
+</form>

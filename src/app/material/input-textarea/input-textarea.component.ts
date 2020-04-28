@@ -10,6 +10,8 @@ export class InputTextAreaComponent extends BaseControlValueAccessor {
     @Input()
     placeholder = '';
 
+    public maxlength = 4000;
+
     public onUpdate($event: any) {
         if (!this.formControl.disabled) {
             this.value = $event.target.value;

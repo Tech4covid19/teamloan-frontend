@@ -39,19 +39,8 @@ const routes: Routes = [
     },
     {
         path: 'posts',
-        loadChildren: () =>
-            import('./screens/posts-list-screen/posts-list-screen.module').then(
-                m => m.PostsListScreenModule
-            ),
-        pathMatch: 'full'
-    },
-    {
-        path: 'my-posts',
-        loadChildren: () =>
-            import('./screens/company-posts-list-screen/company-posts-list-screen.module').then(
-                m => m.CompanyPostsListScreenModule
-            ),
-        pathMatch: 'full'
+        loadChildren: () => import('./screens/posts/posts.module').then(m => m.PostsModule),
+        pathMatch: 'prefix'
     },
     {
         path: 'login',

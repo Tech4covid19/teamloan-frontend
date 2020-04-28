@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PostsListScreenComponent } from 'src/app/screens/posts-list-screen/components/posts-list-screen.component';
+import { PostsListScreenComponent } from 'src/app/screens/posts/posts-list/components/posts-list-screen.component';
 
 describe('PostsListScreenComponent', () => {
     let component: PostsListScreenComponent;

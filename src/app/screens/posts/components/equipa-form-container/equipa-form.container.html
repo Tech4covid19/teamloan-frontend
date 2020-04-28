@@ -1,0 +1,14 @@
+<form [formGroup]="form" class="form-container">
+    <app-equipa-form
+        (districtChange)="onDistrictChange($event)"
+        [distritos]="districtOptions$ | async"
+        [concelhos]="municipalityOptions$ | async"
+        [jobOptions]="jobsOptions$ | async"
+        formControlName="equipa"
+        [notifier]="notifier"
+        class="equipa-form"
+    >
+    </app-equipa-form>
+
+    <ng-content></ng-content>
+</form>

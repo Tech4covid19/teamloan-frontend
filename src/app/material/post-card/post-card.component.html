@@ -1,56 +1,58 @@
-<div class="header">
-    <div class="cover-container">
-        <img class="cover" [src]="cover" />
-    </div>
-    <h1 class="post-title">{{ postCard?.district?.name }}</h1>
-    <h1 class="post-subTitle">{{ postCard?.municipality?.name }}</h1>
-    <div class="employees">
-        <svg-icon src="/assets/img/icons/employees.svg" class="icon"></svg-icon>
-        <span class="number">{{ postCard?.jobs.length }}</span>
-    </div>
-</div>
-<div class="body">
-    <div class="business-area">{{ (postCard?.company)['business-area']?.name }}</div>
-    <ul class="jobs" [ngClass]="{ grid: totalJobs > 3 }">
-        <li *ngFor="let job of jobsGroup">
-            <span class="job-name" title="{{ job.name }}">{{ job.name }}</span>
-            <span class="job-count">({{ job.count }})</span>
-        </li>
-        <li class="job-more" *ngIf="totalJobs > maxJobs">
-            ...
-        </li>
-    </ul>
-    <div class="calendar" *ngIf="false">
-        <svg-icon src="/assets/img/icons/calendar.svg" class="icon"></svg-icon>
-        <div class="schedule">
-            <ul class="days">
-                <li class="monday selected">S</li>
-                <li class="tuesday selected">T</li>
-                <li class="wednesday selected">Q</li>
-                <li class="thursday selected">Q</li>
-                <li class="friday selected">S</li>
-                <li class="saturday">S</li>
-                <li class="sunday">D</li>
-            </ul>
-            <ul class="shifts">
-                <li class="shift-1 selected">1º Turno</li>
-                <li class="shift-2 selected">2º Turno</li>
-                <li class="shift-3">3º Turno</li>
-            </ul>
+<a [routerLink]="[postCard?.url]">
+    <div class="header">
+        <div class="cover-container">
+            <img class="cover" [src]="cover" />
+        </div>
+        <h1 class="post-title">{{ postCard?.district?.name }}</h1>
+        <h1 class="post-subTitle">{{ postCard?.municipality?.name }}</h1>
+        <div [ngClass]="{ large: postCard.totalPeople > 99 }" class="employees">
+            <svg-icon src="/assets/img/icons/employees.svg" class="icon"></svg-icon>
+            <span class="number">{{ postCard.totalPeople }}</span>
         </div>
     </div>
-</div>
-<div class="footer">
-    <app-button
-        *ngIf="!!buttonsAction[actionsMap.CONTACT]"
-        label="Contactar"
-        [theme]="buttonTheme"
-        class="contact"
-    ></app-button>
-    <app-button
-        *ngIf="!!buttonsAction[actionsMap.SHARE]"
-        label="Partilhar"
-        [theme]="buttonTheme"
-        class="share"
-    ></app-button>
-</div>
+    <div class="body">
+        <div class="business-area">{{ (postCard?.company)['business-area']?.name }}</div>
+        <ul class="jobs" [ngClass]="{ grid: totalJobs > 3 }">
+            <li *ngFor="let job of jobsGroup">
+                <span class="job-name" title="{{ job.name }}">{{ job.name }}</span>
+                <span class="job-count">({{ job.count }})</span>
+            </li>
+            <li class="job-more" *ngIf="totalJobs > maxJobs">
+                ...
+            </li>
+        </ul>
+        <div class="calendar" *ngIf="false">
+            <svg-icon src="/assets/img/icons/calendar.svg" class="icon"></svg-icon>
+            <div class="schedule">
+                <ul class="days">
+                    <li class="monday selected">S</li>
+                    <li class="tuesday selected">T</li>
+                    <li class="wednesday selected">Q</li>
+                    <li class="thursday selected">Q</li>
+                    <li class="friday selected">S</li>
+                    <li class="saturday">S</li>
+                    <li class="sunday">D</li>
+                </ul>
+                <ul class="shifts">
+                    <li class="shift-1 selected">1º Turno</li>
+                    <li class="shift-2 selected">2º Turno</li>
+                    <li class="shift-3">3º Turno</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer" *ngIf="actions.length !== 0">
+        <app-button
+            *ngIf="!!buttonsAction[actionsMap.CONTACT]"
+            label="Contactar"
+            [theme]="buttonTheme"
+            class="contact"
+        ></app-button>
+        <app-button
+            *ngIf="!!buttonsAction[actionsMap.SHARE]"
+            label="Partilhar"
+            [theme]="buttonTheme"
+            class="share"
+        ></app-button>
+    </div>
+</a>

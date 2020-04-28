@@ -5,7 +5,10 @@ import { Company } from 'src/app/models/company/company';
 export class RegisterConverters {
     public static registerFormToPayload(registerViewModel: RegisterViewModel): Company {
         return new Company({
-            uuid_business_area: registerViewModel.company.businessArea,
+            'business-area': {
+                uuid: registerViewModel.company.businessArea,
+                name: ''
+            },
             name: registerViewModel.company.name,
             email: registerViewModel.user.email,
             vat: registerViewModel.company.nif,

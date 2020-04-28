@@ -2,6 +2,8 @@
 
 :host {
     width: 100%;
+    display: flex;
+    justify-content: center;
 
     .feedback-container {
         background-color: white;
@@ -20,6 +22,7 @@
         @include tablet {
             max-width: 1171px;
             margin: 0 130px 130px 130px;
+            flex: 1;
         }
     }
 
@@ -45,6 +48,14 @@
             line-height: 23px;
             text-transform: uppercase;
             color: var(--color-cosmic);
+
+            @include mobile {
+                padding: 0 10px;
+            }
+
+            @include tablet {
+                padding: 0 20px;
+            }
         }
 
         .status-container {
@@ -92,21 +103,23 @@
     }
 
     .body-section {
-        height: 125px;
         font-family: Work Sans;
         font-style: normal;
         text-align: center;
+        font-weight: 200;
 
         @include mobile {
             font-size: 20px;
             line-height: 32px;
             margin: 30px;
+            padding: 0 10px;
         }
 
         @include tablet {
             font-size: 36px;
             line-height: 50px;
             margin: 82px 0px 33px 0px;
+            padding: 0 20px;
         }
 
         p {

@@ -80,8 +80,8 @@ export abstract class AbstractPostsList implements OnDestroy {
             .pipe(map(items => this._getInputSelectOptions(items)));
     }
 
-    private _getInputSelectOptions(businessAreas: ResourceInterface[]): InputSelectOption[] {
-        return businessAreas.map(item => ({
+    private _getInputSelectOptions(resource: ResourceInterface[]): InputSelectOption[] {
+        return resource.map(item => ({
             key: item.uuid,
             label: item.name
         }));
@@ -102,7 +102,15 @@ export abstract class AbstractPostsList implements OnDestroy {
         );
     }
 
+    protected processPost(posts: Posting[]) {
+        return posts.map(p =>
+            Object.assign(p, {
+                url: `/posts/${p.uuid}/details`
+            })
+        );
+    }
+
     private _onPostingResponse(posts: Posting[], _error?: any) {
-        this.posts = posts ? posts : [];
+        this.posts = posts ? this.processPost(posts) : [];
     }
 }

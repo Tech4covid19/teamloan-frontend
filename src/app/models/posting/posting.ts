@@ -32,6 +32,13 @@ export class Posting {
 
     uuid: string;
 
+    notes: string;
+
+    url: string;
+
+    // infered property
+    totalPeople: number;
+
     constructor(values?: any) {
         if (values) {
             Object.assign(this, values);

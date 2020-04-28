@@ -9,6 +9,7 @@ $maxItems: 5;
     display: flex;
     flex: 1;
     position: relative;
+    width: 100%;
 
     &.is-active {
         .arrow {
@@ -46,6 +47,14 @@ $maxItems: 5;
             &.placeholder {
                 color: var(--color-nobel);
             }
+        }
+
+        &.disabled {
+            cursor: default;
+        }
+
+        &.disabled + .arrow {
+            display: none;
         }
     }
 
@@ -119,9 +128,22 @@ select {
             padding: 0 10px;
             margin-left: 10px;
             outline: none;
-            font-size: 18px;
-            line-height: 21px;
             color: var(--color-black);
+
+            @include mobile {
+                font-size: 15px;
+                line-height: 19px;
+            }
+
+            @include tablet {
+                font-size: 15px;
+                line-height: 19px;
+            }
+
+            @include desktop {
+                font-size: 15px;
+                line-height: 19px;
+            }
         }
     }
 
@@ -141,15 +163,24 @@ select {
         @include main-font-style();
         display: flex;
         align-items: center;
-        font-size: 18px;
-        line-height: 21px;
         color: var(--color-black);
         height: $itemHeightTablet;
         padding: 10px;
         cursor: pointer;
 
-        &.empty-item {
-            text-align: center;
+        @include mobile {
+            font-size: 15px;
+            line-height: 19px;
+        }
+
+        @include tablet {
+            font-size: 15px;
+            line-height: 19px;
+        }
+
+        @include desktop {
+            font-size: 15px;
+            line-height: 19px;
         }
 
         &:hover,

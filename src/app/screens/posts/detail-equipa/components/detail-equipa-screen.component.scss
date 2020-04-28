@@ -1,0 +1,227 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    a {
+        color: var(--color-balck);
+    }
+
+    .title {
+        color: var(--color-cosmic);
+    }
+
+    .button {
+        ::ng-deep {
+            .link {
+                height: 50px;
+
+                @include mobile {
+                    font-size: 30px;
+                    line-height: 35px;
+                }
+
+                @include tablet {
+                    width: 410px;
+                    font-size: 24px;
+                    line-height: 28px;
+                }
+            }
+        }
+    }
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    color: var(--color-black);
+
+    @include mobile {
+        padding-bottom: 25px;
+        margin-bottom: 28px;
+    }
+
+    @include tablet {
+        width: 100%;
+        max-width: 1080px;
+        padding-bottom: 43px;
+        margin: 0 auto;
+        margin-bottom: 64px;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .equipa-form {
+        display: flex;
+        width: 100%;
+
+        @include mobile {
+            flex-direction: column;
+        }
+
+        @include tablet {
+            margin-bottom: 54px;
+        }
+    }
+}
+
+.fieldset {
+    min-width: 0;
+    position: relative;
+
+    @include mobile {
+        padding: 15px 20px;
+    }
+
+    @include tablet {
+        flex: 1;
+        padding: 30px 55px;
+    }
+
+    .fieldset-block:first-child {
+        margin-bottom: 20px;
+    }
+}
+
+.lines-container {
+    @include mobile {
+        margin-top: 30px;
+    }
+
+    .lines {
+        display: flex;
+        fill: var(--color-cosmic);
+
+        &.mobile {
+            width: 310px;
+            height: 7px;
+            margin: 0 auto;
+
+            @include tablet {
+                display: none;
+            }
+        }
+
+        &.desktop {
+            position: absolute;
+            width: 7px;
+            height: 310px;
+            top: 30px;
+            right: -2px;
+
+            @include mobile {
+                display: none;
+            }
+        }
+    }
+}
+
+.sub-title {
+    display: flex;
+    align-items: center;
+    color: var(--color-cosmic);
+
+    @include mobile {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 14px;
+    }
+
+    @include tablet {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 14px;
+    }
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    color: var(--color-black);
+
+    @include mobile {
+        font-size: 15px;
+        line-height: 18px;
+        margin: 2px 0 3px 5px;
+    }
+
+    @include tablet {
+        font-size: 18px;
+        line-height: 21px;
+        margin-left: 5px;
+        margin-bottom: 3px;
+    }
+}
+.job-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.input-field {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    border: 1px solid var(--color-black);
+    border-radius: 10px;
+
+    @include mobile {
+        font-size: 14px;
+        line-height: 16px;
+        height: 40px;
+        margin-bottom: 15px;
+    }
+
+    @include tablet {
+        font-size: 18px;
+        line-height: 22px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    @include desktop {
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    &.textarea {
+        height: 254px;
+        align-items: flex-start;
+        padding: 20px;
+        white-space: pre-wrap;
+        overflow-y: auto;
+    }
+}
+
+.input-jobs-container {
+    display: flex;
+
+    .input-job {
+        @include mobile {
+            width: calc(60% - 5px);
+            margin-right: 5px;
+        }
+
+        @include tablet {
+            width: calc(60% - 10px);
+            margin-right: 10px;
+        }
+    }
+
+    .input-quantity {
+        width: 40%;
+    }
+}

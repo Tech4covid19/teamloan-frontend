@@ -1,8 +1,13 @@
-<textarea
-    class="input-field"
-    [value]="value"
-    [placeholder]="placeholder"
-    (change)="onUpdate($event)"
-    (input)="onUpdate($event)"
-    [attr.disabled]="formControl.disabled ? 'disabled' : null"
-></textarea>
+<div class="textarea-container">
+    <textarea
+        class="input-field"
+        [value]="value"
+        [placeholder]="placeholder"
+        (change)="onUpdate($event)"
+        (input)="onUpdate($event)"
+        [attr.disabled]="formControl.disabled ? 'disabled' : null"
+        [ngClass]="{ disabled: formControl.disabled }"
+        [attr.maxlength]="maxlength"
+    ></textarea>
+    <div class="counter">{{ value?.length || 0 }}/{{ maxlength }}</div>
+</div>

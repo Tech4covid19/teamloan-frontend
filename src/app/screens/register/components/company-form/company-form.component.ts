@@ -4,12 +4,11 @@ import {
     FormGeneratorService,
     FormGeneratorServiceToken
 } from 'src/app/form-tools/interfaces/form-generator.interface';
-import { FormValidatorHandler } from 'src/app/form-tools/validators/form-validator.handler';
 import { SimpleFormValueAccessor } from 'src/app/form-tools/value-accessors/simple-form.value.accessor';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
+import { INTENT } from 'src/app/models/intent.enum';
 import { CompanyViewModel } from '../../register-user.viewmodel';
 import { CompanyFormService } from './company-form.service';
-import { INTENT } from 'src/app/models/intent.enum';
 
 @Component({
     selector: 'app-company-form',

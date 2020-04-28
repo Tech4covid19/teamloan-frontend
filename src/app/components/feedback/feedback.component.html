@@ -9,7 +9,7 @@
 
             <img
                 *ngIf="feedback?.status !== feedbackStatus.LOADING"
-                [ngClass]="{ status: feedback?.status }"
+                [ngClass]="{ success: feedback?.status === feedbackStatus.SUCCESS }"
                 src="/assets/img/icons/like-confirmation.svg"
                 alt="like-confirmation"
             />

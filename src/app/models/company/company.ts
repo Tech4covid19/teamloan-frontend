@@ -4,8 +4,6 @@ import { BusinessArea } from 'src/app/models/business-area/business-area';
 export class Company {
     public static URL = 'company';
 
-    public 'uuid_business_area': string;
-
     public 'business-area': BusinessArea;
 
     public uuid: string;

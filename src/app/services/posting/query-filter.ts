@@ -3,7 +3,7 @@ import { INTENT } from 'src/app/models/intent.enum';
 
 const PAGE_NUMBER = 1;
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 100;
 
 export enum QUERY_FILTER_PARAMETERS {
     PAGE_NUMBER = 'page-number',
@@ -64,6 +64,12 @@ export class QueryFilter {
                 QUERY_FILTER_PARAMETERS.MUNICIPALITY,
                 parameters[QUERY_FILTER_PARAMETERS.MUNICIPALITY]
                     ? parameters[QUERY_FILTER_PARAMETERS.MUNICIPALITY]
+                    : ''
+            )
+            .append(
+                QUERY_FILTER_PARAMETERS.JOB,
+                parameters[QUERY_FILTER_PARAMETERS.JOB]
+                    ? parameters[QUERY_FILTER_PARAMETERS.JOB]
                     : ''
             );
     }

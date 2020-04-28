@@ -35,7 +35,7 @@ export class BaseService {
                 if (error.status === 401) {
                     return this.authService.unauthenticate();
                 }
-                throwError(error);
+                return throwError(error);
             })
         );
     }

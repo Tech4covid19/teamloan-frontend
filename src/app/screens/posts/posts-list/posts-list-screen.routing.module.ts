@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { LINK_ICON_SIZES } from 'src/app/material/link/link-icon.interface';
-import { CompanyPostsListScreenComponent } from 'src/app/screens/company-posts-list-screen/components/company-posts-list-screen.component';
+import { PostsListScreenComponent } from 'src/app/screens/posts/posts-list/components/posts-list-screen.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: CompanyPostsListScreenComponent,
+        component: PostsListScreenComponent,
         pathMatch: 'full',
         data: {
             routes: [
@@ -17,7 +17,7 @@ const routes: Routes = [
                         theme: LINK_ICON_SIZES.REGULAR
                     },
                     label: 'Adicionar',
-                    url: '/my-posts/',
+                    url: '/posts/private/add',
                     isMobile: false
                 },
                 {
@@ -25,13 +25,21 @@ const routes: Routes = [
                         url: '/assets/img/icons/edit-team.svg',
                         theme: LINK_ICON_SIZES.REGULAR
                     },
-                    label: 'Editar',
-                    url: '/my-posts/',
+                    label: 'Minhas Equipas',
+                    url: '/posts/private',
                     isMobile: false
                 }
             ]
         },
         canActivate: [AuthGuard]
+    },
+    {
+        path: ':id/details',
+        pathMatch: 'full',
+        loadChildren: () =>
+            import('src/app/screens/posts/detail-equipa/detail-equipa-screen.module').then(
+                m => m.DetailEquipaScreenModule
+            )
     }
 ];
 
@@ -40,4 +48,4 @@ const routes: Routes = [
     exports: [RouterModule],
     providers: [AuthGuard]
 })
-export class CompanyPostsListScreenRoutingModule {}
+export class PostsListScreenRoutingModule {}

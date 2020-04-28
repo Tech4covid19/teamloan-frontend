@@ -12,6 +12,11 @@
     }
 
     @include tablet {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    @include desktop {
         font-size: 22px;
         line-height: 26px;
     }

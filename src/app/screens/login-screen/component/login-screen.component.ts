@@ -14,6 +14,8 @@ export class LoginViewComponent {
 
     public loginError = false;
 
+    public loginErrorMessage: string;
+
     public buttonTheme = THEME;
 
     public submitted = false;
@@ -54,7 +56,7 @@ export class LoginViewComponent {
         this.submitting = true;
         this.authService.authenticate(credentials).subscribe(
             data => this._onLoginSuccess(),
-            error => this._onLoginError()
+            error => this._onLoginError(error)
         );
     }
 
@@ -64,8 +66,9 @@ export class LoginViewComponent {
         this.router.navigate([returnUrl]);
     }
 
-    private _onLoginError() {
+    private _onLoginError(error) {
         this.submitting = false;
         this.loginError = true;
+        this.loginErrorMessage = error;
     }
 }

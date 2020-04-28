@@ -144,13 +144,19 @@
 
     .menu-item,
     .auth-item {
+        @include tablet {
+            display: flex;
+            justify-content: center;
+            width: 107px;
+        }
+
         &:not(:last-child) {
             @include mobile {
                 margin-right: 20px;
             }
 
             @include tablet {
-                margin-right: 40px;
+                margin-right: 20px;
             }
         }
     }
