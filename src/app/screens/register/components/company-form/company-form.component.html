@@ -27,6 +27,7 @@
         <app-input-text
             formControlName="postalCode"
             zipCode
+            [zipCodeFormControl]="form.get('postalCode')"
             type="text"
             placeholder="Código postal"
         ></app-input-text>

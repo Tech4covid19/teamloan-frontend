@@ -1,9 +1,13 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Directive({
     selector: '[zipCode]'
 })
 export class ZipCodeDirective {
+    @Input()
+    zipCodeFormControl: FormControl;
+
     @HostListener('keyup', ['$event'])
     onInputChange(event) {
         this._applyZipCodeMask(event.srcElement, event.target.value);
@@ -13,6 +17,9 @@ export class ZipCodeDirective {
         const regex = /^\d{4,7}$/;
         if (regex.test(zipCode)) {
             element.value = zipCode.substring(0, 4) + '-' + zipCode.substring(4);
+
+            this.zipCodeFormControl.setValue(element.value, { emitEvent: false });
+            this.zipCodeFormControl.updateValueAndValidity();
         }
     }
 }
