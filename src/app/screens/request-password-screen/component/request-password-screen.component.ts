@@ -55,7 +55,7 @@ export class RequestPasswordViewComponent {
         return this.form.get('email') as FormControl;
     }
 
-    public onSubmit(submitEvent: OnSubmitEvent) {
+    public onSubmit() {
         this.submitted = true;
         console.log(this.emailControl.errors);
         if (!this.submitting && this.form.valid) {
@@ -70,6 +70,7 @@ export class RequestPasswordViewComponent {
         }
     }
 
+    // TODO: remove console.logs
     private _onPasswordRequestSuccess(email: string) {
         console.log('SUCCESS');
         console.log(email);

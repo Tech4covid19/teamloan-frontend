@@ -38,6 +38,14 @@ export class CompanyService extends BaseService {
     }
 
     // TODO: refactor
+    public resetPassword(email: string, password: string): Observable<any> {
+        const httpOptions = { headers: this.headers };
+        const url = `${environment.backend.url}${Company.URL}`;
+        const dummyResponse = {};
+        return of(dummyResponse);
+    }
+
+    // TODO: refactor
     public requestPassword(email: string): Observable<RequestPasswordOutcome> {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.URL}`;
