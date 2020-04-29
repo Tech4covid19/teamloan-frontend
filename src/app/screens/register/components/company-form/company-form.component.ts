@@ -81,4 +81,10 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
     public getErrors() {
         return this.errors;
     }
+
+    public updateZipCode(newZipCode: string) {
+        const zipCodeFormControl = this.form.get('postalCode');
+        zipCodeFormControl.setValue(newZipCode, { emitEvent: false });
+        zipCodeFormControl.updateValueAndValidity();
+    }
 }

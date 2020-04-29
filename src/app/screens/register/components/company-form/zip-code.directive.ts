@@ -1,12 +1,11 @@
-import { Directive, HostListener, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Directive, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Directive({
     selector: '[zipCode]'
 })
 export class ZipCodeDirective {
-    @Input()
-    zipCodeFormControl: FormControl;
+    @Output()
+    zipCodeUpdateNeeded = new EventEmitter<string>();
 
     @HostListener('keyup', ['$event'])
     onInputChange(event) {
@@ -18,8 +17,7 @@ export class ZipCodeDirective {
         if (regex.test(zipCode)) {
             element.value = zipCode.substring(0, 4) + '-' + zipCode.substring(4);
 
-            this.zipCodeFormControl.setValue(element.value, { emitEvent: false });
-            this.zipCodeFormControl.updateValueAndValidity();
+            this.zipCodeUpdateNeeded.emit(element.value);
         }
     }
 }
