@@ -1,26 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators,
-    AbstractControl,
-    ValidatorFn
-} from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { FeedbackInterface, FEEDBACK_STATUS } from 'src/app/components/feedback/feedback.interface';
 import { PasswordFormatValidator } from 'src/app/form-tools/validators/password-format.validator';
 import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
 import { CompanyService } from 'src/app/services/company/company.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-reset-password-screen',
     templateUrl: './reset-password-screen.component.html',
     styleUrls: ['./reset-password-screen.component.scss']
 })
-export class ResetPasswordViewComponent implements OnInit {
+export class ResetPasswordViewComponent implements OnInit, OnDestroy {
     // TODO: este email virá como param?
     public email: string = 'email@teste.com';
 
@@ -46,8 +39,6 @@ export class ResetPasswordViewComponent implements OnInit {
         url: ''
     };
 
-    public currentPassword: string;
-
     constructor(
         private fb: FormBuilder,
         private companiesService: CompanyService,
@@ -63,13 +54,18 @@ export class ResetPasswordViewComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.form.valueChanges.pipe(takeUntil(this._subscriptions)).subscribe(value => {
+        this.form.valueChanges.pipe(takeUntil(this._subscriptions)).subscribe(() => {
             if (this.confirmPasswordControl.value != this.passwordControl.value) {
                 this.confirmPasswordControl.setErrors({ different: true });
             } else {
                 this.confirmPasswordControl.setErrors(null);
             }
         });
+    }
+
+    ngOnDestroy(): void {
+        this._subscriptions.next();
+        this._subscriptions.complete();
     }
 
     public get passwordControl(): FormControl {
@@ -115,29 +111,4 @@ export class ResetPasswordViewComponent implements OnInit {
         // TODO: use err object to write the matching error message (or just write an incoming error message?)
         this.requestErrorMessage = 'Email NÃO ENCONTRADO!!!!!!';
     }
-
-    // private _confirmPasswordValidator = (control: AbstractControl) => {
-    //     return this._checkPasswords(this.form.get('password').value, control.value);
-    // };
-
-    // private _checkPasswords(currentPassword: string, confirmPassword: string) {
-    //     if (this.form.get('password').value == confirmPassword) {
-    //         return null;
-    //     }
-
-    //     return {
-    //         different: true
-    //     };
-    // }
 }
-
-// export function cpValidator(password: string): ValidatorFn {
-//     return (control: AbstractControl) => {
-//         if (control.value == password) {
-//             return null;
-//         }
-//         return {
-//             different: true
-//         };
-//     };
-// }
