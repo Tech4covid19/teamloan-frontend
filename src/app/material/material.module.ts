@@ -11,6 +11,7 @@ import { FilterToolbarComponent } from './filter-toolbar/filter-toolbar.componen
 import { InputSelectComponent } from './input-select/input-select.component';
 import { LinkComponent } from './link/link.component';
 import { InputTextAreaComponent } from 'src/app/material/input-textarea/input-textarea.component';
+import { InputZipCodeComponent } from './input-zip-code/input-zip-code.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { InputTextAreaComponent } from 'src/app/material/input-textarea/input-te
         CheckboxComponent,
         PostCardComponent,
         LinkComponent,
-        FilterToolbarComponent
+        FilterToolbarComponent,
+        InputZipCodeComponent
     ],
     imports: [CommonModule, AngularSvgIconModule, ReactiveFormsModule, RouterModule],
     exports: [
@@ -32,7 +34,8 @@ import { InputTextAreaComponent } from 'src/app/material/input-textarea/input-te
         CheckboxComponent,
         PostCardComponent,
         LinkComponent,
-        FilterToolbarComponent
+        FilterToolbarComponent,
+        InputZipCodeComponent
     ]
 })
 export class MaterialModule {}

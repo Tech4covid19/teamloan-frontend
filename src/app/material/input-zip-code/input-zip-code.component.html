@@ -1,0 +1,11 @@
+<app-input-text
+    formControlName="controlName"
+    type="text"
+    placeholder="Código postal"
+></app-input-text>
+<div *ngIf="errors.required" class="error-message">
+    Campo obrigatório
+</div>
+<div *ngIf="errors.format" class="error-message">
+    Código postal inválido. Formato: XXXX-XXX
+</div>
