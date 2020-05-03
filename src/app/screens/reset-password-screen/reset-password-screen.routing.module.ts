@@ -4,8 +4,7 @@ import { ResetPasswordViewComponent } from './reset-password-screen.component';
 
 const routes: Routes = [
     {
-        //path: ':token',
-        path: '',
+        path: ':token',
         component: ResetPasswordViewComponent,
         pathMatch: 'full'
     },

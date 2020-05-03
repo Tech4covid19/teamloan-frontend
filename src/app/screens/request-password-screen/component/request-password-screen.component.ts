@@ -64,25 +64,18 @@ export class RequestPasswordViewComponent {
         }
     }
 
-    // TODO: remove console.logs
     private _onPasswordRequestSuccess(email: string) {
-        console.log('SUCCESS');
-        console.log(email);
-
         this.successFeedback.text = email;
-
         this.submitting = false;
         this.requestSucceeded = true;
     }
 
-    // TODO: remove console.logs
     private _onPasswordRequestError(err) {
         console.log('ERROR!');
         console.log(err);
 
         this.submitting = false;
         this.requestSucceeded = false;
-        // TODO: confirmar err.errors
-        this.requestErrorMessage = err.errors;
+        this.requestErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.';
     }
 }

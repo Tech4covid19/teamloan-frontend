@@ -29,6 +29,7 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
     public buttonStatus: string = ICON_STATUS.LOADING;
 
     private _subscriptions = new Subject();
+    private _token: string;
 
     public successFeedback: FeedbackInterface = {
         status: FEEDBACK_STATUS.SUCCESS,
@@ -54,6 +55,10 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.activatedRoute.paramMap.subscribe((params: any) => {
+            this._token = params.params.token;
+        });
+
         this.form.valueChanges.pipe(takeUntil(this._subscriptions)).subscribe(() => {
             if (this.confirmPasswordControl.value != this.passwordControl.value) {
                 this.confirmPasswordControl.setErrors({ different: true });
@@ -84,32 +89,25 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
 
             const password = this.form.value.password;
 
-            // TODO: token here
-            this.companiesService.resetPassword(this.email, password, 'token').subscribe(
+            this.companiesService.resetPassword(password, this._token).subscribe(
                 resp => this._onPasswordResetSuccess(this.email),
                 err => this._onPasswordResetError(err)
             );
         }
     }
 
-    // TODO: remove console.logs
     private _onPasswordResetSuccess(email: string) {
-        console.log('SUCCESS');
-        console.log(email);
-
         this.successFeedback.text = email;
-
         this.submitting = false;
         this.requestSucceeded = true;
     }
 
     private _onPasswordResetError(err) {
-        console.log('ERROR!');
+        console.log('ERROR:');
         console.log(err);
 
         this.submitting = false;
         this.requestSucceeded = false;
-        // TODO: use err object to write the matching error message (or just write an incoming error message?)
-        this.requestErrorMessage = 'Email NÃO ENCONTRADO!!!!!!';
+        this.requestErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.';
     }
 }

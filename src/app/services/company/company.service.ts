@@ -36,15 +36,15 @@ export class CompanyService extends BaseService {
         return this.request(METHOD.POST, url, httpOptions);
     }
 
-    public resetPassword(email: string, newPassword: string, resetToken: string): Observable<any> {
+    public resetPassword(newPassword: string, resetToken: string): Observable<any> {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.URL}/reset-password/${resetToken}`;
-        return this.httpClient.post(url, { email: email, newPassword: newPassword }, httpOptions);
+        return this.httpClient.post(url, { password: newPassword }, httpOptions);
     }
 
     public requestPassword(email: string): Observable<any> {
         const httpOptions = { headers: this.headers };
         const url = `${environment.backend.url}${Company.URL}/forgot-password`;
-        return this.httpClient.post(url, email, httpOptions);
+        return this.httpClient.post(url, { email: email }, httpOptions);
     }
 }
