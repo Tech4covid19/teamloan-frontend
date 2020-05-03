@@ -5,13 +5,6 @@ import { FeedbackInterface, FEEDBACK_STATUS } from 'src/app/components/feedback/
 import { EmailValidator } from 'src/app/form-tools/validators/email.validator';
 import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
 import { CompanyService } from 'src/app/services/company/company.service';
-import { OnSubmitEvent } from '../../register/components/register-form/register-form.component';
-
-// TODO: companyService response using this interface?
-export interface RequestPasswordOutcome {
-    emailFound: boolean;
-    emailToResetPasswordSent: boolean;
-}
 
 @Component({
     selector: 'app-request-password-screen',
@@ -33,7 +26,8 @@ export class RequestPasswordViewComponent {
     public successFeedback: FeedbackInterface = {
         status: FEEDBACK_STATUS.SUCCESS,
         title: undefined,
-        subTitle: 'Email de recuperação de password enviado para:',
+        subTitle:
+            'Se estiver registado, irá receber em breve momentos um email de recuperação de password enviado para:',
         text: undefined,
         actionLabel: 'Voltar',
         url: ''
@@ -81,13 +75,14 @@ export class RequestPasswordViewComponent {
         this.requestSucceeded = true;
     }
 
+    // TODO: remove console.logs
     private _onPasswordRequestError(err) {
         console.log('ERROR!');
         console.log(err);
 
         this.submitting = false;
         this.requestSucceeded = false;
-        // TODO: use err object to write the matching error message (or just write an incoming error message?)
-        this.requestErrorMessage = 'Email NÃO ENCONTRADO!!!!!!';
+        // TODO: confirmar err.errors
+        this.requestErrorMessage = err.errors;
     }
 }

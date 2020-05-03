@@ -84,7 +84,8 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
 
             const password = this.form.value.password;
 
-            this.companiesService.resetPassword(this.email, password).subscribe(
+            // TODO: token here
+            this.companiesService.resetPassword(this.email, password, 'token').subscribe(
                 resp => this._onPasswordResetSuccess(this.email),
                 err => this._onPasswordResetError(err)
             );

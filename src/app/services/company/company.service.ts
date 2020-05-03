@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Company } from 'src/app/models/company/company';
 import { CompanyInterface } from 'src/app/models/company/company.interface';
 import { UUID } from 'src/app/models/uuid-object';
 import { BaseService, METHOD } from 'src/app/services/base-service/base.service';
 import { environment } from 'src/environments/environment';
-import { RequestPasswordOutcome } from 'src/app/screens/request-password-screen/component/request-password-screen.component';
 
 @Injectable({
     providedIn: 'root'
@@ -37,37 +36,15 @@ export class CompanyService extends BaseService {
         return this.request(METHOD.POST, url, httpOptions);
     }
 
-    // TODO: refactor
-    public resetPassword(email: string, password: string): Observable<any> {
+    public resetPassword(email: string, newPassword: string, resetToken: string): Observable<any> {
         const httpOptions = { headers: this.headers };
-        const url = `${environment.backend.url}${Company.URL}`;
-        const dummyResponse = {};
-        return of(dummyResponse);
+        const url = `${environment.backend.url}${Company.URL}/reset-password/${resetToken}`;
+        return this.httpClient.post(url, { email: email, newPassword: newPassword }, httpOptions);
     }
 
-    // TODO: refactor
-    public requestPassword(email: string): Observable<RequestPasswordOutcome> {
+    public requestPassword(email: string): Observable<any> {
         const httpOptions = { headers: this.headers };
-        const url = `${environment.backend.url}${Company.URL}`;
-        const dummyResponse = {
-            // TODO: general error here? privacy issues...
-            emailFound: true,
-            emailToResetPasswordSent: true
-        };
-
-        return of(dummyResponse);
-        // return this.httpClient.get(`${environment.backend.url}business-areas`).pipe(
-        //     map((resp: any) =>
-        //         resp.map(i => ({
-        //             name: i.name,
-        //             uuid: i.uuid
-        //         }))
-        //     )
-        // );
-        // return this.httpClient.post(url, email, httpOptions).pipe(
-        //     map((resp: any) => ({
-        //         uuid: resp.uuid
-        //     }))
-        // );
+        const url = `${environment.backend.url}${Company.URL}/forgot-password`;
+        return this.httpClient.post(url, email, httpOptions);
     }
 }
