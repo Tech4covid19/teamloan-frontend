@@ -14,9 +14,6 @@ import { CompanyService } from 'src/app/services/company/company.service';
     styleUrls: ['./reset-password-screen.component.scss']
 })
 export class ResetPasswordViewComponent implements OnInit, OnDestroy {
-    // TODO: este email virá como param?
-    public email: string = 'email@teste.com';
-
     public form: FormGroup;
 
     public submitted = false;
@@ -34,7 +31,7 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
     public successFeedback: FeedbackInterface = {
         status: FEEDBACK_STATUS.SUCCESS,
         title: undefined,
-        subTitle: 'Nova password ataualizada para:',
+        subTitle: 'Nova password atualizada',
         text: undefined,
         actionLabel: 'Ir para Login',
         url: ''
@@ -50,7 +47,6 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
             confirmPassword: [null, Validators.compose([Validators.required])]
         });
 
-        this.successFeedback.text = this.email;
         this.successFeedback.url = this.activatedRoute.snapshot.queryParams.returnUrl || '/login';
     }
 
@@ -84,20 +80,20 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
     public onSubmit() {
         this.submitted = true;
         console.log(this.passwordControl.errors);
+        console.log(this.confirmPasswordControl.errors);
         if (!this.submitting && this.form.valid) {
             this.submitting = true;
 
             const password = this.form.value.password;
 
             this.companiesService.resetPassword(password, this._token).subscribe(
-                resp => this._onPasswordResetSuccess(this.email),
+                resp => this._onPasswordResetSuccess(),
                 err => this._onPasswordResetError(err)
             );
         }
     }
 
-    private _onPasswordResetSuccess(email: string) {
-        this.successFeedback.text = email;
+    private _onPasswordResetSuccess() {
         this.submitting = false;
         this.requestSucceeded = true;
     }
