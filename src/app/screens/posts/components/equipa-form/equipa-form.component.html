@@ -1,7 +1,17 @@
 <form [formGroup]="form" class="form-container">
     <div class="fieldset">
-        <h2 class="sub-title">Dados da equipa</h2>
+        <h3 class="section-title">Eu quero:</h3>
+        <app-input-select
+            class="input-element"
+            formControlName="intent"
+            [inputSelectOptions]="intents"
+            placeholder="Tipo de publicação"
+        ></app-input-select>
+        <div *ngIf="errors.intent.required" class="error-message">
+            Campo obrigatório
+        </div>
 
+        <h2 class="sub-title">Dados da equipa</h2>
         <app-input-select
             class="input-element"
             *ngIf="distritos.length > 0"

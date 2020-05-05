@@ -26,7 +26,7 @@ const DEFAULT_FILTERS: any = {
 })
 export class FilterToolbarComponent implements OnInit, OnDestroy {
     @Input()
-    intentToggle: boolean;
+    intentToggle = true;
 
     @Input()
     sectorOptions: InputSelectOption[] = [];

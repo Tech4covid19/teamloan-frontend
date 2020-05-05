@@ -1,10 +1,22 @@
-import { Component, forwardRef, Inject, OnChanges, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    forwardRef,
+    Inject,
+    Input,
+    OnDestroy,
+    Output
+} from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormGeneratorService, FormGeneratorServiceToken } from 'src/app/form-tools/interfaces/form-generator.interface';
+import {
+    FormGeneratorService,
+    FormGeneratorServiceToken
+} from 'src/app/form-tools/interfaces/form-generator.interface';
 import { SimpleFormValueAccessor } from 'src/app/form-tools/value-accessors/simple-form.value.accessor';
-import { EquipaViewModel } from './equipa.viewmodel';
-import { EquipaFormService } from './equipa-form.service';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
+import { INTENT } from 'src/app/models/intent.enum';
+import { EquipaFormService } from './equipa-form.service';
+import { EquipaViewModel } from './equipa.viewmodel';
 
 @Component({
     selector: 'app-equipa-form',
@@ -27,8 +39,8 @@ import { InputSelectOption } from 'src/app/material/input-select/input-select.co
         }
     ]
 })
-export class EquipaFormComponent extends SimpleFormValueAccessor<EquipaViewModel> implements OnChanges, OnDestroy {
-
+export class EquipaFormComponent extends SimpleFormValueAccessor<EquipaViewModel>
+    implements OnDestroy {
     @Input()
     public jobOptions: InputSelectOption[] = [];
 
@@ -37,7 +49,7 @@ export class EquipaFormComponent extends SimpleFormValueAccessor<EquipaViewModel
 
     @Input()
     public set concelhos(value: InputSelectOption[]) {
-        if ( value ) {
+        if (value) {
             this._concelhos = value;
         } else {
             this._concelhos = [];
@@ -53,7 +65,21 @@ export class EquipaFormComponent extends SimpleFormValueAccessor<EquipaViewModel
     @Output()
     public districtChange: EventEmitter<string> = new EventEmitter();
 
+    public intents: InputSelectOption[] = [
+        {
+            key: INTENT.LEND,
+            label: 'Partilhar a minha equipa'
+        },
+        {
+            key: INTENT.SEEK,
+            label: 'Reforçar a minha equipa'
+        }
+    ];
+
     public errors = {
+        intent: {
+            required: true
+        },
         distrito: {
             required: false
         },
@@ -67,18 +93,16 @@ export class EquipaFormComponent extends SimpleFormValueAccessor<EquipaViewModel
 
     private selectedDistrict = null;
 
-    constructor(@Inject(FormGeneratorServiceToken)  equipaFormService: FormGeneratorService) {
+    constructor(@Inject(FormGeneratorServiceToken) equipaFormService: FormGeneratorService) {
         super(equipaFormService);
-        this.subscriptions.push(this.form.valueChanges.subscribe((v) => {
-            if ( v.distrito !== this.selectedDistrict) {
-                this.districtChange.emit(this.form.get('distrito').value);
-                // this.form.get('concelho').setValue('');
-            }
-            this.selectedDistrict = v.distrito;
-        }));
-    }
-
-    ngOnChanges(changes) {
+        this.subscriptions.push(
+            this.form.valueChanges.subscribe(v => {
+                if (v.distrito !== this.selectedDistrict) {
+                    this.districtChange.emit(this.form.get('distrito').value);
+                }
+                this.selectedDistrict = v.distrito;
+            })
+        );
     }
 
     validate(_: FormControl) {
@@ -88,6 +112,4 @@ export class EquipaFormComponent extends SimpleFormValueAccessor<EquipaViewModel
     public getErrors() {
         return this.errors;
     }
-
 }
-
