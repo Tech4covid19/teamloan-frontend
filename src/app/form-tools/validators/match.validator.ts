@@ -2,14 +2,21 @@ import { FormGroup } from '@angular/forms';
 
 export function MatchValidator(firstInput: string, secondInput: string) {
     return (formGroup: FormGroup) => {
-        if ( formGroup.get(firstInput).pristine || formGroup.get(secondInput).pristine ) {
-            return null;
+        const originControl = formGroup.get(firstInput);
+        const matchControl = formGroup.get(secondInput);
+
+        if (originControl.pristine || matchControl.pristine) {
+            return;
         }
-        if ( formGroup.get(firstInput).value !== formGroup.get(secondInput).value ) {
-            return {
-                match: true
-            };
+
+        if (matchControl.errors && !matchControl.errors.match) {
+            return;
         }
-        return null;
+
+        if (originControl.value !== matchControl.value) {
+            matchControl.setErrors({ match: true });
+        } else {
+            matchControl.setErrors(null);
+        }
     };
 }

@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FeedbackInterface, FEEDBACK_STATUS } from 'src/app/components/feedback/feedback.interface';
 import { PasswordFormatValidator } from 'src/app/form-tools/validators/password-format.validator';
+import { MatchValidator } from 'src/app/form-tools/validators/match.validator';
 import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
 import { CompanyService } from 'src/app/services/company/company.service';
 
@@ -42,10 +43,16 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
         private companiesService: CompanyService,
         private activatedRoute: ActivatedRoute
     ) {
-        this.form = this.fb.group({
-            password: [null, Validators.compose([Validators.required, PasswordFormatValidator])],
-            confirmPassword: [null, Validators.compose([Validators.required])]
-        });
+        this.form = this.fb.group(
+            {
+                password: [
+                    null,
+                    Validators.compose([Validators.required, PasswordFormatValidator])
+                ],
+                confirmPassword: [null, Validators.required]
+            },
+            { validator: MatchValidator('password', 'confirmPassword') }
+        );
 
         this.successFeedback.url = this.activatedRoute.snapshot.queryParams.returnUrl || '/login';
     }
@@ -53,14 +60,6 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.activatedRoute.paramMap.subscribe((params: any) => {
             this._token = params.params.token;
-        });
-
-        this.form.valueChanges.pipe(takeUntil(this._subscriptions)).subscribe(() => {
-            if (this.confirmPasswordControl.value != this.passwordControl.value) {
-                this.confirmPasswordControl.setErrors({ different: true });
-            } else {
-                this.confirmPasswordControl.setErrors(null);
-            }
         });
     }
 
