@@ -79,8 +79,7 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
 
     public onSubmit() {
         this.submitted = true;
-        console.log(this.passwordControl.errors);
-        console.log(this.confirmPasswordControl.errors);
+
         if (!this.submitting && this.form.valid) {
             this.submitting = true;
 
@@ -99,9 +98,6 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
     }
 
     private _onPasswordResetError(err) {
-        console.log('ERROR:');
-        console.log(err);
-
         this.submitting = false;
         this.requestSucceeded = false;
         this.requestErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.';

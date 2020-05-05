@@ -27,12 +27,12 @@
                 Campo obrigatório
             </div>
             <div *ngIf="submitted && loginError" class="error-message">
-              {{ loginErrorMessage }}
+                {{ loginErrorMessage }}
             </div>
         </fieldset>
     </div>
 
-    <a class="forgot-password" href="#/request-password">Esqueceu-se da password?</a>
+    <a class="forgot-password" [routerLink]="['/request-password']">Esqueceu-se da password?</a>
 
     <div class="buttons-container">
         <app-button

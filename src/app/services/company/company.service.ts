@@ -37,14 +37,14 @@ export class CompanyService extends BaseService {
     }
 
     public resetPassword(newPassword: string, resetToken: string): Observable<any> {
-        const httpOptions = { headers: this.headers };
+        const httpOptions = { headers: this.headers, body: { password: newPassword } };
         const url = `${environment.backend.url}${Company.URL}/reset-password/${resetToken}`;
-        return this.httpClient.post(url, { password: newPassword }, httpOptions);
+        return this.request(METHOD.POST, url, httpOptions);
     }
 
     public requestPassword(email: string): Observable<any> {
-        const httpOptions = { headers: this.headers };
+        const httpOptions = { headers: this.headers, body: { email: email } };
         const url = `${environment.backend.url}${Company.URL}/forgot-password`;
-        return this.httpClient.post(url, { email: email }, httpOptions);
+        return this.request(METHOD.POST, url, httpOptions);
     }
 }

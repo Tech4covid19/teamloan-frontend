@@ -51,7 +51,7 @@ export class RequestPasswordViewComponent {
 
     public onSubmit() {
         this.submitted = true;
-        console.log(this.emailControl.errors);
+
         if (!this.submitting && this.form.valid) {
             this.submitting = true;
 
@@ -71,9 +71,6 @@ export class RequestPasswordViewComponent {
     }
 
     private _onPasswordRequestError(err) {
-        console.log('ERROR!');
-        console.log(err);
-
         this.submitting = false;
         this.requestSucceeded = false;
         this.requestErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.';
