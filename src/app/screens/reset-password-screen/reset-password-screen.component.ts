@@ -31,10 +31,10 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
 
     public successFeedback: FeedbackInterface = {
         status: FEEDBACK_STATUS.SUCCESS,
-        title: undefined,
-        subTitle: 'Nova password atualizada',
+        title: 'Nova password atualizada',
+        subTitle: undefined,
         text: undefined,
-        actionLabel: 'Ir para Login',
+        actionLabel: 'Iniciar sessão',
         url: ''
     };
 
