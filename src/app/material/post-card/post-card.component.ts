@@ -42,7 +42,7 @@ export class PostCardComponent {
     @Input()
     public set postCard(postCard: Posting) {
         this._postCard = postCard;
-        this.cover = this._getCoverUrl(this._postCard.district);
+        this.cover = this._getCoverUrl(this._postCard.intent, this._postCard.district);
         const jobsGroup = this._getJobs(this._postCard.jobs);
         this.totalJobs = jobsGroup.length;
         this._postCard.totalPeople = this._getTotalPeople(this._postCard.jobs);
@@ -65,9 +65,9 @@ export class PostCardComponent {
         return this._actions;
     }
 
-    private _getCoverUrl(district: District): string {
+    private _getCoverUrl(intent: string, district: District): string {
         if (district.name) {
-            return `/assets/img/districts/${district.uuid}.jpg`;
+            return `/assets/img/districts/${intent}_${district.uuid}.jpg`.toLocaleLowerCase();
         } else {
             return '';
         }

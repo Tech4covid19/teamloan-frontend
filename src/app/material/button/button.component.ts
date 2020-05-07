@@ -33,6 +33,9 @@ export class ButtonComponent {
     public url: string;
 
     @Input()
+    public queryParams: any;
+
+    @Input()
     public iconStatus: string;
 
     @Input()
