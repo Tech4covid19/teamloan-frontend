@@ -34,5 +34,18 @@
             A password deve ter pelo menos 9 caracteres, incluindo uma letra maiúscula, uma
             minúscula, um número e um caractere especial
         </div>
+
+        <app-input-text
+            formControlName="confirmPassword"
+            type="password"
+            name="confirmPassword"
+            placeholder="Repetir password"
+        ></app-input-text>
+        <div *ngIf="errors.confirmPassword.required" class="error-message">
+            Campo obrigatório
+        </div>
+        <div *ngIf="errors.confirmPassword.match" class="error-message">
+            Passwords diferentes
+        </div>
     </div>
 </div>
