@@ -25,7 +25,7 @@ export class RequestPasswordViewComponent {
 
     public successFeedback: FeedbackInterface = {
         status: FEEDBACK_STATUS.SUCCESS,
-        title: undefined,
+        title: 'Pedido processado',
         subTitle:
             'Se estiver registado, irá receber em breve momentos um email de recuperação de password enviado para',
         text: undefined,
