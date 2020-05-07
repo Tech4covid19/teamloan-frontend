@@ -2,12 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { FeedbackInterface, FEEDBACK_STATUS } from 'src/app/components/feedback/feedback.interface';
-import { PasswordFormatValidator } from 'src/app/form-tools/validators/password-format.validator';
 import { MatchValidator } from 'src/app/form-tools/validators/match.validator';
+import { PasswordFormatValidator } from 'src/app/form-tools/validators/password-format.validator';
 import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
-import { CompanyService } from 'src/app/services/company/company.service';
+import { AuthUserService } from 'src/app/services/auth/auth-user.service';
 
 @Component({
     selector: 'app-reset-password-screen',
@@ -35,12 +34,12 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
         subTitle: undefined,
         text: undefined,
         actionLabel: 'Iniciar sessão',
-        url: ''
+        url: '/login'
     };
 
     constructor(
         private fb: FormBuilder,
-        private companiesService: CompanyService,
+        private authUserService: AuthUserService,
         private activatedRoute: ActivatedRoute
     ) {
         this.form = this.fb.group(
@@ -53,8 +52,6 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
             },
             { validator: MatchValidator('password', 'confirmPassword') }
         );
-
-        this.successFeedback.url = this.activatedRoute.snapshot.queryParams.returnUrl || '/login';
     }
 
     ngOnInit(): void {
@@ -84,7 +81,7 @@ export class ResetPasswordViewComponent implements OnInit, OnDestroy {
 
             const password = this.form.value.password;
 
-            this.companiesService.resetPassword(password, this._token).subscribe(
+            this.authUserService.resetPassword(password, this._token).subscribe(
                 resp => this._onPasswordResetSuccess(),
                 err => this._onPasswordResetError(err)
             );

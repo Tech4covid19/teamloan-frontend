@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FeedbackInterface, FEEDBACK_STATUS } from 'src/app/components/feedback/feedback.interface';
+import { AuthUserService } from 'src/app/services/auth/auth-user.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { CompanyService } from 'src/app/services/company/company.service';
 
 @Component({
     selector: 'app-user-activation-screen',
@@ -17,8 +17,8 @@ export class UserActivationScreenComponent implements OnInit, OnDestroy {
 
     constructor(
         private route: ActivatedRoute,
-        private companyService: CompanyService,
-        private authService: AuthService
+        private authService: AuthService,
+        private authUserService: AuthUserService
     ) {}
 
     ngOnInit(): void {
@@ -49,7 +49,7 @@ export class UserActivationScreenComponent implements OnInit, OnDestroy {
                 this._redirectToConfirmPage(false);
             } */
             ();
-        this.companyService.activate(token).subscribe(
+        this.authUserService.activate(token).subscribe(
             () => {
                 this._redirectToConfirmPage(true);
             },

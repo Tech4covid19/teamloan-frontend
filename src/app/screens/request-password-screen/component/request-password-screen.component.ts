@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { FeedbackInterface, FEEDBACK_STATUS } from 'src/app/components/feedback/feedback.interface';
 import { EmailValidator } from 'src/app/form-tools/validators/email.validator';
 import { ICON_STATUS, THEME } from 'src/app/material/button/button.component';
-import { CompanyService } from 'src/app/services/company/company.service';
+import { AuthUserService } from 'src/app/services/auth/auth-user.service';
 
 @Component({
     selector: 'app-request-password-screen',
@@ -30,19 +29,13 @@ export class RequestPasswordViewComponent {
             'Se estiver registado, irá receber em breve momentos um email de recuperação de password enviado para',
         text: undefined,
         actionLabel: 'Voltar',
-        url: ''
+        url: '/login'
     };
 
-    constructor(
-        private fb: FormBuilder,
-        private companiesService: CompanyService,
-        private activatedRoute: ActivatedRoute
-    ) {
+    constructor(private fb: FormBuilder, private authUserService: AuthUserService) {
         this.form = this.fb.group({
             email: [null, Validators.compose([Validators.required, EmailValidator])]
         });
-
-        this.successFeedback.url = this.activatedRoute.snapshot.queryParams.returnUrl || '/login';
     }
 
     public get emailControl(): FormControl {
@@ -57,7 +50,7 @@ export class RequestPasswordViewComponent {
 
             const email = this.form.value.email;
 
-            this.companiesService.requestPassword(email).subscribe(
+            this.authUserService.requestPassword(email).subscribe(
                 resp => this._onPasswordRequestSuccess(email),
                 err => this._onPasswordRequestError(err)
             );
