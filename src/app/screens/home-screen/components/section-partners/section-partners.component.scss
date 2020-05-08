@@ -123,6 +123,7 @@
                         var(--columns-width-desktop)
                         var(--columns-width-desktop)
                         var(--columns-width-desktop)
+                        var(--columns-width-desktop)
                         var(--columns-width-desktop);
                     grid-template-rows: var(--rows-width-desktop) var(--rows-width-desktop);
 
@@ -152,7 +153,7 @@
                 .background-lines {
                     display: block;
                     bottom: 0;
-                    left: 0px;
+                    left: -40px;
                 }
             }
         }
