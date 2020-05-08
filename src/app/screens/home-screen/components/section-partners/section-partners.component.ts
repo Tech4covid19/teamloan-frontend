@@ -26,6 +26,16 @@ export class SectionPartnersComponent {
             src: '/assets/img/logos/nest.svg'
         },
         {
+            href: 'http://www.apotec.pt/',
+            title: 'APOTEC',
+            src: '/assets/img/logos/apotec.svg'
+        },
+        {
+            href: 'https://www.e-goi.com/',
+            title: 'E-goi - Email Marketing e Marketing Automation para todos!',
+            src: '/assets/img/logos/e-goi.svg'
+        },
+        {
             href: 'https://www.cap.pt/',
             title:
                 'CAP - Confederação dos Agricultores de Portugal | Confederação dos Agricultores de Portugal',
@@ -47,9 +57,9 @@ export class SectionPartnersComponent {
             src: '/assets/img/logos/guimaraes-setup.svg'
         },
         {
-            href: 'http://www.apotec.pt/',
-            title: 'APOTEC',
-            src: '/assets/img/logos/apotec.svg'
+            href: 'https://beta-i.com/',
+            title: 'Beta-i | Collaborative Innovation',
+            src: '/assets/img/logos/betai.svg'
         }
     ];
 }
