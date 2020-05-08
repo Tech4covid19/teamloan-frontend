@@ -43,10 +43,6 @@ export class CompanyFormComponent extends SimpleFormValueAccessor<CompanyViewMod
         {
             key: INTENT.SEEK,
             label: 'Procurar equipa'
-        },
-        {
-            key: INTENT.BOTH,
-            label: 'Ambos'
         }
     ];
 

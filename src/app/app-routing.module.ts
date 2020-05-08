@@ -55,6 +55,21 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'request-password',
+        loadChildren: () =>
+            import('./screens/request-password-screen/request-password-screen.module').then(
+                m => m.RequestPasswordScreenModule
+            ),
+        pathMatch: 'full'
+    },
+    {
+        path: 'reset-password',
+        loadChildren: () =>
+            import('./screens/reset-password-screen/reset-password-screen.module').then(
+                m => m.ResetPasswordScreenModule
+            )
+    },
+    {
         path: '**',
         redirectTo: '',
         pathMatch: 'full'
