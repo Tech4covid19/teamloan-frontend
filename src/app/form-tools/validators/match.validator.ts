@@ -6,11 +6,11 @@ export function MatchValidator(firstInput: string, secondInput: string) {
         const matchControl = formGroup.get(secondInput);
 
         if (originControl.pristine || matchControl.pristine) {
-            return;
+            return null;
         }
 
         if (matchControl.errors && !matchControl.errors.match) {
-            return;
+            return null;
         }
 
         if (originControl.value !== matchControl.value) {
