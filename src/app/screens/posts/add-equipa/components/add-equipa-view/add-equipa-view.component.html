@@ -1,4 +1,4 @@
-<h1 class="title">Adicionar Equipa</h1>
+<h1 class="title">Criar Publicação</h1>
 <app-equipa-form-container [initialValue]="initialValue">
     <div *ngIf="reponseError" class="error-message">
         Ocorreu um erro, por favor tente novamente!
@@ -7,7 +7,7 @@
         class="button"
         type="button"
         size="fit"
-        label="Adicionar Equipa"
+        label="Criar publicação"
         [iconStatus]="submitting ? buttonStatus.LOADING : ''"
         (click)="submit()"
     ></app-button>

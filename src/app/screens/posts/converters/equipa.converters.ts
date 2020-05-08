@@ -16,7 +16,7 @@ export class EquipaConverters {
             municipality: new Municipality({
                 uuid: equipaViewModel.concelho
             }),
-            intent: INTENT.LEND,
+            intent: equipaViewModel.intent,
             notes: equipaViewModel.obs,
             jobs: equipaViewModel.jobsData.jobs
                 .filter(j => j.job && j.quantity)
@@ -34,6 +34,7 @@ export class EquipaConverters {
 
     public static postingToEquipaViewModel(posting: Posting): EquipaViewModel {
         return {
+            intent: posting.intent,
             distrito: posting.district.uuid,
             concelho: posting.municipality.uuid,
             nome: posting.title,

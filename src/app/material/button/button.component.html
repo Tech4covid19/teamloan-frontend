@@ -6,6 +6,7 @@
     class="link"
     *ngIf="url && !externalUrl"
     [routerLink]="[url]"
+    [queryParams]="queryParams"
     [attr.theme]="theme"
     [attr.size]="size"
 >

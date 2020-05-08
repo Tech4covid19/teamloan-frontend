@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthUser } from 'src/app/models/auth-user/auth-user';
+import { INTENT } from 'src/app/models/intent.enum';
 import { Posting } from 'src/app/models/posting/posting';
 import { AuthUserService } from 'src/app/services/auth/auth-user.service';
 
@@ -17,6 +18,8 @@ export class DetailEquipaScreenComponent {
     public url: string;
 
     public posting: Posting;
+
+    public intents = INTENT;
 
     constructor(private activatedRoute: ActivatedRoute, private authUser: AuthUserService) {
         this.posting = this.activatedRoute.snapshot.data.posting;

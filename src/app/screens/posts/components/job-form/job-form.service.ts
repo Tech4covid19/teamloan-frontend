@@ -1,20 +1,15 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormGeneratorService } from 'src/app/form-tools/interfaces/form-generator.interface';
-import { JobViewModel } from './job.viewmodel';
-import { FormControlConfig } from 'src/app/form-tools/form-control.config';
 
 @Injectable()
 export class JobFormService implements FormGeneratorService {
-    constructor(
-        private fb: FormBuilder,
-        private formConfig: FormControlConfig
-    ) {}
+    constructor(private fb: FormBuilder) {}
 
     public getForm(): FormGroup {
         return this.fb.group({
-            job: [this.formConfig.get(null), requiredOnlyIfNotLast('last')],
-            quantity: [this.formConfig.get(1), requiredOnlyIfNotLast('last')],
+            job: [null, requiredOnlyIfNotLast('last')],
+            quantity: [1, requiredOnlyIfNotLast('last')],
             last: [false]
         });
     }
@@ -22,11 +17,11 @@ export class JobFormService implements FormGeneratorService {
 
 function requiredOnlyIfNotLast(lastAttributeName: string) {
     return (fc: FormControl) => {
-        if ( !fc.parent ) {
+        if (!fc.parent) {
             return Validators.required(fc);
         }
         // job form doesnt need to be validated in case is the last one
-        if ( fc.parent.get(lastAttributeName).value === true ) {
+        if (fc.parent.get(lastAttributeName).value === true) {
             return null;
         }
         return Validators.required(fc);

@@ -15,8 +15,16 @@
             <app-button url="/register" label="Criar nova conta" theme="secundary"></app-button>
         </div>
         <div class="actions" *ngIf="isAuthenticated">
-            <app-button url="/posts" label="Procurar equipa"></app-button>
-            <app-button url="/posts/private/add" label="Partilhar equipa"></app-button>
+            <app-button
+                url="/posts"
+                [queryParams]="{ intent: 'LEND' }"
+                label="Equipas disponíveis"
+            ></app-button>
+            <app-button
+                url="/posts"
+                [queryParams]="{ intent: 'SEEK' }"
+                label="Pedidos de equipas"
+            ></app-button>
         </div>
     </div>
 </div>

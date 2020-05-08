@@ -26,7 +26,7 @@ const DEFAULT_FILTERS: any = {
 })
 export class FilterToolbarComponent implements OnInit, OnDestroy {
     @Input()
-    intentToggle: boolean;
+    intentToggle = true;
 
     @Input()
     sectorOptions: InputSelectOption[] = [];
@@ -58,6 +58,9 @@ export class FilterToolbarComponent implements OnInit, OnDestroy {
             ? this.postsListFilterService.getFilter()
             : DEFAULT_FILTERS;
         this.form = this.fb.group(initialValue);
+        if (initialValue[QUERY_FILTER_PARAMETERS.INTENT]) {
+            this.changeIntentTheme(initialValue[QUERY_FILTER_PARAMETERS.INTENT]);
+        }
         this.onChanges();
     }
 

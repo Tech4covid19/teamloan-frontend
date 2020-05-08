@@ -1,17 +1,34 @@
-<h1 class="title">Detalhes</h1>
+<h1 class="title">Detalhes da publicação</h1>
 <div class="form-container">
     <div class="equipa-form">
         <div class="fieldset">
+            <h3 class="section-title">Intenção:</h3>
+            <div class="input-field">
+                {{ posting.intent === intents.LEND ? 'Partilhar equipa' : 'Reforçar equipa' }}
+            </div>
+
             <h2 class="sub-title">Dados da equipa</h2>
 
             <h3 class="section-title">Distrito</h3>
-            <div class="input-field">{{ posting.district.name }}</div>
+            <div class="input-field">
+                <span [title]="posting.district.name">
+                    {{ posting.district.name }}
+                </span>
+            </div>
 
             <h3 class="section-title">Concelho</h3>
-            <div class="input-field">{{ posting.municipality.name }}</div>
+            <div class="input-field">
+                <span [title]="posting.municipality.name">
+                    {{ posting.municipality.name }}
+                </span>
+            </div>
 
             <h3 class="section-title">Nome da equipa</h3>
-            <div class="input-field">{{ posting.title }}</div>
+            <div class="input-field">
+                <span [title]="posting.title">
+                    {{ posting.title }}
+                </span>
+            </div>
 
             <h3 class="section-title">Função (Funções)</h3>
             <ng-container *ngFor="let job of posting.jobs">
@@ -45,17 +62,29 @@
                 <h2 class="sub-title">Dados da empresa</h2>
 
                 <h3 class="section-title">Nome</h3>
-                <div class="input-field">{{ posting.company.name }}</div>
+                <div class="input-field">
+                    <span [title]="posting.company.name">{{ posting.company.name }}</span>
+                </div>
 
                 <h3 class="section-title">Setor</h3>
-                <div class="input-field">{{ posting.company['business-area'].name }}</div>
+                <div class="input-field">
+                    <span [title]="posting.company['business-area'].name">
+                        {{ posting.company['business-area'].name }}</span
+                    >
+                </div>
 
                 <h3 class="section-title">Telefone</h3>
-                <div class="input-field">{{ posting.company.phone }}</div>
+                <div class="input-field">
+                    <span [title]="posting.company.phone">{{ posting.company.phone }}</span>
+                </div>
 
                 <h3 class="section-title">Email</h3>
                 <div class="input-field">
-                    <a href="mailto:{{ posting.company.email }}"> {{ posting.company.email }}</a>
+                    <span [title]="posting.company.email">
+                        <a href="mailto:{{ posting.company.email }}">
+                            {{ posting.company.email }}
+                        </a>
+                    </span>
                 </div>
             </div>
         </div>

@@ -5,19 +5,16 @@ import { FormControlConfig } from 'src/app/form-tools/form-control.config';
 
 @Injectable()
 export class EquipaFormService implements FormGeneratorService {
-    constructor(
-        private fb: FormBuilder,
-        private formConfig: FormControlConfig
-    ) {}
+    constructor(private fb: FormBuilder, private formConfig: FormControlConfig) {}
 
     public getForm(): FormGroup {
         return this.fb.group({
-            distrito: [this.formConfig.get(''), Validators.required],
-            concelho: [this.formConfig.get(''), Validators.required],
-            nome: [this.formConfig.get(''), Validators.required],
+            intent: [this.formConfig.get(''), Validators.required],
+            distrito: ['', Validators.required],
+            concelho: ['', Validators.required],
+            nome: ['', Validators.required],
             jobsData: [],
-            obs: [this.formConfig.get('')]
+            obs: ['']
         });
     }
 }
-
