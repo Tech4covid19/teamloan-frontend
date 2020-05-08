@@ -1,7 +1,9 @@
 import { Component, forwardRef, Inject } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormGeneratorService, FormGeneratorServiceToken } from 'src/app/form-tools/interfaces/form-generator.interface';
-import { FormValidatorHandler } from 'src/app/form-tools/validators/form-validator.handler';
+import {
+    FormGeneratorService,
+    FormGeneratorServiceToken
+} from 'src/app/form-tools/interfaces/form-generator.interface';
 import { SimpleFormValueAccessor } from 'src/app/form-tools/value-accessors/simple-form.value.accessor';
 import { UserViewModel } from '../../register-user.viewmodel';
 import { UserFormService } from './user-form.service';
@@ -28,7 +30,6 @@ import { UserFormService } from './user-form.service';
     ]
 })
 export class UserFormComponent extends SimpleFormValueAccessor<UserViewModel> {
-
     public errors = {
         phone: {
             required: false,
@@ -41,6 +42,10 @@ export class UserFormComponent extends SimpleFormValueAccessor<UserViewModel> {
         password: {
             required: false,
             format: false
+        },
+        confirmPassword: {
+            required: false,
+            match: false
         }
     };
 
