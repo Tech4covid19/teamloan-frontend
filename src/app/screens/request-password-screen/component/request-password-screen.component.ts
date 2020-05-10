@@ -26,7 +26,7 @@ export class RequestPasswordViewComponent {
         status: FEEDBACK_STATUS.SUCCESS,
         title: 'Pedido processado',
         subTitle:
-            'Se estiver registado, irá receber em breve momentos um email de recuperação de password enviado para',
+            'Se estiver registado, irá receber em breves momentos um email de recuperação de password enviado para',
         text: undefined,
         actionLabel: 'Voltar',
         url: '/login'
