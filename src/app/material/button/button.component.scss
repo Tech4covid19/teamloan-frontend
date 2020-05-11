@@ -59,12 +59,14 @@
             fill: var(--color-white);
         }
 
-        &:hover {
-            background-color: var(--color-white);
-            color: var(--color-bittersweet);
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-white);
+                color: var(--color-bittersweet);
 
-            svg-icon {
-                fill: var(--color-bittersweet);
+                svg-icon {
+                    fill: var(--color-bittersweet);
+                }
             }
         }
     }
@@ -79,13 +81,14 @@
         svg-icon {
             fill: var(--color-bittersweet);
         }
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-bittersweet);
+                color: var(--color-white);
 
-        &:hover {
-            background-color: var(--color-bittersweet);
-            color: var(--color-white);
-
-            svg-icon {
-                fill: var(--color-white);
+                svg-icon {
+                    fill: var(--color-white);
+                }
             }
         }
     }
