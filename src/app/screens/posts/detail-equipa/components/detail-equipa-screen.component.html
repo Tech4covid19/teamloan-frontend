@@ -89,12 +89,21 @@
             </div>
         </div>
     </div>
-    <app-button
-        *ngIf="hasPermission$ | async"
-        [url]="url"
-        class="button"
-        type="button"
-        size="fit"
-        label="Editar"
-    ></app-button>
+    <div class="columns" *ngIf="hasPermission$ | async">
+        <app-button
+            [url]="editPostUrl"
+            class="button column"
+            type="button"
+            size="fit"
+            label="Editar"
+        ></app-button>
+        <app-button
+            [url]="closePostUrl"
+            theme="secundary"
+            class="button column"
+            type="button"
+            size="fit"
+            label="Encerrar publicação"
+        ></app-button>
+    </div>
 </div>

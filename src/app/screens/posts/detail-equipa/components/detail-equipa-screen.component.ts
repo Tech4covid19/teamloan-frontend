@@ -15,7 +15,8 @@ import { AuthUserService } from 'src/app/services/auth/auth-user.service';
 export class DetailEquipaScreenComponent {
     public hasPermission$: Observable<boolean>;
 
-    public url: string;
+    public editPostUrl: string;
+    public closePostUrl: string;
 
     public posting: Posting;
 
@@ -24,7 +25,8 @@ export class DetailEquipaScreenComponent {
     constructor(private activatedRoute: ActivatedRoute, private authUser: AuthUserService) {
         this.posting = this.activatedRoute.snapshot.data.posting;
         this.hasPermission$ = this.hasPermissionToEdit(this.posting);
-        this.url = this.getUrl(this.posting);
+        this.editPostUrl = this.getEditPostUrl(this.posting);
+        this.closePostUrl = this.getClosePostUrl(this.posting);
     }
 
     private hasPermissionToEdit(posting: Posting): Observable<boolean> {
@@ -33,7 +35,11 @@ export class DetailEquipaScreenComponent {
             .pipe(map((user: AuthUser) => posting.company.uuid === user.uuid));
     }
 
-    private getUrl(posting: Posting) {
+    private getEditPostUrl(posting: Posting) {
         return `/posts/private/${posting.uuid}/edit`;
+    }
+
+    private getClosePostUrl(posting: Posting) {
+        return `/posts/private/${posting.uuid}/close`;
     }
 }
