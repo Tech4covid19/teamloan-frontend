@@ -1,17 +1,24 @@
-import { Component, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Location } from '@angular/common';
+import { Component, OnDestroy, Input } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { ICON_STATUS } from 'src/app/material/button/button.component';
-import { Posting } from 'src/app/models/posting/posting';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
+import { Posting } from 'src/app/models/posting/posting';
 
 @Component({
-    selector: 'app-close-post-view',
-    templateUrl: './close-post-view.component.html',
-    styleUrls: ['./close-post-view.component.scss']
+    selector: 'app-pop-up',
+    templateUrl: './pop-up.component.html',
+    styleUrls: ['./pop-up.component.scss']
 })
-export class ClosePostViewComponent implements OnDestroy {
+export class PopUpComponent implements OnDestroy {
+    @Input()
+    public title: string;
+
+    @Input()
+    public infoText: string;
+
     public form: FormGroup;
 
     public buttonStatus = ICON_STATUS;
@@ -24,7 +31,11 @@ export class ClosePostViewComponent implements OnDestroy {
 
     private _subscriptions$ = new Subject();
 
-    constructor(private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute) {
+    constructor(
+        private formBuilder: FormBuilder,
+        private activatedRoute: ActivatedRoute,
+        private location: Location
+    ) {
         this.currentPosting = this.activatedRoute.snapshot.data.posting;
 
         this.form = this.formBuilder.group({
@@ -46,9 +57,14 @@ export class ClosePostViewComponent implements OnDestroy {
         if (!this.submitting && this.form.valid) {
             this.submitting = true;
 
-            // TODO: call service here
+            // TODO: emit event "confirm"
             this._onSuccess();
         }
+    }
+
+    public navigateBack() {
+        // TODO: replace this to emi event  "abort"
+        this.location.back();
     }
 
     private _onSuccess() {

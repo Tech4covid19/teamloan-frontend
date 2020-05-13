@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClosePostViewComponent } from './close-post-view.component';
+import { PopUpComponent } from './pop-up.component';
 
-describe('ClosePostViewComponent', () => {
-  let component: ClosePostViewComponent;
-  let fixture: ComponentFixture<ClosePostViewComponent>;
+describe('PopUpComponent', () => {
+  let component: PopUpComponent;
+  let fixture: ComponentFixture<PopUpComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClosePostViewComponent ]
+      declarations: [ PopUpComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClosePostViewComponent);
+    fixture = TestBed.createComponent(PopUpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
