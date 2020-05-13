@@ -48,14 +48,6 @@ const routes: Routes = [
             import('src/app/screens/posts/edit-equipa/edit-equipa.module').then(
                 m => m.EditEquipaModule
             )
-    },
-    {
-        path: ':id/close',
-        pathMatch: 'full',
-        loadChildren: () =>
-            import('src/app/screens/posts/close-post/close-post.module').then(
-                m => m.ClosePostModule
-            )
     }
 ];
 

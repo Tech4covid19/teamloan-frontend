@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { PopUpModule } from 'src/app/components/pop-up/pop-up.module';
 import { FormControlConfig, FormControlDisabled } from 'src/app/form-tools/form-control.config';
 import { FormNotifierFactory } from 'src/app/form-tools/validators/form-notifier.factory';
 import { MaterialModule } from 'src/app/material/material.module';
@@ -19,7 +20,8 @@ import { EquipaComponentsModule } from '../components/equipa-components.module';
         EquipaComponentsModule,
         CommonModule,
         DetailEquipaScreenRoutingModule,
-        AngularSvgIconModule
+        AngularSvgIconModule,
+        PopUpModule
     ],
     providers: [
         FormNotifierFactory,
