@@ -8,6 +8,8 @@ import { Posting } from 'src/app/models/posting/posting';
 import { AuthUserService } from 'src/app/services/auth/auth-user.service';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ClosePostReasonsService } from 'src/app/services/posting/close-post-reasons.service';
+import { getInputSelectOptions } from 'src/app/utils/input-select-option.utils';
 
 @Component({
     selector: 'app-detail-equipa-screen',
@@ -28,16 +30,16 @@ export class DetailEquipaScreenComponent {
     constructor(
         private activatedRoute: ActivatedRoute,
         private authUser: AuthUserService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private closePostReasonsService: ClosePostReasonsService
     ) {
         this.posting = this.activatedRoute.snapshot.data.posting;
         this.hasPermission$ = this.hasPermissionToEdit(this.posting);
         this.editPostUrl = this.getEditPostUrl(this.posting);
 
-        this.closePostForm = this.formBuilder.group({
-            closePostReason: [null, Validators.required],
-            closePostDetails: [null, Validators.required]
-        });
+        if (this.hasPermission$) {
+            this.initializeClosingPostForm();
+        }
     }
 
     public get closePostReasonControl(): FormControl {
@@ -52,6 +54,11 @@ export class DetailEquipaScreenComponent {
         this.closingPost = false;
     }
 
+    public submitClosePost(formValue) {
+        // TODO: call service here
+        //
+    }
+
     private hasPermissionToEdit(posting: Posting): Observable<boolean> {
         return this.authUser
             .getAuthUser()
@@ -60,5 +67,20 @@ export class DetailEquipaScreenComponent {
 
     private getEditPostUrl(posting: Posting) {
         return `/posts/private/${posting.uuid}/edit`;
+    }
+
+    private initializeClosingPostForm() {
+        this.closePostForm = this.formBuilder.group({
+            closePostReason: [null, Validators.required],
+            closePostDetails: []
+        });
+
+        console.log('ClosPsot Form');
+        console.log(this.closePostForm);
+
+        // TODO: Get reasons
+        this.closePostReasonOptions$ = this.closePostReasonsService
+            .get()
+            .pipe(map(items => getInputSelectOptions(items)));
     }
 }

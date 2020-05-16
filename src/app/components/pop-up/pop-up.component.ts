@@ -25,12 +25,20 @@ export class PopUpComponent implements OnDestroy {
     public form: FormGroup;
 
     @Output()
-    public onClosePopUp = new EventEmitter();
+    public onAbort = new EventEmitter();
+
+    @Output()
+    public onConfirm = new EventEmitter();
 
     public buttonStatus = ICON_STATUS;
 
     public submitting = false;
     public reponseError = false;
+
+    constructor() {
+        console.log('FORM');
+        console.log(this.form);
+    }
 
     private _subscriptions$ = new Subject();
 
@@ -46,13 +54,13 @@ export class PopUpComponent implements OnDestroy {
         if (!this.submitting && this.form.valid) {
             this.submitting = true;
 
-            // TODO: emit event "confirm"
+            this.onConfirm.emit(this.form.value);
             this._onSuccess();
         }
     }
 
-    public onAbort() {
-        this.onClosePopUp.emit();
+    public onAbortPopUp() {
+        this.onAbort.emit();
     }
 
     private _onSuccess() {

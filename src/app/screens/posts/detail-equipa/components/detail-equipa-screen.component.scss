@@ -15,7 +15,8 @@
 
     .button {
         ::ng-deep {
-            .link {
+            .link,
+            .button {
                 height: 50px;
 
                 @include mobile {

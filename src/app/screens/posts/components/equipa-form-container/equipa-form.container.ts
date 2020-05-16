@@ -7,10 +7,10 @@ import {
     FormNotifierFactory
 } from 'src/app/form-tools/validators/form-notifier.factory';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
-import { ResourceInterface } from 'src/app/models/resource.interface';
 import { DistrictService } from 'src/app/services/district/district.service';
 import { JobsService } from 'src/app/services/jobs/jobs.service';
 import { MunicipalityService } from 'src/app/services/municipality/municipality.service';
+import { getInputSelectOptions } from 'src/app/utils/input-select-option.utils';
 import { EquipaViewModel } from '../equipa-form/equipa.viewmodel';
 
 export abstract class FormContainer {
@@ -74,7 +74,7 @@ export class EquipaFormContainerComponent {
     private _fetchDistrict() {
         this.districtOptions$ = this.districtService
             .get()
-            .pipe(map(items => this._getInputSelectOptions(items)));
+            .pipe(map(items => getInputSelectOptions(items)));
     }
 
     private _fetchMunicipalities(districtId: string) {
@@ -83,19 +83,10 @@ export class EquipaFormContainerComponent {
         }
         this.municipalityOptions$ = this.municipalityService
             .get(districtId)
-            .pipe(map(items => this._getInputSelectOptions(items)));
+            .pipe(map(items => getInputSelectOptions(items)));
     }
 
     private _fetchJobs() {
-        this.jobsOptions$ = this.jobsService
-            .get()
-            .pipe(map(items => this._getInputSelectOptions(items)));
-    }
-
-    private _getInputSelectOptions(businessAreas: ResourceInterface[]): InputSelectOption[] {
-        return businessAreas.map(item => ({
-            key: item.uuid,
-            label: item.name
-        }));
+        this.jobsOptions$ = this.jobsService.get().pipe(map(items => getInputSelectOptions(items)));
     }
 }
