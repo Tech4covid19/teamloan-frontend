@@ -62,4 +62,12 @@ export class SectionPartnersComponent {
             src: '/assets/img/logos/betai.svg'
         }
     ];
+
+    public legalPartners: [
+        {
+            href: 'https://www.fipa.pt/';
+            title: 'FIPA - Federação das Indústrias Portuguesas Agro-Alimentares';
+            src: '/assets/img/logos/fipa.svg';
+        }
+    ];
 }
