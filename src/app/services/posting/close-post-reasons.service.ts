@@ -15,9 +15,9 @@ export class ClosePostReasonsService extends BaseService {
 
         // TODO: remove tests
         const itemsTest = [
-            new ClosePostReason({ description: 'Porque sim!', uuid: '123' }),
-            new ClosePostReason({ description: 'Fiz match!', uuid: '456' }),
-            new ClosePostReason({ description: 'Outro', uuid: '789' })
+            new ClosePostReason({ name: 'Porque sim!', uuid: '123' }),
+            new ClosePostReason({ name: 'Fiz match!', uuid: '456' }),
+            new ClosePostReason({ name: 'Outro', uuid: '789' })
         ];
 
         return of(itemsTest);

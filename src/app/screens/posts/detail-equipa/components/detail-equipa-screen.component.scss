@@ -79,6 +79,24 @@
     }
 }
 
+.form-fields {
+    width: 100%;
+    @include mobile {
+        margin-top: 33px;
+
+        .field-container {
+            margin-top: 17px;
+        }
+    }
+
+    @include tablet {
+        margin-top: 24px;
+        .field-container {
+            margin-top: 39px;
+        }
+    }
+}
+
 .fieldset {
     min-width: 0;
     position: relative;
