@@ -60,6 +60,26 @@ export class SectionPartnersComponent {
             href: 'https://beta-i.com/',
             title: 'Beta-i | Collaborative Innovation',
             src: '/assets/img/logos/betai.svg'
+        },
+        {
+            href: 'https://www.uc.pt/',
+            title: 'Universidade de Coimbra',
+            src: '/assets/img/logos/universidade-coimbra.svg'
+        },
+        {
+            href: 'http://ucbusiness.uc.pt/',
+            title: 'UC Business | Universidade de Coimbra',
+            src: '/assets/img/logos/universidade-coimbra-business.svg'
+        },
+        {
+            href: 'https://est.ipca.pt/',
+            title: 'IPCA | Escola Superior de Tecnologia',
+            src: '/assets/img/logos/ipca-est.svg'
+        },
+        {
+            href: 'https://www.moneris.pt/',
+            title: 'Moneris | Especialistas em contabilidade e apoio à gestão',
+            src: '/assets/img/logos/moneris.svg'
         }
     ];
 
