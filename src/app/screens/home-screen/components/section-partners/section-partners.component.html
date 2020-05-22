@@ -7,10 +7,10 @@
   </div>
   <div class="icons-container">
     <ul class="icons-list-big">
-      <li class="item">
-        <a href="https://www.mlgts.pt/pt/" target="_blank" class="item-info"
-          title="Morais Leitão - Galvão Teles, Soares da Siva & Associados">
-          <img class="icon" src="/assets/img/logos/morais-leitao.svg" />
+      <li class="item" *ngFor="let legalPartner of legalPartners">
+        <a [href]="legalPartner.href" target="_blank" class="item-info"
+        [title]="legalPartner.title">
+          <img class="icon" [src]="legalPartner.src" />
         </a>
       </li>
     </ul>

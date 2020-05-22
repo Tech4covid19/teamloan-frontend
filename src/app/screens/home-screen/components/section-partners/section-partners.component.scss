@@ -48,9 +48,9 @@
 
       .icons-list-big {
         .item {
-          img {
-            max-width: 100%;
-          }
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
 
@@ -110,6 +110,15 @@
 
         .icons-list-big {
           width: var(--sum-columns-width-mobile);
+
+          .item {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            img {
+              max-width: 100%;
+              max-height: 100px;
+            }
+          }
         }
 
         .icons-list {
@@ -154,6 +163,15 @@
 
         .icons-list-big {
           width: var(--sum-columns-width-tablet);
+
+          .item {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            img {
+              max-width: 100%;
+              max-height: 250px;
+            }
+          }
         }
 
         .icons-list {
