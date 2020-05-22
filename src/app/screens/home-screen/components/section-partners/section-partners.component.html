@@ -1,25 +1,42 @@
-<h1 class="title">Parceiros</h1>
+<h1 class="title">Parcerias</h1>
 
 <div class="info-container">
-    <div class="icons-container">
-        <img class="background-lines" src="/assets/img/home/partners-background-lines.svg" />
-        <ul class="icons-list">
-            <li class="item" *ngFor="let partner of partners">
-                <a [href]="partner.href" target="_blank" class="item-info" [title]="partner.title">
-                    <img class="icon" [src]="partner.src" />
-                </a>
-            </li>
-        </ul>
-    </div>
+  <div class="subtitle-container">
+    <img class="icon" src="/assets/img/teamloan.svg" />
+    <p class="sub-title">Parceiros legais</p>
+  </div>
+  <div class="icons-container">
+    <ul class="icons-list-big">
+      <li class="item" *ngFor="let legalPartner of legalPartners">
+        <a [href]="legalPartner.href" target="_blank" class="item-info"
+        [title]="legalPartner.title">
+          <img class="icon" [src]="legalPartner.src" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="info-container">
+  <div class="subtitle-container">
+    <img class="icon" src="/assets/img/teamloan.svg" />
+    <p class="sub-title">Outros parceiros</p>
+  </div>
+  <div class="icons-container">
+    <ul class="icons-list">
+      <li class="item" *ngFor="let partner of partners">
+        <a [href]="partner.href" target="_blank" class="item-info"
+          [title]="partner.title">
+          <img class="icon" [src]="partner.src" />
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="presentation-link-container">
-    <app-button
-        url="/assets/docs/teamloan-presentation.pdf"
-        label="Clique aqui para consultar a apresentação"
-        [theme]="buttonTheme"
-        [newPageUrl]="true"
-        [externalUrl]="true"
-        class="presentation-link"
-    ></app-button>
+  <app-button url="/assets/docs/teamloan-presentation-ml.pdf"
+    label="Clique aqui para consultar a apresentação" [theme]="buttonTheme"
+    [newPageUrl]="true" [externalUrl]="true" class="presentation-link">
+  </app-button>
 </div>
