@@ -119,25 +119,23 @@
     abortButtonLabel="Manter publicação"
     [submitting]="submittingClosePost"
     [responseError]="closePostResponseError"
-    (onConfirm)="onUserConfirmClosePost()"
+    (onConfirm)="onSubmitClosePostForm()"
     (onAbort)="closeClosePostPopUp()"
 >
-    <form [formGroup]="closePostForm" (submit)="onSubmitClosePostForm()" class="form-fields">
+    <form [formGroup]="closePostForm" class="form-fields">
         <fieldset class="field-container">
-            <label class="label" for="closePostReason"
-                >Qual é o motivo para encerrar esta publicação?</label
-            >
+            <h3 class="section-title">Qual é o motivo para encerrar esta publicação?</h3>
             <app-input-select
                 formControlName="closePostReason"
                 [inputSelectOptions]="closePostReasonOptions$ | async"
                 placeholder="Selecione o principal motivo"
             ></app-input-select>
-            <div *ngIf="closePostReasonControl.errors?.required" class="error-message">
+            <div *ngIf="closePostReasonControl.errors.required" class="error-message">
                 Campo obrigatório
             </div>
         </fieldset>
         <fieldset class="field-container">
-            <label class="label" for="closePostDetails">Detalhes</label>
+            <h3 class="section-title">Detalhes</h3>
             <app-input-textarea
                 class="textarea"
                 formControlName="closePostDetails"

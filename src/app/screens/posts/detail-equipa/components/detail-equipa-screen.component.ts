@@ -66,13 +66,6 @@ export class DetailEquipaScreenComponent {
         this.closePostResponseError = false;
     }
 
-    public onUserConfirmClosePost() {
-        console.log('SUBMITTING!');
-        console.log(this.closePostReasonControl.errors);
-        //this.closePostForm.markAsDirty();
-        this.onSubmitClosePostForm();
-    }
-
     public onSubmitClosePostForm() {
         console.log('valid form: ' + this.closePostForm.valid);
 
@@ -80,7 +73,8 @@ export class DetailEquipaScreenComponent {
             this.submittingClosePost = true;
 
             // TODO: ask to BE the status and fill here closing reason and details
-            this.posting.status = 'closed';
+            // TODO: remove this 'foo bar' test
+            this.posting.notes = 'foo bar';
             console.log(this.closePostReasonControl.value);
             console.log(this.closePostDetailsControl.value);
 
@@ -90,8 +84,6 @@ export class DetailEquipaScreenComponent {
                     resp => this.onClosePostSuccess(),
                     err => this.onClosePostError()
                 );
-        } else {
-            this.closePostForm.updateValueAndValidity();
         }
     }
 
@@ -113,7 +105,7 @@ export class DetailEquipaScreenComponent {
         console.log('INIT');
         console.log(this.closePostReasonControl.errors);
         // TODO: Why this is initializing with required = true?
-        this.closePostReasonControl.errors.required = false;
+        //this.closePostReasonControl.errors.required = false;
 
         console.log(this.closePostReasonControl.errors);
 
