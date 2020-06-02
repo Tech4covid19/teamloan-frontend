@@ -14,9 +14,12 @@ import {
     QueryFilterInterface,
     QUERY_FILTER_PARAMETERS
 } from 'src/app/services/posting/query-filter';
+import { INTENT } from 'src/app/models/intent.enum';
 
 export abstract class AbstractPostsList implements OnDestroy {
     public posts: Posting[] = [];
+
+    public title: string;
 
     public businessAreaOptions$: Observable<InputSelectOption[]> = new Observable();
 
@@ -97,6 +100,8 @@ export abstract class AbstractPostsList implements OnDestroy {
         }
         this._currentFilters = filters;
 
+        this._updateTitle(filters.intent);
+
         this.postsListService.getPosting(filters).subscribe(
             posts => this._onPostingResponse(posts),
             error => this._onPostingResponse(null, error)
@@ -114,4 +119,10 @@ export abstract class AbstractPostsList implements OnDestroy {
     private _onPostingResponse(posts: Posting[], _error?: any) {
         this.posts = posts ? this.processPost(posts) : [];
     }
+
+    private _updateTitle(intent: INTENT) {
+        this.title = this.getTitle(intent);
+    }
+
+    protected abstract getTitle(intent: INTENT): string;
 }

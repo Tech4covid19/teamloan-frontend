@@ -25,7 +25,7 @@ const routes: Routes = [
                         url: '/assets/img/icons/edit-team.svg',
                         theme: LINK_ICON_SIZES.REGULAR
                     },
-                    label: 'Minhas Publicações',
+                    label: 'Minhas Equipas',
                     url: '/posts/private',
                     isMobile: false
                 }
