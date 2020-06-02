@@ -57,6 +57,9 @@ export class PostingService extends BaseService {
             headers: this.headers
         };
         const url = `${environment.backend.url}${Company.URL}/${userUUID}/${Posting.URL}/${postingUUID}`;
+        console.log(url);
+        console.log(posting);
+        console.log(httpOptions);
         return this.httpClient.patch(url, posting, httpOptions);
     }
 }

@@ -126,11 +126,11 @@
         <fieldset class="field-container">
             <h3 class="section-title">Qual é o motivo para encerrar esta publicação?</h3>
             <app-input-select
-                formControlName="closePostReason"
-                [inputSelectOptions]="closePostReasonOptions$ | async"
-                placeholder="Selecione o principal motivo"
+                formControlName="closeReason"
+                [inputSelectOptions]="closeReasonOptions"
+                placeholder="Selecione o motivo"
             ></app-input-select>
-            <div *ngIf="closePostReasonControl.errors.required" class="error-message">
+            <div *ngIf="closeReasonControl?.errors?.required" class="error-message">
                 Campo obrigatório
             </div>
         </fieldset>
@@ -138,9 +138,23 @@
             <h3 class="section-title">Detalhes</h3>
             <app-input-textarea
                 class="textarea"
-                formControlName="closePostDetails"
+                formControlName="closeReasonDetails"
                 placeholder=""
             ></app-input-textarea>
         </fieldset>
     </form>
+</app-pop-up>
+<app-pop-up
+    *ngIf="closePostResponseSuccess"
+    confirmButtonLabel="Voltar"
+    (onConfirm)="onFeedbackDismissed()"
+>
+    <h1 class="title">
+        <img
+            class="success"
+            src="/assets/img/icons/like-confirmation.svg"
+            alt="like-confirmation"
+        />
+        Publicação Encerrada
+    </h1>
 </app-pop-up>

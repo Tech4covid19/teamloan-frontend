@@ -1,0 +1,6 @@
+export enum CLOSE_REASON {
+    MATCH = 'MATCH',
+    EXTERNAL_MATCH = 'EXTERNAL_MATCH',
+    NO_MORE_NEED = 'NO_MORE_NEED',
+    OTHER = 'OTHER'
+}

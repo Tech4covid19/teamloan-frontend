@@ -36,6 +36,10 @@ export class Posting {
 
     url: string;
 
+    closeReason: string;
+
+    closeReasonDetails: string;
+
     // infered property
     totalPeople: number;
 

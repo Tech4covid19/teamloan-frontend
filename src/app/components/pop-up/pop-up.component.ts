@@ -16,10 +16,10 @@ export class PopUpComponent {
     public infoText: string;
 
     @Input()
-    public confirmButtonLabel: string = 'Ok';
+    public confirmButtonLabel: string;
 
     @Input()
-    public abortButtonLabel: string = 'Voltar';
+    public abortButtonLabel: string;
 
     @Input()
     public submitting = false;
