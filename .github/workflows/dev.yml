@@ -32,10 +32,13 @@ jobs:
         npm i
         npm run build
 
+    - name: Set release archive tag
+      run: echo ::set-env name=RELEASE_TAG::develop-${{ env.GITHUB_RUN_NUMBER }}
+    
     - name: Push Build to Releases
       uses: ncipollo/release-action@v1
       with:
         artifacts: "dist/teamloan-frontend/*"
         commit: develop
-        tag: develop-${{ env.GITHUB_RUN_NUMBER }}
+        tag: develop
         token: ${{ secrets.TOKEN }}
