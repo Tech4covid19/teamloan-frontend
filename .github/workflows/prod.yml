@@ -2,7 +2,7 @@ name: dev
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
     - name: npm install and npm run build
       run: |
         npm i
-        npm run build
+        npm run build-prod
 
     - name: Push Build to Releases
       uses: ncipollo/release-action@v1
