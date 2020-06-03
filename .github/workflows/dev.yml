@@ -36,4 +36,6 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "dist/teamloan-frontend/*"
+        commit: develop
+        tag: develop-${{ env.GITHUB_RUN_NUMBER }}
         token: ${{ secrets.TOKEN }}
