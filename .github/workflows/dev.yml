@@ -35,7 +35,7 @@ jobs:
     - name: Push Build to Releases
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "dist/teamloan-frontend/*"
+        artifacts: "dist/teamloan-frontend"
         commit: develop
         tag: develop
         replacesArtifacts: true
