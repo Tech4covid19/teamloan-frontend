@@ -31,13 +31,15 @@ jobs:
       run: |
         npm i
         npm run build
+        
     - name: package the release (tar.gz)
       run: |
         tar -zcvf dist/teamloan-frontend-develop.tar.gz dist/teamloan-frontend
+        
     - name: Push Build to Releases
       uses: ncipollo/release-action@v1
       with:
-        artifact: "dist/teamloan-frontend-develop.tar.gz"
+        artifacts: "dist/teamloan-frontend-develop.tar.gz"
         commit: develop
         tag: develop
         replacesArtifacts: true
