@@ -40,6 +40,11 @@
             flex: 1;
         }
 
+        .pop-up-body {
+            overflow-y: auto;
+            flex: 1;
+        }
+
         .title {
             color: var(--color-cosmic);
         }

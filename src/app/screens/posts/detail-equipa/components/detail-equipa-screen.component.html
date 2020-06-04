@@ -130,7 +130,7 @@
                 [inputSelectOptions]="closeReasonOptions"
                 placeholder="Selecione o motivo"
             ></app-input-select>
-            <div *ngIf="closeReasonControl?.errors?.required" class="error-message">
+            <div *ngIf="submitted && closeReasonControl?.errors?.required" class="error-message">
                 Campo obrigatório
             </div>
         </fieldset>

@@ -1,28 +1,30 @@
 <div class="layer">
     <div class="pop-up-container">
-        <h1 class="title">{{ title }}</h1>
-        <div class="info-text" [innerHTML]="infoText"></div>
-        <ng-content></ng-content>
+        <div class="pop-up-body">
+            <h1 class="title">{{ title }}</h1>
+            <div class="info-text" [innerHTML]="infoText"></div>
+            <ng-content></ng-content>
+        </div>
         <div class="buttons-container columns">
             <div class="column" *ngIf="confirmButtonLabel">
                 <div *ngIf="responseError" class="error-message">
                     Ocorreu um erro, por favor tente novamente!
                 </div>
-                <app-button
-                    [label]="confirmButtonLabel"
-                    class="button"
-                    [iconStatus]="submitting ? buttonStatus.LOADING : ''"
-                    (click)="onConfirmPopUp()"
-                ></app-button>
             </div>
-            <div class="column" *ngIf="abortButtonLabel">
-                <app-button
-                    [label]="abortButtonLabel"
-                    class="button"
-                    theme="secundary"
-                    (click)="onAbortPopUp()"
-                ></app-button>
-            </div>
+            <app-button
+                [label]="confirmButtonLabel"
+                class="button"
+                [iconStatus]="submitting ? buttonStatus.LOADING : ''"
+                (click)="onConfirmPopUp()"
+            ></app-button>
+        </div>
+        <div class="column" *ngIf="abortButtonLabel">
+            <app-button
+                [label]="abortButtonLabel"
+                class="button"
+                theme="secundary"
+                (click)="onAbortPopUp()"
+            ></app-button>
         </div>
     </div>
 </div>

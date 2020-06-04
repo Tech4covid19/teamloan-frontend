@@ -47,6 +47,7 @@ export class DetailEquipaScreenComponent {
     public submittingClosePost: boolean = false;
     public closePostResponseError: boolean = false;
     public closePostResponseSuccess: boolean = false;
+    public submitted: boolean = false;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -74,18 +75,17 @@ export class DetailEquipaScreenComponent {
 
     public openClosePostPopUp() {
         this.closingPost = true;
-        console.log('opening popup');
-        console.log(this.closeReasonControl.errors);
     }
 
     public closeClosePostPopUp() {
+        this.submitted = false;
         this.closingPost = false;
         this.submittingClosePost = false;
         this.closePostResponseError = false;
     }
 
     public onSubmitClosePostForm() {
-        console.log('valid form: ' + this.closePostForm.valid);
+        this.submitted = true;
 
         if (this.closePostForm.valid) {
             this.submittingClosePost = true;
@@ -95,10 +95,6 @@ export class DetailEquipaScreenComponent {
                 closeReasonDetails: this.closePostForm.value.closeReasonDetails,
                 jobs: null
             });
-
-            // TODO: remove logs
-            console.log(this.closeReasonControl.value);
-            console.log(this.closeReasonDetailsControl.value);
 
             this.postingService
                 .update(this.posting.uuid, this.posting.company.uuid, postingUpdate)
@@ -110,7 +106,7 @@ export class DetailEquipaScreenComponent {
     }
 
     public onFeedbackDismissed() {
-        this.location.back();
+        this.location.back(); // TODO: replace by "posts/private" URL
     }
 
     private hasPermissionToEdit(posting: Posting): Observable<boolean> {
@@ -128,13 +124,11 @@ export class DetailEquipaScreenComponent {
             closeReason: [null, Validators.required],
             closeReasonDetails: []
         });
-        console.log('INIT');
-        console.log(this.closeReasonControl);
+
+        // TODO: try to use feedback inside pop up for feedbacking
 
         // TODO: Why this is initializing with required = true  ?
         this.closeReasonControl.errors.required = false;
-
-        //console.log(this.closeReasonControl.errors);
     }
 
     private onClosePostSuccess() {
