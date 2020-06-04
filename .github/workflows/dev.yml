@@ -45,6 +45,7 @@ jobs:
         replacesArtifacts: true
         allowUpdates: true
         token: ${{ secrets.TOKEN }}
+        
   deploy:
   - name: FTP Deploy
     uses: SamKirkland/FTP-Deploy-Action@3.1.1
