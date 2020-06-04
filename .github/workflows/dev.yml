@@ -45,18 +45,11 @@ jobs:
           replacesArtifacts: true
           allowUpdates: true
           token: ${{ secrets.TOKEN }}
-      
-      - name: Git status
-        run: |
-          git restore package-lock.json
-          git restore package.json
-
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+          
+      - name: Upload ftp
+        uses: sebastianpopp/ftp-action@releases/v2
         with:
-          ftp-server: ftp.teamloan.pt
-          ftp-username: frontend-dev@frontend.teamloan.pt
-          ftp-password: ${{ secrets.FTP_DEV_PASSWORD }}
-          local-dir: dist/teamloan-frontend
-          git-ftp-args: --all
-
+            host: ftp.teamloan.pt
+            user: frontend-dev@frontend.teamloan.pt
+            password: ${{ secrets.FTP_DEV_PASSWORD }}
+            localDir: "dist/teamloan-frontend"
