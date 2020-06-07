@@ -10,6 +10,7 @@ import { PostingResolver } from 'src/app/resolvers/posting.resolver';
 import { DetailEquipaScreenComponent } from 'src/app/screens/posts/detail-equipa/components/detail-equipa-screen.component';
 import { DetailEquipaScreenRoutingModule } from 'src/app/screens/posts/detail-equipa/detail-equipa-screen.routing.module';
 import { EquipaComponentsModule } from '../components/equipa-components.module';
+import { FeedbackModule } from 'src/app/components/feedback/feedback.module';
 
 @NgModule({
     declarations: [DetailEquipaScreenComponent],
@@ -21,7 +22,8 @@ import { EquipaComponentsModule } from '../components/equipa-components.module';
         CommonModule,
         DetailEquipaScreenRoutingModule,
         AngularSvgIconModule,
-        PopUpModule
+        PopUpModule,
+        FeedbackModule
     ],
     providers: [
         FormNotifierFactory,

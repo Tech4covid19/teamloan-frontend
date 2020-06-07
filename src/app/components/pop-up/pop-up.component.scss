@@ -1,4 +1,5 @@
 @import 'bulma/sass/utilities/_all';
+@import 'src/assets/scss/core/_variables';
 
 :host {
     .layer {
@@ -16,33 +17,35 @@
 
     .pop-up-container {
         background-color: white;
-        border-radius: 10px;
-        padding: 0px 200px 56px 200px;
 
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        flex: 1;
 
         @include mobile {
-            margin: 200px 2px 60px 2px;
-            flex: 1;
+            padding: 0px 20px 20px 20px;
+            max-height: calc(100vh - #{$headerMobileHeight});
+            margin-top: #{$headerMobileHeight};
         }
 
         @include tablet {
-            margin: 100px 130px 130px, 130px;
-            flex: 1;
+            border-radius: 10px;
+            padding: 0px 200px 56px 200px;
+            max-height: calc(100vh - #{$headerDesktopHeight});
+            margin-top: #{$headerDesktopHeight};
         }
 
         @include desktop {
             max-width: 1171px;
-            margin: 220px 130px 130px 130px;
-            flex: 1;
         }
 
         .pop-up-body {
-            overflow-y: auto;
-            flex: 1;
+            @include mobile {
+                overflow-y: auto;
+                flex: 1;
+            }
         }
 
         .title {
@@ -74,17 +77,25 @@
         .buttons-container {
             display: flex;
             align-items: flex-end;
+
+            @include mobile {
+                flex-direction: column;
+                flex: 1;
+                margin-top: 20px;
+                .column {
+                    width: 100%;
+                }
+            }
             .button {
                 ::ng-deep {
                     .button {
+                        height: 50px;
                         @include mobile {
-                            font-size: 24px;
-                            line-height: 30px;
-                            height: 70px;
+                            font-size: 30px;
+                            line-height: 35px;
                         }
 
                         @include tablet {
-                            height: 50px;
                             width: 380px;
                             font-size: 24px;
                             line-height: 28px;

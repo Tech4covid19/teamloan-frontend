@@ -117,7 +117,7 @@
     }}?<br>Esta ação não pode ser revertida."
     confirmButtonLabel="Encerrar publicação"
     abortButtonLabel="Manter publicação"
-    [submitting]="submittingClosePost"
+    [submitting]="closePostSubmitting"
     [responseError]="closePostResponseError"
     (onConfirm)="onSubmitClosePostForm()"
     (onAbort)="closeClosePostPopUp()"
@@ -130,7 +130,10 @@
                 [inputSelectOptions]="closeReasonOptions"
                 placeholder="Selecione o motivo"
             ></app-input-select>
-            <div *ngIf="submitted && closeReasonControl?.errors?.required" class="error-message">
+            <div
+                *ngIf="closePostSubmitted && closeReasonControl?.errors?.required"
+                class="error-message"
+            >
                 Campo obrigatório
             </div>
         </fieldset>
@@ -144,17 +147,6 @@
         </fieldset>
     </form>
 </app-pop-up>
-<app-pop-up
-    *ngIf="closePostResponseSuccess"
-    confirmButtonLabel="Voltar"
-    (onConfirm)="onFeedbackDismissed()"
->
-    <h1 class="title">
-        <img
-            class="success"
-            src="/assets/img/icons/like-confirmation.svg"
-            alt="like-confirmation"
-        />
-        Publicação Encerrada
-    </h1>
+<app-pop-up *ngIf="closePostResponseSuccess">
+    <app-feedback [feedback]="closePostSuccessFeedback"></app-feedback>
 </app-pop-up>

@@ -10,21 +10,21 @@
                 <div *ngIf="responseError" class="error-message">
                     Ocorreu um erro, por favor tente novamente!
                 </div>
+                <app-button
+                    [label]="confirmButtonLabel"
+                    class="button"
+                    [iconStatus]="submitting ? buttonStatus.LOADING : ''"
+                    (click)="onConfirmPopUp()"
+                ></app-button>
             </div>
-            <app-button
-                [label]="confirmButtonLabel"
-                class="button"
-                [iconStatus]="submitting ? buttonStatus.LOADING : ''"
-                (click)="onConfirmPopUp()"
-            ></app-button>
-        </div>
-        <div class="column" *ngIf="abortButtonLabel">
-            <app-button
-                [label]="abortButtonLabel"
-                class="button"
-                theme="secundary"
-                (click)="onAbortPopUp()"
-            ></app-button>
+            <div class="column" *ngIf="abortButtonLabel">
+                <app-button
+                    [label]="abortButtonLabel"
+                    class="button"
+                    theme="secundary"
+                    (click)="onAbortPopUp()"
+                ></app-button>
+            </div>
         </div>
     </div>
 </div>

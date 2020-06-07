@@ -1,9 +1,9 @@
-import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FeedbackInterface, FEEDBACK_STATUS } from 'src/app/components/feedback/feedback.interface';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { AuthUser } from 'src/app/models/auth-user/auth-user';
 import { INTENT } from 'src/app/models/intent.enum';
@@ -24,7 +24,6 @@ export class DetailEquipaScreenComponent {
 
     public editPostUrl: string;
 
-    public closingPost: boolean = false;
     public closeReasonOptions: InputSelectOption[] = [
         {
             key: CLOSE_REASON.MATCH,
@@ -43,15 +42,23 @@ export class DetailEquipaScreenComponent {
             label: 'Outro motivo – qual?'
         }
     ];
+    public closePostSuccessFeedback: FeedbackInterface = {
+        status: FEEDBACK_STATUS.SUCCESS,
+        title: 'Sucesso',
+        subTitle: undefined,
+        text: 'Publicação encerrada.',
+        actionLabel: 'Voltar',
+        url: '/posts/private'
+    };
     public closePostForm: FormGroup;
-    public submittingClosePost: boolean = false;
+    public closingPost: boolean = false;
+    public closePostSubmitting: boolean = false;
     public closePostResponseError: boolean = false;
     public closePostResponseSuccess: boolean = false;
-    public submitted: boolean = false;
+    public closePostSubmitted: boolean = false;
 
     constructor(
         private activatedRoute: ActivatedRoute,
-        private location: Location,
         private authUser: AuthUserService,
         private formBuilder: FormBuilder,
         private postingService: PostingService
@@ -78,17 +85,17 @@ export class DetailEquipaScreenComponent {
     }
 
     public closeClosePostPopUp() {
-        this.submitted = false;
+        this.closePostSubmitted = false;
         this.closingPost = false;
-        this.submittingClosePost = false;
+        this.closePostSubmitting = false;
         this.closePostResponseError = false;
     }
 
     public onSubmitClosePostForm() {
-        this.submitted = true;
+        this.closePostSubmitted = true;
 
         if (this.closePostForm.valid) {
-            this.submittingClosePost = true;
+            this.closePostSubmitting = true;
 
             const postingUpdate = new Posting({
                 closeReason: this.closePostForm.value.closeReason,
@@ -96,17 +103,14 @@ export class DetailEquipaScreenComponent {
                 jobs: null
             });
 
-            this.postingService
-                .update(this.posting.uuid, this.posting.company.uuid, postingUpdate)
-                .subscribe(
-                    resp => this.onClosePostSuccess(),
-                    err => this.onClosePostError()
-                );
+            this.onClosePostSuccess();
+            // this.postingService
+            //     .update(this.posting.uuid, this.posting.company.uuid, postingUpdate)
+            //     .subscribe(
+            //         resp => this.onClosePostSuccess(),
+            //         err => this.onClosePostError()
+            //     );
         }
-    }
-
-    public onFeedbackDismissed() {
-        this.location.back(); // TODO: replace by "posts/private" URL
     }
 
     private hasPermissionToEdit(posting: Posting): Observable<boolean> {
@@ -124,24 +128,17 @@ export class DetailEquipaScreenComponent {
             closeReason: [null, Validators.required],
             closeReasonDetails: []
         });
-
-        // TODO: try to use feedback inside pop up for feedbacking
-
-        // TODO: Why this is initializing with required = true  ?
-        this.closeReasonControl.errors.required = false;
     }
 
     private onClosePostSuccess() {
-        this.submittingClosePost = false;
         this.closingPost = false;
+        this.closePostSubmitting = false;
         this.closePostResponseSuccess = true;
         this.closePostResponseError = false;
-
-        // TODO: less booleans!
     }
 
     private onClosePostError() {
-        this.submittingClosePost = false;
+        this.closePostSubmitting = false;
         this.closePostResponseError = true;
         this.closePostResponseSuccess = false;
     }
