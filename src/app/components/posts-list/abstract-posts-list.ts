@@ -5,7 +5,6 @@ import { AbsctractPostsListService } from 'src/app/components/posts-list/abstrac
 import { PostsListFilterService } from 'src/app/components/posts-list/posts-list-filter.service';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { Posting } from 'src/app/models/posting/posting';
-import { ResourceInterface } from 'src/app/models/resource.interface';
 import { BusinessAreasService } from 'src/app/services/business-areas/business-areas.service';
 import { DistrictService } from 'src/app/services/district/district.service';
 import { JobsService } from 'src/app/services/jobs/jobs.service';
@@ -14,6 +13,7 @@ import {
     QueryFilterInterface,
     QUERY_FILTER_PARAMETERS
 } from 'src/app/services/posting/query-filter';
+import { getInputSelectOptions } from 'src/app/utils/input-select-option.utils';
 import { INTENT } from 'src/app/models/intent.enum';
 
 export abstract class AbstractPostsList implements OnDestroy {
@@ -62,32 +62,23 @@ export abstract class AbstractPostsList implements OnDestroy {
     private _fetchBusinessArea() {
         this.businessAreaOptions$ = this.businessAreaService
             .get()
-            .pipe(map(items => this._getInputSelectOptions(items)));
+            .pipe(map(items => getInputSelectOptions(items)));
     }
 
     private _fetchDistrict() {
         this.districtOptions$ = this.districtService
             .get()
-            .pipe(map(items => this._getInputSelectOptions(items)));
+            .pipe(map(items => getInputSelectOptions(items)));
     }
 
     private _fetchMunicipalities(districtId: string) {
         this.municipalityOptions$ = this.municipalityService
             .get(districtId)
-            .pipe(map(items => this._getInputSelectOptions(items)));
+            .pipe(map(items => getInputSelectOptions(items)));
     }
 
     private _fetchJobs() {
-        this.jobsOptions$ = this.jobsService
-            .get()
-            .pipe(map(items => this._getInputSelectOptions(items)));
-    }
-
-    private _getInputSelectOptions(resource: ResourceInterface[]): InputSelectOption[] {
-        return resource.map(item => ({
-            key: item.uuid,
-            label: item.name
-        }));
+        this.jobsOptions$ = this.jobsService.get().pipe(map(items => getInputSelectOptions(items)));
     }
 
     private _onFilterAction(filters: QueryFilterInterface) {

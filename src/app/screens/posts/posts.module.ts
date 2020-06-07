@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { PostingResolver } from 'src/app/resolvers/posting.resolver';
 import { EquipasMainComponent } from './equipas-main.component';
 import { PostsRoutingModule } from './posts-routing.module';
 
