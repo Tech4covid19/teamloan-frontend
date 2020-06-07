@@ -103,13 +103,12 @@ export class DetailEquipaScreenComponent {
                 jobs: null
             });
 
-            this.onClosePostSuccess();
-            // this.postingService
-            //     .update(this.posting.uuid, this.posting.company.uuid, postingUpdate)
-            //     .subscribe(
-            //         resp => this.onClosePostSuccess(),
-            //         err => this.onClosePostError()
-            //     );
+            this.postingService
+                .update(this.posting.uuid, this.posting.company.uuid, postingUpdate)
+                .subscribe(
+                    resp => this.onClosePostSuccess(),
+                    err => this.onClosePostError()
+                );
         }
     }
 
