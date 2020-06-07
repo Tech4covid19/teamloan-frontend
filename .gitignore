@@ -1,8 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# env file
-/src/environments/environment.prod.ts
-
 # compiled output
 /dist
 /tmp

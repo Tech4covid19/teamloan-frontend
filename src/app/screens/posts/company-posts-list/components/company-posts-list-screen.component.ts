@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractPostsList } from 'src/app/components/posts-list/abstract-posts-list';
-import { ACTIONS } from 'src/app/material/post-card/post-card.component';
+import { INTENT } from 'src/app/models/intent.enum';
 
 @Component({
     selector: 'app-company-posts-list-screen',
@@ -9,4 +9,12 @@ import { ACTIONS } from 'src/app/material/post-card/post-card.component';
 })
 export class CompanyPostsListScreenComponent extends AbstractPostsList {
     public actions = [];
+
+    protected getTitle(intent: INTENT): string {
+        if (intent == INTENT.LEND) {
+            return 'As minhas equipas';
+        } else if (intent == INTENT.SEEK) {
+            return 'Os meus pedidos';
+        }
+    }
 }
