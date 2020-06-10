@@ -49,3 +49,11 @@ jobs:
           replacesArtifacts: true
           allowUpdates: true
           token: ${{ secrets.TOKEN }}
+          
+      - name: Upload ftp
+        uses: sebastianpopp/ftp-action@releases/v2
+        with:
+            host: ftp.teamloan.pt
+            user: frontend-prod@teamloan.pt
+            password: ${{ secrets.FTP_PROD_PASSWORD }}
+            localDir: "dist/teamloan-frontend"
