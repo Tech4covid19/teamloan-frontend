@@ -38,14 +38,14 @@ jobs:
 
       - name: package the release (tar.gz)
         run: |
-          tar -zcvf dist/teamloan-frontend-$RELEASE_ID.tar.gz dist/teamloan-frontend
+          tar -zcvf dist/teamloan-frontend-$release_id.tar.gz dist/teamloan-frontend
                 
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist/teamloan-frontend-${{ env.RELEASE_ID }}.tar.gz"
+          artifacts: "dist/teamloan-frontend-${{ env.release_id }}.tar.gz"
           commit: master
-          tag: ${{ env.RELEASE_ID }}
+          tag: ${{ env.release_id }}
           replacesArtifacts: true
           allowUpdates: true
           token: ${{ secrets.TOKEN }}
