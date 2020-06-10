@@ -1,0 +1,9 @@
+<h1 class="title">{{ title }}</h1>
+<app-posts-list
+    [posts]="posts"
+    [businessAreaOptions]="businessAreaOptions$ | async"
+    [districtOptions]="districtOptions$ | async"
+    [municipalityOptions]="municipalityOptions$ | async"
+    [jobsOptions]="jobsOptions$ | async"
+    [actions]="actions"
+></app-posts-list>

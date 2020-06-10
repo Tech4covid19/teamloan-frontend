@@ -1,0 +1,152 @@
+<div class="details-container">
+    <h1 class="title">Detalhes da publicação</h1>
+    <div class="form-container">
+        <div class="equipa-form">
+            <div class="fieldset">
+                <h3 class="section-title">Intenção:</h3>
+                <div class="input-field">
+                    {{ posting.intent === intents.LEND ? 'Partilhar equipa' : 'Reforçar equipa' }}
+                </div>
+
+                <h2 class="sub-title">Dados da equipa</h2>
+
+                <h3 class="section-title">Distrito</h3>
+                <div class="input-field">
+                    <span [title]="posting.district.name">
+                        {{ posting.district.name }}
+                    </span>
+                </div>
+
+                <h3 class="section-title">Concelho</h3>
+                <div class="input-field">
+                    <span [title]="posting.municipality.name">
+                        {{ posting.municipality.name }}
+                    </span>
+                </div>
+
+                <h3 class="section-title">Nome da equipa</h3>
+                <div class="input-field">
+                    <span [title]="posting.title">
+                        {{ posting.title }}
+                    </span>
+                </div>
+
+                <h3 class="section-title">Função (Funções)</h3>
+                <ng-container *ngFor="let job of posting.jobs">
+                    <div class="input-jobs-container">
+                        <div class="input-field input-job">
+                            <span class="job-name" [title]="job.job.name">{{ job.job.name }}</span>
+                        </div>
+                        <div class="input-field input-quantity">{{ job['number-of-people'] }}</div>
+                    </div>
+                </ng-container>
+
+                <div class="lines-container">
+                    <svg-icon
+                        class="lines desktop"
+                        src="/assets/img/teams/registration-lines.svg"
+                    ></svg-icon>
+                    <svg-icon
+                        class="lines mobile"
+                        src="/assets/img/teams/registration-lines-mobile.svg"
+                    ></svg-icon>
+                </div>
+            </div>
+
+            <div class="fieldset">
+                <div class="fieldset-block">
+                    <h2 class="sub-title">Observações</h2>
+                    <div class="input-field textarea">{{ posting.notes }}</div>
+                </div>
+
+                <div class="fieldset-block">
+                    <h2 class="sub-title">Dados da empresa</h2>
+
+                    <h3 class="section-title">Nome</h3>
+                    <div class="input-field">
+                        <span [title]="posting.company.name">{{ posting.company.name }}</span>
+                    </div>
+
+                    <h3 class="section-title">Setor</h3>
+                    <div class="input-field">
+                        <span [title]="posting.company['business-area'].name">
+                            {{ posting.company['business-area'].name }}</span
+                        >
+                    </div>
+
+                    <h3 class="section-title">Telefone</h3>
+                    <div class="input-field">
+                        <span [title]="posting.company.phone">{{ posting.company.phone }}</span>
+                    </div>
+
+                    <h3 class="section-title">Email</h3>
+                    <div class="input-field">
+                        <span [title]="posting.company.email">
+                            <a href="mailto:{{ posting.company.email }}">
+                                {{ posting.company.email }}
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns" *ngIf="hasPermission$ | async">
+            <app-button
+                [url]="editPostUrl"
+                class="button column"
+                type="button"
+                size="fit"
+                label="Editar"
+            ></app-button>
+            <app-button
+                (click)="openClosePostPopUp()"
+                theme="secundary"
+                class="button column"
+                type="button"
+                size="fit"
+                label="Encerrar publicação"
+            ></app-button>
+        </div>
+    </div>
+</div>
+<app-pop-up
+    *ngIf="closingPost"
+    title="Encerrar publicação"
+    infoText="Quer encerrar a publicação da equipa {{
+        posting.title
+    }}?<br>Esta ação não pode ser revertida."
+    confirmButtonLabel="Encerrar publicação"
+    abortButtonLabel="Manter publicação"
+    [submitting]="closePostSubmitting"
+    [responseError]="closePostResponseError"
+    (onConfirm)="onSubmitClosePostForm()"
+    (onAbort)="closeClosePostPopUp()"
+>
+    <form [formGroup]="closePostForm" class="form-fields">
+        <fieldset class="field-container">
+            <h3 class="section-title">Qual é o motivo para encerrar esta publicação?</h3>
+            <app-input-select
+                formControlName="closeReason"
+                [inputSelectOptions]="closeReasonOptions"
+                placeholder="Selecione o motivo"
+            ></app-input-select>
+            <div
+                *ngIf="closePostSubmitted && closeReasonControl?.errors?.required"
+                class="error-message"
+            >
+                Campo obrigatório
+            </div>
+        </fieldset>
+        <fieldset class="field-container">
+            <h3 class="section-title">Detalhes</h3>
+            <app-input-textarea
+                class="textarea"
+                formControlName="closeReasonDetails"
+                placeholder=""
+            ></app-input-textarea>
+        </fieldset>
+    </form>
+</app-pop-up>
+<app-pop-up *ngIf="closePostResponseSuccess">
+    <app-feedback [feedback]="closePostSuccessFeedback"></app-feedback>
+</app-pop-up>

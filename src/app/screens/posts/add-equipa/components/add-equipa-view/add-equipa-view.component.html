@@ -1,0 +1,14 @@
+<h1 class="title">Criar Publicação</h1>
+<app-equipa-form-container [initialValue]="initialValue">
+    <div *ngIf="reponseError" class="error-message">
+        Ocorreu um erro, por favor tente novamente!
+    </div>
+    <app-button
+        class="button"
+        type="button"
+        size="fit"
+        label="Criar publicação"
+        [iconStatus]="submitting ? buttonStatus.LOADING : ''"
+        (click)="submit()"
+    ></app-button>
+</app-equipa-form-container>

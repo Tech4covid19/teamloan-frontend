@@ -1,0 +1,36 @@
+@import 'bulma/sass/utilities/_all';
+
+@mixin main-font-style {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    color: var(--color-dove-gray);
+
+    @include mobile {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    @include tablet {
+        font-size: 15px;
+        line-height: 18px;
+    }
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        color: var(--color-nobel);
+    }
+
+    &::-moz-placeholder {
+        color: var(--color-nobel);
+    }
+
+    &:-ms-input-placeholder {
+        color: var(--color-nobel);
+    }
+
+    &:-moz-placeholder {
+        color: var(--color-nobel);
+    }
+}

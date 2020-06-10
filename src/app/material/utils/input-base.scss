@@ -1,0 +1,29 @@
+@import './mixins.scss';
+
+:host {
+    width: 100%;
+}
+
+.input-field {
+    @include main-font-style();
+    @include placeholder();
+    width: 100%;
+    padding: 0 20px;
+    border-radius: 10px;
+    border: 1px solid #663366;
+    outline: none;
+    color: var(--color-black);
+
+    @include mobile {
+        height: 40px;
+    }
+
+    @include tablet {
+        height: 50px;
+    }
+
+    &.disabled {
+        border-color: var(--color-black);
+        cursor: default;
+    }
+}

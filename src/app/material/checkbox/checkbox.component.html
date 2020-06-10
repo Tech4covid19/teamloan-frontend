@@ -1,0 +1,16 @@
+<div class="input-container">
+    <input
+        class="input-field"
+        [name]="'checkbox-' + id"
+        type="checkbox"
+        (change)="change($event)"
+    />
+    <div class="cover">
+        <svg-icon
+            *ngIf="formControl?.value"
+            class="checked"
+            src="/assets/img/icons/check.svg"
+        ></svg-icon>
+    </div>
+    <label [for]="'checkbox-' + id" [innerHTML]="label"></label>
+</div>

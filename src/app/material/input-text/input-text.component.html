@@ -1,0 +1,10 @@
+<input
+    class="input-field"
+    [type]="type"
+    [value]="value"
+    [placeholder]="placeholder"
+    (change)="onUpdate($event)"
+    (input)="onUpdate($event)"
+    [attr.disabled]="formControl.disabled ? 'disabled' : null"
+    [ngClass]="{ disabled: formControl.disabled }"
+/>

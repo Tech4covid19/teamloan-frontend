@@ -1,3 +1,5 @@
+![dev](https://github.com/Tech4covid19/teamloan-frontend/workflows/dev/badge.svg)
+
 # TeamloanFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.

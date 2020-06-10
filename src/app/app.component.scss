@@ -1,0 +1,14 @@
+@import 'src/assets/scss/core/_variables';
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    position: relative;
+
+    @include mobile {
+        margin-top: $headerMobileHeight;
+    }
+
+    @include tablet {
+        margin-top: $headerDesktopHeight;
+    }
+}

@@ -1,0 +1,161 @@
+@import 'bulma/sass/utilities/_all';
+
+.button,
+.link {
+    display: flex;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+    border: 1px solid var(--color-bittersweet);
+    outline: none;
+    cursor: pointer;
+
+    svg-icon {
+        display: flex;
+        width: 30px;
+        height: 30px;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+
+    .loading {
+        @-moz-keyframes spin {
+            100% {
+                -moz-transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        @keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        -webkit-animation: spin 0.5s linear infinite;
+        -moz-animation: spin 0.5s linear infinite;
+        animation: spin 0.5s linear infinite;
+    }
+
+    &[theme='main'] {
+        background-color: var(--color-bittersweet);
+        color: var(--color-white);
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        svg-icon {
+            fill: var(--color-white);
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-white);
+                color: var(--color-bittersweet);
+
+                svg-icon {
+                    fill: var(--color-bittersweet);
+                }
+            }
+        }
+    }
+
+    &[theme='secundary'] {
+        background-color: var(--color-white);
+        color: var(--color-bittersweet);
+        border: 1px solid var(--color-bittersweet);
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        svg-icon {
+            fill: var(--color-bittersweet);
+        }
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-bittersweet);
+                color: var(--color-white);
+
+                svg-icon {
+                    fill: var(--color-white);
+                }
+            }
+        }
+    }
+
+    &[size='fit'] {
+        width: auto;
+    }
+
+    @include mobile {
+        height: 50px;
+        font-size: 17px;
+        line-height: 28px;
+
+        svg-icon {
+            width: 17px;
+            margin-right: 10px;
+        }
+    }
+
+    @include tablet {
+        height: 77px;
+        font-size: 34px;
+        line-height: 48px;
+    }
+
+    @include desktop {
+        height: 77px;
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    &[theme='small-action'] {
+        background-color: var(--color-white);
+        color: var(--color-cosmic);
+        border: 1px solid var(--color-white);
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: 600;
+
+        svg-icon {
+            fill: var(--color-cosmic);
+        }
+
+        &:hover {
+            background-color: var(--color-cosmic);
+            color: var(--color-white);
+            border-color: var(--color-cosmic);
+
+            svg-icon {
+                fill: var(--color-white);
+            }
+        }
+
+        @include mobile {
+            font-size: 16px;
+            line-height: 19px;
+            height: 37px;
+        }
+
+        @include tablet {
+            font-size: 16px;
+            line-height: 19px;
+            height: 37px;
+        }
+    }
+}
+
+.link {
+    text-decoration: none;
+}

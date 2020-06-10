@@ -1,0 +1,117 @@
+@import 'bulma/sass/utilities/_all';
+
+.form-container {
+    display: flex;
+    flex: 1;
+
+    @include mobile {
+        flex-direction: column;
+    }
+
+    .input-element {
+        display: flex;
+
+        @include mobile {
+            margin-bottom: 15px;
+        }
+
+        @include tablet {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.fieldset {
+    position: relative;
+
+    @include mobile {
+        padding: 15px 20px;
+    }
+
+    @include tablet {
+        flex: 1;
+        min-width: 0;
+        padding: 30px 55px;
+    }
+}
+
+.lines-container {
+    @include mobile {
+        margin-top: 30px;
+    }
+
+    .lines {
+        display: flex;
+        fill: var(--color-cosmic);
+
+        &.mobile {
+            width: 310px;
+            height: 7px;
+            margin: 0 auto;
+
+            @include tablet {
+                display: none;
+            }
+        }
+
+        &.desktop {
+            position: absolute;
+            width: 7px;
+            height: 310px;
+            top: 30px;
+            right: -2px;
+
+            @include mobile {
+                display: none;
+            }
+        }
+    }
+}
+
+.sub-title {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    color: var(--color-cosmic);
+
+    @include mobile {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 14px;
+    }
+
+    @include tablet {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 14px;
+    }
+}
+
+.section-title {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    color: var(--color-black);
+
+    @include mobile {
+        font-size: 12px;
+        line-height: 14px;
+        margin: 2px 0 3px 5px;
+    }
+
+    @include tablet {
+        font-size: 13px;
+        line-height: 15px;
+        margin-left: 5px;
+        margin-bottom: 3px;
+    }
+}
+
+.textarea {
+    display: flex;
+    height: 254px;
+}

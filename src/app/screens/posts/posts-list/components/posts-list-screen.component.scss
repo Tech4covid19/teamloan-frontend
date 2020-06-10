@@ -1,0 +1,10 @@
+:host {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+        color: var(--color-cosmic);
+    }
+}

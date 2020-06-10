@@ -1,0 +1,199 @@
+@import '../utils/mixins.scss';
+@import 'bulma/sass/components/dropdown';
+
+$itemHeightTablet: 35px;
+$itemHeightMobile: 40px;
+$maxItems: 5;
+
+.dropdown {
+    display: flex;
+    flex: 1;
+    position: relative;
+    width: 100%;
+
+    &.is-active {
+        .arrow {
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-white);
+
+    .input-field {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        @include mobile {
+            padding-right: 47px;
+        }
+
+        @include tablet {
+            padding-right: 50px;
+        }
+
+        span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+
+            &.placeholder {
+                color: var(--color-nobel);
+            }
+        }
+
+        &.disabled {
+            cursor: default;
+        }
+
+        &.disabled + .arrow {
+            display: none;
+        }
+    }
+
+    svg-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        fill: var(--color-cosmic);
+        display: flex;
+        width: 17px;
+        height: 17px;
+        cursor: pointer;
+
+        @include mobile {
+            margin: 12px 15px;
+        }
+
+        @include tablet {
+            margin: 17px;
+        }
+    }
+}
+
+select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 1;
+    opacity: 0;
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.dropdown.is-active .dropdown-menu {
+    @include mobile {
+        display: none;
+    }
+}
+
+.dropdown-menu {
+    width: 100%;
+    padding: 0;
+    border: 1px solid var(--color-cosmic);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--color-white);
+
+    .search-box-container {
+        display: flex;
+        align-items: center;
+        height: 39px;
+        margin: 0 10px;
+
+        .search {
+            width: 25px;
+            height: 25px;
+            display: flex;
+        }
+
+        .search-box {
+            @include main-font-style();
+            @include placeholder();
+            width: 100%;
+            border: none;
+            padding: 0 10px;
+            margin-left: 10px;
+            outline: none;
+            color: var(--color-black);
+
+            @include mobile {
+                font-size: 15px;
+                line-height: 19px;
+            }
+
+            @include tablet {
+                font-size: 15px;
+                line-height: 19px;
+            }
+
+            @include desktop {
+                font-size: 15px;
+                line-height: 19px;
+            }
+        }
+    }
+
+    .dropdown-content {
+        max-height: calc(#{$itemHeightTablet} * #{$maxItems});
+        overflow-y: auto;
+        padding: 0;
+        border-radius: 0;
+
+        .dropdown {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .dropdown-item {
+        @include main-font-style();
+        display: flex;
+        align-items: center;
+        color: var(--color-black);
+        height: $itemHeightTablet;
+        padding: 10px;
+        cursor: pointer;
+
+        @include mobile {
+            font-size: 15px;
+            line-height: 19px;
+        }
+
+        @include tablet {
+            font-size: 15px;
+            line-height: 19px;
+        }
+
+        @include desktop {
+            font-size: 15px;
+            line-height: 19px;
+        }
+
+        &:hover,
+        &.selected {
+            background-color: var(--color-cosmic);
+            color: var(--color-white);
+        }
+
+        span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+    }
+}

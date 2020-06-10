@@ -1,0 +1,49 @@
+:host {
+    form {
+        padding: 20px;
+    }
+
+    .submit-button-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .submit-button-container app-button {
+        width: 300px;
+    }
+
+    .terms-container::ng-deep {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        .terms-content {
+            padding: 0 40px;
+
+            app-checkbox {
+                padding-right: 60px;
+                label {
+                    max-width: 350px;
+                }
+            }
+        }
+    }
+
+    @media all and (max-width: 720px) {
+        .terms-container::ng-deep {
+            justify-content: center;
+
+            app-checkbox {
+                padding-right: unset;
+                label {
+                    max-width: 250px;
+                }
+            }
+        }
+
+        form {
+            padding: 10px;
+        }
+    }
+}

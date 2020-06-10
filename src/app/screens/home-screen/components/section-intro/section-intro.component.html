@@ -1,0 +1,30 @@
+<img class="background-lines" src="/assets/img/home/intro-background-lines.svg" />
+<div class="logo-container">
+    <img class="logo" src="/assets/img/logo-white.svg" />
+</div>
+<div class="intro-container">
+    <div class="content-container">
+        <div class="info-container">
+            <h1 class="intro-title">
+                JUNTE-SE A ESTE MOVIMENTO DE PARTILHA DE EQUIPAS ENTRE EMPRESAS PARA, JUNTOS,
+                ULTRAPASSARMOS OS DESAFIOS DO COVID-19.
+            </h1>
+        </div>
+        <div class="actions" *ngIf="!isAuthenticated">
+            <app-button url="/login" label="Iniciar sessão"></app-button>
+            <app-button url="/register" label="Criar nova conta" theme="secundary"></app-button>
+        </div>
+        <div class="actions" *ngIf="isAuthenticated">
+            <app-button
+                url="/posts"
+                [queryParams]="{ intent: 'LEND' }"
+                label="Equipas disponíveis"
+            ></app-button>
+            <app-button
+                url="/posts"
+                [queryParams]="{ intent: 'SEEK' }"
+                label="Pedidos de equipas"
+            ></app-button>
+        </div>
+    </div>
+</div>

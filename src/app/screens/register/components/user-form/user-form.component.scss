@@ -1,0 +1,7 @@
+:host {
+    padding: 0 40px !important;
+
+    @media all and (max-width: 720px)  {
+        padding: 0 !important;
+    }
+}

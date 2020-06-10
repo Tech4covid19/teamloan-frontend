@@ -1,0 +1,13 @@
+:host {
+    padding: 0 40px !important;
+
+    .form-section::ng-deep {
+        app-input-select > div {
+            padding: 7px 0px;
+        }
+    }
+
+    @media all and (max-width: 720px) {
+        padding: 0 !important;
+    }
+}

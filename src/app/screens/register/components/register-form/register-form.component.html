@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="columns is-desktop">
+        <app-company-form
+            [notifier]="notifier"
+            [businessAreas]="businessAreas"
+            class="column"
+            formControlName="company"
+        >
+        </app-company-form>
+
+        <app-user-form [notifier]="notifier" class="column" formControlName="user"> </app-user-form>
+    </div>
+    <div class="columns is-desktop">
+        <div class="column terms-container">
+            <div class="terms-content">
+                <app-checkbox
+                    formControlName="checkbox"
+                    [label]="
+                        'Concordo com os <a href=&quot;/assets/docs/terms-conditions.pdf&quot; target=&quot;_blank&quot;>Termos e Condições</a> assim como com a <a href=&quot;/assets/docs/privacy-policy.pdf&quot; target=&quot;_blank&quot;>Política de Privacidade</a> do serviço'
+                    "
+                ></app-checkbox>
+                <div *ngIf="hasTermsError" class="error-message">
+                    Campo obrigatório
+                </div>
+            </div>
+        </div>
+
+        <div class="column submit-button-container">
+            <div *ngIf="serverError" class="error-message">
+                Ocorreu um erro, por favor tente novamente!
+            </div>
+            <app-button
+                label="Registar"
+                [iconStatus]="requesting ? buttonStatus.LOADING : ''"
+                type="submit"
+                class="button-submit"
+            ></app-button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,112 @@
+<ng-container [formGroup]="form">
+    <h1>InputTextComponent</h1>
+    <div class="columns is-desktop">
+        <app-input-text
+            class="column"
+            formControlName="inputText"
+            type="text"
+            placeholder="Text"
+        ></app-input-text>
+
+        <app-input-text
+            class="column"
+            formControlName="password"
+            type="password"
+            placeholder="Password"
+        ></app-input-text>
+    </div>
+
+    <h1>InputSelectComponent</h1>
+    <div class="columns is-desktop">
+        <app-input-select
+            class="column"
+            formControlName="selectBoxSmall"
+            [inputSelectOptions]="inputSelectOptionsSmall"
+            placeholder="Select box"
+        ></app-input-select>
+
+        <app-input-select
+            class="column is-half-desktop"
+            formControlName="selectBoxLarge"
+            [inputSelectOptions]="inputSelectOptionsLarge"
+            emptyValueLabel="Box large empty value label"
+            placeholder="Select box"
+        ></app-input-select>
+    </div>
+
+    <h1>CheckboxComponent</h1>
+    <div class="columns">
+        <app-checkbox
+            class="column"
+            formControlName="checkbox"
+            [label]="
+                'Concordo com os <a>Termos e Condições</a> assim como com a <a>Política de Privacidade</a> do serviço'
+            "
+        ></app-checkbox>
+    </div>
+
+    <h1>InputTextAreaComponent</h1>
+    <div class="columns is-desktop">
+        <app-input-textarea
+            class="column"
+            formControlName="inputTextarea"
+            placeholder="Text"
+        ></app-input-textarea>
+    </div>
+
+    <h1>ButtonComponent</h1>
+    <div class="columns">
+        <app-button label="Theme: main (default)" class="column"></app-button>
+        <app-button label="Theme: secundary" theme="secundary" class="column"></app-button>
+        <app-button label="Theme: small-action" theme="small-action" class="column"></app-button>
+    </div>
+
+    <div>{{ form.value | json }}</div>
+
+    <hr />
+    <h1>FilterToolbarComponent</h1>
+    <app-filter-toolbar
+        [intentToggle]="true"
+        [districtOptions]="inputSelectOptionsSmall"
+        [municipalityOptions]="inputSelectOptionsSmall"
+        [sectorOptions]="inputSelectOptionsSmall"
+        [functionOptions]="inputSelectOptionsSmall"
+        (filterChange)="onFilterToolbarChange($event)"
+    ></app-filter-toolbar>
+    <hr />
+    <br /><br /><br /><br /><br />
+    <h1>PostCardComponent</h1>
+    <div>
+        <div style="width: 372px;">
+            <div class="columns is-desktop">
+                <app-post-card [postCard]="postCard" [actions]="actions"></app-post-card>
+            </div>
+        </div>
+    </div>
+
+    <h1>LinkComponent</h1>
+    <div class="columns">
+        <app-link
+            class="column"
+            [label]="linkRegular.label"
+            [icon]="linkRegular.icon"
+            [url]="linkRegular.url"
+            [external]="linkRegular.external"
+        ></app-link>
+
+        <app-link
+            class="column"
+            [label]="linkSmall.label"
+            [icon]="linkSmall.icon"
+            [url]="linkSmall.url"
+            [external]="linkSmall.external"
+        ></app-link>
+
+        <app-link
+            class="column"
+            [label]="linkLabel.label"
+            [url]="linkLabel.url"
+            [external]="linkLabel.external"
+        ></app-link>
+    </div>
+</ng-container>

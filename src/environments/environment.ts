@@ -2,11 +2,20 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const keycloak = { url: 'http://localhost:8080/api/' };
+const backend = { url: 'https://app-dev.teamloan.pt/api/' };
+const keycloak = {
+    url: 'https://auth-dev.teamloan.pt/auth/',
+    realm: 'TEAMLOAN',
+    grantType: 'password',
+    clientId: 'TEAMLOAN_WEB_APP'
+};
+const googleAnalytics = { userId: '' };
 
 export const environment = {
     production: false,
+    backend,
     keycloak,
+    googleAnalytics
 };
 
 /*

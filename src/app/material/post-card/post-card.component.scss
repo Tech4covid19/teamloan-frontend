@@ -1,0 +1,347 @@
+@import 'bulma/sass/utilities/_all';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 372px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--color-white);
+    cursor: pointer;
+    a {
+        text-decoration: none;
+    }
+}
+
+.header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+
+    @include mobile {
+        min-height: 78px;
+        padding: 0 100px 0 13px;
+    }
+
+    @include tablet {
+        min-height: 78px;
+        padding: 0 100px 0 13px;
+    }
+
+    .cover-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 78px;
+        overflow: hidden;
+
+        .cover {
+            width: 100%;
+        }
+    }
+
+    .post-title {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--color-white);
+        z-index: 0;
+
+        @include mobile {
+            font-size: 26px;
+            line-height: 24px;
+        }
+
+        @include tablet {
+            font-size: 26px;
+            line-height: 24px;
+        }
+    }
+
+    .post-subTitle {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--color-white);
+        z-index: 0;
+
+        @include mobile {
+            font-size: 18px;
+            line-height: 22px;
+        }
+
+        @include tablet {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+
+    .employees {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        background-color: var(--color-white);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include mobile {
+            width: 81px;
+            height: 103px;
+            padding: 13px 0;
+        }
+
+        @include tablet {
+            width: 81px;
+            height: 103px;
+            padding: 13px 0;
+        }
+
+        .icon {
+            @include mobile {
+                width: 30px;
+                height: 19px;
+            }
+
+            @include tablet {
+                width: 30px;
+                height: 19px;
+            }
+        }
+
+        .number {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            text-align: center;
+            color: var(--color-cosmic);
+
+            @include mobile {
+                font-size: 50px;
+                line-height: 70px;
+            }
+
+            @include tablet {
+                font-size: 50px;
+                line-height: 70px;
+            }
+        }
+
+        &.large .number {
+            @include mobile {
+                font-size: 40px;
+            }
+
+            @include tablet {
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+.body {
+    @include mobile {
+        padding: 10px 18px;
+    }
+
+    @include tablet {
+        padding: 10px 18px;
+    }
+
+    .business-area {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: 600;
+        color: var(--color-cosmic);
+        max-width: 290px;
+        height: 45px;
+
+        @include mobile {
+            font-size: 20px;
+            line-height: 23px;
+            margin-bottom: 10px;
+        }
+
+        @include tablet {
+            font-size: 20px;
+            line-height: 23px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .jobs {
+        font-size: 16px;
+        line-height: 20px;
+        font-family: Work Sans;
+        color: var(--color-cosmic);
+        height: 60px;
+
+        &.grid {
+            display: grid;
+            grid-template-rows: auto auto auto;
+            grid-auto-flow: column;
+            column-gap: 15px;
+        }
+
+        li {
+            display: flex;
+        }
+
+        .job-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &.grid .job-name {
+            width: 137px;
+        }
+
+        .job-count {
+            margin-left: 5px;
+        }
+    }
+
+    .calendar {
+        display: flex;
+        justify-content: space-between;
+
+        @include mobile {
+            margin: 0 10px 0 14px;
+        }
+
+        @include tablet {
+            margin: 0 10px 0 14px;
+        }
+
+        .icon {
+            fill: var(--color-cosmic);
+            width: 46px;
+            height: 42px;
+        }
+
+        .schedule {
+            display: flex;
+            flex-direction: column;
+
+            ul {
+                display: flex;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex: 1;
+                    background-color: var(--color-white);
+                    color: var(--color-cosmic);
+                    border-radius: 4px;
+                    border: 1px solid var(--color-cosmic);
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    &.selected {
+                        background-color: var(--color-cosmic);
+                        color: var(--color-white);
+                    }
+                }
+            }
+
+            .days {
+                @include mobile {
+                    margin-bottom: 5px;
+                }
+
+                @include tablet {
+                    margin-bottom: 5px;
+                }
+
+                li {
+                    font-family: Work Sans;
+                    font-style: normal;
+                    font-weight: 600;
+                    text-align: center;
+
+                    @include mobile {
+                        font-size: 18px;
+                        line-height: 21px;
+                        min-width: 23px;
+                        height: 31px;
+                        margin: 0 5px;
+                    }
+
+                    @include tablet {
+                        font-size: 18px;
+                        line-height: 21px;
+                        min-width: 23px;
+                        height: 31px;
+                        margin: 0 5px;
+                    }
+                }
+            }
+
+            .shifts {
+                li {
+                    font-family: Work Sans;
+                    font-style: normal;
+                    font-weight: normal;
+                    text-align: center;
+
+                    @include mobile {
+                        font-size: 15px;
+                        line-height: 18px;
+                        min-width: 70px;
+                        height: 24px;
+                        margin: 0 5px;
+                    }
+
+                    @include tablet {
+                        font-size: 15px;
+                        line-height: 18px;
+                        min-width: 70px;
+                        height: 24px;
+                        margin: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    border-top: 1px solid var(--color-cosmic);
+
+    app-button {
+        flex: 1;
+
+        @include mobile {
+            &:not(:first-child) {
+                border-left: 1px solid var(--color-cosmic);
+            }
+        }
+
+        @include tablet {
+            &:not(:first-child) {
+                border-left: 1px solid var(--color-cosmic);
+            }
+        }
+    }
+}

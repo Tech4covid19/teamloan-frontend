@@ -1,0 +1,37 @@
+<button class="button" *ngIf="!url" type="{{ type }}" [attr.theme]="theme" [attr.size]="size">
+    <ng-container *ngTemplateOutlet="button"></ng-container>
+</button>
+
+<a
+    class="link"
+    *ngIf="url && !externalUrl"
+    [routerLink]="[url]"
+    [queryParams]="queryParams"
+    [attr.theme]="theme"
+    [attr.size]="size"
+>
+    <ng-container *ngTemplateOutlet="button"></ng-container>
+</a>
+
+<a
+    class="link"
+    *ngIf="url && externalUrl"
+    [href]="url"
+    [target]="newPageUrl && '_blank'"
+    [attr.theme]="theme"
+    [attr.size]="size"
+>
+    <ng-container *ngTemplateOutlet="button"></ng-container>
+</a>
+
+<ng-template #button>
+    <svg-icon
+        *ngIf="iconStatus"
+        [src]="iconStatusUrl[iconStatus]"
+        [attr.class]="iconStatus"
+        [attr.alt]="label"
+    ></svg-icon>
+    <span>
+        {{ label }}
+    </span>
+</ng-template>

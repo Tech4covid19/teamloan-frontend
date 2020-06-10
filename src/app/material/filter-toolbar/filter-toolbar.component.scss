@@ -1,0 +1,82 @@
+@import 'bulma/sass/utilities/_all';
+:host {
+    width: 100%;
+
+    @include tablet {
+        max-width: 211px;
+        min-width: 211px;
+    }
+
+    .filter-toolbar-container {
+        border-color: var(--color-bittersweet);
+        outline: none;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        background-color: var(--color-white);
+
+        @include tablet {
+            border-radius: 10px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+
+            .filter-component {
+                padding: 0.75rem;
+                width: 100%;
+
+                fieldset {
+                    min-inline-size: auto;
+                }
+            }
+
+            @include mobile {
+                ::ng-deep .button {
+                    font-size: 16px;
+                    line-height: 19px;
+                    height: 50px;
+                }
+            }
+
+            @include tablet {
+                flex-direction: column;
+
+                app-button.filter-component {
+                    padding: 0.75rem 15%;
+
+                    ::ng-deep .button {
+                        font-size: 15px;
+                        line-height: 18px;
+                        height: 50px;
+                    }
+                }
+            }
+
+            hr {
+                width: 100%;
+            }
+        }
+    }
+}
+.form-fields {
+    margin: 30px;
+}
+
+.label {
+    display: block;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+
+    @include mobile {
+        font-size: 15px;
+        line-height: 18px;
+        padding: 4px 7px;
+    }
+
+    @include tablet {
+        font-size: 18px;
+        line-height: 21px;
+        padding: 5px 9px;
+    }
+}
