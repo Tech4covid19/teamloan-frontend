@@ -7,24 +7,18 @@
     background-image: url('/assets/img/auth-background.svg');
     background-size: cover;
 
-
-
     .register-form-container {
         background-color: white;
         border-radius: 10px;
         width: 100%;
-
     }
 
     @include tablet {
         min-height: 100vh;
-        padding: 20px;
+        padding: 0px 20px 20px 20px;
     }
 
     @include widescreen {
-        padding: 80px;
+        padding: 0px 80px 80px 80px;
     }
-
-
-
 }
