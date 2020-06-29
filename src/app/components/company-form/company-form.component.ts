@@ -7,8 +7,8 @@ import {
 import { SimpleFormValueAccessor } from 'src/app/form-tools/value-accessors/simple-form.value.accessor';
 import { InputSelectOption } from 'src/app/material/input-select/input-select.component';
 import { INTENT } from 'src/app/models/intent.enum';
-import { CompanyViewModel } from '../../register-user.viewmodel';
 import { CompanyFormService } from './company-form.service';
+import { CompanyViewModel } from 'src/app/interfaces/company.viewmodel.interface';
 
 @Component({
     selector: 'app-company-form',
