@@ -69,6 +69,7 @@ const routes: Routes = [
                 m => m.ResetPasswordScreenModule
             )
     },
+    { path: 'faqs', loadChildren: () => import('./screens/faqs/faqs.module').then(m => m.FaqsModule) },
     {
         path: '**',
         redirectTo: '',

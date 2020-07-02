@@ -1,0 +1,66 @@
+[
+    {
+        "id" : "categ1",
+        "desc" : "Geral",
+        "items" : [
+            { 
+                "q" : "pergunta11",
+                "a" : "resposta11"
+            },
+            { 
+                "q" : "pergunta12",
+                "a" : "resposta12"
+            },
+            { 
+                "q" : "pergunta13",
+                "a" : "resposta13"
+            }
+        ]
+    },
+    {
+        "id" : "categ2",
+        "desc" : "Disponibilizar Equipa",
+        "items" : [ { 
+            "q" : "pergunta21",
+            "a" : "resposta21"
+        },
+        { 
+            "q" : "pergunta22",
+            "a" : "resposta22"
+        },
+        { 
+            "q" : "pergunta23",
+            "a" : "resposta23"
+        }]
+    },{
+        "id": "categ3",
+        "desc": "Reforcar Equipa",
+        "items": [ { 
+            "q" : "pergunta31",
+            "a" : "resposta31"
+        },
+        { 
+            "q" : "pergunta32",
+            "a" : "resposta32"
+        },
+        { 
+            "q" : "pergunta33",
+            "a" : "resposta33"
+        }]
+    },{
+        "id" : "categ4",
+        "desc": "Sou parte da Equipa",
+        "items": [ { 
+            "q" : "pergunta41",
+            "a" : "resposta41"
+        },
+        { 
+            "q" : "pergunta42",
+            "a" : "resposta42"
+        },
+        { 
+            "q" : "pergunta43",
+            "a" : "resposta43"
+        }]
+    }
+]

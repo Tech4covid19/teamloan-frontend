@@ -1,0 +1,37 @@
+
+span {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+  
+    /* or 233% */
+    letter-spacing: -0.065em;
+
+    color: #000000;
+   
+
+}
+
+p.q {
+    font-size: 30px;
+    line-height: 70px;
+    color: #000000;
+    padding-left: 50px;
+}
+
+p.a { 
+    font-size: 24px;
+    line-height: 70px;
+    color: #414141;
+    padding-left: 80px;
+   // display: none;
+}
+
+img {
+    width: 24px;
+    height: 24px;
+    float: right;
+    margin-top: 23px;   // (70-24)/2
+    margin-right: 80px;
+  //  vertical-align: middle;
+}

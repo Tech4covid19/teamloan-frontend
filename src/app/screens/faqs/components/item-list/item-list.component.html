@@ -1,0 +1,9 @@
+<div *ngFor="let item of items; index as i;">
+    <p class="q">
+        <span>{{item.q}}</span> 
+        <img [attr.src]="(i==this.curr_item)?this.icon_plus:this.icon_minus" (click)="onClickItem(i)" />
+    </p>
+    <p class="a" *ngIf="i==this.curr_item">
+        <span>{{item.a}}</span> 
+    </p>
+</div>
