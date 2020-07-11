@@ -26,3 +26,30 @@ p {
     //text-transform: uppercase;
     color: #663366;
 }
+
+#faqs-footer {
+    border-top: 1px solid #DADADA;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#faqs-footer-content {
+    width: 668px;
+    height: 73px;
+
+
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+

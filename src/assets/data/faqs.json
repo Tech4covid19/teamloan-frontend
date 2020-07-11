@@ -3,64 +3,108 @@
         "id" : "categ1",
         "desc" : "Geral",
         "items" : [
-            { 
-                "q" : "pergunta11",
-                "a" : "resposta11"
+            {
+                "q" : "Que tipo de empresa pode usar o TeamLoan?",
+                "a" : "Qualquer empresa ou associação, pequena ou grande, pode usar o TeamLoan. Não há restrições em termos de setor, função ou perfil."
             },
-            { 
-                "q" : "pergunta12",
-                "a" : "resposta12"
+            {
+                "q" : "A utilização do TeamLoan é paga?",
+                "a" : "Não há lugar a qualquer pagamento ao TeamLoan, o qual é uma plataforma sem fins lucrativos para ajudar no combate aos desafios do Covid-19."
             },
-            { 
-                "q" : "pergunta13",
-                "a" : "resposta13"
+            {
+                "q" : "Como é feito o contacto entre empresas?",
+                "a" : "As empresas que precisam de reforçar a equipa contactam diretamente as empresas com equipas disponíveis, ou vice-versa. Não há intervenção do TeamLoan"
+            },
+            {
+                "q" : "Há algum impedimento legal a que trabalhadores contratualmente ligados a uma empresa possam desempenhar serviços para outra empresa?",
+                "a" : "Não, salvo se tiver sido acordado algo em contrário entre as partes ou se, tratando-se de atividade concorrente, a empresa não o autorizar. "
+            },
+            {
+                "q" : "Há intervenção do TeamLoan na definição dos termos de colaboração entre as partes?",
+                "a" : "Não. Os termos devem ser definidos pelas partes dentro do que é a legislação em vigor e o contexto específicos das empresas. "
+            },
+            {
+                "q" : "Como é determinado e realizado o pagamento de um trabalhador, neste contexto?",
+                "a" : "O pagamento é integralmente suportado pela empresa que recebe o trabalhador e corresponderá ao que for acordado entre ambos.<br>Caso se trate de um trabalhador a tempo completo, o salário deverá corresponder a, pelo menos, o salário mínimo nacional (fixado, atualmente, em € 635) ou ao valor mínimo fixado em instrumento de regulamentação coletiva aplicável.<br>O pagamento será feito com a periodicidade que for acordada pelas partes, sendo certo que, em Portugal, é comum ser numa base mensal."
+            },
+            {
+                "q" : "Como é determinado o prazo desta colaboração?",
+                "a" : "O prazo será o acordado pelas partes.<br>No entanto, poderá haver limites temporais inerentes à modalidade contratual escolhida. Por exemplo, um contrato do trabalho a termo tem duração máxima de 2 (termo certo) ou 4 anos (termo incerto). Um contrato a termo certo fica ainda sujeito a um máximo de 3 renovações, cuja duração total não pode exceder a da duração inicial do contrato."
+            },
+            {
+                "q" : "Como posso esclarecer dúvidas ou enviar sugestões?",
+                "a" : "Envie-nos um e-mail para geral@teamloan.pt. Temos todo o gosto em esclarecer e agradecemos as suas sugestões."
             }
         ]
     },
     {
         "id" : "categ2",
         "desc" : "Disponibilizar Equipa",
-        "items" : [ { 
-            "q" : "pergunta21",
-            "a" : "resposta21"
+        "items" : [ {
+            "q" : "Qual a vantagem em participar nesta partilha?",
+            "a" : "Caso a sua empresa esteja em lay-off, esta alternativa poderá reduzir a parcela de custos de lay-off que de momento suporta como entidade empregadora. Adicionalmente, caso preveja que a sua atividade não se restabeleça brevemente, pode ajudá-lo a preparar uma solução temporária para o período pós lay-off.<br>Caso a sua empresa não esteja em lay-off, esta alternativa pode ser uma solução temporária de reduzir os seus custos, evitando despedimentos / fecho de atividade e encargos inerentes. Ao mesmo tempo, permite que mantenha a relação contratual com a sua equipa, que poderá regressar posteriormente."
         },
-        { 
-            "q" : "pergunta22",
-            "a" : "resposta22"
+        {
+            "q" : "Tenho uma equipa disponível. Como faço?",
+            "a" : "Três passos simples: <ol><li>1) Regista a empresa;</li><li>2) Adiciona a equipa;</li><li>3) Contacta ou aguarda contacto de empresas interessadas.</li></ol> O e-mail e telemóvel de contacto estão disponíveis nos detalhes de cada publicação.<br>Se a disponibilidade da equipa que registou mudar, pode sempre editar ou apagar as suas equipas na área \"Minhas Publicações\"."
         },
-        { 
-            "q" : "pergunta23",
-            "a" : "resposta23"
+        {
+            "q" : "Para publicar a disponibilidade da equipa, tenho que ter o acordo dos trabalhadores?",
+            "a" : "Para inscrever a disponibilidade da equipa no TeamLoan, não é necessário ter o acordo prévio dos trabalhadores. No entanto, para passar à fase seguinte, isto é, para a execução da “partilha”, o acordo do trabalhador é sempre obrigatório."
+        },
+        {
+            "q" : "Como se pode operacionalizar esta partilha, em termos legais?",
+            "a" : "Mediante acordo entre entidade empregadora e trabalhador.<br>Caso a sua empresa esteja em lay-off, este permite que os trabalhadores desempenhem funções noutras empresas.<br>Caso a sua empresa não esteja em lay-off, entre diversas opções possíveis, a entidade empregadora e o trabalhador podem celebrar: <ul><li>Um acordo de licença sem retribuição, ficando o contrato de trabalho suspenso pelo período que as partes acordarem;</li><li>Um acordo de redução do período normal de trabalho, passando o trabalhador a prestar trabalho em regime de tempo parcial.</li></ul>Nenhum destes formatos está sujeito a limites mínimo ou máximo de duração."
+        },
+        {
+            "q" : "E se, por algum motivo, não conseguir voltar a receber os trabalhadores?",
+            "a" : "O contrato de trabalho com a empresa que disponibilizou o trabalhador não cessou pelo facto de o trabalhador prestar trabalho, com caráter temporário, noutra entidade.<br>Se a empresa de origem não conseguir voltar a receber o trabalhador esta poderá fazer cessar o contrato de trabalho nos termos previstos na lei."
         }]
     },{
         "id": "categ3",
         "desc": "Reforcar Equipa",
-        "items": [ { 
-            "q" : "pergunta31",
-            "a" : "resposta31"
+        "items": [ {
+            "q" : "Qual a vantagem em participar nesta partilha?",
+            "a" : "Esta é uma forma simples de satisfazer a necessidade de reforço temporário de equipa. Permite que tenha acesso a trabalhadores qualificados que, devido às atuais circunstâncias excecionais, estão disponíveis. Pode igualmente ter vantagens em receber equipas já formadas, habituadas a trabalhar em conjunto.<br>Ao mesmo tempo, estará a apoiar empresas e trabalhadores em dificuldades."
         },
-        { 
-            "q" : "pergunta32",
-            "a" : "resposta32"
+        {
+            "q" : "Preciso de reforçar a minha equipa. Como faço?",
+            "a" : "Três passos simples: <ol><li>1) Regista a empresa;</li><li>2) Regista a sua necessidade;</li><li>3) Contacta ou aguarda contacto de empresas com equipas disponíveis.</li></ol>O e-mail e telemóvel de contacto estão disponíveis nos detalhes de cada publicação.<br>Se a necessidade da equipa que registou mudar, pode sempre editar ou apagar as suas necessidades na área \"Minhas Publicações\"."
         },
-        { 
-            "q" : "pergunta33",
-            "a" : "resposta33"
+        {
+            "q" : "Como se pode operacionalizar esta partilha, em termos legais?",
+            "a" : "Mediante acordo entre o trabalhador e a empresa com necessidade de reforço de equipa.<br>Entre diversas opções, destacam-se o contrato de trabalho a termo e o contrato de prestação de serviços. Em qualquer caso, o trabalhador e a empresa são inteiramente livres de definir os termos da colaboração, dentro dos limites impostos pela lei."
+        },
+        {
+            "q" : "Sou obrigado a receber a equipa completa publicada por uma empresa?",
+            "a" : "Não. O seu interesse pode aplicar ao nº de trabalhadores que pretenda, de acordo com a sua necessidade."
+        },
+        {
+            "q" : "Existe alguma pré-análise ou garantia relativa à adequação das equipas às funções?",
+            "a" : "Essa análise deve ser feita pela empresa que recebe as equipas. Não há intervenção do TeamLoan."
         }]
     },{
         "id" : "categ4",
         "desc": "Sou parte da Equipa",
-        "items": [ { 
-            "q" : "pergunta41",
-            "a" : "resposta41"
+        "items": [ {
+            "q" : "Qual a vantagem em participar nesta partilha?",
+            "a" : "Caso a sua atual empresa esteja em lay-off, esta partilha pode permitir ao trabalhador um incremento salarial, caso a retribuição proposta pela empresa que precisa de reforçar equipa for superior ao que recebe nas circunstâncias atuais.<br>No caso de se tratar de “lay-off simplificado”, o referido incremento salarial para o trabalhador é garantido se for exercer uma atividade nas áreas do apoio social, saúde, produção alimentar, logística e distribuição, dado que acumulará as duas retribuições, sem qualquer corte na compensação retributiva paga pela entidade empregadora atual.<br>Caso a sua atual empresa não esteja em lay-off, pode ser uma solução temporária para que esta reduza os seus custos, evitando despendimentos / fecho de atividade. Ao mesmo tempo, permite ao trabalhador que mantenha uma relação contratual com a sua atual empresa, mantendo aberta a possibilidade de regressar posteriormente."
         },
-        { 
-            "q" : "pergunta42",
-            "a" : "resposta42"
+        {
+            "q" : "O trabalhador tem de estar de acordo?",
+            "a" : "Sim, sem o acordo do trabalhador não é possível operacionalizar a partilha."
         },
-        { 
-            "q" : "pergunta43",
-            "a" : "resposta43"
+        {
+            "q" : "Se o trabalhador estiver abrangido pelo regime de lay-off pode trabalhar noutra empresa?",
+            "a" : "Sim, pode. Deve comunicar tal facto à entidade empregadora."
+        },
+        {
+            "q" : "O que acontece se o trabalhador não quiser voltar para a empresa de origem?",
+            "a" : "Não é possível estabelecer qualquer obrigação de o trabalhador voltar para a empresa de origem. Não é também legalmente possível que as empresas combinem entre si esta obrigação de o trabalhador voltar, pois tal seria considerado uma limitação à liberdade de trabalho.<br>O trabalhador é livre para decidir, podendo denunciar livremente o seu contrato de trabalho, nos termos legais."
+        },
+        {
+            "q" : "E se o trabalhador quiser voltar para a empresa de origem antes do termo do contrato de trabalho celebrado com a empresa que o recebeu?",
+            "a" : "Tal é possível caso haja acordo da empresa de origem, uma vez que o trabalhador pode denunciar livremente, a qualquer momento, o contrato de trabalho com a empresa que o recebeu.<br>A mero título de exemplo, no caso de contrato de trabalho a termo, o trabalhador deverá fazê-lo, através de comunicação escrita, com a antecedência mínima de 30 ou 15 dias, consoante a duração do contrato seja de pelo menos 6 meses ou inferior (no caso de contrato de trabalho a termo incerto deverá atender-se à duração do contrato já decorrida)."
         }]
     }
 ]
