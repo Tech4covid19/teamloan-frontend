@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HostListener } from '@angular/core';
 
 import FAQS from '../../../assets/data/faqs.json';
 
@@ -14,6 +15,10 @@ export class FaqsComponent implements OnInit {
   faq: any;
 
   faqsa: any;
+
+  scrHeight: any;
+  scrWidth: any;
+  isWide: boolean;
 
   observer_url: any = {
     next: params => {
@@ -37,11 +42,20 @@ export class FaqsComponent implements OnInit {
   };
 
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { 
+    this.getScreenSize();
+  }
 
   ngOnInit(): void {
     this.faqsa = FAQS;
     this.route.queryParams.subscribe( this.observer_url);
   }
 
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    this.scrHeight = window.innerHeight;
+    this.scrWidth = window.innerWidth;
+    console.log(this.scrHeight, this.scrWidth);
+    this.isWide = this.scrWidth > 768;
+  }
 }

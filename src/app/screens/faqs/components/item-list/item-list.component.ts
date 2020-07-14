@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ItemListComponent implements OnInit {
 
   @Input() items: [];
+  @Input() categ: string;
 
   curr_item: number = 0;
 
