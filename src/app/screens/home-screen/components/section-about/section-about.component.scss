@@ -27,6 +27,10 @@
                 font-weight: 200;
                 color: var(--color-black);
             }
+
+            a.text {
+              font-weight: 400;
+            }
         }
     }
 }
@@ -95,4 +99,9 @@
             }
         }
     }
+}
+
+
+a.text {
+  text-decoration: none;
 }
