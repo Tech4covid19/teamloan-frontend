@@ -8,6 +8,18 @@ span {
     color: #000000;
 }
 
+.wrapper {
+  @include tablet {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  @include mobile {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
+
 p.q {
     @include tablet {
       font-size: 30px;
@@ -34,6 +46,7 @@ p.a {
     }
     color: #414141;
     padding-left: 80px;
+    margin-right: 80px;
    // display: none;
 }
 
@@ -48,7 +61,7 @@ img {
       height: 12px;
       margin-top: 4px;   // (20-12)/2
     }
-    
+
     width: 24px;
     height: 24px;
     margin-top: 23px;   // (70-24)/2
