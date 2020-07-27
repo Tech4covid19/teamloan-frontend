@@ -1,39 +1,59 @@
-name: dev
+name: prod
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: [ubuntu-18.04]
     strategy:
       matrix:
         node-version: [12.x]
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Cache node modules
-      uses: actions/cache@v1
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-            ${{ runner.os }}-node-
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+              ${{ runner.os }}-node-
 
-    - name: Node ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: npm install and npm run build
-      run: |
-        npm i
-        npm run build-prod
+      - name: npm install and npm run build
+        run: |
+          npm i
+          npm run build-prod
 
-    - name: Push Build to Releases
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "dist/teamloan-frontend/*"
-        token: ${{ secrets.TOKEN }}
+      - name: Set release to "master" + GITHUB_RUN_ID
+        run: |
+          echo "::set-env name=release_id::master-$GITHUB_RUN_ID"
+
+      - name: package the release (tar.gz)
+        run: |
+          tar -zcvf dist/teamloan-frontend-$release_id.tar.gz dist/teamloan-frontend
+                
+      - name: Push Build to Releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "dist/teamloan-frontend-${{ env.release_id }}.tar.gz"
+          commit: master
+          tag: ${{ env.release_id }}
+          replacesArtifacts: true
+          allowUpdates: true
+          token: ${{ secrets.TOKEN }}
+          
+      - name: Upload ftp
+        uses: sebastianpopp/ftp-action@releases/v2
+        with:
+            host: ftp.teamloan.pt
+            user: frontend-prod@teamloan.pt
+            password: ${{ secrets.FTP_PROD_PASSWORD }}
+            localDir: "dist/teamloan-frontend"

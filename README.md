@@ -1,4 +1,5 @@
 ![dev](https://github.com/Tech4covid19/teamloan-frontend/workflows/dev/badge.svg)
+![prod](https://github.com/Tech4covid19/teamloan-frontend/workflows/prod/badge.svg)
 
 # TeamloanFrontend
 

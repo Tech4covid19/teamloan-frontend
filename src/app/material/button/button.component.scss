@@ -9,7 +9,7 @@
     font-weight: normal;
     text-align: center;
     width: 100%;
-    padding: 0 20px;
+    padding: 10px 20px;
     border: 1px solid var(--color-bittersweet);
     outline: none;
     cursor: pointer;
@@ -109,13 +109,13 @@
     }
 
     @include tablet {
-        height: 77px;
-        font-size: 34px;
+        height: 87px;
+        font-size: 32px;
         line-height: 48px;
     }
 
     @include desktop {
-        height: 77px;
+        height: 87px;
         font-size: 36px;
         line-height: 42px;
     }
