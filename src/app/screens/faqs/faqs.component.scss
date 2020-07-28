@@ -1,0 +1,116 @@
+
+// center DUVIDAS? VAMOS ESCLATECER
+div.left {
+    margin: auto;
+    width: 50%;
+    float: left;
+    padding-top: 150px;
+    padding-left: 50px;
+    margin-bottom: 50px;
+}
+
+div.right {
+    margin: auto;
+    width: 50%;
+    float: left;
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+
+div.thin {
+  width: 96%;
+  height: 400px;
+  left: 2%;
+}
+
+div.thintitle {
+  padding-top: 40px;
+  padding-left: 50px;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  //display: flex;
+  align-items: center;
+  letter-spacing: 0.075em;
+  color: #663366;
+}
+
+div.center2 {
+  position: absolute;
+  left: 1%;
+  right: 1%;
+  top: 0%;
+  bottom: 90%;
+  z-index: -1;
+}
+
+div.center1 {
+  position: absolute;
+  width: 80%;
+  height: 210px;
+  left: 5%;
+  top: 5%;
+}
+
+
+div.center {
+    margin: auto;
+    width: 90%;
+    float: left;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+p.thin {
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+
+  text-align: center;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+
+  color: #FFFFFF
+}
+
+p.wide {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 70px;
+    letter-spacing: -0.065em;
+    //text-transform: uppercase;
+    color: #663366;
+}
+
+#faqs-footer {
+    border-top: 1px solid #DADADA;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#faqs-footer-content {
+    width: 668px;
+    height: 73px;
+
+
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+

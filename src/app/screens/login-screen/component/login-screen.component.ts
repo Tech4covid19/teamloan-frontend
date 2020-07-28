@@ -34,6 +34,8 @@ export class LoginViewComponent {
             username: [null, Validators.required],
             password: [null, Validators.required]
         });
+
+        this.form.valueChanges.subscribe(f => this._resetValidators());
     }
 
     public get usernameControl(): FormControl {
@@ -70,5 +72,9 @@ export class LoginViewComponent {
         this.submitting = false;
         this.loginError = true;
         this.loginErrorMessage = error;
+    }
+
+    private _resetValidators() {
+        this.loginError = false;
     }
 }

@@ -1,0 +1,4 @@
+<ul >
+    <li *ngFor="let categ of faqs"><a [ngClass]="faq.id==categ.id ? 'selected' : ''" [routerLink]="['/faqs']" [queryParams]= "{id: categ.id}">{{categ.desc}}</a></li>
+</ul>
+<hr />

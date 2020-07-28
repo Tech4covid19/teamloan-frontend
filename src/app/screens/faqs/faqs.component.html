@@ -1,0 +1,33 @@
+<div *ngIf="isWide; else faqsElseTemplate">
+  <div class="left">
+    <p class="wide">DÚVIDAS?<br>VAMOS ESCLARECER.</p>
+  </div>
+  <div class="right">
+    <img src="/assets/img/faqs-artboard.png" />
+  </div>
+  <app-faq-list [faqs]=faqsa [faq]=faq></app-faq-list>
+  <app-item-list [items]=faq.items></app-item-list>
+</div>
+
+<ng-template #faqsElseTemplate>
+  <div class="thin">
+    <div class="center1">
+      <p class="thin">DÚVIDAS?<br>VAMOS ESCLARECER.</p>
+    </div>
+    <div class="center2">
+      <img src="/assets/img/faqs-artboard.png" />
+    </div>
+  </div>
+  <ng-container *ngFor="let categ of faqsa">
+    <div class="thintitle">{{categ.desc | uppercase}}</div>
+    <hr/>
+    <app-item-list [items]=categ.items ></app-item-list>
+  </ng-container>
+</ng-template>
+
+<div id="faqs-footer">
+  <div id="faqs-footer-content">
+    Texto atualizado à data 29 Maio 2020, elaborado pela TeamLoan com o apoio da "Morais Leitão, Galvão Teles, Soares da
+    Silva & Associados", não constituindo, em caso algum, aconselhamento jurídico.
+  </div>
+</div>

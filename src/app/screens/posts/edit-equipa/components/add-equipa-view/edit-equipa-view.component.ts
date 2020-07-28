@@ -3,12 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 import { ICON_STATUS } from 'src/app/material/button/button.component';
 import { Posting } from 'src/app/models/posting/posting';
+import { UUID } from 'src/app/models/uuid-object';
 import { AuthUserService } from 'src/app/services/auth/auth-user.service';
 import { PostingService } from 'src/app/services/posting/posting.service';
 import { EquipaFormContainerComponent } from '../../../components/equipa-form-container/equipa-form.container';
 import { EquipaViewModel } from '../../../components/equipa-form/equipa.viewmodel';
 import { EquipaConverters } from '../../../converters/equipa.converters';
-import { UUID } from 'src/app/models/uuid-object';
 
 @Component({
     selector: 'app-edit-equipa-view',
@@ -35,6 +35,12 @@ export class EditEquipaViewComponent {
         private authUserService: AuthUserService
     ) {
         this.currentPosting = this.activatedRoute.snapshot.data.posting;
+
+        if (!this._hasPermissionToEdit(this.currentPosting)) {
+            console.log('REDIRECTING');
+            this.router.navigate([`/posts/private`]);
+        }
+
         this.initialValue = EquipaConverters.postingToEquipaViewModel(this.currentPosting);
     }
 
@@ -74,5 +80,13 @@ export class EditEquipaViewComponent {
         } else {
             this.reponseError = true;
         }
+    }
+
+    private _hasPermissionToEdit(posting: Posting): boolean {
+        var hasPermission = false;
+        this.authUserService.getAuthUser().subscribe(user => {
+            hasPermission = user.uuid === posting.company.uuid;
+        });
+        return hasPermission;
     }
 }
